@@ -1,0 +1,173 @@
+{
+  "coreArchetype": [
+    "avoidance",
+    "imagination",
+    "confusion",
+    "dissolution"
+  ],
+  "planetType": "TRANSPERSONAL",
+  "psychologicalDomain": [
+    "avoidance",
+    "imagination",
+    "confusion",
+    "dissolution"
+  ],
+  "governingFunctions": [
+    "expressing avoidance",
+    "responding under pressure",
+    "navigating interpersonal dynamics",
+    "maintaining internal balance"
+  ],
+  "coreNeeds": [
+    "autonomy",
+    "stability",
+    "recognition"
+  ],
+  "coreFears": [
+    "loss of control",
+    "rejection",
+    "failure"
+  ],
+  "motivationStyle": [
+    "adaptive",
+    "situational",
+    "pressure-sensitive"
+  ],
+  "actionStyle": [
+    "context-dependent",
+    "reactive",
+    "purpose-driven"
+  ],
+  "decisionStyle": [
+    "experience-based",
+    "emotionally filtered",
+    "situational"
+  ],
+  "stressExpression": [
+    "withdrawal",
+    "overreaction",
+    "defensiveness"
+  ],
+  "healthyExpression": [
+    "clarity",
+    "balance",
+    "productive engagement"
+  ],
+  "unhealthyExpression": [
+    "avoidance",
+    "distortion",
+    "overcompensation"
+  ],
+  "behavioralPatterns": [
+    "repeats familiar coping loops",
+    "responds to pressure predictably"
+  ],
+  "conflictPatterns": [
+    "becomes rigid under stress",
+    "reacts defensively when challenged"
+  ],
+  "relationshipDynamics": [
+    "seeks validation through interaction",
+    "adjusts behavior to maintain connection"
+  ],
+  "attachmentDistortions": [
+    "confuses control with safety",
+    "fears vulnerability"
+  ],
+  "workplaceBehavior": [
+    "responds to deadlines intensely",
+    "adjusts output based on pressure"
+  ],
+  "leadershipStyle": [
+    "situational leadership",
+    "reactive management"
+  ],
+  "moneyBehavior": [
+    "emotionally influenced spending",
+    "security-oriented decisions"
+  ],
+  "socialBehavior": [
+    "reads room dynamics quickly",
+    "adapts social posture"
+  ],
+  "sexualDynamics": [
+    "emotionally reactive attraction patterns"
+  ],
+  "shadowPatterns": [
+    "repeats unconscious defensive loops"
+  ],
+  "growthDirection": [
+    "greater self-awareness",
+    "balanced response patterns"
+  ],
+  "bodyLanguage": [
+    "micro tension shifts",
+    "eye-contact changes"
+  ],
+  "speechPatterns": [
+    "tone changes under pressure",
+    "reveals stress through pacing"
+  ],
+  "cinematicExpressions": [
+    "checking notifications repeatedly",
+    "silent tension during conversation"
+  ],
+  "microBehaviors": [
+    "hesitates before replying",
+    "adjusts posture under stress"
+  ],
+  "defaultDefenseMechanisms": [
+    "avoidance",
+    "projection",
+    "overcompensation"
+  ],
+  "pressureResponses": [
+    "tightens control",
+    "reacts faster under stress"
+  ],
+  "emotionalTriggers": [
+    "criticism",
+    "uncertainty",
+    "loss of stability"
+  ],
+  "environmentPreferences": [
+    "predictable systems",
+    "emotionally manageable environments"
+  ],
+  "energyExpression": [
+    "fluctuating intensity",
+    "reactive surges"
+  ],
+  "temporalBehavior": [
+    "responds differently under deadlines",
+    "future-oriented worry"
+  ],
+  "distortionUnderFear": [
+    "misreads situations defensively"
+  ],
+  "healingMechanisms": [
+    "clear communication",
+    "structured reflection",
+    "healthy routines"
+  ],
+  "symbolicObjects": [
+    "mirrors",
+    "tools",
+    "thresholds"
+  ],
+  "associatedEnvironments": [
+    "workspaces",
+    "social systems",
+    "relationship dynamics"
+  ],
+  "behavioralStateTransitions": {
+    "calm": [],
+    "pressured": [],
+    "overloaded": [],
+    "healthyGrowth": []
+  },
+  "signModifiers": {},
+  "houseExpressions": {},
+  "aspectReactions": {},
+  "id": "NEPTUNE"
+}
