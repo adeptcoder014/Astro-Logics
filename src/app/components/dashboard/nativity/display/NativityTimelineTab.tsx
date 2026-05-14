@@ -2,14 +2,10 @@
 
 import React, { useMemo, useState, useEffect, Suspense } from 'react';
 import { api } from '~/trpc/react';
-// import { Canvas } from '@react-three/fiber';
-import { Environment, ContactShadows } from '@react-three/drei';
 import {
   Activity, Zap, ShieldAlert,
   Briefcase, RefreshCcw, Terminal
 } from 'lucide-react';
-import projectState from '../../../../../../public/state.json';
-import SceneOrchestrator from '~/app/components/3d/stage/SceneOrchestrator';
 
 type AgentState = 'idle' | 'explaining' | 'deepWork' | 'caution' | 'analysis';
 

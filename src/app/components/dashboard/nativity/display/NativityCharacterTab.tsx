@@ -5,7 +5,6 @@ import { Loader, AlertCircle, ChevronLeft, ChevronRight, Zap, Terminal, Cpu } fr
 import { api } from '~/trpc/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PlanetCharacter2D, { type CharacterConfig, type CharacterMood } from './PlanetCharacter2D';
-import { log } from 'three';
 
 const PLANET_NAMES = [
   'SUN', 'MOON', 'MERCURY', 'VENUS', 'MARS',
