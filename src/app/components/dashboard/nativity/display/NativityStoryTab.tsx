@@ -213,7 +213,7 @@ export default function NativityStoryTab({
       <div className="mb-6 p-4 bg-[#1A1714] border border-[#2D241E] rounded">
         <div className="flex flex-col gap-3 sm:flex-row sm:justify-between sm:items-start">
           <div className="min-w-0">
-            <h4 className="text-sm font-semibold text-[#E29626] mb-2">Main Narrative</h4>
+            <h4 className="text-sm font-semibold text-[#eaddbd] mb-2">Main Narrative</h4>
             <div className="text-xs text-stone-200 leading-relaxed whitespace-pre-wrap max-h-48 overflow-y-auto">
               {currentStory.mainNarrative}
             </div>
