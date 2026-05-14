@@ -357,11 +357,11 @@ export default function NativityCurrentStoryTab({
                     value={new Date(currentStory.createdAt).toLocaleDateString()}
                     caption="Transit snapshot"
                   />
-                  <StoryStatePanel
+                  {/* <StoryStatePanel
                     storyState={computedStoryState ?? normalizeStoryState(currentStory.storyState)}
                     isRefreshing={isRefreshing}
                     onRefresh={handleRefreshStoryState}
-                  />
+                  /> */}
                 </div>
 
                 <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
