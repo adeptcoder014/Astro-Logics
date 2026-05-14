@@ -16,7 +16,7 @@ import NativityAspectsTable from './NativityAspectsTable';
 import NativityGeometryView from './NativityGeometryView';
 import NativityProfilesView from './NativityProfilesView';
 import NativityStoryTab from './NativityStoryTab';
-// import NativityCurrentStoryTab from './NativityCurrentStoryTab';
+import NativityCurrentStoryTab from './NativityCurrentStoryTab';
 import NativityMeetPlanetsTab from './NativityMeetPlanetsTab';
 // import NativityGameOfLifeTab from './NativityGameOfLifeTab';
 import NativityCharacterTab from './NativityCharacterTab';
@@ -169,7 +169,7 @@ export default function NativityChartDisplay({
                 {activeTab === 'geometry' && <NativityGeometryView distances={angularDistances} />}
                 {activeTab === 'profiles' && <NativityProfilesView profiles={planetaryProfiles} planets={planets} />}
                 {activeTab === 'story' && <NativityStoryTab nativityChartId={chartId} />}
-                {/* {activeTab === 'current' && <NativityCurrentStoryTab nativityChartId={chartId} />} */}
+                {activeTab === 'current' && <NativityCurrentStoryTab nativityChartId={chartId} />}
               </motion.div>
             </AnimatePresence>
           </div>
