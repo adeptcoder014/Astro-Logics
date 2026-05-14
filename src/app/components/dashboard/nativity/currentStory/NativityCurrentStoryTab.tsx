@@ -252,7 +252,7 @@ export default function NativityCurrentStoryTab({
 
   const currentStory = (stories?.sort(
     (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-  )[0] as CurrentStory | undefined) ?? undefined;
+  )[0] ) ?? undefined;
 
   useEffect(() => {
     if (currentStory?.scenes?.length) {
