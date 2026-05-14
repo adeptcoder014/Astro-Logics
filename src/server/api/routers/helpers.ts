@@ -1,7 +1,8 @@
 import chalk from "chalk";
 import { db } from "~/server/db";
-import { createProvider } from "llm/providers/provider";
+// import { createProvider } from "llm/providers/provider";
 import type { NativityContext } from "~/server/services/storyGenerator";
+import { createProvider } from "../../../../llm/providers/provider";
 
 // ============================================================================
 // INTERFACES & TYPES

@@ -2,7 +2,7 @@ import { z } from "zod";
 import { createTRPCRouter, protectedProcedure } from "~/server/api/trpc";
 import { db } from "~/server/db";
 import { getSwissEph } from "~/server/astro/swissEph";
-import { createProvider } from 'llm/providers/provider';
+// import { createProvider } from 'llm/providers/provider';
 import { StoryGenerator, type NativityContext } from "~/server/services/storyGenerator";
 import { PlanetaryPersonalityService } from "~/server/services/planetaryPersonality";
 import { TransitCalculator } from "~/server/services/transitCalculator";
@@ -21,6 +21,7 @@ import {
   type PlanetDataType,
 } from "./helpers";
 import chalk from "chalk";
+import { createProvider } from "../../../../llm/providers/provider";
 
 const safeJSONParse = <T>(value: string, fallback: T): T => {
   try {

@@ -14,7 +14,6 @@
     "incremental": true,
     "module": "esnext",
     "esModuleInterop": true,
-    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "plugins": [
@@ -22,19 +21,13 @@
         "name": "next"
       }
     ],
-    "baseUrl": ".",
     "paths": {
       "~/*": [
         "./src/*"
-      ],
-      "@shared/*": [
-        "../shared/*"
-      ],
-      "agent-runtime/*": [
-        "./agent-runtime/*"
       ]
     },
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "moduleResolution": "node"
   },
   "include": [
     "next-env.d.ts",

@@ -2,7 +2,8 @@ import type { Prisma } from '@prisma/client';
 import { getSwissEph } from "~/server/astro/swissEph";
 // import { createProvider } from "agent-runtime/src/llm/provider";
 import chalk from 'chalk';
-import { createProvider } from 'llm/providers/provider';
+import { createProvider } from '../../../llm/providers/provider';
+// import { createProvider } from 'llm/providers/provider';
 export type NativityAspect = Prisma.NativityAspectGetPayload<{}>;
 
 export interface TransitSnapshot {
