@@ -19,62 +19,62 @@ import StoryStatePanel from "../currentStory/StoryStatePanel";
 import ThemeSummaryCard from "../currentStory/ThemeSummaryCard";
 
 // Calculate story state from planetary scenes
-const calculateStoryState = (scenes: PlanetaryScene[]): string => {
-  if (!scenes || scenes.length === 0) return "No scene data available.";
+// const calculateStoryState = (scenes: PlanetaryScene[]): string => {
+//   if (!scenes || scenes.length === 0) return "No scene data available.";
 
-  // Aggregate narrative fields across all scenes
-  const behaviors = scenes
-    .map((s) => s.behavioralPattern)
-    .filter(Boolean) as string[];
-  const conflicts = scenes
-    .map((s) => s.externalConflict)
-    .filter(Boolean) as string[];
-  const pressures = scenes
-    .map((s) => s.dominantPressure)
-    .filter(Boolean) as string[];
-  const relationshipEffects = scenes
-    .map((s) => s.relationshipEffect)
-    .filter(Boolean) as string[];
-  const pressureDirections = scenes
-    .map((s) => s.pressureDirection)
-    .filter(Boolean) as string[];
+//   // Aggregate narrative fields across all scenes
+//   const behaviors = scenes
+//     .map((s) => s.behavioralPattern)
+//     .filter(Boolean) as string[];
+//   const conflicts = scenes
+//     .map((s) => s.externalConflict)
+//     .filter(Boolean) as string[];
+//   const pressures = scenes
+//     .map((s) => s.dominantPressure)
+//     .filter(Boolean) as string[];
+//   const relationshipEffects = scenes
+//     .map((s) => s.relationshipEffect)
+//     .filter(Boolean) as string[];
+//   const pressureDirections = scenes
+//     .map((s) => s.pressureDirection)
+//     .filter(Boolean) as string[];
 
-  // Calculate average intensity
-  const avgIntensity =
-    scenes.length > 0
-      ? Math.round(scenes.reduce((sum, s) => sum + s.intensity, 0) / scenes.length)
-      : 0;
+//   // Calculate average intensity
+//   const avgIntensity =
+//     scenes.length > 0
+//       ? Math.round(scenes.reduce((sum, s) => sum + s.intensity, 0) / scenes.length)
+//       : 0;
 
-  // Build state summary
-  const stateLines: string[] = [];
+//   // Build state summary
+//   const stateLines: string[] = [];
 
-  if (behaviors.length > 0) {
-    stateLines.push(`Behavioral: ${behaviors.slice(0, 2).join(", ")}`);
-  }
+//   if (behaviors.length > 0) {
+//     stateLines.push(`Behavioral: ${behaviors.slice(0, 2).join(", ")}`);
+//   }
 
-  if (conflicts.length > 0) {
-    stateLines.push(`Conflicts: ${conflicts.slice(0, 2).join(", ")}`);
-  }
+//   if (conflicts.length > 0) {
+//     stateLines.push(`Conflicts: ${conflicts.slice(0, 2).join(", ")}`);
+//   }
 
-  if (pressures.length > 0) {
-    stateLines.push(`Pressures: ${pressures.slice(0, 2).join(", ")}`);
-  }
+//   if (pressures.length > 0) {
+//     stateLines.push(`Pressures: ${pressures.slice(0, 2).join(", ")}`);
+//   }
 
-  if (relationshipEffects.length > 0) {
-    stateLines.push(`Relations: ${relationshipEffects.slice(0, 1).join(", ")}`);
-  }
+//   if (relationshipEffects.length > 0) {
+//     stateLines.push(`Relations: ${relationshipEffects.slice(0, 1).join(", ")}`);
+//   }
 
-  if (pressureDirections.length > 0) {
-    stateLines.push(`Pressure Direction: ${pressureDirections.slice(0, 1).join(", ")}`);
-  }
+//   if (pressureDirections.length > 0) {
+//     stateLines.push(`Pressure Direction: ${pressureDirections.slice(0, 1).join(", ")}`);
+//   }
 
-  // Add intensity
-  stateLines.push(`Intensity: ${avgIntensity}%`);
+//   // Add intensity
+//   stateLines.push(`Intensity: ${avgIntensity}%`);
 
-  return stateLines.length > 0
-    ? stateLines.join(" | ")
-    : "State computed from scenes.";
-};
+//   return stateLines.length > 0
+//     ? stateLines.join(" | ")
+//     : "State computed from scenes.";
+// };
 
 interface PlanetaryScene {
   id: string;
@@ -170,8 +170,8 @@ export default function NativityCurrentStoryTab({
     },
     onError: () => {
       // Fallback to simple calculation if backend fails
-      const fallback = currentStory ? calculateStoryState(currentStory.scenes) : undefined;
-      setComputedStoryState(fallback);
+      // const fallback = currentStory ? calculateStoryState(currentStory.scenes) : undefined;
+      setComputedStoryState('fallback');
       setIsRefreshing(false);
     },
   });

@@ -64,7 +64,7 @@ export class RashoffTheatre {
   }
 
   private generateNarrative(
-    scene: PlanetaryScene,
+    scene: NativityCurrentStoryTab,
     profile: PlanetaryProfile,
   ): string {
     const intensity =
