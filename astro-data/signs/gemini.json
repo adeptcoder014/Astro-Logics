@@ -1,0 +1,122 @@
+{
+  "id": "GEMINI",
+  "element": "AIR",
+  "modality": "MUTABLE",
+  "polarity": "MASCULINE",
+  "coreArchetype": [
+    "messenger",
+    "observer",
+    "mental explorer"
+  ],
+  "styleModifiers": [
+    "adaptive",
+    "expressive",
+    "behavior-driven"
+  ],
+  "positiveTraits": [
+    "observant",
+    "capable",
+    "persistent"
+  ],
+  "negativeTraits": [
+    "reactive",
+    "stubborn under stress",
+    "inconsistent"
+  ],
+  "stressStyle": [
+    "overcompensates",
+    "becomes emotionally narrow"
+  ],
+  "emotionalNeeds": [
+    "stability",
+    "understanding"
+  ],
+  "emotionalTriggers": [
+    "rejection",
+    "loss of control"
+  ],
+  "communicationStyle": [
+    "direct",
+    "context-aware"
+  ],
+  "conflictStyle": [
+    "defensive under pressure",
+    "tries to regain control"
+  ],
+  "decisionStyle": [
+    "contextual",
+    "pressure-sensitive"
+  ],
+  "relationshipPatterns": [
+    "tests trust slowly",
+    "values consistency"
+  ],
+  "attachmentPatterns": [
+    "protective",
+    "cautious vulnerability"
+  ],
+  "workPatterns": [
+    "focuses intensely",
+    "improves systems over time"
+  ],
+  "leadershipStyle": [
+    "situational leadership",
+    "competence-focused"
+  ],
+  "moneyBehavior": [
+    "security-oriented",
+    "tracks long-term stability"
+  ],
+  "environmentPreferences": [
+    "predictable spaces",
+    "controlled environments"
+  ],
+  "socialBehavior": [
+    "observes before opening up",
+    "selective engagement"
+  ],
+  "shadowPatterns": [
+    "overcontrol",
+    "suppressed emotional expression"
+  ],
+  "growthDirection": [
+    "greater emotional flexibility",
+    "balanced self-awareness"
+  ],
+  "behavioralMicroPatterns": [
+    "rechecks details",
+    "changes tone under stress"
+  ],
+  "cinematicExpressions": [
+    "late-night overthinking",
+    "silent observation during tension"
+  ],
+  "bodyLanguage": [
+    "controlled posture",
+    "subtle tension in movement"
+  ],
+  "speechPatterns": [
+    "careful wording",
+    "emotion hidden beneath logic"
+  ],
+  "defaultDefenseMechanisms": [
+    "withdrawal",
+    "rationalization"
+  ],
+  "pressureResponses": [
+    "tries to regain control",
+    "narrows focus under stress"
+  ],
+  "compatibilityNeeds": [
+    "clarity",
+    "mutual respect"
+  ],
+  "deepFears": [
+    "loss of control",
+    "irrelevance"
+  ],
+  "deepMotivations": [
+    "meaningful impact",
+    "internal stability"
+  ]
+}
