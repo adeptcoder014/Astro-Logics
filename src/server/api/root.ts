@@ -4,7 +4,6 @@ import { userRouter } from "./routers/user";
 import { astrologyRouter } from "./routers/astrology";
 import { mundaneRouter } from "./routers/mundane";
 import { nativityRouter } from "./routers/nativity";
-import { titansRouter } from "./routers/titans";
 import { adminRouter } from "./routers/admin";
 
 /**
@@ -21,7 +20,6 @@ export const appRouter = createTRPCRouter({
 
   nativity: nativityRouter,
 
-  titans: titansRouter,
   admin: adminRouter,
   // agents: agentsRouter,
 });
