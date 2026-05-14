@@ -5,7 +5,7 @@ import { Geist } from "next/font/google";
 
 import { TRPCReactProvider } from "~/trpc/react";
 import { SessionProvider } from 'next-auth/react';
-import TheatreStudio from "./components/TheatreStudio";
+// import TheatreStudio from "./components/TheatreStudio";
 // import TheatreStudio from '@/components/TheatreStudio'; // Adjust path as needed
 export const metadata: Metadata = {
   title: "Astrologics",
