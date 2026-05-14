@@ -9,27 +9,25 @@ export const authConfig = {
       name: "Credentials",
       credentials: {
         mobile: { label: "Mobile", type: "text" },
-        // password: { label: "Password", type: "password" },
+        password: { label: "Password", type: "password" },
       },
-
       async authorize(credentials) {
-        console.log('=======wewewewe', credentials);
-        if (!credentials?.mobile) return null;
+        const identifier = credentials?.mobile?.trim();
+        const password = credentials?.password;
+        if (!identifier || !password) return null;
 
         const user = await db.user.findFirst({
-          where: { email: credentials.mobile },
+          where: {
+            OR: [{ mobile: identifier }, { email: identifier }],
+          },
         });
 
         if (!user) return null;
 
-        // const valid = await compare(credentials.password, user.passwordHash);
-        // if (!valid) return null;
+        const valid = await compare(password, user.passwordHash);
+        if (!valid) return null;
 
-        return {
-          id: user.id,
-          name: user.name,
-          email: user.email,
-        };
+        return { id: user.id, name: user.name, email: user.email, mobile: user.mobile };
       },
     }),
   ],
@@ -40,14 +38,14 @@ export const authConfig = {
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token.id = user.id;
+        token.id = user.id ?? token.sub;
         token.mobile = user.mobile;
       }
       return token;
     },
     async session({ session, token }) {
       if (token) {
-        session.user.id = token.id as string;
+        session.user.id = (token.id ?? token.sub) as string;
         session.user.mobile = token.mobile as string;
       }
       return session;

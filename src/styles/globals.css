@@ -32,10 +32,17 @@
 }
 
 
+body {
+  font-family: var(--font-body);
+}
+
+
 /* Example Usage for Dark Mode preference */
 @media (prefers-color-scheme: dark) {
   :root {
     --bg-main: var(--color-primary-dark);
     --text-main: var(--color-primary-light);
   }
+
+
 }

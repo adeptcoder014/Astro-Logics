@@ -252,7 +252,7 @@ export default function NativityCurrentStoryTab({
 
   const currentStory = (stories?.sort(
     (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-  )[0] ) ?? undefined;
+  )[0] as CurrentStory | undefined) ?? undefined;
 
   useEffect(() => {
     if (currentStory?.scenes?.length) {
@@ -357,11 +357,11 @@ export default function NativityCurrentStoryTab({
                     value={new Date(currentStory.createdAt).toLocaleDateString()}
                     caption="Transit snapshot"
                   />
-                  {/* <StoryStatePanel
+                  <StoryStatePanel
                     storyState={computedStoryState ?? normalizeStoryState(currentStory.storyState)}
                     isRefreshing={isRefreshing}
                     onRefresh={handleRefreshStoryState}
-                  /> */}
+                  />
                 </div>
 
                 <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
