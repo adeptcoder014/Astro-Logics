@@ -18,7 +18,7 @@ import NativityProfilesView from './NativityProfilesView';
 import NativityStoryTab from './NativityStoryTab';
 import NativityCurrentStoryTab from './NativityCurrentStoryTab';
 import NativityMeetPlanetsTab from './NativityMeetPlanetsTab';
-import NativityGameOfLifeTab from './NativityGameOfLifeTab';
+// import NativityGameOfLifeTab from './NativityGameOfLifeTab';
 import NativityCharacterTab from './NativityCharacterTab';
 import NativityAgentTab from './NativityAgentTab';// ... other imports
 
@@ -164,7 +164,7 @@ export default function NativityChartDisplay({
                 {activeTab === 'agent' && <NativityAgentTab nativityChartId={chartId} />}
                 {activeTab === 'planets' && planetsData && <NativityPlanetsTab planets={planetsData.planets} />}
                 {activeTab === 'meet' && <NativityMeetPlanetsTab nativityChartId={chartId} />}
-                {activeTab === 'game' && <NativityGameOfLifeTab nativityChartId={chartId} />}
+                {/* {activeTab === 'game' && <NativityGameOfLifeTab nativityChartId={chartId} />} */}
                 {activeTab === 'aspects' && <NativityAspectsTable aspects={aspects} />}
                 {activeTab === 'geometry' && <NativityGeometryView distances={angularDistances} />}
                 {activeTab === 'profiles' && <NativityProfilesView profiles={planetaryProfiles} planets={planets} />}
