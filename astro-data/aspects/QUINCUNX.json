@@ -1,178 +1,72 @@
 {
   "id": "QUINCUNX",
-  "aspectAngle": 150,
-  "aspectType": "ADJUSTMENT",
-  "coreDynamic": [
-    "misalignment",
-    "adjustment pressure",
-    "incompatibility"
-  ],
-  "interactionNature": [
-    "psychological exchange",
-    "dynamic influence"
-  ],
-  "energyFlow": [
-    "cyclical movement",
-    "pressure-release cycles"
-  ],
-  "pressureMechanism": [
-    "environmental activation",
-    "internal reaction"
-  ],
-  "behavioralEffect": [
-    "reactive adaptation",
-    "pattern reinforcement"
-  ],
-  "psychologicalExperience": [
-    "persistent unease",
-    "unclear imbalance"
-  ],
-  "externalManifestation": [
-    "situational triggers",
-    "interpersonal reactions"
-  ],
-  "decisionDistortion": [
-    "emotion-biased judgment"
-  ],
-  "communicationDistortion": [
-    "tone shifts under pressure"
-  ],
-  "relationshipDistortion": [
-    "projection dynamics"
-  ],
-  "stressBehavior": [
-    "control seeking",
-    "reactive acceleration"
-  ],
-  "conflictBehavior": [
-    "defensive escalation"
-  ],
-  "growthMechanism": [
-    "self-awareness",
-    "adaptive regulation"
-  ],
-  "resolutionPath": [
-    "integration",
-    "timing awareness"
-  ],
-  "timingBehavior": [
-    "patterns intensify gradually"
-  ],
-  "escalationPattern": [
-    "minor tension compounds over time"
-  ],
-  "emotionalTone": [
-    "activation",
-    "emotional charge"
-  ],
-  "cognitiveEffect": [
-    "narrowed focus"
-  ],
-  "bodyManifestation": [
-    "muscle tension",
-    "restlessness"
-  ],
-  "shadowExpression": [
-    "reactive loops",
-    "self-sabotage"
-  ],
-  "healthyExpression": [
-    "regulated action",
-    "awareness"
-  ],
-  "cinematicExpressions": [
-    "silent tension before reaction"
-  ],
-  "microBehaviors": [
-    "fidgeting",
-    "interruptions"
-  ],
-  "triggerPatterns": [
-    "uncertainty",
-    "pressure"
-  ],
-  "behavioralLoops": [
-    "trigger -> reaction -> consequence"
-  ],
-  "planetInteractionModifiers": {
-    "MARS": [
-      "force escalation"
+
+  "classification": {
+    "aspectType": "ADJUSTMENT",
+    "aspectAngle": 150,
+    "orbInfluence": "MODERATE"
+  },
+
+  "coreEssence": {
+    "corePrinciple": "adaptation through misalignment and recalibration",
+
+    "interactionDynamics": [
+      "incompatibility",
+      "adjustment",
+      "misalignment",
+      "indirect interaction"
     ],
-    "SATURN": [
-      "restriction pressure"
-    ],
-    "VENUS": [
-      "relational attachment"
-    ],
-    "MERCURY": [
-      "mental overstimulation"
+
+    "energeticEffects": [
+      "friction without resolution",
+      "constant recalibration",
+      "uneven integration",
+      "subtle instability"
     ]
   },
-  "signSensitivity": {
-    "CARDINAL": [
-      "immediate activation"
+
+  "behavioralModulation": {
+    "expressionStyle": [
+      "compensatory",
+      "adaptive",
+      "internally strained"
     ],
-    "FIXED": [
-      "resistance"
+
+    "distortionRisk": [
+      "chronic dissatisfaction",
+      "misattunement",
+      "inefficient adaptation",
+      "confused prioritization"
     ],
-    "MUTABLE": [
-      "adaptive instability"
+
+    "integrationPath": [
+      "incremental adjustment",
+      "adaptive refinement",
+      "awareness of incompatibilities",
+      "functional compromise"
     ]
   },
-  "houseActivationStyle": [
-    "activates house themes through events"
-  ],
-  "stateTransitions": {
-    "mildPressure": [
-      "unease"
-    ],
-    "moderatePressure": [
-      "reactivity"
-    ],
-    "highPressure": [
-      "conflict",
-      "collapse"
-    ],
-    "integrated": [
-      "adaptive balance"
-    ]
+
+  "vectorModifiers": {
+    "amplification": 0.5,
+    "friction": 0.75,
+    "volatility": 0.45,
+    "integrationPressure": 0.85
   },
-  "storyFunction": [
-    "creates narrative movement",
-    "drives psychological change"
-  ],
-  "sceneGenerationHooks": [
-    "unexpected confrontation",
-    "pressure escalation"
-  ],
-  "environmentalTriggers": [
-    "competitive environments",
-    "unstable systems"
-  ],
-  "powerDynamics": [
-    "control negotiation"
-  ],
-  "distortionPatterns": [
-    "misreading pressure signals"
-  ],
-  "integrationPatterns": [
-    "awareness-based regulation"
-  ],
-  "defaultDefenseMechanisms": [
-    "avoidance",
-    "overcontrol"
-  ],
-  "pressureResponses": [
-    "increase effort",
-    "tighten control"
-  ],
-  "realityTestingEffects": [
-    "difficulty seeing alternatives under pressure"
-  ],
-  "socialManifestation": [
-    "visible emotional reactions"
-  ],
-  "longTermNarrativeEffect": [
-    "behavioral restructuring over time"
-  ]
+
+  "symbolicLayer": {
+    "symbols": [
+      "crooked gears",
+      "misaligned pathways",
+      "uneven bridges",
+      "tilted structures"
+    ],
+
+    "associatedPhenomena": [
+      "adjustment pressure",
+      "persistent unease",
+      "adaptive tension",
+      "structural incompatibility"
+    ]
+  }
 }

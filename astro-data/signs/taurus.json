@@ -1,122 +1,115 @@
 {
   "id": "TAURUS",
-  "element": "EARTH",
-  "modality": "FIXED",
-  "polarity": "FEMININE",
-  "coreArchetype": [
-    "stabilizer",
-    "builder",
-    "sensory realist"
-  ],
-  "styleModifiers": [
-    "adaptive",
-    "expressive",
-    "behavior-driven"
-  ],
-  "positiveTraits": [
-    "observant",
-    "capable",
-    "persistent"
-  ],
-  "negativeTraits": [
-    "reactive",
-    "stubborn under stress",
-    "inconsistent"
-  ],
-  "stressStyle": [
-    "overcompensates",
-    "becomes emotionally narrow"
-  ],
-  "emotionalNeeds": [
-    "stability",
-    "understanding"
-  ],
-  "emotionalTriggers": [
-    "rejection",
-    "loss of control"
-  ],
-  "communicationStyle": [
-    "direct",
-    "context-aware"
-  ],
-  "conflictStyle": [
-    "defensive under pressure",
-    "tries to regain control"
-  ],
-  "decisionStyle": [
-    "contextual",
-    "pressure-sensitive"
-  ],
-  "relationshipPatterns": [
-    "tests trust slowly",
-    "values consistency"
-  ],
-  "attachmentPatterns": [
-    "protective",
-    "cautious vulnerability"
-  ],
-  "workPatterns": [
-    "focuses intensely",
-    "improves systems over time"
-  ],
-  "leadershipStyle": [
-    "situational leadership",
-    "competence-focused"
-  ],
-  "moneyBehavior": [
-    "security-oriented",
-    "tracks long-term stability"
-  ],
-  "environmentPreferences": [
-    "predictable spaces",
-    "controlled environments"
-  ],
-  "socialBehavior": [
-    "observes before opening up",
-    "selective engagement"
-  ],
-  "shadowPatterns": [
-    "overcontrol",
-    "suppressed emotional expression"
-  ],
-  "growthDirection": [
-    "greater emotional flexibility",
-    "balanced self-awareness"
-  ],
-  "behavioralMicroPatterns": [
-    "rechecks details",
-    "changes tone under stress"
-  ],
-  "cinematicExpressions": [
-    "late-night overthinking",
-    "silent observation during tension"
-  ],
-  "bodyLanguage": [
-    "controlled posture",
-    "subtle tension in movement"
-  ],
-  "speechPatterns": [
-    "careful wording",
-    "emotion hidden beneath logic"
-  ],
-  "defaultDefenseMechanisms": [
-    "withdrawal",
-    "rationalization"
-  ],
-  "pressureResponses": [
-    "tries to regain control",
-    "narrows focus under stress"
-  ],
-  "compatibilityNeeds": [
-    "clarity",
-    "mutual respect"
-  ],
-  "deepFears": [
-    "loss of control",
-    "irrelevance"
-  ],
-  "deepMotivations": [
-    "meaningful impact",
-    "internal stability"
-  ]
+
+  "classification": {
+    "element": "EARTH",
+    "modality": "FIXED",
+    "polarity": "FEMININE"
+  },
+
+  "coreEssence": {
+    "corePrinciple": "stabilization through preservation",
+
+    "archetypes": [
+      "builder",
+      "guardian",
+      "provider",
+      "preserver",
+      "cultivator",
+      "sensualist"
+    ],
+
+    "expressionStyle": [
+      "steady",
+      "grounded",
+      "patient",
+      "deliberate",
+      "sensory-oriented",
+      "resistant to disruption"
+    ],
+
+    "motivationalBias": [
+      "toward stability over volatility",
+      "toward preservation over risk",
+      "toward comfort over uncertainty",
+      "toward consistency over change",
+      "toward tangible value over abstraction"
+    ]
+  },
+
+  "behavioralModulation": {
+    "actionStyle": [
+      "moves slowly but persistently",
+      "builds through repetition",
+      "acts after securing certainty",
+      "maintains momentum once committed"
+    ],
+
+    "decisionStyle": [
+      "security-oriented",
+      "practical",
+      "experience-based",
+      "resistant to impulsive shifts"
+    ],
+
+    "adaptationStyle": [
+      "adjusts gradually",
+      "stabilizes unstable environments",
+      "absorbs pressure silently",
+      "prefers continuity during disruption"
+    ],
+
+    "stressResponse": [
+      "becomes stubborn",
+      "clings to familiarity",
+      "resists external pressure",
+      "withdraws into comfort-seeking"
+    ],
+
+    "relationalOrientation": [
+      "values loyalty",
+      "seeks dependable bonds",
+      "expresses care through consistency",
+      "protects emotional and material security"
+    ]
+  },
+
+  "vectorModifiers": {
+    "self_vs_other": 0.55,
+    "resource_vs_loss": 0.95,
+    "local_vs_expansive": 0.25,
+    "private_vs_public": 0.6,
+    "creation_vs_collective": 0.5,
+    "order_vs_dissolution": 0.9
+  },
+
+  "symbolicLayer": {
+    "symbols": [
+      "soil",
+      "gardens",
+      "coins",
+      "stone",
+      "music",
+      "food",
+      "oak trees"
+    ],
+
+    "associatedEnvironments": [
+      "farmlands",
+      "financial systems",
+      "homes",
+      "natural landscapes",
+      "luxury spaces",
+      "stable institutions"
+    ],
+
+    "bodyCorrelation": [
+      "throat",
+      "neck",
+      "voice",
+      "taste",
+      "physical endurance",
+      "sensory processing"
+    ]
+  }
 }

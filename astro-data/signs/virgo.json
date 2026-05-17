@@ -1,122 +1,115 @@
 {
   "id": "VIRGO",
-  "element": "EARTH",
-  "modality": "MUTABLE",
-  "polarity": "FEMININE",
-  "coreArchetype": [
-    "system optimizer",
-    "precision worker",
-    "quality controller"
-  ],
-  "styleModifiers": [
-    "adaptive",
-    "expressive",
-    "behavior-driven"
-  ],
-  "positiveTraits": [
-    "observant",
-    "capable",
-    "persistent"
-  ],
-  "negativeTraits": [
-    "reactive",
-    "stubborn under stress",
-    "inconsistent"
-  ],
-  "stressStyle": [
-    "overcompensates",
-    "becomes emotionally narrow"
-  ],
-  "emotionalNeeds": [
-    "stability",
-    "understanding"
-  ],
-  "emotionalTriggers": [
-    "rejection",
-    "loss of control"
-  ],
-  "communicationStyle": [
-    "direct",
-    "context-aware"
-  ],
-  "conflictStyle": [
-    "defensive under pressure",
-    "tries to regain control"
-  ],
-  "decisionStyle": [
-    "contextual",
-    "pressure-sensitive"
-  ],
-  "relationshipPatterns": [
-    "tests trust slowly",
-    "values consistency"
-  ],
-  "attachmentPatterns": [
-    "protective",
-    "cautious vulnerability"
-  ],
-  "workPatterns": [
-    "focuses intensely",
-    "improves systems over time"
-  ],
-  "leadershipStyle": [
-    "situational leadership",
-    "competence-focused"
-  ],
-  "moneyBehavior": [
-    "security-oriented",
-    "tracks long-term stability"
-  ],
-  "environmentPreferences": [
-    "predictable spaces",
-    "controlled environments"
-  ],
-  "socialBehavior": [
-    "observes before opening up",
-    "selective engagement"
-  ],
-  "shadowPatterns": [
-    "overcontrol",
-    "suppressed emotional expression"
-  ],
-  "growthDirection": [
-    "greater emotional flexibility",
-    "balanced self-awareness"
-  ],
-  "behavioralMicroPatterns": [
-    "rechecks details",
-    "changes tone under stress"
-  ],
-  "cinematicExpressions": [
-    "late-night overthinking",
-    "silent observation during tension"
-  ],
-  "bodyLanguage": [
-    "controlled posture",
-    "subtle tension in movement"
-  ],
-  "speechPatterns": [
-    "careful wording",
-    "emotion hidden beneath logic"
-  ],
-  "defaultDefenseMechanisms": [
-    "withdrawal",
-    "rationalization"
-  ],
-  "pressureResponses": [
-    "tries to regain control",
-    "narrows focus under stress"
-  ],
-  "compatibilityNeeds": [
-    "clarity",
-    "mutual respect"
-  ],
-  "deepFears": [
-    "loss of control",
-    "irrelevance"
-  ],
-  "deepMotivations": [
-    "meaningful impact",
-    "internal stability"
-  ]
+
+  "classification": {
+    "element": "EARTH",
+    "modality": "MUTABLE",
+    "polarity": "FEMININE"
+  },
+
+  "coreEssence": {
+    "corePrinciple": "refinement through analysis",
+
+    "archetypes": [
+      "analyst",
+      "craftsperson",
+      "healer",
+      "editor",
+      "servant",
+      "system optimizer"
+    ],
+
+    "expressionStyle": [
+      "precise",
+      "observational",
+      "methodical",
+      "practical",
+      "detail-oriented",
+      "corrective"
+    ],
+
+    "motivationalBias": [
+      "toward improvement over acceptance",
+      "toward order over chaos",
+      "toward utility over excess",
+      "toward precision over approximation",
+      "toward competence over performance"
+    ]
+  },
+
+  "behavioralModulation": {
+    "actionStyle": [
+      "acts through careful adjustment",
+      "improves systems incrementally",
+      "focuses on functional efficiency",
+      "works through repetition and refinement"
+    ],
+
+    "decisionStyle": [
+      "analysis-driven",
+      "detail-sensitive",
+      "risk-aware",
+      "evidence-oriented"
+    ],
+
+    "adaptationStyle": [
+      "reorganizes under pressure",
+      "compartmentalizes emotional noise",
+      "adjusts through optimization",
+      "stabilizes through routines"
+    ],
+
+    "stressResponse": [
+      "becomes overly critical",
+      "fixates on imperfections",
+      "overthinks small variables",
+      "suppresses emotions through work"
+    ],
+
+    "relationalOrientation": [
+      "shows care through practical support",
+      "values reliability and competence",
+      "observes before trusting",
+      "maintains emotional control through usefulness"
+    ]
+  },
+
+  "vectorModifiers": {
+    "self_vs_other": 0.45,
+    "resource_vs_loss": 0.7,
+    "local_vs_expansive": 0.4,
+    "private_vs_public": 0.55,
+    "creation_vs_collective": 0.35,
+    "order_vs_dissolution": 1.0
+  },
+
+  "symbolicLayer": {
+    "symbols": [
+      "books",
+      "grains",
+      "tools",
+      "clocks",
+      "medical instruments",
+      "checklists",
+      "worktables"
+    ],
+
+    "associatedEnvironments": [
+      "clinics",
+      "libraries",
+      "workshops",
+      "research spaces",
+      "organizational systems",
+      "service-oriented environments"
+    ],
+
+    "bodyCorrelation": [
+      "digestive system",
+      "intestines",
+      "nervous regulation",
+      "metabolism",
+      "fine motor coordination",
+      "health maintenance systems"
+    ]
+  }
 }

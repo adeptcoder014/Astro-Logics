@@ -1,245 +1,88 @@
 {
   "id": "HOUSE_5",
-  "houseNumber": 5,
-  "coreArchetype": [
-    "creative theater",
-    "expression engine",
-    "psychological field"
-  ],
-  "lifeDomain": [
-    "creativity",
-    "romance",
-    "children"
-  ],
-  "primaryHumanConcern": [
-    "managing expression",
-    "stabilizing creativity, romance, children"
-  ],
-  "environmentType": [
-    "psychological arena",
-    "social system"
-  ],
-  "associatedLocations": [
-    "symbolic location"
-  ],
-  "environmentPreferences": [
-    "predictable emotional patterns"
-  ],
-  "psychologicalArena": [
-    "identity tension",
-    "internal conflict"
-  ],
-  "behavioralThemes": [
-    "adaptation",
-    "projection",
-    "coping"
-  ],
-  "dominantNarratives": [
-    "trying to maintain stability"
-  ],
-  "coreMotivations": [
-    "security",
-    "recognition"
-  ],
-  "coreChallenges": [
-    "fear",
-    "overcompensation"
-  ],
-  "growthOpportunities": [
-    "self-awareness",
-    "integration"
-  ],
-  "identityPressure": [
-    "pressure to perform"
-  ],
-  "socialPressure": [
-    "expectation management"
-  ],
-  "responsibilityPressure": [
-    "fear of failure"
-  ],
-  "survivalPressure": [
-    "need for control"
-  ],
-  "relationshipDynamics": [
-    "reactive attachment patterns"
-  ],
-  "familyDynamics": [
-    "ancestral conditioning"
-  ],
-  "groupDynamics": [
-    "role-based participation"
-  ],
-  "authorityDynamics": [
-    "response to hierarchy"
-  ],
-  "workplaceDynamics": [
-    "behavior under expectations"
-  ],
-  "financialPatterns": [
-    "resource protection"
-  ],
-  "resourceDynamics": [
-    "accumulation vs depletion"
-  ],
-  "communicationPatterns": [
-    "emotionally coded speech"
-  ],
-  "conflictPatterns": [
-    "defensiveness under pressure"
-  ],
-  "attachmentDynamics": [
-    "seeking validation"
-  ],
-  "decisionMakingPatterns": [
-    "emotion-influenced choices"
-  ],
-  "timeOrientation": [
-    "future anticipation"
-  ],
-  "riskOrientation": [
-    "controlled experimentation"
-  ],
-  "stressManifestations": [
-    "anxiety",
-    "fatigue"
-  ],
-  "copingMechanisms": [
-    "withdrawal",
-    "control behaviors"
-  ],
-  "behavioralLoops": [
-    "stress -> reaction -> consequence"
-  ],
-  "shadowExpressions": [
-    "avoidance",
-    "projection"
-  ],
-  "triggerPatterns": [
-    "rejection",
-    "uncertainty"
-  ],
-  "pressurePoints": [
-    "loss of stability"
-  ],
-  "bodyFocus": [
-    "somatic tension"
-  ],
-  "healthCorrelations": [
-    "stress-linked imbalance"
-  ],
-  "symbolicObjects": [
-    "doors",
-    "mirrors",
-    "documents"
-  ],
-  "cinematicExpressions": [
-    "silent observation",
-    "emotional escalation"
-  ],
-  "microBehaviors": [
-    "fidgeting",
-    "tone shifts"
-  ],
-  "emotionalDynamics": [
-    "suppressed emotional currents"
-  ],
-  "powerDynamics": [
-    "control through positioning"
-  ],
-  "statusDynamics": [
-    "comparison with others"
-  ],
-  "planetaryExpressions": {
-    "SATURN": [
-      "pressure",
-      "restriction"
+
+  "classification": {
+    "axis": "CREATION",
+    "angularity": "SUCCEDENT",
+    "elementalAffinity": "FIRE"
+  },
+
+  "coreEssence": {
+    "corePrinciple": "self-expression through creation and play",
+
+    "lifeDomains": [
+      "creativity",
+      "romance",
+      "children",
+      "performance",
+      "joy",
+      "personal expression"
     ],
-    "MARS": [
-      "assertive escalation"
-    ],
-    "VENUS": [
-      "relational attachment"
+
+    "archetypes": [
+      "the creator",
+      "the performer",
+      "the lover",
+      "the child"
     ]
   },
-  "signModifiers": {
-    "ARIES": [
-      "fast initiation"
+
+  "environmentalContext": {
+    "environmentType": [
+      "creative projection field",
+      "personal expression arena"
     ],
-    "VIRGO": [
-      "precision pressure"
+
+    "motivationalThemes": [
+      "recognition",
+      "joy",
+      "creative impact",
+      "self-celebration"
     ],
-    "SCORPIO": [
-      "intensity amplification"
+
+    "developmentalThemes": [
+      "creative individuation",
+      "authentic expression",
+      "play integration",
+      "emotional vitality"
     ]
   },
-  "aspectSensitivity": {
-    "square": [
-      "friction"
-    ],
-    "trine": [
-      "flow"
-    ],
-    "opposition": [
-      "external conflict"
-    ]
+
+  "vectorModifiers": {
+    "self_vs_other": 0.85,
+    "resource_vs_loss": 0.35,
+    "local_vs_expansive": 0.65,
+    "private_vs_public": 0.75,
+    "creation_vs_collective": 1.0,
+    "order_vs_dissolution": 0.45
   },
-  "stateTransitions": {
-    "stable": [
-      "regulated",
-      "focused"
+
+  "symbolicLayer": {
+    "symbols": [
+      "stages",
+      "paintbrushes",
+      "candles",
+      "games",
+      "crowns",
+      "children"
     ],
-    "pressured": [
-      "reactive",
-      "defensive"
+
+    "associatedEnvironments": [
+      "theaters",
+      "creative studios",
+      "romantic spaces",
+      "playgrounds",
+      "celebrations",
+      "performance environments"
     ],
-    "overloaded": [
-      "chaotic",
-      "exhausted"
-    ],
-    "integrated": [
-      "balanced",
-      "adaptive"
+
+    "bodyCorrelation": [
+      "heart",
+      "spine",
+      "creative vitality",
+      "reproductive expression",
+      "joy response",
+      "playful embodiment"
     ]
-  },
-  "energyManifestation": [
-    "cyclical emotional output"
-  ],
-  "distortionPatterns": [
-    "confuses coping with identity"
-  ],
-  "integrationPatterns": [
-    "self-awareness",
-    "balanced engagement"
-  ],
-  "defaultDefenseMechanisms": [
-    "avoidance",
-    "overcontrol"
-  ],
-  "publicVsPrivateDynamics": [
-    "composed externally, turbulent internally"
-  ],
-  "realityTestingThemes": [
-    "illusion versus truth"
-  ],
-  "unresolvedPatternExpressions": [
-    "repeating emotional cycles"
-  ],
-  "temporalManifestations": [
-    "patterns intensify over time"
-  ],
-  "sceneGenerationHooks": [
-    "unexpected confrontation",
-    "symbolic interruption"
-  ],
-  "storyProgressionPatterns": [
-    "minor tension becomes identity crisis"
-  ],
-  "environmentalStoryTriggers": [
-    "sudden responsibility change"
-  ],
-  "behavioralStateAmplifiers": [
-    "sleep deprivation",
-    "social pressure"
-  ]
+  }
 }

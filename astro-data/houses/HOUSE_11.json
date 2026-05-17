@@ -1,245 +1,88 @@
 {
   "id": "HOUSE_11",
-  "houseNumber": 11,
-  "coreArchetype": [
-    "network engine",
-    "collective engine",
-    "psychological field"
-  ],
-  "lifeDomain": [
-    "friends",
-    "gains",
-    "future systems"
-  ],
-  "primaryHumanConcern": [
-    "managing collective",
-    "stabilizing friends, gains, future systems"
-  ],
-  "environmentType": [
-    "psychological arena",
-    "social system"
-  ],
-  "associatedLocations": [
-    "symbolic location"
-  ],
-  "environmentPreferences": [
-    "predictable emotional patterns"
-  ],
-  "psychologicalArena": [
-    "identity tension",
-    "internal conflict"
-  ],
-  "behavioralThemes": [
-    "adaptation",
-    "projection",
-    "coping"
-  ],
-  "dominantNarratives": [
-    "trying to maintain stability"
-  ],
-  "coreMotivations": [
-    "security",
-    "recognition"
-  ],
-  "coreChallenges": [
-    "fear",
-    "overcompensation"
-  ],
-  "growthOpportunities": [
-    "self-awareness",
-    "integration"
-  ],
-  "identityPressure": [
-    "pressure to perform"
-  ],
-  "socialPressure": [
-    "expectation management"
-  ],
-  "responsibilityPressure": [
-    "fear of failure"
-  ],
-  "survivalPressure": [
-    "need for control"
-  ],
-  "relationshipDynamics": [
-    "reactive attachment patterns"
-  ],
-  "familyDynamics": [
-    "ancestral conditioning"
-  ],
-  "groupDynamics": [
-    "role-based participation"
-  ],
-  "authorityDynamics": [
-    "response to hierarchy"
-  ],
-  "workplaceDynamics": [
-    "behavior under expectations"
-  ],
-  "financialPatterns": [
-    "resource protection"
-  ],
-  "resourceDynamics": [
-    "accumulation vs depletion"
-  ],
-  "communicationPatterns": [
-    "emotionally coded speech"
-  ],
-  "conflictPatterns": [
-    "defensiveness under pressure"
-  ],
-  "attachmentDynamics": [
-    "seeking validation"
-  ],
-  "decisionMakingPatterns": [
-    "emotion-influenced choices"
-  ],
-  "timeOrientation": [
-    "future anticipation"
-  ],
-  "riskOrientation": [
-    "controlled experimentation"
-  ],
-  "stressManifestations": [
-    "anxiety",
-    "fatigue"
-  ],
-  "copingMechanisms": [
-    "withdrawal",
-    "control behaviors"
-  ],
-  "behavioralLoops": [
-    "stress -> reaction -> consequence"
-  ],
-  "shadowExpressions": [
-    "avoidance",
-    "projection"
-  ],
-  "triggerPatterns": [
-    "rejection",
-    "uncertainty"
-  ],
-  "pressurePoints": [
-    "loss of stability"
-  ],
-  "bodyFocus": [
-    "somatic tension"
-  ],
-  "healthCorrelations": [
-    "stress-linked imbalance"
-  ],
-  "symbolicObjects": [
-    "doors",
-    "mirrors",
-    "documents"
-  ],
-  "cinematicExpressions": [
-    "silent observation",
-    "emotional escalation"
-  ],
-  "microBehaviors": [
-    "fidgeting",
-    "tone shifts"
-  ],
-  "emotionalDynamics": [
-    "suppressed emotional currents"
-  ],
-  "powerDynamics": [
-    "control through positioning"
-  ],
-  "statusDynamics": [
-    "comparison with others"
-  ],
-  "planetaryExpressions": {
-    "SATURN": [
-      "pressure",
-      "restriction"
+
+  "classification": {
+    "axis": "COLLECTIVE",
+    "angularity": "SUCCEDENT",
+    "elementalAffinity": "AIR"
+  },
+
+  "coreEssence": {
+    "corePrinciple": "evolution through collective participation and future vision",
+
+    "lifeDomains": [
+      "friendships",
+      "communities",
+      "networks",
+      "collective movements",
+      "future aspirations",
+      "social systems"
     ],
-    "MARS": [
-      "assertive escalation"
-    ],
-    "VENUS": [
-      "relational attachment"
+
+    "archetypes": [
+      "the reformer",
+      "the networker",
+      "the visionary",
+      "the collective participant"
     ]
   },
-  "signModifiers": {
-    "ARIES": [
-      "fast initiation"
+
+  "environmentalContext": {
+    "environmentType": [
+      "collective systems field",
+      "social participation arena"
     ],
-    "VIRGO": [
-      "precision pressure"
+
+    "motivationalThemes": [
+      "belonging",
+      "progress",
+      "shared ideals",
+      "future construction"
     ],
-    "SCORPIO": [
-      "intensity amplification"
+
+    "developmentalThemes": [
+      "collective integration",
+      "social contribution",
+      "network intelligence",
+      "visionary expansion"
     ]
   },
-  "aspectSensitivity": {
-    "square": [
-      "friction"
-    ],
-    "trine": [
-      "flow"
-    ],
-    "opposition": [
-      "external conflict"
-    ]
+
+  "vectorModifiers": {
+    "self_vs_other": 0.15,
+    "resource_vs_loss": 0.35,
+    "local_vs_expansive": 0.8,
+    "private_vs_public": 0.85,
+    "creation_vs_collective": 1.0,
+    "order_vs_dissolution": 0.55
   },
-  "stateTransitions": {
-    "stable": [
-      "regulated",
-      "focused"
+
+  "symbolicLayer": {
+    "symbols": [
+      "networks",
+      "stars",
+      "bridges",
+      "signals",
+      "crowds",
+      "future cities"
     ],
-    "pressured": [
-      "reactive",
-      "defensive"
+
+    "associatedEnvironments": [
+      "communities",
+      "social platforms",
+      "movements",
+      "research collectives",
+      "technology systems",
+      "future-oriented environments"
     ],
-    "overloaded": [
-      "chaotic",
-      "exhausted"
-    ],
-    "integrated": [
-      "balanced",
-      "adaptive"
+
+    "bodyCorrelation": [
+      "circulatory system",
+      "ankles",
+      "social synchronization",
+      "collective cognition",
+      "network signaling",
+      "future-oriented processing"
     ]
-  },
-  "energyManifestation": [
-    "cyclical emotional output"
-  ],
-  "distortionPatterns": [
-    "confuses coping with identity"
-  ],
-  "integrationPatterns": [
-    "self-awareness",
-    "balanced engagement"
-  ],
-  "defaultDefenseMechanisms": [
-    "avoidance",
-    "overcontrol"
-  ],
-  "publicVsPrivateDynamics": [
-    "composed externally, turbulent internally"
-  ],
-  "realityTestingThemes": [
-    "illusion versus truth"
-  ],
-  "unresolvedPatternExpressions": [
-    "repeating emotional cycles"
-  ],
-  "temporalManifestations": [
-    "patterns intensify over time"
-  ],
-  "sceneGenerationHooks": [
-    "unexpected confrontation",
-    "symbolic interruption"
-  ],
-  "storyProgressionPatterns": [
-    "minor tension becomes identity crisis"
-  ],
-  "environmentalStoryTriggers": [
-    "sudden responsibility change"
-  ],
-  "behavioralStateAmplifiers": [
-    "sleep deprivation",
-    "social pressure"
-  ]
+  }
 }

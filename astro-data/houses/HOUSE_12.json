@@ -1,245 +1,88 @@
 {
   "id": "HOUSE_12",
-  "houseNumber": 12,
-  "coreArchetype": [
-    "dissolution ocean",
-    "transcendence engine",
-    "psychological field"
-  ],
-  "lifeDomain": [
-    "loss",
-    "isolation",
-    "spirituality"
-  ],
-  "primaryHumanConcern": [
-    "managing transcendence",
-    "stabilizing loss, isolation, spirituality"
-  ],
-  "environmentType": [
-    "psychological arena",
-    "social system"
-  ],
-  "associatedLocations": [
-    "symbolic location"
-  ],
-  "environmentPreferences": [
-    "predictable emotional patterns"
-  ],
-  "psychologicalArena": [
-    "identity tension",
-    "internal conflict"
-  ],
-  "behavioralThemes": [
-    "adaptation",
-    "projection",
-    "coping"
-  ],
-  "dominantNarratives": [
-    "trying to maintain stability"
-  ],
-  "coreMotivations": [
-    "security",
-    "recognition"
-  ],
-  "coreChallenges": [
-    "fear",
-    "overcompensation"
-  ],
-  "growthOpportunities": [
-    "self-awareness",
-    "integration"
-  ],
-  "identityPressure": [
-    "pressure to perform"
-  ],
-  "socialPressure": [
-    "expectation management"
-  ],
-  "responsibilityPressure": [
-    "fear of failure"
-  ],
-  "survivalPressure": [
-    "need for control"
-  ],
-  "relationshipDynamics": [
-    "reactive attachment patterns"
-  ],
-  "familyDynamics": [
-    "ancestral conditioning"
-  ],
-  "groupDynamics": [
-    "role-based participation"
-  ],
-  "authorityDynamics": [
-    "response to hierarchy"
-  ],
-  "workplaceDynamics": [
-    "behavior under expectations"
-  ],
-  "financialPatterns": [
-    "resource protection"
-  ],
-  "resourceDynamics": [
-    "accumulation vs depletion"
-  ],
-  "communicationPatterns": [
-    "emotionally coded speech"
-  ],
-  "conflictPatterns": [
-    "defensiveness under pressure"
-  ],
-  "attachmentDynamics": [
-    "seeking validation"
-  ],
-  "decisionMakingPatterns": [
-    "emotion-influenced choices"
-  ],
-  "timeOrientation": [
-    "future anticipation"
-  ],
-  "riskOrientation": [
-    "controlled experimentation"
-  ],
-  "stressManifestations": [
-    "anxiety",
-    "fatigue"
-  ],
-  "copingMechanisms": [
-    "withdrawal",
-    "control behaviors"
-  ],
-  "behavioralLoops": [
-    "stress -> reaction -> consequence"
-  ],
-  "shadowExpressions": [
-    "avoidance",
-    "projection"
-  ],
-  "triggerPatterns": [
-    "rejection",
-    "uncertainty"
-  ],
-  "pressurePoints": [
-    "loss of stability"
-  ],
-  "bodyFocus": [
-    "somatic tension"
-  ],
-  "healthCorrelations": [
-    "stress-linked imbalance"
-  ],
-  "symbolicObjects": [
-    "doors",
-    "mirrors",
-    "documents"
-  ],
-  "cinematicExpressions": [
-    "walking alone at night",
-    "watching rain through windows"
-  ],
-  "microBehaviors": [
-    "fidgeting",
-    "tone shifts"
-  ],
-  "emotionalDynamics": [
-    "suppressed emotional currents"
-  ],
-  "powerDynamics": [
-    "control through positioning"
-  ],
-  "statusDynamics": [
-    "comparison with others"
-  ],
-  "planetaryExpressions": {
-    "SATURN": [
-      "pressure",
-      "restriction"
+
+  "classification": {
+    "axis": "DISSOLUTION",
+    "angularity": "CADENT",
+    "elementalAffinity": "WATER"
+  },
+
+  "coreEssence": {
+    "corePrinciple": "transcendence through surrender and dissolution",
+
+    "lifeDomains": [
+      "subconscious",
+      "isolation",
+      "dreams",
+      "spirituality",
+      "hidden suffering",
+      "collective unconscious"
     ],
-    "MARS": [
-      "assertive escalation"
-    ],
-    "VENUS": [
-      "relational attachment"
+
+    "archetypes": [
+      "the mystic",
+      "the exile",
+      "the dreamer",
+      "the dissolver"
     ]
   },
-  "signModifiers": {
-    "ARIES": [
-      "fast initiation"
+
+  "environmentalContext": {
+    "environmentType": [
+      "liminal psychological field",
+      "dissolution and transcendence arena"
     ],
-    "VIRGO": [
-      "precision pressure"
+
+    "motivationalThemes": [
+      "escape",
+      "unity",
+      "transcendence",
+      "release"
     ],
-    "SCORPIO": [
-      "intensity amplification"
+
+    "developmentalThemes": [
+      "ego dissolution",
+      "subconscious integration",
+      "spiritual surrender",
+      "collective empathy"
     ]
   },
-  "aspectSensitivity": {
-    "square": [
-      "friction"
-    ],
-    "trine": [
-      "flow"
-    ],
-    "opposition": [
-      "external conflict"
-    ]
+
+  "vectorModifiers": {
+    "self_vs_other": 0.0,
+    "resource_vs_loss": 0.1,
+    "local_vs_expansive": 0.75,
+    "private_vs_public": 0.0,
+    "creation_vs_collective": 0.4,
+    "order_vs_dissolution": 0.0
   },
-  "stateTransitions": {
-    "stable": [
-      "regulated",
-      "focused"
+
+  "symbolicLayer": {
+    "symbols": [
+      "oceans",
+      "fog",
+      "dreams",
+      "prisons",
+      "temples",
+      "mirrors in darkness"
     ],
-    "pressured": [
-      "reactive",
-      "defensive"
+
+    "associatedEnvironments": [
+      "hospitals",
+      "monasteries",
+      "isolated retreats",
+      "dream states",
+      "spiritual spaces",
+      "hidden environments"
     ],
-    "overloaded": [
-      "chaotic",
-      "exhausted"
-    ],
-    "integrated": [
-      "balanced",
-      "adaptive"
+
+    "bodyCorrelation": [
+      "feet",
+      "sleep systems",
+      "subconscious processing",
+      "immune sensitivity",
+      "dream regulation",
+      "boundary dissolution"
     ]
-  },
-  "energyManifestation": [
-    "cyclical emotional output"
-  ],
-  "distortionPatterns": [
-    "confuses coping with identity"
-  ],
-  "integrationPatterns": [
-    "self-awareness",
-    "balanced engagement"
-  ],
-  "defaultDefenseMechanisms": [
-    "avoidance",
-    "overcontrol"
-  ],
-  "publicVsPrivateDynamics": [
-    "composed externally, turbulent internally"
-  ],
-  "realityTestingThemes": [
-    "illusion versus truth"
-  ],
-  "unresolvedPatternExpressions": [
-    "repeating emotional cycles"
-  ],
-  "temporalManifestations": [
-    "patterns intensify over time"
-  ],
-  "sceneGenerationHooks": [
-    "unexpected confrontation",
-    "symbolic interruption"
-  ],
-  "storyProgressionPatterns": [
-    "minor tension becomes identity crisis"
-  ],
-  "environmentalStoryTriggers": [
-    "sudden responsibility change"
-  ],
-  "behavioralStateAmplifiers": [
-    "sleep deprivation",
-    "social pressure"
-  ]
+  }
 }

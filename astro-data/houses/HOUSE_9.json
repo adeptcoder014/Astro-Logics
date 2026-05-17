@@ -1,245 +1,88 @@
 {
   "id": "HOUSE_9",
-  "houseNumber": 9,
-  "coreArchetype": [
-    "meaning horizon",
-    "belief engine",
-    "psychological field"
-  ],
-  "lifeDomain": [
-    "wisdom",
-    "travel",
-    "philosophy"
-  ],
-  "primaryHumanConcern": [
-    "managing belief",
-    "stabilizing wisdom, travel, philosophy"
-  ],
-  "environmentType": [
-    "psychological arena",
-    "social system"
-  ],
-  "associatedLocations": [
-    "symbolic location"
-  ],
-  "environmentPreferences": [
-    "predictable emotional patterns"
-  ],
-  "psychologicalArena": [
-    "identity tension",
-    "internal conflict"
-  ],
-  "behavioralThemes": [
-    "adaptation",
-    "projection",
-    "coping"
-  ],
-  "dominantNarratives": [
-    "trying to maintain stability"
-  ],
-  "coreMotivations": [
-    "security",
-    "recognition"
-  ],
-  "coreChallenges": [
-    "fear",
-    "overcompensation"
-  ],
-  "growthOpportunities": [
-    "self-awareness",
-    "integration"
-  ],
-  "identityPressure": [
-    "pressure to perform"
-  ],
-  "socialPressure": [
-    "expectation management"
-  ],
-  "responsibilityPressure": [
-    "fear of failure"
-  ],
-  "survivalPressure": [
-    "need for control"
-  ],
-  "relationshipDynamics": [
-    "reactive attachment patterns"
-  ],
-  "familyDynamics": [
-    "ancestral conditioning"
-  ],
-  "groupDynamics": [
-    "role-based participation"
-  ],
-  "authorityDynamics": [
-    "response to hierarchy"
-  ],
-  "workplaceDynamics": [
-    "behavior under expectations"
-  ],
-  "financialPatterns": [
-    "resource protection"
-  ],
-  "resourceDynamics": [
-    "accumulation vs depletion"
-  ],
-  "communicationPatterns": [
-    "emotionally coded speech"
-  ],
-  "conflictPatterns": [
-    "defensiveness under pressure"
-  ],
-  "attachmentDynamics": [
-    "seeking validation"
-  ],
-  "decisionMakingPatterns": [
-    "emotion-influenced choices"
-  ],
-  "timeOrientation": [
-    "future anticipation"
-  ],
-  "riskOrientation": [
-    "controlled experimentation"
-  ],
-  "stressManifestations": [
-    "anxiety",
-    "fatigue"
-  ],
-  "copingMechanisms": [
-    "withdrawal",
-    "control behaviors"
-  ],
-  "behavioralLoops": [
-    "stress -> reaction -> consequence"
-  ],
-  "shadowExpressions": [
-    "avoidance",
-    "projection"
-  ],
-  "triggerPatterns": [
-    "rejection",
-    "uncertainty"
-  ],
-  "pressurePoints": [
-    "loss of stability"
-  ],
-  "bodyFocus": [
-    "somatic tension"
-  ],
-  "healthCorrelations": [
-    "stress-linked imbalance"
-  ],
-  "symbolicObjects": [
-    "doors",
-    "mirrors",
-    "documents"
-  ],
-  "cinematicExpressions": [
-    "silent observation",
-    "emotional escalation"
-  ],
-  "microBehaviors": [
-    "fidgeting",
-    "tone shifts"
-  ],
-  "emotionalDynamics": [
-    "suppressed emotional currents"
-  ],
-  "powerDynamics": [
-    "control through positioning"
-  ],
-  "statusDynamics": [
-    "comparison with others"
-  ],
-  "planetaryExpressions": {
-    "SATURN": [
-      "pressure",
-      "restriction"
+
+  "classification": {
+    "axis": "EXPANSION",
+    "angularity": "CADENT",
+    "elementalAffinity": "FIRE"
+  },
+
+  "coreEssence": {
+    "corePrinciple": "meaning through exploration and higher understanding",
+
+    "lifeDomains": [
+      "philosophy",
+      "religion",
+      "higher education",
+      "travel",
+      "belief systems",
+      "wisdom"
     ],
-    "MARS": [
-      "assertive escalation"
-    ],
-    "VENUS": [
-      "relational attachment"
+
+    "archetypes": [
+      "the explorer",
+      "the philosopher",
+      "the teacher",
+      "the seeker"
     ]
   },
-  "signModifiers": {
-    "ARIES": [
-      "fast initiation"
+
+  "environmentalContext": {
+    "environmentType": [
+      "meaning expansion field",
+      "higher learning arena"
     ],
-    "VIRGO": [
-      "precision pressure"
+
+    "motivationalThemes": [
+      "truth",
+      "freedom",
+      "understanding",
+      "expansion"
     ],
-    "SCORPIO": [
-      "intensity amplification"
+
+    "developmentalThemes": [
+      "belief formation",
+      "worldview expansion",
+      "philosophical integration",
+      "search for meaning"
     ]
   },
-  "aspectSensitivity": {
-    "square": [
-      "friction"
-    ],
-    "trine": [
-      "flow"
-    ],
-    "opposition": [
-      "external conflict"
-    ]
+
+  "vectorModifiers": {
+    "self_vs_other": 0.65,
+    "resource_vs_loss": 0.2,
+    "local_vs_expansive": 1.0,
+    "private_vs_public": 0.55,
+    "creation_vs_collective": 0.7,
+    "order_vs_dissolution": 0.35
   },
-  "stateTransitions": {
-    "stable": [
-      "regulated",
-      "focused"
+
+  "symbolicLayer": {
+    "symbols": [
+      "mountains",
+      "books",
+      "roads",
+      "temples",
+      "maps",
+      "open skies"
     ],
-    "pressured": [
-      "reactive",
-      "defensive"
+
+    "associatedEnvironments": [
+      "universities",
+      "religious institutions",
+      "foreign lands",
+      "philosophical communities",
+      "exploration spaces",
+      "higher learning environments"
     ],
-    "overloaded": [
-      "chaotic",
-      "exhausted"
-    ],
-    "integrated": [
-      "balanced",
-      "adaptive"
+
+    "bodyCorrelation": [
+      "hips",
+      "thighs",
+      "mobility systems",
+      "growth processes",
+      "belief orientation",
+      "directional movement"
     ]
-  },
-  "energyManifestation": [
-    "cyclical emotional output"
-  ],
-  "distortionPatterns": [
-    "confuses coping with identity"
-  ],
-  "integrationPatterns": [
-    "self-awareness",
-    "balanced engagement"
-  ],
-  "defaultDefenseMechanisms": [
-    "avoidance",
-    "overcontrol"
-  ],
-  "publicVsPrivateDynamics": [
-    "composed externally, turbulent internally"
-  ],
-  "realityTestingThemes": [
-    "illusion versus truth"
-  ],
-  "unresolvedPatternExpressions": [
-    "repeating emotional cycles"
-  ],
-  "temporalManifestations": [
-    "patterns intensify over time"
-  ],
-  "sceneGenerationHooks": [
-    "unexpected confrontation",
-    "symbolic interruption"
-  ],
-  "storyProgressionPatterns": [
-    "minor tension becomes identity crisis"
-  ],
-  "environmentalStoryTriggers": [
-    "sudden responsibility change"
-  ],
-  "behavioralStateAmplifiers": [
-    "sleep deprivation",
-    "social pressure"
-  ]
+  }
 }

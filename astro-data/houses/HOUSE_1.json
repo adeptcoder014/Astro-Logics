@@ -1,246 +1,79 @@
 {
   "id": "HOUSE_1",
-  "houseNumber": 1,
-  "coreArchetype": [
-    "identity forge",
-    "selfhood engine",
-    "psychological field"
-  ],
-  "lifeDomain": [
-    "identity",
-    "appearance",
-    "instinct"
-  ],
-  "primaryHumanConcern": [
-    "managing selfhood",
-    "stabilizing identity, appearance, instinct"
-  ],
-  "environmentType": [
-    "psychological arena",
-    "social system"
-  ],
-  "associatedLocations": [
-    "symbolic location"
-  ],
-  "environmentPreferences": [
-    "predictable emotional patterns"
-  ],
-  "psychologicalArena": [
-    "identity tension",
-    "internal conflict"
-  ],
-  "behavioralThemes": [
-    "adaptation",
-    "projection",
-    "coping"
-  ],
-  "dominantNarratives": [
-    "reinventing identity constantly",
-    "being seen correctly"
-  ],
-  "coreMotivations": [
-    "security",
-    "recognition"
-  ],
-  "coreChallenges": [
-    "fear",
-    "overcompensation"
-  ],
-  "growthOpportunities": [
-    "self-awareness",
-    "integration"
-  ],
-  "identityPressure": [
-    "pressure to perform"
-  ],
-  "socialPressure": [
-    "expectation management"
-  ],
-  "responsibilityPressure": [
-    "fear of failure"
-  ],
-  "survivalPressure": [
-    "need for control"
-  ],
-  "relationshipDynamics": [
-    "reactive attachment patterns"
-  ],
-  "familyDynamics": [
-    "ancestral conditioning"
-  ],
-  "groupDynamics": [
-    "role-based participation"
-  ],
-  "authorityDynamics": [
-    "response to hierarchy"
-  ],
-  "workplaceDynamics": [
-    "behavior under expectations"
-  ],
-  "financialPatterns": [
-    "resource protection"
-  ],
-  "resourceDynamics": [
-    "accumulation vs depletion"
-  ],
-  "communicationPatterns": [
-    "emotionally coded speech"
-  ],
-  "conflictPatterns": [
-    "defensiveness under pressure"
-  ],
-  "attachmentDynamics": [
-    "seeking validation"
-  ],
-  "decisionMakingPatterns": [
-    "emotion-influenced choices"
-  ],
-  "timeOrientation": [
-    "future anticipation"
-  ],
-  "riskOrientation": [
-    "controlled experimentation"
-  ],
-  "stressManifestations": [
-    "anxiety",
-    "fatigue"
-  ],
-  "copingMechanisms": [
-    "withdrawal",
-    "control behaviors"
-  ],
-  "behavioralLoops": [
-    "stress -> reaction -> consequence"
-  ],
-  "shadowExpressions": [
-    "avoidance",
-    "projection"
-  ],
-  "triggerPatterns": [
-    "rejection",
-    "uncertainty"
-  ],
-  "pressurePoints": [
-    "loss of stability"
-  ],
-  "bodyFocus": [
-    "somatic tension"
-  ],
-  "healthCorrelations": [
-    "stress-linked imbalance"
-  ],
-  "symbolicObjects": [
-    "doors",
-    "mirrors",
-    "documents"
-  ],
-  "cinematicExpressions": [
-    "silent observation",
-    "emotional escalation"
-  ],
-  "microBehaviors": [
-    "fidgeting",
-    "tone shifts"
-  ],
-  "emotionalDynamics": [
-    "suppressed emotional currents"
-  ],
-  "powerDynamics": [
-    "control through positioning"
-  ],
-  "statusDynamics": [
-    "comparison with others"
-  ],
-  "planetaryExpressions": {
-    "SATURN": [
-      "pressure",
-      "restriction"
+
+  "classification": {
+    "axis": "SELF",
+    "angularity": "ANGULAR",
+    "elementalAffinity": "FIRE"
+  },
+
+  "coreEssence": {
+    "corePrinciple": "identity emergence",
+
+    "lifeDomains": [
+      "selfhood",
+      "appearance",
+      "instinct",
+      "identity",
+      "physical embodiment"
     ],
-    "MARS": [
-      "assertive escalation"
-    ],
-    "VENUS": [
-      "relational attachment"
+
+    "archetypes": [
+      "the self",
+      "the mask",
+      "the initiator",
+      "the embodied identity"
     ]
   },
-  "signModifiers": {
-    "ARIES": [
-      "fast initiation"
+
+  "environmentalContext": {
+    "environmentType": [
+      "identity arena",
+      "personal projection field"
     ],
-    "VIRGO": [
-      "precision pressure"
+
+    "motivationalThemes": [
+      "self-definition",
+      "visibility",
+      "autonomy"
     ],
-    "SCORPIO": [
-      "intensity amplification"
+
+    "developmentalThemes": [
+      "identity formation",
+      "ego stabilization",
+      "self-awareness"
     ]
   },
-  "aspectSensitivity": {
-    "square": [
-      "friction"
-    ],
-    "trine": [
-      "flow"
-    ],
-    "opposition": [
-      "external conflict"
-    ]
+
+  "vectorModifiers": {
+    "self_vs_other": 1.0,
+    "resource_vs_loss": 0.3,
+    "local_vs_expansive": 0.4,
+    "private_vs_public": 0.7,
+    "creation_vs_collective": 0.5,
+    "order_vs_dissolution": 0.4
   },
-  "stateTransitions": {
-    "stable": [
-      "regulated",
-      "focused"
+
+  "symbolicLayer": {
+    "symbols": [
+      "mirrors",
+      "masks",
+      "doorways",
+      "faces"
     ],
-    "pressured": [
-      "reactive",
-      "defensive"
+
+    "associatedEnvironments": [
+      "personal spaces",
+      "identity-driven environments",
+      "first impressions",
+      "individual-centered settings"
     ],
-    "overloaded": [
-      "chaotic",
-      "exhausted"
-    ],
-    "integrated": [
-      "balanced",
-      "adaptive"
+
+    "bodyCorrelation": [
+      "head",
+      "face",
+      "physical body",
+      "outer appearance"
     ]
-  },
-  "energyManifestation": [
-    "cyclical emotional output"
-  ],
-  "distortionPatterns": [
-    "confuses coping with identity"
-  ],
-  "integrationPatterns": [
-    "self-awareness",
-    "balanced engagement"
-  ],
-  "defaultDefenseMechanisms": [
-    "avoidance",
-    "overcontrol"
-  ],
-  "publicVsPrivateDynamics": [
-    "composed externally, turbulent internally"
-  ],
-  "realityTestingThemes": [
-    "illusion versus truth"
-  ],
-  "unresolvedPatternExpressions": [
-    "repeating emotional cycles"
-  ],
-  "temporalManifestations": [
-    "patterns intensify over time"
-  ],
-  "sceneGenerationHooks": [
-    "unexpected confrontation",
-    "symbolic interruption"
-  ],
-  "storyProgressionPatterns": [
-    "minor tension becomes identity crisis"
-  ],
-  "environmentalStoryTriggers": [
-    "sudden responsibility change"
-  ],
-  "behavioralStateAmplifiers": [
-    "sleep deprivation",
-    "social pressure"
-  ]
+  }
 }

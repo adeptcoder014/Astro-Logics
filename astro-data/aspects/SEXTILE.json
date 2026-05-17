@@ -1,178 +1,72 @@
 {
   "id": "SEXTILE",
-  "aspectAngle": 60,
-  "aspectType": "SOFT",
-  "coreDynamic": [
-    "opportunity",
-    "cooperation",
-    "constructive momentum"
-  ],
-  "interactionNature": [
-    "psychological exchange",
-    "dynamic influence"
-  ],
-  "energyFlow": [
-    "cyclical movement",
-    "pressure-release cycles"
-  ],
-  "pressureMechanism": [
-    "environmental activation",
-    "internal reaction"
-  ],
-  "behavioralEffect": [
-    "reactive adaptation",
-    "pattern reinforcement"
-  ],
-  "psychologicalExperience": [
-    "heightened awareness",
-    "internal tension"
-  ],
-  "externalManifestation": [
-    "situational triggers",
-    "interpersonal reactions"
-  ],
-  "decisionDistortion": [
-    "emotion-biased judgment"
-  ],
-  "communicationDistortion": [
-    "tone shifts under pressure"
-  ],
-  "relationshipDistortion": [
-    "projection dynamics"
-  ],
-  "stressBehavior": [
-    "control seeking",
-    "reactive acceleration"
-  ],
-  "conflictBehavior": [
-    "defensive escalation"
-  ],
-  "growthMechanism": [
-    "self-awareness",
-    "adaptive regulation"
-  ],
-  "resolutionPath": [
-    "integration",
-    "timing awareness"
-  ],
-  "timingBehavior": [
-    "patterns intensify gradually"
-  ],
-  "escalationPattern": [
-    "minor tension compounds over time"
-  ],
-  "emotionalTone": [
-    "activation",
-    "emotional charge"
-  ],
-  "cognitiveEffect": [
-    "narrowed focus"
-  ],
-  "bodyManifestation": [
-    "muscle tension",
-    "restlessness"
-  ],
-  "shadowExpression": [
-    "reactive loops",
-    "self-sabotage"
-  ],
-  "healthyExpression": [
-    "creative flow",
-    "easy collaboration"
-  ],
-  "cinematicExpressions": [
-    "silent tension before reaction"
-  ],
-  "microBehaviors": [
-    "fidgeting",
-    "interruptions"
-  ],
-  "triggerPatterns": [
-    "uncertainty",
-    "pressure"
-  ],
-  "behavioralLoops": [
-    "trigger -> reaction -> consequence"
-  ],
-  "planetInteractionModifiers": {
-    "MARS": [
-      "force escalation"
+
+  "classification": {
+    "aspectType": "HARMONIC",
+    "aspectAngle": 60,
+    "orbInfluence": "MODERATE"
+  },
+
+  "coreEssence": {
+    "corePrinciple": "opportunity through cooperative resonance",
+
+    "interactionDynamics": [
+      "cooperation",
+      "compatibility",
+      "responsive flow",
+      "constructive interaction"
     ],
-    "SATURN": [
-      "restriction pressure"
-    ],
-    "VENUS": [
-      "relational attachment"
-    ],
-    "MERCURY": [
-      "mental overstimulation"
+
+    "energeticEffects": [
+      "ease of coordination",
+      "creative linkage",
+      "mutual support",
+      "potential activation"
     ]
   },
-  "signSensitivity": {
-    "CARDINAL": [
-      "immediate activation"
+
+  "behavioralModulation": {
+    "expressionStyle": [
+      "fluid",
+      "responsive",
+      "adaptive"
     ],
-    "FIXED": [
-      "resistance"
+
+    "distortionRisk": [
+      "passive potential",
+      "underutilization",
+      "complacency",
+      "missed opportunity"
     ],
-    "MUTABLE": [
-      "adaptive instability"
+
+    "integrationPath": [
+      "intentional engagement",
+      "skill cultivation",
+      "active collaboration",
+      "constructive application"
     ]
   },
-  "houseActivationStyle": [
-    "activates house themes through events"
-  ],
-  "stateTransitions": {
-    "mildPressure": [
-      "unease"
-    ],
-    "moderatePressure": [
-      "reactivity"
-    ],
-    "highPressure": [
-      "conflict",
-      "collapse"
-    ],
-    "integrated": [
-      "adaptive balance"
-    ]
+
+  "vectorModifiers": {
+    "amplification": 0.6,
+    "friction": 0.2,
+    "volatility": 0.25,
+    "integrationPressure": 0.4
   },
-  "storyFunction": [
-    "creates narrative movement",
-    "drives psychological change"
-  ],
-  "sceneGenerationHooks": [
-    "unexpected confrontation",
-    "pressure escalation"
-  ],
-  "environmentalTriggers": [
-    "competitive environments",
-    "unstable systems"
-  ],
-  "powerDynamics": [
-    "control negotiation"
-  ],
-  "distortionPatterns": [
-    "misreading pressure signals"
-  ],
-  "integrationPatterns": [
-    "awareness-based regulation"
-  ],
-  "defaultDefenseMechanisms": [
-    "avoidance",
-    "overcontrol"
-  ],
-  "pressureResponses": [
-    "increase effort",
-    "tighten control"
-  ],
-  "realityTestingEffects": [
-    "difficulty seeing alternatives under pressure"
-  ],
-  "socialManifestation": [
-    "visible emotional reactions"
-  ],
-  "longTermNarrativeEffect": [
-    "behavioral restructuring over time"
-  ]
+
+  "symbolicLayer": {
+    "symbols": [
+      "open pathways",
+      "bridges",
+      "interlocking patterns",
+      "flowing currents"
+    ],
+
+    "associatedPhenomena": [
+      "opportunity",
+      "collaboration",
+      "creative synergy",
+      "supportive development"
+    ]
+  }
 }

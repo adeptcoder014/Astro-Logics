@@ -1,173 +1,118 @@
 {
-  "coreArchetype": [
-    "power",
-    "obsession",
-    "transformation",
-    "control"
-  ],
-  "planetType": "TRANSPERSONAL",
-  "psychologicalDomain": [
-    "power",
-    "obsession",
-    "transformation",
-    "control"
-  ],
-  "governingFunctions": [
-    "expressing power",
-    "responding under pressure",
-    "navigating interpersonal dynamics",
-    "maintaining internal balance"
-  ],
-  "coreNeeds": [
-    "autonomy",
-    "stability",
-    "recognition"
-  ],
-  "coreFears": [
-    "loss of control",
-    "rejection",
-    "failure"
-  ],
-  "motivationStyle": [
-    "adaptive",
-    "situational",
-    "pressure-sensitive"
-  ],
-  "actionStyle": [
-    "context-dependent",
-    "reactive",
-    "purpose-driven"
-  ],
-  "decisionStyle": [
-    "experience-based",
-    "emotionally filtered",
-    "situational"
-  ],
-  "stressExpression": [
-    "withdrawal",
-    "overreaction",
-    "defensiveness"
-  ],
-  "healthyExpression": [
-    "clarity",
-    "balance",
-    "productive engagement"
-  ],
-  "unhealthyExpression": [
-    "avoidance",
-    "distortion",
-    "overcompensation"
-  ],
-  "behavioralPatterns": [
-    "repeats familiar coping loops",
-    "responds to pressure predictably"
-  ],
-  "conflictPatterns": [
-    "becomes rigid under stress",
-    "reacts defensively when challenged"
-  ],
-  "relationshipDynamics": [
-    "seeks validation through interaction",
-    "adjusts behavior to maintain connection"
-  ],
-  "attachmentDistortions": [
-    "confuses control with safety",
-    "fears vulnerability"
-  ],
-  "workplaceBehavior": [
-    "responds to deadlines intensely",
-    "adjusts output based on pressure"
-  ],
-  "leadershipStyle": [
-    "situational leadership",
-    "reactive management"
-  ],
-  "moneyBehavior": [
-    "emotionally influenced spending",
-    "security-oriented decisions"
-  ],
-  "socialBehavior": [
-    "reads room dynamics quickly",
-    "adapts social posture"
-  ],
-  "sexualDynamics": [
-    "emotionally reactive attraction patterns"
-  ],
-  "shadowPatterns": [
-    "repeats unconscious defensive loops"
-  ],
-  "growthDirection": [
-    "greater self-awareness",
-    "balanced response patterns"
-  ],
-  "bodyLanguage": [
-    "micro tension shifts",
-    "eye-contact changes"
-  ],
-  "speechPatterns": [
-    "tone changes under pressure",
-    "reveals stress through pacing"
-  ],
-  "cinematicExpressions": [
-    "checking notifications repeatedly",
-    "silent tension during conversation"
-  ],
-  "microBehaviors": [
-    "hesitates before replying",
-    "adjusts posture under stress"
-  ],
-  "defaultDefenseMechanisms": [
-    "avoidance",
-    "projection",
-    "overcompensation"
-  ],
-  "pressureResponses": [
-    "tightens control",
-    "reacts faster under stress"
-  ],
-  "emotionalTriggers": [
-    "criticism",
-    "uncertainty",
-    "loss of stability"
-  ],
-  "environmentPreferences": [
-    "predictable systems",
-    "emotionally manageable environments"
-  ],
-  "energyExpression": [
-    "fluctuating intensity",
-    "reactive surges"
-  ],
-  "temporalBehavior": [
-    "responds differently under deadlines",
-    "future-oriented worry"
-  ],
-  "distortionUnderFear": [
-    "misreads situations defensively"
-  ],
-  "healingMechanisms": [
-    "clear communication",
-    "structured reflection",
-    "healthy routines"
-  ],
-  "symbolicObjects": [
-    "mirrors",
-    "tools",
-    "thresholds"
-  ],
-  "associatedEnvironments": [
-    "workspaces",
-    "social systems",
-    "relationship dynamics"
-  ],
-  "behavioralStateTransitions": {
-    "calm": [],
-    "pressured": [],
-    "overloaded": [],
-    "healthyGrowth": []
+  "id": "PLUTO",
+
+  "classification": {
+    "planetType": "TRANSPERSONAL",
+    "elementalNature": [
+      "WATER",
+      "FIRE"
+    ],
+    "modalityAffinity": [
+      "FIXED"
+    ],
+    "genderPolarity": "NEUTRAL",
+    "gunaAffinity": [
+      "TAMAS"
+    ],
+    "temperament": [
+      "INTENSE",
+      "COLD"
+    ]
   },
-  "signModifiers": {},
-  "houseExpressions": {},
-  "aspectReactions": {},
-  "id": "PLUTO"
+
+  "coreEssence": {
+    "corePrinciple": "transformational destruction",
+
+    "archetypes": [
+      "death",
+      "rebirth",
+      "power",
+      "obsession",
+      "transformation",
+      "underworld"
+    ],
+
+    "expressionDomains": [
+      "psychological depth",
+      "trauma",
+      "power systems",
+      "shadow integration",
+      "survival instincts",
+      "irreversible change"
+    ],
+
+    "governingFunctions": [
+      "destroying obsolete structures",
+      "forcing transformation",
+      "revealing hidden power dynamics",
+      "intensifying psychological depth",
+      "initiating cycles of death and rebirth",
+      "compressing evolution through crisis"
+    ]
+  },
+
+  "motivationalStructure": {
+    "coreNeeds": [
+      "control",
+      "transformation",
+      "truth",
+      "depth",
+      "psychological power"
+    ],
+
+    "coreFears": [
+      "powerlessness",
+      "betrayal",
+      "exposure",
+      "loss of control",
+      "annihilation"
+    ],
+
+    "desirePatterns": [
+      "to penetrate hidden truths",
+      "to transform completely",
+      "to survive any crisis",
+      "to reclaim power",
+      "to expose corruption"
+    ]
+  },
+
+  "vectorModifiers": {
+    "self_vs_other": 0.8,
+    "resource_vs_loss": 1.0,
+    "local_vs_expansive": 0.4,
+    "private_vs_public": 0.1,
+    "creation_vs_collective": 0.7,
+    "order_vs_dissolution": 0.95
+  },
+
+  "symbolicLayer": {
+    "symbols": [
+      "ashes",
+      "volcanoes",
+      "underground chambers",
+      "scorpions",
+      "shadows",
+      "black fire",
+      "ruins"
+    ],
+
+    "associatedEnvironments": [
+      "crisis zones",
+      "psychological depths",
+      "hidden institutions",
+      "secret systems",
+      "transformational environments",
+      "high-pressure survival situations"
+    ],
+
+    "bodyCorrelation": [
+      "reproductive systems",
+      "cellular regeneration",
+      "elimination processes",
+      "deep unconscious mechanisms",
+      "survival responses",
+      "trauma storage"
+    ]
+  }
 }

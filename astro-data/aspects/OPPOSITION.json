@@ -1,179 +1,73 @@
 {
   "id": "OPPOSITION",
-  "aspectAngle": 180,
-  "aspectType": "HARD",
-  "coreDynamic": [
-    "polarization",
-    "mirroring",
-    "external confrontation"
-  ],
-  "interactionNature": [
-    "psychological exchange",
-    "dynamic influence"
-  ],
-  "energyFlow": [
-    "cyclical movement",
-    "pressure-release cycles"
-  ],
-  "pressureMechanism": [
-    "environmental activation",
-    "internal reaction"
-  ],
-  "behavioralEffect": [
-    "reactive adaptation",
-    "pattern reinforcement"
-  ],
-  "psychologicalExperience": [
-    "heightened awareness",
-    "internal tension"
-  ],
-  "externalManifestation": [
-    "situational triggers",
-    "interpersonal reactions"
-  ],
-  "decisionDistortion": [
-    "emotion-biased judgment"
-  ],
-  "communicationDistortion": [
-    "tone shifts under pressure"
-  ],
-  "relationshipDistortion": [
-    "projection",
-    "dependency loops"
-  ],
-  "stressBehavior": [
-    "control seeking",
-    "reactive acceleration"
-  ],
-  "conflictBehavior": [
-    "defensive escalation"
-  ],
-  "growthMechanism": [
-    "self-awareness",
-    "adaptive regulation"
-  ],
-  "resolutionPath": [
-    "integration",
-    "timing awareness"
-  ],
-  "timingBehavior": [
-    "patterns intensify gradually"
-  ],
-  "escalationPattern": [
-    "minor tension compounds over time"
-  ],
-  "emotionalTone": [
-    "activation",
-    "emotional charge"
-  ],
-  "cognitiveEffect": [
-    "narrowed focus"
-  ],
-  "bodyManifestation": [
-    "muscle tension",
-    "restlessness"
-  ],
-  "shadowExpression": [
-    "reactive loops",
-    "self-sabotage"
-  ],
-  "healthyExpression": [
-    "regulated action",
-    "awareness"
-  ],
-  "cinematicExpressions": [
-    "silent tension before reaction"
-  ],
-  "microBehaviors": [
-    "fidgeting",
-    "interruptions"
-  ],
-  "triggerPatterns": [
-    "uncertainty",
-    "pressure"
-  ],
-  "behavioralLoops": [
-    "trigger -> reaction -> consequence"
-  ],
-  "planetInteractionModifiers": {
-    "MARS": [
-      "force escalation"
+
+  "classification": {
+    "aspectType": "POLAR",
+    "aspectAngle": 180,
+    "orbInfluence": "STRONG"
+  },
+
+  "coreEssence": {
+    "corePrinciple": "awareness through polarity and externalization",
+
+    "interactionDynamics": [
+      "polarization",
+      "mirroring",
+      "projection",
+      "dynamic tension"
     ],
-    "SATURN": [
-      "restriction pressure"
-    ],
-    "VENUS": [
-      "relational attachment"
-    ],
-    "MERCURY": [
-      "mental overstimulation"
+
+    "energeticEffects": [
+      "push-pull dynamics",
+      "external confrontation",
+      "oscillation",
+      "relational awareness"
     ]
   },
-  "signSensitivity": {
-    "CARDINAL": [
-      "immediate activation"
+
+  "behavioralModulation": {
+    "expressionStyle": [
+      "reactive",
+      "alternating",
+      "externally stimulated"
     ],
-    "FIXED": [
-      "resistance"
+
+    "distortionRisk": [
+      "projection",
+      "splitting",
+      "extreme compensation",
+      "difficulty integrating opposites"
     ],
-    "MUTABLE": [
-      "adaptive instability"
+
+    "integrationPath": [
+      "balance through awareness",
+      "integration of polarities",
+      "conscious negotiation",
+      "relational maturity"
     ]
   },
-  "houseActivationStyle": [
-    "activates house themes through events"
-  ],
-  "stateTransitions": {
-    "mildPressure": [
-      "unease"
-    ],
-    "moderatePressure": [
-      "reactivity"
-    ],
-    "highPressure": [
-      "conflict",
-      "collapse"
-    ],
-    "integrated": [
-      "adaptive balance"
-    ]
+
+  "vectorModifiers": {
+    "amplification": 0.8,
+    "friction": 0.9,
+    "volatility": 0.8,
+    "integrationPressure": 1.0
   },
-  "storyFunction": [
-    "creates narrative movement",
-    "drives psychological change"
-  ],
-  "sceneGenerationHooks": [
-    "unexpected confrontation",
-    "pressure escalation"
-  ],
-  "environmentalTriggers": [
-    "competitive environments",
-    "unstable systems"
-  ],
-  "powerDynamics": [
-    "control negotiation"
-  ],
-  "distortionPatterns": [
-    "misreading pressure signals"
-  ],
-  "integrationPatterns": [
-    "awareness-based regulation"
-  ],
-  "defaultDefenseMechanisms": [
-    "avoidance",
-    "overcontrol"
-  ],
-  "pressureResponses": [
-    "increase effort",
-    "tighten control"
-  ],
-  "realityTestingEffects": [
-    "difficulty seeing alternatives under pressure"
-  ],
-  "socialManifestation": [
-    "visible emotional reactions"
-  ],
-  "longTermNarrativeEffect": [
-    "behavioral restructuring over time"
-  ]
+
+  "symbolicLayer": {
+    "symbols": [
+      "mirrors",
+      "tug of war",
+      "dual pillars",
+      "reflections",
+      "balancing scales"
+    ],
+
+    "associatedPhenomena": [
+      "projection",
+      "relationship tension",
+      "polarization",
+      "awareness through contrast"
+    ]
+  }
 }

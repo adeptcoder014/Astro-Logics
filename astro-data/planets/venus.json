@@ -1,173 +1,119 @@
 {
-  "coreArchetype": [
-    "relationships",
-    "harmony",
-    "attraction",
-    "values"
-  ],
-  "planetType": "PERSONAL",
-  "psychologicalDomain": [
-    "relationships",
-    "harmony",
-    "attraction",
-    "values"
-  ],
-  "governingFunctions": [
-    "expressing relationships",
-    "responding under pressure",
-    "navigating interpersonal dynamics",
-    "maintaining internal balance"
-  ],
-  "coreNeeds": [
-    "autonomy",
-    "stability",
-    "recognition"
-  ],
-  "coreFears": [
-    "loss of control",
-    "rejection",
-    "failure"
-  ],
-  "motivationStyle": [
-    "adaptive",
-    "situational",
-    "pressure-sensitive"
-  ],
-  "actionStyle": [
-    "context-dependent",
-    "reactive",
-    "purpose-driven"
-  ],
-  "decisionStyle": [
-    "experience-based",
-    "emotionally filtered",
-    "situational"
-  ],
-  "stressExpression": [
-    "withdrawal",
-    "overreaction",
-    "defensiveness"
-  ],
-  "healthyExpression": [
-    "clarity",
-    "balance",
-    "productive engagement"
-  ],
-  "unhealthyExpression": [
-    "avoidance",
-    "distortion",
-    "overcompensation"
-  ],
-  "behavioralPatterns": [
-    "repeats familiar coping loops",
-    "responds to pressure predictably"
-  ],
-  "conflictPatterns": [
-    "becomes rigid under stress",
-    "reacts defensively when challenged"
-  ],
-  "relationshipDynamics": [
-    "seeks validation through interaction",
-    "adjusts behavior to maintain connection"
-  ],
-  "attachmentDistortions": [
-    "confuses control with safety",
-    "fears vulnerability"
-  ],
-  "workplaceBehavior": [
-    "responds to deadlines intensely",
-    "adjusts output based on pressure"
-  ],
-  "leadershipStyle": [
-    "situational leadership",
-    "reactive management"
-  ],
-  "moneyBehavior": [
-    "emotionally influenced spending",
-    "security-oriented decisions"
-  ],
-  "socialBehavior": [
-    "reads room dynamics quickly",
-    "adapts social posture"
-  ],
-  "sexualDynamics": [
-    "emotionally reactive attraction patterns"
-  ],
-  "shadowPatterns": [
-    "repeats unconscious defensive loops"
-  ],
-  "growthDirection": [
-    "greater self-awareness",
-    "balanced response patterns"
-  ],
-  "bodyLanguage": [
-    "micro tension shifts",
-    "eye-contact changes"
-  ],
-  "speechPatterns": [
-    "tone changes under pressure",
-    "reveals stress through pacing"
-  ],
-  "cinematicExpressions": [
-    "checking notifications repeatedly",
-    "silent tension during conversation"
-  ],
-  "microBehaviors": [
-    "hesitates before replying",
-    "adjusts posture under stress"
-  ],
-  "defaultDefenseMechanisms": [
-    "avoidance",
-    "projection",
-    "overcompensation"
-  ],
-  "pressureResponses": [
-    "tightens control",
-    "reacts faster under stress"
-  ],
-  "emotionalTriggers": [
-    "criticism",
-    "uncertainty",
-    "loss of stability"
-  ],
-  "environmentPreferences": [
-    "predictable systems",
-    "emotionally manageable environments"
-  ],
-  "energyExpression": [
-    "fluctuating intensity",
-    "reactive surges"
-  ],
-  "temporalBehavior": [
-    "responds differently under deadlines",
-    "future-oriented worry"
-  ],
-  "distortionUnderFear": [
-    "misreads situations defensively"
-  ],
-  "healingMechanisms": [
-    "clear communication",
-    "structured reflection",
-    "healthy routines"
-  ],
-  "symbolicObjects": [
-    "mirrors",
-    "tools",
-    "thresholds"
-  ],
-  "associatedEnvironments": [
-    "workspaces",
-    "social systems",
-    "relationship dynamics"
-  ],
-  "behavioralStateTransitions": {
-    "calm": [],
-    "pressured": [],
-    "overloaded": [],
-    "healthyGrowth": []
+  "id": "VENUS",
+
+  "classification": {
+    "planetType": "PERSONAL",
+    "elementalNature": [
+      "EARTH",
+      "WATER"
+    ],
+    "modalityAffinity": [
+      "FIXED",
+      "CARDINAL"
+    ],
+    "genderPolarity": "FEMININE",
+    "gunaAffinity": [
+      "RAJAS"
+    ],
+    "temperament": [
+      "MOIST",
+      "BALANCED"
+    ]
   },
-  "signModifiers": {},
-  "houseExpressions": {},
-  "aspectReactions": {},
-  "id": "VENUS"
+
+  "coreEssence": {
+    "corePrinciple": "relational harmonization",
+
+    "archetypes": [
+      "love",
+      "beauty",
+      "attraction",
+      "pleasure",
+      "harmony",
+      "value"
+    ],
+
+    "expressionDomains": [
+      "relationships",
+      "aesthetics",
+      "social bonding",
+      "sensuality",
+      "taste",
+      "value formation"
+    ],
+
+    "governingFunctions": [
+      "forming attachments",
+      "creating harmony",
+      "evaluating value",
+      "facilitating cooperation",
+      "seeking pleasure",
+      "balancing relational dynamics"
+    ]
+  },
+
+  "motivationalStructure": {
+    "coreNeeds": [
+      "connection",
+      "affection",
+      "beauty",
+      "comfort",
+      "mutual appreciation"
+    ],
+
+    "coreFears": [
+      "rejection",
+      "disharmony",
+      "emotional deprivation",
+      "loss of attraction",
+      "social disconnection"
+    ],
+
+    "desirePatterns": [
+      "to be loved",
+      "to experience harmony",
+      "to create beauty",
+      "to feel valued",
+      "to maintain emotional connection"
+    ]
+  },
+
+  "vectorModifiers": {
+    "self_vs_other": 0.85,
+    "resource_vs_loss": 0.7,
+    "local_vs_expansive": 0.4,
+    "private_vs_public": 0.6,
+    "creation_vs_collective": 0.8,
+    "order_vs_dissolution": 0.3
+  },
+
+  "symbolicLayer": {
+    "symbols": [
+      "flowers",
+      "jewelry",
+      "perfume",
+      "gardens",
+      "music",
+      "silk",
+      "mirrors"
+    ],
+
+    "associatedEnvironments": [
+      "art spaces",
+      "romantic settings",
+      "luxury environments",
+      "social gatherings",
+      "creative studios",
+      "beauty-centered spaces"
+    ],
+
+    "bodyCorrelation": [
+      "skin",
+      "face",
+      "kidneys",
+      "reproductive system",
+      "sensory pleasure",
+      "hormonal balance"
+    ]
+  }
 }

@@ -135,6 +135,7 @@ export default function NativityCurrentStoryTab({
       refetchStories();
     },
   });
+  
   const generateMainNarrativeMutation = api.nativity.generateMainNarrative.useMutation({
     onSuccess: () => {
       setIsGenerating(false);

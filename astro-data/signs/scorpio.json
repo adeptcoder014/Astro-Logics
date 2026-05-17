@@ -1,122 +1,115 @@
 {
   "id": "SCORPIO",
-  "element": "WATER",
-  "modality": "FIXED",
-  "polarity": "FEMININE",
-  "coreArchetype": [
-    "intensity seeker",
-    "truth excavator",
-    "emotional strategist"
-  ],
-  "styleModifiers": [
-    "adaptive",
-    "expressive",
-    "behavior-driven"
-  ],
-  "positiveTraits": [
-    "observant",
-    "capable",
-    "persistent"
-  ],
-  "negativeTraits": [
-    "reactive",
-    "stubborn under stress",
-    "inconsistent"
-  ],
-  "stressStyle": [
-    "overcompensates",
-    "becomes emotionally narrow"
-  ],
-  "emotionalNeeds": [
-    "stability",
-    "understanding"
-  ],
-  "emotionalTriggers": [
-    "rejection",
-    "loss of control"
-  ],
-  "communicationStyle": [
-    "direct",
-    "context-aware"
-  ],
-  "conflictStyle": [
-    "defensive under pressure",
-    "tries to regain control"
-  ],
-  "decisionStyle": [
-    "contextual",
-    "pressure-sensitive"
-  ],
-  "relationshipPatterns": [
-    "tests trust slowly",
-    "values consistency"
-  ],
-  "attachmentPatterns": [
-    "protective",
-    "cautious vulnerability"
-  ],
-  "workPatterns": [
-    "focuses intensely",
-    "improves systems over time"
-  ],
-  "leadershipStyle": [
-    "situational leadership",
-    "competence-focused"
-  ],
-  "moneyBehavior": [
-    "security-oriented",
-    "tracks long-term stability"
-  ],
-  "environmentPreferences": [
-    "predictable spaces",
-    "controlled environments"
-  ],
-  "socialBehavior": [
-    "observes before opening up",
-    "selective engagement"
-  ],
-  "shadowPatterns": [
-    "overcontrol",
-    "suppressed emotional expression"
-  ],
-  "growthDirection": [
-    "greater emotional flexibility",
-    "balanced self-awareness"
-  ],
-  "behavioralMicroPatterns": [
-    "rechecks details",
-    "changes tone under stress"
-  ],
-  "cinematicExpressions": [
-    "late-night overthinking",
-    "silent observation during tension"
-  ],
-  "bodyLanguage": [
-    "controlled posture",
-    "subtle tension in movement"
-  ],
-  "speechPatterns": [
-    "careful wording",
-    "emotion hidden beneath logic"
-  ],
-  "defaultDefenseMechanisms": [
-    "withdrawal",
-    "rationalization"
-  ],
-  "pressureResponses": [
-    "tries to regain control",
-    "narrows focus under stress"
-  ],
-  "compatibilityNeeds": [
-    "clarity",
-    "mutual respect"
-  ],
-  "deepFears": [
-    "loss of control",
-    "irrelevance"
-  ],
-  "deepMotivations": [
-    "meaningful impact",
-    "internal stability"
-  ]
+
+  "classification": {
+    "element": "WATER",
+    "modality": "FIXED",
+    "polarity": "FEMININE"
+  },
+
+  "coreEssence": {
+    "corePrinciple": "transformation through intensity",
+
+    "archetypes": [
+      "alchemist",
+      "survivor",
+      "detective",
+      "strategist",
+      "magnetist",
+      "shadow walker"
+    ],
+
+    "expressionStyle": [
+      "intense",
+      "private",
+      "probing",
+      "emotionally concentrated",
+      "strategic",
+      "all-or-nothing"
+    ],
+
+    "motivationalBias": [
+      "toward depth over surface",
+      "toward control over vulnerability",
+      "toward transformation over comfort",
+      "toward emotional truth over social nicety",
+      "toward psychological fusion over detachment"
+    ]
+  },
+
+  "behavioralModulation": {
+    "actionStyle": [
+      "acts with calculated intensity",
+      "moves strategically under pressure",
+      "commits completely once engaged",
+      "tests environments before trusting"
+    ],
+
+    "decisionStyle": [
+      "instinctive",
+      "psychologically informed",
+      "risk-aware",
+      "power-sensitive"
+    ],
+
+    "adaptationStyle": [
+      "survives through emotional resilience",
+      "transforms after crisis",
+      "conceals weakness during instability",
+      "regains control through strategic withdrawal"
+    ],
+
+    "stressResponse": [
+      "becomes obsessive",
+      "withdraws emotionally",
+      "controls situations covertly",
+      "reacts through suspicion or emotional extremity"
+    ],
+
+    "relationalOrientation": [
+      "forms deep emotional bonds",
+      "requires trust before vulnerability",
+      "tests loyalty intensely",
+      "seeks emotional and psychological merging"
+    ]
+  },
+
+  "vectorModifiers": {
+    "self_vs_other": 0.35,
+    "resource_vs_loss": 1.0,
+    "local_vs_expansive": 0.3,
+    "private_vs_public": 0.05,
+    "creation_vs_collective": 0.5,
+    "order_vs_dissolution": 0.85
+  },
+
+  "symbolicLayer": {
+    "symbols": [
+      "scorpions",
+      "ashes",
+      "underground chambers",
+      "poison",
+      "black water",
+      "locked doors",
+      "phoenix fire"
+    ],
+
+    "associatedEnvironments": [
+      "crisis zones",
+      "hidden systems",
+      "psychological spaces",
+      "secretive environments",
+      "transformational situations",
+      "emotionally charged settings"
+    ],
+
+    "bodyCorrelation": [
+      "reproductive organs",
+      "elimination systems",
+      "hormonal intensity",
+      "trauma storage",
+      "survival instincts",
+      "deep emotional processing"
+    ]
+  }
 }

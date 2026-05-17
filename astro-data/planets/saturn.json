@@ -1,173 +1,119 @@
 {
-  "coreArchetype": [
-    "discipline",
-    "fear",
-    "structure",
-    "responsibility"
-  ],
-  "planetType": "SOCIAL",
-  "psychologicalDomain": [
-    "discipline",
-    "fear",
-    "structure",
-    "responsibility"
-  ],
-  "governingFunctions": [
-    "expressing discipline",
-    "responding under pressure",
-    "navigating interpersonal dynamics",
-    "maintaining internal balance"
-  ],
-  "coreNeeds": [
-    "autonomy",
-    "stability",
-    "recognition"
-  ],
-  "coreFears": [
-    "loss of control",
-    "rejection",
-    "failure"
-  ],
-  "motivationStyle": [
-    "adaptive",
-    "situational",
-    "pressure-sensitive"
-  ],
-  "actionStyle": [
-    "context-dependent",
-    "reactive",
-    "purpose-driven"
-  ],
-  "decisionStyle": [
-    "experience-based",
-    "emotionally filtered",
-    "situational"
-  ],
-  "stressExpression": [
-    "withdrawal",
-    "overreaction",
-    "defensiveness"
-  ],
-  "healthyExpression": [
-    "clarity",
-    "balance",
-    "productive engagement"
-  ],
-  "unhealthyExpression": [
-    "avoidance",
-    "distortion",
-    "overcompensation"
-  ],
-  "behavioralPatterns": [
-    "repeats familiar coping loops",
-    "responds to pressure predictably"
-  ],
-  "conflictPatterns": [
-    "becomes rigid under stress",
-    "reacts defensively when challenged"
-  ],
-  "relationshipDynamics": [
-    "seeks validation through interaction",
-    "adjusts behavior to maintain connection"
-  ],
-  "attachmentDistortions": [
-    "confuses control with safety",
-    "fears vulnerability"
-  ],
-  "workplaceBehavior": [
-    "responds to deadlines intensely",
-    "adjusts output based on pressure"
-  ],
-  "leadershipStyle": [
-    "situational leadership",
-    "reactive management"
-  ],
-  "moneyBehavior": [
-    "emotionally influenced spending",
-    "security-oriented decisions"
-  ],
-  "socialBehavior": [
-    "reads room dynamics quickly",
-    "adapts social posture"
-  ],
-  "sexualDynamics": [
-    "emotionally reactive attraction patterns"
-  ],
-  "shadowPatterns": [
-    "repeats unconscious defensive loops"
-  ],
-  "growthDirection": [
-    "greater self-awareness",
-    "balanced response patterns"
-  ],
-  "bodyLanguage": [
-    "micro tension shifts",
-    "eye-contact changes"
-  ],
-  "speechPatterns": [
-    "tone changes under pressure",
-    "reveals stress through pacing"
-  ],
-  "cinematicExpressions": [
-    "checking notifications repeatedly",
-    "silent tension during conversation"
-  ],
-  "microBehaviors": [
-    "hesitates before replying",
-    "adjusts posture under stress"
-  ],
-  "defaultDefenseMechanisms": [
-    "avoidance",
-    "projection",
-    "overcompensation"
-  ],
-  "pressureResponses": [
-    "tightens control",
-    "reacts faster under stress"
-  ],
-  "emotionalTriggers": [
-    "criticism",
-    "uncertainty",
-    "loss of stability"
-  ],
-  "environmentPreferences": [
-    "predictable systems",
-    "emotionally manageable environments"
-  ],
-  "energyExpression": [
-    "fluctuating intensity",
-    "reactive surges"
-  ],
-  "temporalBehavior": [
-    "responds differently under deadlines",
-    "future-oriented worry"
-  ],
-  "distortionUnderFear": [
-    "misreads situations defensively"
-  ],
-  "healingMechanisms": [
-    "clear communication",
-    "structured reflection",
-    "healthy routines"
-  ],
-  "symbolicObjects": [
-    "mirrors",
-    "tools",
-    "thresholds"
-  ],
-  "associatedEnvironments": [
-    "workspaces",
-    "social systems",
-    "relationship dynamics"
-  ],
-  "behavioralStateTransitions": {
-    "calm": [],
-    "pressured": [],
-    "overloaded": [],
-    "healthyGrowth": []
+  "id": "SATURN",
+
+  "classification": {
+    "planetType": "SOCIAL",
+    "elementalNature": [
+      "AIR",
+      "EARTH"
+    ],
+    "modalityAffinity": [
+      "CARDINAL",
+      "FIXED"
+    ],
+    "genderPolarity": "NEUTRAL",
+    "gunaAffinity": [
+      "TAMAS"
+    ],
+    "temperament": [
+      "COLD",
+      "DRY"
+    ]
   },
-  "signModifiers": {},
-  "houseExpressions": {},
-  "aspectReactions": {},
-  "id": "SATURN"
+
+  "coreEssence": {
+    "corePrinciple": "structural limitation",
+
+    "archetypes": [
+      "discipline",
+      "restriction",
+      "time",
+      "responsibility",
+      "endurance",
+      "structure"
+    ],
+
+    "expressionDomains": [
+      "duty",
+      "boundaries",
+      "authority systems",
+      "long-term effort",
+      "survival pressure",
+      "maturity"
+    ],
+
+    "governingFunctions": [
+      "creating structure",
+      "enforcing boundaries",
+      "delaying gratification",
+      "testing resilience",
+      "stabilizing systems through limitation",
+      "preserving long-term continuity"
+    ]
+  },
+
+  "motivationalStructure": {
+    "coreNeeds": [
+      "stability",
+      "control",
+      "predictability",
+      "competence",
+      "security"
+    ],
+
+    "coreFears": [
+      "failure",
+      "chaos",
+      "instability",
+      "dependency",
+      "loss of control"
+    ],
+
+    "desirePatterns": [
+      "to endure",
+      "to master reality",
+      "to build lasting structures",
+      "to maintain control",
+      "to survive through discipline"
+    ]
+  },
+
+  "vectorModifiers": {
+    "self_vs_other": 0.7,
+    "resource_vs_loss": 0.95,
+    "local_vs_expansive": 0.2,
+    "private_vs_public": 0.85,
+    "creation_vs_collective": 0.6,
+    "order_vs_dissolution": 1.0
+  },
+
+  "symbolicLayer": {
+    "symbols": [
+      "clocks",
+      "mountains",
+      "chains",
+      "stone",
+      "bones",
+      "walls",
+      "shadows"
+    ],
+
+    "associatedEnvironments": [
+      "institutions",
+      "government systems",
+      "isolated spaces",
+      "work environments",
+      "hierarchical structures",
+      "survival-oriented settings"
+    ],
+
+    "bodyCorrelation": [
+      "bones",
+      "teeth",
+      "skin",
+      "joints",
+      "aging processes",
+      "structural integrity"
+    ]
+  }
 }

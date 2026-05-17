@@ -138,7 +138,7 @@ Return ONLY valid JSON with all fields populated based on the planetary data ana
 `;
 
   // Try providers in order: local → groq → openai
-  const providerChain: Array<'local' | 'groq' | 'openai'> = ['local', 'groq', 'openai'];
+  const providerChain: Array<'groq' | 'local' | 'openai'> = ['groq', 'local', 'openai'];
 
   for (const providerName of providerChain) {
     try {
@@ -1222,7 +1222,7 @@ export const nativityRouter = createTRPCRouter({
             planetProfile,
             activeAspects: activeAspects.map((aspect) => ({ aspectType: aspect.aspectType })),
           });
-
+          console.log(chalk.bgRed(`    • ${scene.planet}: Synthesized attributes - Pressure: ${attributes.pressureState?.dominantPressure}, Behavioral Pattern: ${attributes.behavioralState?.behavioralPatterns?.[0] || attributes.behavioralState?.primaryBehavior}, External Conflict: ${attributes.situationalState?.sceneHooks?.[0]}, Relationship Effect: ${attributes.relationalState?.relationshipDynamics?.[0]}`));
           return { ...scene, sceneAttributes: attributes, sign, house };
         })
       );
@@ -1293,12 +1293,13 @@ export const nativityRouter = createTRPCRouter({
       };
     }),
 
-  /**
+  /** 
    * Recalculate a single planetary scene per planet
    */
   recalculateSingleScene: protectedProcedure
     .input(z.object({ currentStoryId: z.string(), sceneId: z.string() }))
     .mutation(async ({ ctx, input }) => {
+      // ===============================fetching current story =================================================================
       const currentStory = await db.currentStory.findUnique({
         where: { id: input.currentStoryId },
         include: {
@@ -1312,11 +1313,15 @@ export const nativityRouter = createTRPCRouter({
           scenes: true,
         },
       });
+      console.log(chalk.bgCyan(`  currentStory  `));
+      console.log(currentStory?.planetaryProfiles)
 
+      // =============================== Error Handling  =================================================================
       if (!currentStory) throw new Error('Story not found');
       if (currentStory.nativityChart.userId !== ctx.session.user.id) {
         throw new Error('Unauthorized');
       }
+      // =============================== extracting scenes  =================================================================
 
       const sceneToUpdate = currentStory.scenes.find((s) => s.id === input.sceneId);
       if (!sceneToUpdate) throw new Error('Scene not found');
@@ -1390,8 +1395,6 @@ export const nativityRouter = createTRPCRouter({
         planetProfile,
         activeAspects: activeAspects.map((aspect) => ({ aspectType: aspect.aspectType })),
       });
-      console.log(chalk.bgCyan('\nsceneAttributes'));
-      console.log(sceneAttributes);
       // Step 5: Update database
       console.log(chalk.cyan('\n[STEP 5] Updating Database'));
       const updatedPlanetaryScene = await db.planetaryScene.update({

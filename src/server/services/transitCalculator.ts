@@ -383,7 +383,7 @@ Return ONLY valid JSON.
        
 
     try {
-      const llm = createProvider({ provider: 'local' });
+      const llm = createProvider({ provider: 'groq' });
       const response = await llm.generate({
         system: 'You are an expert astrologer. Output ONLY valid JSON with "theme", "plotTwist", "behavioralPattern", "externalConflict", "likelyMistake", "relationshipEffect", and "pressureDirection" fields. No markdown, no comments.',
         user: prompt,
@@ -484,7 +484,7 @@ Return ONLY valid JSON with all the specified fields.
 `;
 
     try {
-      const llm = createProvider({ provider: 'local' });
+      const llm = createProvider({ provider: 'groq' });
       const response = await llm.generate({
         system: 'You are an expert behavioral analyst. Output ONLY valid JSON with all the specified fields for the current story state. No markdown, no comments.',
         user: prompt,
