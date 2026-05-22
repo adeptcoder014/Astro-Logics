@@ -49,3 +49,33 @@ Temporal Evolution
 ↓
 Narrative / Scene / Insight
 =============================================================================================================================================
+Universal Cognitive Axes
+        ↓
+Planet Kernels
+        ↓
+Sign Transformations
+        ↓
+House Projections
+        ↓
+Aspect Distortions
+        ↓
+Temporal Modulation
+        ↓
+High-Dimensional State Vector
+        ↓
+Latent Manifold Geometry
+
+
+
+//{
+//     "intrinsic_kernel": {...},
+//     "sign_modulation": {...},
+//     "house_projection": {...},
+//     "lordship_relations": {...},
+//     "aspect_network": {...},
+//     "dasha_weight": {...},
+//     "nakshatra_encoding": {...},
+//     "angular_strength": {...},
+//     "observer_frame": {...},
+//     "temporal_phase": {...}
+// }

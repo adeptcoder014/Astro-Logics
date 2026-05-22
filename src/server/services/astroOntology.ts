@@ -32,6 +32,11 @@ export const getHouseSceneOntology = async (house: number) => {
   );
 };
 
+export const getPlanetOntology = async (planet: string) => {
+  const normalized = planet.trim().toLowerCase();
+  return await loadAstroData<Record<string, any>>(`planets/${normalized}.json`);
+};
+
 export interface SynthesizedSceneAttributes {
   astroState: Record<string, any>;
   pressureState: Record<string, any>;

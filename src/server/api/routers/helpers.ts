@@ -35,7 +35,7 @@ export function calculatePlanetaryDignity(
         MOON: ["CANCER"],
         MERCURY: ["GEMINI", "VIRGO"],
         VENUS: ["TAURUS", "LIBRA"],
-        MARS: ["ARIES", "SCORPIO"],
+        MARS: ["ARIES", "SCORPIO"], 
         JUPITER: ["SAGITTARIUS", "PISCES"],
         SATURN: ["CAPRICORN", "AQUARIUS"],
         URANUS: ["AQUARIUS"],

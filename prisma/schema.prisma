@@ -147,9 +147,9 @@ enum AspectType {
 }
 
 enum AspectOrb {
-  TIGHT     // 0-1 degree
-  MEDIUM    // 1-3 degrees
-  WIDE      // 3-7 degrees
+  TIGHT // 0-1 degree
+  MEDIUM // 1-3 degrees
+  WIDE // 3-7 degrees
   VERY_WIDE // 7+ degrees
 }
 
@@ -167,13 +167,13 @@ enum PlanetQuality {
 }
 
 enum ChartType {
-  NATAL        // Birth chart
-  TRANSIT      // Current planetary positions
-  PROGRESSION  // Secondary progression
+  NATAL // Birth chart
+  TRANSIT // Current planetary positions
+  PROGRESSION // Secondary progression
   SOLAR_RETURN // Solar return chart
   LUNAR_RETURN // Lunar return chart
-  COMPOSITE    // Relationship composite
-  SYNASTRY     // Comparison chart
+  COMPOSITE // Relationship composite
+  SYNASTRY // Comparison chart
 }
 
 enum ReadingType {
@@ -217,28 +217,28 @@ enum PlanetDirection {
 // ============================================
 
 model User {
-  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId
   name           String
-  mobile         String?  @unique // Optional for Google OAuth users
-  email          String   @unique
+  mobile         String?   @unique // Optional for Google OAuth users
+  email          String    @unique
   passwordHash   String? // For future password auth
   avatar         String? // Profile picture URL
-  isActive       Boolean  @default(true)
-  isDeleted      Boolean  @default(false)
-  emailVerified  Boolean  @default(false)
-  mobileVerified Boolean  @default(false)
+  isActive       Boolean   @default(true)
+  isDeleted      Boolean   @default(false)
+  emailVerified  Boolean   @default(false)
+  mobileVerified Boolean   @default(false)
   lastLoginAt    DateTime?
 
   // Usage Statistics
   totalGenerations Int @default(0)
-  totalStorageUsed  Int @default(0) // Bytes
+  totalStorageUsed Int @default(0) // Bytes
 
   // Relations
-  accounts         Account[]
-  sessions         Session[]
+  accounts Account[]
+  sessions Session[]
 
   // Astrology Relations
-  nativityCharts   NativityChart[]
+  nativityCharts NativityChart[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -295,381 +295,412 @@ model Session {
 // ============================================================================
 
 model NativityChart {
-  id                String   @id @default(auto()) @map("_id") @db.ObjectId
-  userId            String   @db.ObjectId
-  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String @db.ObjectId
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
   // Chart identity
-  name              String
-  description       String?
-  
+  name        String
+  description String?
+
   // Temporal index (TIME AS FIRST-CLASS INDEX)
-  birthDateTime     DateTime
-  birthTimestamp    BigInt   // Unix milliseconds for precise indexing
-  timeResolution    TimeResolution @default(MINUTE)
-  
+  birthDateTime  DateTime
+  birthTimestamp BigInt // Unix milliseconds for precise indexing
+  timeResolution TimeResolution @default(MINUTE)
+
   // Coordinate system governance
-  coordinateSystem  CoordinateSystem @default(SIDEREAL)
-  
+  coordinateSystem CoordinateSystem @default(SIDEREAL)
+
   // Location (deterministic state resolution)
-  latitude          Float
-  longitude         Float
-  timezone          String
-  locationName      String?
-  
+  latitude     Float
+  longitude    Float
+  timezone     String
+  locationName String?
+
   // Ephemeris lattice storage
-  ephemerisData     EphemerisSnapshot?
-  
+  ephemerisData EphemerisSnapshot?
+
   // Geometry-first indexing
-  geometryIndex     GeometryIndex?
-  
+  geometryIndex GeometryIndex?
+
   // Planetary profiles
   planetaryProfiles PlanetaryProfile[]
-  
+
   // Aspects and relationships
-  aspects           NativityAspect[]
-  
+  aspects NativityAspect[]
+
   // Memory & comparison system
-  stateVectors      StateVector[]
-  purposeStates     PurposeState[]
-  similarities      SimilarityRecord[]
-  
+  stateVectors  StateVector[]
+  purposeStates PurposeState[]
+  similarities  SimilarityRecord[]
+
   // Current story & Rashoff Theatre
-  currentStories    CurrentStory[]
-  
+  currentStories CurrentStory[]
+
+  // Consciousness States
+  consciousnessStates ConsciousnessState[]
+
   // Metadata
-  isPublic          Boolean  @default(false)
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
-  
+  isPublic  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   @@index([userId, birthTimestamp])
   @@index([coordinateSystem])
   @@index([birthDateTime])
 }
 
 model EphemerisSnapshot {
-  id                String   @id @default(auto()) @map("_id") @db.ObjectId
-  nativityChartId   String   @unique @db.ObjectId
-  nativityChart     NativityChart @relation(fields: [nativityChartId], references: [id], onDelete: Cascade)
-  
-  // Per-planet core storage
-  planets           PlanetData[]
-  
-  // Indexing metadata
-  absoluteTimeIndex BigInt   // Milliseconds since epoch
-  phase             String?  // conjunction cycle, synodic phase
-  
-  createdAt         DateTime @default(now())
-}
+  id              String        @id @default(auto()) @map("_id") @db.ObjectId
+  nativityChartId String        @unique @db.ObjectId
+  nativityChart   NativityChart @relation(fields: [nativityChartId], references: [id], onDelete: Cascade)
 
-model PlanetData {
-  id                        String   @id @default(auto()) @map("_id") @db.ObjectId
-  ephemerisSnapshotId       String   @db.ObjectId
-  ephemerisSnapshot         EphemerisSnapshot @relation(fields: [ephemerisSnapshotId], references: [id], onDelete: Cascade)
-  
-  // Planet identifier
-  planet                    String   // SUN, MOON, MERCURY, VENUS, MARS, JUPITER, SATURN, URANUS, NEPTUNE, PLUTO, NODE
-  
-  // Positional data
-  longitude                 Float    // Sidereal longitude
-  latitude                  Float?   // If applicable
-  
-  // Velocity state (SIGNED)
-  speed                     Float    // Degrees per day (signed: + direct, - retrograde)
-  acceleration              Float?   // Optional but recommended
-  
-  // Direction states
-  direction                 PlanetDirection @default(DIRECT)
-  stationaryEnterTime       DateTime?
-  stationaryExitTime        DateTime?
-  
-  // House mapping
-  houseCusp                 Int?     // 1-12
-  houseDegree               Float?
-  houseSign                 String?
-  
-  // Relative angular index
-  relativeAngularIndex      Float?   // For planet-planet relationships
-  
-  createdAt                 DateTime @default(now())
-  
-  @@index([ephemerisSnapshotId, planet])
-  @@index([direction])
+  // Indexing metadata
+  absoluteTimeIndex BigInt // Milliseconds since epoch
+  phase             String? // conjunction cycle, synodic phase
+
+  createdAt DateTime @default(now())
 }
 
 model GeometryIndex {
-  id                String   @id @default(auto()) @map("_id") @db.ObjectId
-  nativityChartId   String   @unique @db.ObjectId
-  nativityChart     NativityChart @relation(fields: [nativityChartId], references: [id], onDelete: Cascade)
-  
+  id              String        @id @default(auto()) @map("_id") @db.ObjectId
+  nativityChartId String        @unique @db.ObjectId
+  nativityChart   NativityChart @relation(fields: [nativityChartId], references: [id], onDelete: Cascade)
+
   // Configuration vectors
-  angularDistances  AngularDistance[]
-  
+  angularDistances AngularDistance[]
+
   // Aspect normalization
-  aspects           NativityAspect[]
-  
+  aspects NativityAspect[]
+
   // Clustering metadata
-  clusterHash       String?  // For geometry-based clustering
-  
-  createdAt         DateTime @default(now())
+  clusterHash String? // For geometry-based clustering
+
+  createdAt DateTime @default(now())
 }
 
 model AngularDistance {
-  id              String   @id @default(auto()) @map("_id") @db.ObjectId
-  geometryIndexId String   @db.ObjectId
+  id              String        @id @default(auto()) @map("_id") @db.ObjectId
+  geometryIndexId String        @db.ObjectId
   geometryIndex   GeometryIndex @relation(fields: [geometryIndexId], references: [id], onDelete: Cascade)
-  
-  planet1         String
-  planet2         String
-  
+
+  planet1 String
+  planet2 String
+
   // Angular distance vector
-  distance        Float    // Degrees
-  minDistance     Float?   // Orb consideration
-  maxDistance     Float?
-  
+  distance    Float // Degrees
+  minDistance Float? // Orb consideration
+  maxDistance Float?
+
   // Speed-weighted similarity
-  speedWeighting  Float    @default(1.0)
-  
-  createdAt       DateTime @default(now())
-  
+  speedWeighting Float @default(1.0)
+
+  createdAt DateTime @default(now())
+
   @@unique([geometryIndexId, planet1, planet2])
   @@index([geometryIndexId])
 }
 
 model NativityAspect {
-  id              String   @id @default(auto()) @map("_id") @db.ObjectId
-  nativityChartId String   @db.ObjectId
+  id              String        @id @default(auto()) @map("_id") @db.ObjectId
+  nativityChartId String        @db.ObjectId
   nativityChart   NativityChart @relation(fields: [nativityChartId], references: [id], onDelete: Cascade)
-  
-  geometryIndexId String   @db.ObjectId
+
+  geometryIndexId String        @db.ObjectId
   geometryIndex   GeometryIndex @relation(fields: [geometryIndexId], references: [id], onDelete: Cascade)
-  
+
   // Aspect definition
-  planet1         String
-  planet2         String
-  aspectType      String   // conjunction, opposition, square, trine, sextile
-  
+  planet1    String
+  planet2    String
+  aspectType String // conjunction, opposition, square, trine, sextile
+
   // Exactness & phase
-  orbDistance     Float    // Degrees from exact
-  isApplying      Boolean  // Applying vs separating
-  exactnessScore  Float    @default(0.0) // 0-1
-  
+  orbDistance    Float // Degrees from exact
+  isApplying     Boolean // Applying vs separating
+  exactnessScore Float   @default(0.0) // 0-1
+
   // Aspect timing
-  exactDateTime   DateTime?
-  buildUpStart    DateTime?
-  decayEnd        DateTime?
-  
+  exactDateTime DateTime?
+  buildUpStart  DateTime?
+  decayEnd      DateTime?
+
   // Orb & weighting rules
-  orbStrength     Float    @default(1.0)
-  speedWeighting  Float    @default(1.0)
-  
+  orbStrength    Float @default(1.0)
+  speedWeighting Float @default(1.0)
+
   // Planetary profile integration
-  planet1ProfileId String? @db.ObjectId
-  planet1Profile  PlanetaryProfile? @relation("aspect_planet1", fields: [planet1ProfileId], references: [id])
-  
-  planet2ProfileId String? @db.ObjectId
-  planet2Profile  PlanetaryProfile? @relation("aspect_planet2", fields: [planet2ProfileId], references: [id])
-  
-  createdAt       DateTime @default(now())
-  
+  planet1ProfileId String?           @db.ObjectId
+  planet1Profile   PlanetaryProfile? @relation("aspect_planet1", fields: [planet1ProfileId], references: [id])
+
+  planet2ProfileId String?           @db.ObjectId
+  planet2Profile   PlanetaryProfile? @relation("aspect_planet2", fields: [planet2ProfileId], references: [id])
+
+  createdAt DateTime @default(now())
+
   @@index([nativityChartId, planet1, planet2])
   @@index([aspectType])
   @@index([isApplying])
 }
 
 model PlanetaryProfile {
-  id              String   @id @default(auto()) @map("_id") @db.ObjectId
-  nativityChartId String   @db.ObjectId
+  id              String        @id @default(auto()) @map("_id") @db.ObjectId
+  nativityChartId String        @db.ObjectId
   nativityChart   NativityChart @relation(fields: [nativityChartId], references: [id], onDelete: Cascade)
-  
-  planet          String
-  
+
+  planet String
+
+  // ============= POSITIONAL DATA (from EphemerisSnapshot) =============
+  longitude Float // Sidereal longitude
+  latitude  Float? // If applicable
+
+  // Velocity state (SIGNED)
+  speed        Float? // Degrees per day (signed: + direct, - retrograde)
+  acceleration Float? // Optional but recommended
+
+  // Direction states
+  direction           PlanetDirection @default(DIRECT)
+  stationaryEnterTime DateTime?
+  stationaryExitTime  DateTime?
+
+  // House mapping
+  houseCusp            Int? // 1-12
+  houseDegree          Float?
+  houseSign            String?
+  relativeAngularIndex Float? // For planet-planet relationships
+
+  // ============= DOMAIN & DIGNITY DATA =============
   // Domain authority mapping
   primaryDomain   String?
   secondaryDomain String?
-  
+
   // Incentive model inputs
-  dignity         String?  // Exalted, Domicile, Detriment, Fall
-  strength        Float    @default(0.0) // 0-1 normalized
-  speed           Float    // Degrees per day
-  visibility      Float    @default(0.0) // 0-1
-  
-  // Planetary energy budget
-  expressionBandwidth Float @default(1.0) // Finite bandwidth
-  saturationLevel     Float @default(0.0) // Over-aspected detection
-  distortionFactor    Float @default(0.0) // Saturation handling
-  
-  // Context schema
-  housePosition   Int?     // 1-12
-  signPosition    String?
-  
+  dignity  String? // Exalted, Domicile, Detriment, Fall
+  strength Float?
+  // ============= PLANETARY ENERGY BUDGET =============
+  // expressionBandwidth Float? // Finite bandwidth (optional)
+  // saturationLevel     Float? @default(0.0) // Over-aspected detection
+  // distortionFactor    Float? @default(0.0) // Saturation handling
+
   // Aspects this planet is involved in
-  aspectsAsP1     NativityAspect[] @relation("aspect_planet1")
-  aspectsAsP2     NativityAspect[] @relation("aspect_planet2")
-  
-  createdAt       DateTime @default(now())
-  
+  aspectsAsP1 NativityAspect[] @relation("aspect_planet1")
+  aspectsAsP2 NativityAspect[] @relation("aspect_planet2")
+
+  createdAt DateTime @default(now())
+
   @@index([nativityChartId, planet])
+  @@index([direction])
 }
 
 model StateVector {
-  id              String   @id @default(auto()) @map("_id") @db.ObjectId
-  nativityChartId String   @db.ObjectId
+  id              String        @id @default(auto()) @map("_id") @db.ObjectId
+  nativityChartId String        @db.ObjectId
   nativityChart   NativityChart @relation(fields: [nativityChartId], references: [id], onDelete: Cascade)
-  
+
   // Temporal memory (NOT chat memory)
-  timestamp       DateTime
-  timestampMicro  BigInt   // Microsecond precision
-  
+  timestamp      DateTime
+  timestampMicro BigInt // Microsecond precision
+
   // Full state vector
-  planetaryStates String   @db.String @default("[]") // JSON serialized PlanetData[]
-  aspectStates    String   @db.String @default("[]") // JSON serialized Aspect[]
-  
+  planetaryStates String @default("[]") @db.String // JSON serialized PlanetData[]
+  aspectStates    String @default("[]") @db.String // JSON serialized Aspect[]
+
   // Attached metadata
-  outcomes        String?  @db.String // JSON: outcome tags
-  decisions       String?  @db.String // JSON: decision logs
-  narratives      String?  @db.String // JSON: separate narrative layer
-  
+  outcomes   String? @db.String // JSON: outcome tags
+  decisions  String? @db.String // JSON: decision logs
+  narratives String? @db.String // JSON: separate narrative layer
+
   // Hierarchical memory
-  eventLayer      Boolean  @default(false)
-  patternLayer    Boolean  @default(false)
-  archetypeLayer  Boolean  @default(false)
-  
+  eventLayer     Boolean @default(false)
+  patternLayer   Boolean @default(false)
+  archetypeLayer Boolean @default(false)
+
   // Memory hygiene
-  confidenceLevel Float    @default(1.0)
-  entropyScore    Float    @default(0.0)
-  
-  createdAt       DateTime @default(now())
-  
+  confidenceLevel Float @default(1.0)
+  entropyScore    Float @default(0.0)
+
+  createdAt DateTime @default(now())
+
   @@index([nativityChartId, timestamp])
   @@index([timestamp])
 }
 
 model PurposeState {
-  id              String   @id @default(auto()) @map("_id") @db.ObjectId
-  nativityChartId String   @db.ObjectId
+  id              String        @id @default(auto()) @map("_id") @db.ObjectId
+  nativityChartId String        @db.ObjectId
   nativityChart   NativityChart @relation(fields: [nativityChartId], references: [id], onDelete: Cascade)
-  
+
   // Temporal anchor for purpose computation
-  timestamp       DateTime
-  timestampMicro  BigInt   // Microsecond precision
-  
+  timestamp      DateTime
+  timestampMicro BigInt // Microsecond precision
+
   // Source state data (inspired by StateVector)
-  planetaryStates String   @db.String @default("[]") // JSON serialized PlanetData[]
-  aspectStates    String   @db.String @default("[]") // JSON serialized Aspect[]
-  outcomes        String?  @db.String // JSON: outcome tags
-  decisions       String?  @db.String // JSON: decision logs
-  narratives      String?  @db.String // JSON: narrative context
-  
+  planetaryStates String  @default("[]") @db.String // JSON serialized PlanetData[]
+  aspectStates    String  @default("[]") @db.String // JSON serialized Aspect[]
+  outcomes        String? @db.String // JSON: outcome tags
+  decisions       String? @db.String // JSON: decision logs
+  narratives      String? @db.String // JSON: narrative context
+
   // Computation inputs
-  intentSignals   String   @db.String @default("[]") // JSON: intent / mission signals
-  priorityWeights String   @db.String @default("{}") // JSON: weighted priorities
-  constraintFlags String   @db.String @default("[]") // JSON: active constraints
-  
+  intentSignals   String @default("[]") @db.String // JSON: intent / mission signals
+  priorityWeights String @default("{}") @db.String // JSON: weighted priorities
+  constraintFlags String @default("[]") @db.String // JSON: active constraints
+
   // Computed vector output
-  purposeVector   String?  @db.String // JSON serialized purpose vector
-  vectorVersion   String   @default("v1")
-  computedAt      DateTime?
-  
+  purposeVector String?   @db.String // JSON serialized purpose vector
+  vectorVersion String    @default("v1")
+  computedAt    DateTime?
+
   // Quality metrics
-  confidenceLevel Float    @default(1.0)
-  entropyScore    Float    @default(0.0)
-  
-  createdAt       DateTime @default(now())
-  
+  confidenceLevel Float @default(1.0)
+  entropyScore    Float @default(0.0)
+
+  createdAt DateTime @default(now())
+
   @@index([nativityChartId, timestamp])
   @@index([timestamp])
   @@index([computedAt])
 }
 
 model SimilarityRecord {
-  id              String   @id @default(auto()) @map("_id") @db.ObjectId
-  nativityChartId String   @db.ObjectId
+  id              String        @id @default(auto()) @map("_id") @db.ObjectId
+  nativityChartId String        @db.ObjectId
   nativityChart   NativityChart @relation(fields: [nativityChartId], references: [id], onDelete: Cascade)
-  
+
   // Geometry-based distance function
-  similarTo       String   // Reference chart ID or timestamp
-  similarityScore Float    // 0-1, geometric distance
-  
+  similarTo       String // Reference chart ID or timestamp
+  similarityScore Float // 0-1, geometric distance
+
   // Included in similarity
-  speedWeighting  Boolean  @default(true)
-  phaseWeighting  Boolean  @default(true)
-  orbWeighting    Boolean  @default(true)
-  
+  speedWeighting Boolean @default(true)
+  phaseWeighting Boolean @default(true)
+  orbWeighting   Boolean @default(true)
+
   // Query metadata
-  queryType       String   // "past", "future", "similar_pattern"
-  
-  createdAt       DateTime @default(now())
-  
+  queryType String // "past", "future", "similar_pattern"
+
+  createdAt DateTime @default(now())
+
   @@index([nativityChartId, similarityScore])
 }
+
 // ============================================================================
 // CURRENT STORY MODELS - Rashoff Theatre
 // ============================================================================
 
 model CurrentStory {
-  id                String   @id @default(auto()) @map("_id") @db.ObjectId
-  nativityChartId   String   @db.ObjectId
-  nativityChart     NativityChart @relation(fields: [nativityChartId], references: [id], onDelete: Cascade)
-  
+  id              String        @id @default(auto()) @map("_id") @db.ObjectId
+  nativityChartId String        @db.ObjectId
+  nativityChart   NativityChart @relation(fields: [nativityChartId], references: [id], onDelete: Cascade)
+
   // Current transit data
-  transitDate       DateTime
-  userLatitude      Float
-  userLongitude     Float
-  userTimeZone      String?
-  
+  transitDate   DateTime
+  userLatitude  Float
+  userLongitude Float
+  userTimeZone  String?
+
   // Planetary scenes (one per planet)
-  scenes            PlanetaryScene[]
-  
+  scenes PlanetaryScene[]
+
   // Current Story State - collective state modified by all planets
-  storyState        Json // Contains comprehensive behavioral state analysis
-  
+  storyState Json // Contains comprehensive behavioral state analysis
+
   // AI generated plot twist
-  mainNarrative     String   @db.String
-  overallIntensity  Float
-  themes            String[]
-  
+  mainNarrative    String   @db.String
+  overallIntensity Float
+  themes           String[]
+
   // Metadata
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
-  expiresAt         DateTime // Re-generate daily
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  expiresAt DateTime // Re-generate daily
 
   @@index([nativityChartId])
   @@index([transitDate])
 }
 
 model PlanetaryScene {
-  id                String   @id @default(auto()) @map("_id") @db.ObjectId
-  currentStoryId    String   @db.ObjectId
-  currentStory      CurrentStory @relation(fields: [currentStoryId], references: [id], onDelete: Cascade)
+  id             String       @id @default(auto()) @map("_id") @db.ObjectId
+  currentStoryId String       @db.ObjectId
+  currentStory   CurrentStory @relation(fields: [currentStoryId], references: [id], onDelete: Cascade)
 
   // COMPUTED CORE
-  planet            String
-  sign              String
-  house             Int
-  natalLongitude    Float
-  currentLongitude  Float
-  movementDegrees   Float
-  intensity         Float
+  planet           String
+  sign             String
+  house            Int
+  natalLongitude   Float
+  currentLongitude Float
+  movementDegrees  Float
+  intensity        Float
 
   // PRIMARY DISTILLED PRESSURES
-  dominantPressure  String?
-  behavioralPattern String?
-  externalConflict  String?
+  dominantPressure   String?
+  behavioralPattern  String?
+  externalConflict   String?
   relationshipEffect String?
-  pressureDirection String?
-  collapseRisk      Float?
-  momentumDirection String?
-  storyFunction     String?
+  pressureDirection  String?
+  collapseRisk       Float?
+  momentumDirection  String?
+  storyFunction      String?
 
   // TRANSIT DATA
-  activeAspects     String[]
+  activeAspects String[]
 
   // FULL STRUCTURED STATE
-  sceneAttributes   Json?
+  sceneAttributes Json?
 
-  createdAt         DateTime @default(now())
+  createdAt DateTime @default(now())
 
   @@index([currentStoryId])
   @@index([planet])
-}      
+}
+
+model ConsciousnessState {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  nativityChartId String        @db.ObjectId
+  nativityChart   NativityChart @relation(fields: [nativityChartId], references: [id], onDelete: Cascade)
+
+  // Temporal Anchor
+  timestamp      DateTime
+  timestampMicro BigInt
+
+  // Source references
+  ephemerisSnapshotId String? @db.ObjectId
+  geometryIndexId     String? @db.ObjectId
+
+  // EXISTENTIAL FIELD
+  existentialField Json
+
+  // COGNITIVE FIELD
+  cognitiveField Json
+
+  // PLANETARY CONTRIBUTIONS
+  planetaryStates Json
+
+  // ASPECT COUPLING STATES
+  couplingStates Json
+
+  // META-DYNAMICS
+  entropyScore   Float
+  coherenceScore Float
+  tensionScore   Float
+  noveltyScore   Float
+
+  // TEMPORAL MOTION
+  trajectoryVector Json?
+
+  // LATENT EMBEDDING
+  latentVector Json?
+
+  // VECTOR VERSIONING
+  vectorVersion String @default("v1")
+
+  // COMPUTATION METADATA
+  simulationSource String?
+  confidenceScore  Float   @default(1.0)
+
+  createdAt DateTime @default(now())
+
+  @@index([nativityChartId, timestamp])
+  @@index([timestamp])
+}

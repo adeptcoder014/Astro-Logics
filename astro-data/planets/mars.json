@@ -1,6 +1,5 @@
 {
   "id": "MARS",
-
   "classification": {
     "planetType": "PERSONAL",
     "elementalNature": [
@@ -19,10 +18,8 @@
       "DRY"
     ]
   },
-
   "coreEssence": {
     "corePrinciple": "directed force",
-
     "archetypes": [
       "action",
       "conflict",
@@ -31,7 +28,6 @@
       "survival",
       "willpower"
     ],
-
     "expressionDomains": [
       "initiative",
       "competition",
@@ -40,7 +36,6 @@
       "sexual drive",
       "boundary enforcement"
     ],
-
     "governingFunctions": [
       "initiating action",
       "asserting boundaries",
@@ -50,7 +45,6 @@
       "confronting obstacles"
     ]
   },
-
   "motivationalStructure": {
     "coreNeeds": [
       "autonomy",
@@ -59,7 +53,6 @@
       "control",
       "direct expression"
     ],
-
     "coreFears": [
       "powerlessness",
       "submission",
@@ -67,7 +60,6 @@
       "defeat",
       "suppressed desire"
     ],
-
     "desirePatterns": [
       "to conquer obstacles",
       "to assert independence",
@@ -76,7 +68,6 @@
       "to express raw energy"
     ]
   },
-
   "vectorModifiers": {
     "self_vs_other": 0.95,
     "resource_vs_loss": 0.6,
@@ -85,7 +76,16 @@
     "creation_vs_collective": 0.4,
     "order_vs_dissolution": 0.8
   },
-
+  "cognitiveVector": {
+    "arousal": 0.9,
+    "agency": 0.85,
+    "coherence": -0.2,
+    "stability": -0.4,
+    "orientation": 0.8,
+    "novelty": 0.7,
+    "abstraction": -0.5,
+    "valence": -0.1
+  },
   "symbolicLayer": {
     "symbols": [
       "weapons",
@@ -96,7 +96,6 @@
       "storms",
       "armor"
     ],
-
     "associatedEnvironments": [
       "battlefields",
       "competitive systems",
@@ -105,7 +104,6 @@
       "military structures",
       "conflict zones"
     ],
-
     "bodyCorrelation": [
       "muscles",
       "blood",

@@ -6,7 +6,8 @@ import { getSwissEph } from "~/server/astro/swissEph";
 import { StoryGenerator, type NativityContext } from "~/server/services/storyGenerator";
 import { PlanetaryPersonalityService } from "~/server/services/planetaryPersonality";
 import { TransitCalculator } from "~/server/services/transitCalculator";
-import { synthesizeSceneAttributes } from "~/server/services/astroOntology";
+import { SarvatobhadraCalculator } from "~/server/services/sarvatobhadraCalculator";
+import { getPlanetOntology, synthesizeSceneAttributes } from "~/server/services/astroOntology";
 import { buildComicPrompt, type PromptInput } from "~/lib/promptCompiler";
 import {
   calculatePlanetaryDignity,
@@ -22,7 +23,15 @@ import {
 } from "./helpers";
 import chalk from "chalk";
 import { createProvider } from "../../../../llm/providers/provider";
-
+import {
+  logSection,
+  logStep,
+  logSuccess,
+  logWarn,
+  logError,
+  logData,
+  logDivider
+} from "../../utils/logger";
 const safeJSONParse = <T>(value: string, fallback: T): T => {
   try {
     return JSON.parse(value) as T;
@@ -285,27 +294,109 @@ export const nativityRouter = createTRPCRouter({
       return chart;
     }),
 
+  // =========================================================
+  // CREATE CHART PROCEDURE
+  // =========================================================
+
   createChart: protectedProcedure
     .input(CreateNativityChartSchema)
     .mutation(async ({ ctx, input }) => {
+
       const swe = await getSwissEph();
 
+      logSection("Nativity Chart Creation");
+
       try {
-        const birthTimestamp = input.birthDateTime.getTime();
-        const dateTime = new Date(input.birthDateTime);
-        const year = dateTime.getUTCFullYear();
-        const month = dateTime.getUTCMonth() + 1;
-        const day = dateTime.getUTCDate();
+
+        // ===================================================
+        // INITIALIZATION
+        // ===================================================
+
+        logStep(
+          `Creating chart for ${input.name}`
+        );
+
+        logData(
+          "Birth Date",
+          input.birthDateTime
+        );
+
+        logData(
+          "Coordinates",
+          {
+            latitude: input.latitude,
+            longitude: input.longitude
+          }
+        );
+
+        logData(
+          "Coordinate System",
+          input.coordinateSystem
+        );
+
+        logDivider();
+
+
+        // ===================================================
+        // TIME COMPUTATION
+        // ===================================================
+
+        logSection("Astronomical Time Computation");
+
+        const birthTimestamp =
+          input.birthDateTime.getTime();
+
+        const dateTime =
+          new Date(input.birthDateTime);
+
+        const year =
+          dateTime.getUTCFullYear();
+
+        const month =
+          dateTime.getUTCMonth() + 1;
+
+        const day =
+          dateTime.getUTCDate();
+
         const hours =
           dateTime.getUTCHours() +
           dateTime.getUTCMinutes() / 60 +
           dateTime.getUTCSeconds() / 3600;
 
-        const jd = swe.julday(year, month, day, hours, 1);
+
+        const jd = swe.julday(
+          year,
+          month,
+          day,
+          hours,
+          1
+        );
+
+        logSuccess(
+          "Computed Julian Day"
+        );
+
+        logData(
+          "Julian Day",
+          jd
+        );
+
         const flags =
           input.coordinateSystem === "SIDEREAL"
             ? swe.SEFLG_SIDEREAL
             : swe.SEFLG_TROPIC;
+
+        logData(
+          "Swiss Flags",
+          flags
+        );
+
+        logDivider();
+
+
+        // ===================================================
+        // PLANET DEFINITIONS
+        // ===================================================
 
         const planetsToCalc = [
           swe.SE_SUN,
@@ -335,224 +426,626 @@ export const nativityRouter = createTRPCRouter({
           "MEAN_NODE",
         ];
 
-        const housesResult = swe.houses_ex(
-          jd,
-          flags,
-          input.latitude,
-          input.longitude,
-          "P"
+
+        // ===================================================
+        // HOUSES
+        // ===================================================
+
+        logSection(
+          "Observer Frame Geometry"
         );
 
-        // Extract cusps and angles
-        const cusps = housesResult.cusps || [];
-        const ascmc = housesResult.ascmc || [];
-        const ascendantLongitude = ascmc[0] || 0; // Ascendant (1st house cusp)
+        const housesResult =
+          swe.houses_ex(
+            jd,
+            flags,
+            input.latitude,
+            input.longitude,
+            "P"
+          );
 
-        // Create ephemeris snapshot with planets
-        const planetDataForCreate = planetsToCalc.map((planetId, idx) => {
-          const res = swe.calc_ut(jd, planetId, flags);
-          const planetName = planetNames[idx]!;
+        const cusps =
+          housesResult.cusps || [];
 
-          let direction = "DIRECT";
-          if (res[3] < 0) direction = "RETROGRADE";
+        const ascmc =
+          housesResult.ascmc || [];
 
-          // Calculate house using Whole Sign system (Vedic/Sidereal)
-          const houseInfo = calculateWholeSignHouse(res[0], ascendantLongitude);
-          const houseCusp = houseInfo.house;
-          const houseDegree = houseInfo.degree;
-          const houseSign = houseInfo.sign;
+        const ascendantLongitude =
+          ascmc[0] || 0;
 
-          return {
-            planet: planetName,
-            longitude: res[0],
-            latitude: res[1],
-            speed: res[3],
-            acceleration: res[5],
-            direction: res[3] > 0 ? "DIRECT" : "RETROGRADE",
-            houseCusp,
-            houseDegree,
-            houseSign,
-          };
-        });
+        logSuccess(
+          "Computed Ascendant"
+        );
 
-        // Create the main nativity chart first (without relations)
-        const chartData: any = {
-          userId: ctx.session.user.id!,
-          name: input.name,
-          description: input.description || "",
-          birthDateTime: input.birthDateTime,
-          birthTimestamp: BigInt(birthTimestamp),
-          timeResolution: input.timeResolution,
-          coordinateSystem: input.coordinateSystem,
-          latitude: input.latitude,
-          longitude: input.longitude,
-          timezone: input.timezone,
-          locationName: input.locationName || "",
-        };
+        logData(
+          "Ascendant Longitude",
+          ascendantLongitude
+        );
 
-        const nativityChart = await db.nativityChart.create({
-          data: chartData,
-        });
+        logData(
+          "House Cusps",
+          cusps
+        );
 
-        // Now create ephemeris data with the actual chart ID
-        const ephemerisData = await db.ephemerisSnapshot.create({
-          data: {
-            nativityChartId: nativityChart.id,
-            absoluteTimeIndex: BigInt(birthTimestamp),
-            planets: {
-              create: planetDataForCreate.map(p => ({
-                ...p,
-                direction: p.direction as any,
-              })),
-            },
-          },
-          include: { planets: true },
-        });
+        logDivider();
 
-        // Create geometry index with the actual chart ID
-        const angularDistances = ephemerisData.planets
-          .slice(0, -1)
-          .flatMap((p1, i) =>
-            ephemerisData.planets.slice(i + 1).map((p2) => {
-              let distance = Math.abs(p1.longitude - p2.longitude);
-              if (distance > 180) distance = 360 - distance;
+
+        // ===================================================
+        // PLANETARY COMPUTATION
+        // ===================================================
+
+        logSection(
+          "Planetary State Computation"
+        );
+
+        const planetDataForCreate =
+          planetsToCalc.map(
+            (planetId, idx) => {
+
+              const res =
+                swe.calc_ut(
+                  jd,
+                  planetId,
+                  flags
+                );
+
+              const planetName =
+                planetNames[idx]!;
+
+              let direction =
+                "DIRECT";
+
+              if (res[3] < 0) {
+                direction =
+                  "RETROGRADE";
+              }
+
+              const houseInfo =
+                calculateWholeSignHouse(
+                  res[0],
+                  ascendantLongitude
+                );
+
+              const houseCusp =
+                houseInfo.house;
+
+              const houseDegree =
+                houseInfo.degree;
+
+              const houseSign =
+                houseInfo.sign;
+
+
+              // ===============================================
+              // LIVE TERMINAL VISUALIZATION
+              // ===============================================
+
+              console.log(
+                chalk.yellow(
+                  planetName.padEnd(12)
+                ),
+
+                chalk.white(
+                  `${res[0].toFixed(2)}°`
+                ),
+
+                chalk.cyan(
+                  houseSign.padEnd(10)
+                ),
+
+                chalk.green(
+                  `H${houseCusp}`
+                ),
+
+                direction === "RETROGRADE"
+                  ? chalk.red("Rx")
+                  : chalk.gray("D")
+              );
+
 
               return {
-                planet1: p1.planet,
-                planet2: p2.planet,
-                distance,
-                speedWeighting: Math.abs(p1.speed - p2.speed),
+
+                planet: planetName,
+
+                longitude: res[0],
+
+                latitude: res[1],
+
+                speed: res[3],
+
+                acceleration: res[5],
+
+                direction,
+
+                houseCusp,
+
+                houseDegree,
+
+                houseSign,
               };
-            })
+            }
           );
 
-        const geometryIndex = await db.geometryIndex.create({
-          data: {
-            nativityChartId: nativityChart.id,
-            angularDistances: {
-              create: angularDistances.map(d => ({
-                planet1: d.planet1,
-                planet2: d.planet2,
-                distance: d.distance,
-                speedWeighting: d.speedWeighting || 0,
-              })),
+        logSuccess(
+          "Computed all planetary states"
+        );
+
+        logDivider();
+
+
+        // ===================================================
+        // CREATE MAIN CHART
+        // ===================================================
+
+        logSection(
+          "Persisting Nativity Chart"
+        );
+
+        const chartData: any = {
+
+          userId:
+            ctx.session.user.id!,
+
+          name:
+            input.name,
+
+          description:
+            input.description || "",
+
+          birthDateTime:
+            input.birthDateTime,
+
+          birthTimestamp:
+            BigInt(birthTimestamp),
+
+          timeResolution:
+            input.timeResolution,
+
+          coordinateSystem:
+            input.coordinateSystem,
+
+          latitude:
+            input.latitude,
+
+          longitude:
+            input.longitude,
+
+          timezone:
+            input.timezone,
+
+          locationName:
+            input.locationName || "",
+        };
+
+        const nativityChart =
+          await db.nativityChart.create({
+            data: chartData,
+          });
+
+        logSuccess(
+          "Created nativity chart"
+        );
+
+        logData(
+          "Chart ID",
+          nativityChart.id
+        );
+
+        logDivider();
+
+
+        // ===================================================
+        // EPHEMERIS SNAPSHOT
+        // ===================================================
+
+        logSection(
+          "Ephemeris Snapshot"
+        );
+
+        const ephemerisData =
+          await db.ephemerisSnapshot.create({
+            data: {
+              nativityChartId:
+                nativityChart.id,
+
+              absoluteTimeIndex:
+                BigInt(birthTimestamp),
             },
-          },
-          include: { angularDistances: true },
-        });
+          });
 
-        // Detect aspects
-        const detectedAspects = detectAspects(
-          ephemerisData.planets as PlanetDataType[],
-          input.birthDateTime
+        logSuccess(
+          "Stored ephemeris snapshot"
         );
 
-        // Calculate planetary profiles
-        const planetaryProfilesData = ephemerisData.planets.map((planetData) => {
-          const dignity = calculatePlanetaryDignity(
-            planetData.planet,
-            planetData.houseSign || "ARIES",
-            planetData.houseCusp || 1
+        logDivider();
+
+
+        // ===================================================
+        // GEOMETRIC RELATIONS
+        // ===================================================
+
+        logSection(
+          "Angular Geometry Network"
+        );
+
+        const angularDistances =
+          planetDataForCreate
+            .slice(0, -1)
+            .flatMap((p1, i) =>
+              planetDataForCreate
+                .slice(i + 1)
+                .map((p2) => {
+
+                  let distance =
+                    Math.abs(
+                      p1.longitude -
+                      p2.longitude
+                    );
+
+                  if (distance > 180) {
+                    distance =
+                      360 - distance;
+                  }
+
+                  return {
+                    planet1:
+                      p1.planet,
+
+                    planet2:
+                      p2.planet,
+
+                    distance,
+
+                    speedWeighting:
+                      Math.abs(
+                        p1.speed -
+                        p2.speed
+                      ),
+                  };
+                })
+            );
+
+        logSuccess(
+          `Computed ${angularDistances.length} angular relations`
+        );
+
+        const geometryIndex =
+          await db.geometryIndex.create({
+
+            data: {
+
+              nativityChartId:
+                nativityChart.id,
+
+              angularDistances: {
+
+                create:
+                  angularDistances.map(
+                    d => ({
+
+                      planet1:
+                        d.planet1,
+
+                      planet2:
+                        d.planet2,
+
+                      distance:
+                        d.distance,
+
+                      speedWeighting:
+                        d.speedWeighting || 0,
+                    })
+                  ),
+              },
+            },
+
+            include: {
+              angularDistances: true
+            },
+          });
+
+        logSuccess(
+          "Stored geometry index"
+        );
+
+        logDivider();
+
+
+        // ===================================================
+        // ASPECT DETECTION
+        // ===================================================
+
+        logSection(
+          "Aspect Network Detection"
+        );
+
+        const detectedAspects =
+          detectAspects(
+            planetDataForCreate as PlanetDataType[],
+            input.birthDateTime
           );
 
-          // Map planet to domain
-          const domainMap: Record<string, { primary: string; secondary?: string }> = {
-            SUN: { primary: "Life Force" },
-            MOON: { primary: "Emotion" },
-            MERCURY: { primary: "Communication" },
-            VENUS: { primary: "Relationships" },
-            MARS: { primary: "Action" },
-            JUPITER: { primary: "Expansion" },
-            SATURN: { primary: "Limitation" },
-            URANUS: { primary: "Innovation" },
-            NEPTUNE: { primary: "Transcendence" },
-            PLUTO: { primary: "Transformation" },
-            MEAN_NODE: { primary: "Destiny" },
-          };
-
-          const domain = domainMap[planetData.planet] || { primary: "Unknown" };
-
-          return {
-            nativityChartId: nativityChart.id,
-            planet: planetData.planet,
-            dignity: dignity.dignityType,
-            strength: dignity.strength,
-            speed: planetData.speed,
-            visibility:
-              planetData.planet === "SUN" || planetData.planet === "MOON"
-                ? 1.0
-                : 0.7,
-            housePosition: planetData.houseCusp,
-            signPosition: planetData.houseSign,
-            expressionBandwidth: 1.0,
-            saturationLevel: 0,
-            distortionFactor: 0,
-            primaryDomain: domain.primary,
-            secondaryDomain: domain.secondary,
-          };
-        });
-
-        const planetaryProfiles = await Promise.all(
-          planetaryProfilesData.map((data) =>
-            db.planetaryProfile.create({ data })
-          )
+        logSuccess(
+          `Detected ${detectedAspects.length} aspects`
         );
 
-        // Create profile ID map for aspects
-        const ptProfileMap = new Map<string, { id: string }>();
+        detectedAspects.forEach(
+          (asp) => {
+
+            console.log(
+
+              chalk.magenta(
+                asp.planet1.padEnd(10)
+              ),
+
+              chalk.gray("—"),
+
+              chalk.cyan(
+                asp.aspectType.padEnd(12)
+              ),
+
+              chalk.gray("—"),
+
+              chalk.magenta(
+                asp.planet2.padEnd(10)
+              ),
+
+              chalk.yellow(
+                `orb ${asp.orbDistance.toFixed(2)}°`
+              )
+            );
+          }
+        );
+
+        logDivider();
+
+
+        // ===================================================
+        // PLANETARY PROFILES
+        // ===================================================
+
+        logSection(
+          "Relational Symbolic Profiles"
+        );
+
+        const planetaryProfilesData =
+          planetDataForCreate.map(
+            (planetData) => {
+
+              const dignity =
+                calculatePlanetaryDignity(
+                  planetData.planet,
+                  planetData.houseSign || "ARIES",
+                  planetData.houseCusp || 1
+                );
+
+              return {
+
+                nativityChartId: nativityChart.id,
+                planet: planetData.planet,
+                longitude: planetData.longitude,
+
+                direction: planetData.direction,
+
+                houseCusp:
+                  planetData.houseCusp,
+
+                houseDegree:
+                  planetData.houseDegree,
+
+                houseSign:
+                  planetData.houseSign,
+              };
+            }
+          );
+
+        const planetaryProfiles =
+          await Promise.all(
+
+            planetaryProfilesData.map(
+              (data) =>
+                db.planetaryProfile.create({
+                  data
+                })
+            )
+          );
+
+        planetaryProfiles.forEach(
+          (p) => {
+
+            console.log(
+
+              chalk.green(
+                p.planet.padEnd(10)
+              ),
+
+              chalk.white(
+                `${p.houseSign}`
+              ),
+
+              chalk.cyan(
+                `H${p.houseCusp}`
+              )
+            );
+          }
+        );
+
+        logSuccess(
+          "Stored planetary profiles"
+        );
+
+        logDivider();
+
+
+        // ===================================================
+        // PROFILE MAP
+        // ===================================================
+
+        const ptProfileMap =
+          new Map<string, { id: string }>();
+
         for (const profile of planetaryProfiles) {
-          ptProfileMap.set(profile.planet, { id: profile.id });
+
+          ptProfileMap.set(
+            profile.planet,
+            { id: profile.id }
+          );
         }
 
-        // Create aspects
+
+        // ===================================================
+        // CREATE ASPECTS
+        // ===================================================
+
+        logSection(
+          "Persisting Aspect Graph"
+        );
+
         await db.nativityAspect.createMany({
-          data: detectedAspects.map((asp) => {
-            const p1ProfileId = ptProfileMap.get(asp.planet1)?.id;
-            const p2ProfileId = ptProfileMap.get(asp.planet2)?.id;
-            return {
-              nativityChartId: nativityChart.id,
-              geometryIndexId: geometryIndex.id,
-              planet1: asp.planet1,
-              planet2: asp.planet2,
-              aspectType: asp.aspectType,
-              orbDistance: asp.orbDistance,
-              isApplying: asp.isApplying,
-              exactnessScore: asp.exactnessScore,
-              orbStrength: asp.orbStrength,
-              speedWeighting: asp.speedWeighting,
-              planet1ProfileId: p1ProfileId || null,
-              planet2ProfileId: p2ProfileId || null,
-            };
-          }),
+
+          data:
+            detectedAspects.map(
+              (asp) => {
+
+                const p1ProfileId =
+                  ptProfileMap.get(
+                    asp.planet1
+                  )?.id;
+
+                const p2ProfileId =
+                  ptProfileMap.get(
+                    asp.planet2
+                  )?.id;
+
+                return {
+
+                  nativityChartId:
+                    nativityChart.id,
+
+                  geometryIndexId:
+                    geometryIndex.id,
+
+                  planet1:
+                    asp.planet1,
+
+                  planet2:
+                    asp.planet2,
+
+                  aspectType:
+                    asp.aspectType,
+
+                  orbDistance:
+                    asp.orbDistance,
+
+                  isApplying:
+                    asp.isApplying,
+
+                  exactnessScore:
+                    asp.exactnessScore,
+
+                  orbStrength:
+                    asp.orbStrength,
+
+                  speedWeighting:
+                    asp.speedWeighting,
+
+                  planet1ProfileId:
+                    p1ProfileId || null,
+
+                  planet2ProfileId:
+                    p2ProfileId || null,
+                };
+              }
+            ),
         });
 
-        // Update nativity chart with relations
-        const finalChart = await db.nativityChart.update({
-          where: { id: nativityChart.id },
-          data: {
-            ephemerisData: {
-              connect: { id: ephemerisData.id },
-            },
-            geometryIndex: {
-              connect: { id: geometryIndex.id },
-            },
-            planetaryProfiles: {
-              connect: planetaryProfiles.map((p) => ({ id: p.id })),
-            },
-          },
-          include: {
-            ephemerisData: { include: { planets: true } },
-            geometryIndex: { include: { angularDistances: true } },
-            planetaryProfiles: true,
-            aspects: true,
-          },
-        });
+        logSuccess(
+          "Stored aspect graph"
+        );
 
+        logDivider();
+
+
+        // ===================================================
+        // FINAL RELATIONAL GRAPH
+        // ===================================================
+
+        logSection(
+          "Final Relational Graph Assembly"
+        );
+
+        const finalChart =
+          await db.nativityChart.update({
+
+            where: {
+              id: nativityChart.id
+            },
+
+            data: {
+
+              ephemerisData: {
+                connect: {
+                  id: ephemerisData.id
+                },
+              },
+
+              geometryIndex: {
+                connect: {
+                  id: geometryIndex.id
+                },
+              },
+
+              planetaryProfiles: {
+                connect:
+                  planetaryProfiles.map(
+                    (p) => ({
+                      id: p.id
+                    })
+                  ),
+              },
+            },
+          });
+
+        logSuccess(
+          "Nativity chart fully assembled"
+        );
+
+        logData(
+          "Final Chart ID",
+          finalChart.id
+        );
+
+        logDivider();
+
+        logSection(
+          "Symbolic Geometry Initialized"
+        );
+
+        console.log(
+          chalk.greenBright.bold(
+            "\n Consciousness observer frame stabilized.\n"
+          )
+        );
+        return
         return finalChart;
+
       } catch (error) {
-        console.error("Nativity chart creation error:", error);
+
+        logSection("ERROR");
+
+        logError(
+          error instanceof Error
+            ? error.message
+            : "Unknown error"
+        );
+
+        console.error(error);
+
         throw new Error(
-          `Failed to create nativity chart: ${error instanceof Error ? error.message : "Unknown error"}`
+          `Failed to create nativity chart: ${error instanceof Error
+            ? error.message
+            : "Unknown error"
+          }`
         );
       }
     }),
@@ -620,9 +1113,7 @@ export const nativityRouter = createTRPCRouter({
       const chart = await db.nativityChart.findUnique({
         where: { id: input.nativityChartId },
         include: {
-          ephemerisData: {
-            include: { planets: true },
-          },
+          ephemerisData: true,
           planetaryProfiles: true,
           aspects: true,
           geometryIndex: {
@@ -639,16 +1130,16 @@ export const nativityRouter = createTRPCRouter({
         throw new Error("Unauthorized");
       }
 
-      // Format data for story generator
-      const planets = chart.ephemerisData?.planets.map((p) => ({
+      // Format data for story generator from planetary profiles
+      const planets = chart.planetaryProfiles.map((p) => ({
         planet: p.planet,
         longitude: p.longitude,
         latitude: p.latitude,
         speed: p.speed,
         direction: p.direction,
-        houseCusp: 1, // Extract from data if available
-        houseSign: "ARIES", // Extract from data if available
-      })) ?? [];
+        houseCusp: p.houseCusp || 1,
+        houseSign: p.houseSign || "ARIES",
+      }));
 
       const aspects = chart.aspects.map((a) => ({
         planet1: a.planet1,
@@ -726,9 +1217,7 @@ export const nativityRouter = createTRPCRouter({
         include: {
           planetaryProfiles: true,
           aspects: true,
-          ephemerisData: {
-            include: { planets: true },
-          },
+          ephemerisData: true,
         },
       });
 
@@ -743,18 +1232,13 @@ export const nativityRouter = createTRPCRouter({
       const personalityService = new PlanetaryPersonalityService();
 
       const planetPersonalities = chart.planetaryProfiles.map((profile) => {
-        // Find ephemeris data for house/sign info
-        const ephemerisData = chart.ephemerisData?.planets.find(
-          (p) => p.planet === profile.planet,
-        );
-
         return personalityService.buildPlanetPersonality(
           profile,
           chart.aspects,
-          ephemerisData?.houseCusp || 1,
-          ephemerisData?.houseSign || "ARIES",
-          ephemerisData?.direction === "RETROGRADE",
-          ephemerisData?.speed || 0,
+          profile.houseCusp || 1,
+          profile.houseSign || "ARIES",
+          profile.direction === "RETROGRADE",
+          profile.speed || 0,
         );
       });
 
@@ -784,12 +1268,11 @@ export const nativityRouter = createTRPCRouter({
       if (chart.userId !== ctx.session.user.id) throw new Error('Unauthorized');
 
       const profile = chart.planetaryProfiles.find((p) => p.planet === input.planet);
-      const ephemeris = chart.ephemerisData?.planets.find((p) => p.planet === input.planet);
 
       if (!profile) throw new Error('Planet profile not found');
 
       const context: NativityContext = {
-        planets: chart.ephemerisData?.planets.map((p) => ({
+        planets: chart.planetaryProfiles.map((p) => ({
           planet: p.planet,
           longitude: p.longitude,
           latitude: p.latitude,
@@ -797,7 +1280,7 @@ export const nativityRouter = createTRPCRouter({
           direction: p.direction,
           houseCusp: p.houseCusp || 1,
           houseSign: p.houseSign || 'ARIES',
-        })) || [],
+        })),
         aspects: chart.aspects.map((a) => ({
           planet1: a.planet1,
           planet2: a.planet2,
@@ -871,10 +1354,10 @@ export const nativityRouter = createTRPCRouter({
       const transitCalc = new TransitCalculator();
 
       console.log(chalk.bgBlueBright('\n...................  INITIALISING Planetary_Tithis ...................'))
-      const natalPlanets = chart.ephemerisData?.planets.map((p) => ({
+      const natalPlanets = chart.planetaryProfiles.map((p) => ({
         planet: p.planet,
         longitude: p.longitude,
-      })) ?? [];
+      }));
       console.log(chalk.bgGreen('  Calculated Natal Data ✓ '))
       const transitSnapshot = await transitCalc.getTransitSnapshot(
         now,
@@ -933,7 +1416,7 @@ export const nativityRouter = createTRPCRouter({
           expiresAt: new Date(now.getTime() + 24 * 60 * 60 * 1000),
           scenes: {
             create: currentScenes.map((scene) => {
-              const natalPlanet = chart.ephemerisData?.planets.find((p) => p.planet === scene.planet);
+              const natalPlanet = chart.planetaryProfiles.find((p) => p.planet === scene.planet);
               const sign = natalPlanet?.houseSign || [
                 'ARIES', 'TAURUS', 'GEMINI', 'CANCER', 'LEO', 'VIRGO',
                 'LIBRA', 'SCORPIO', 'SAGITTARIUS', 'CAPRICORN', 'AQUARIUS', 'PISCES',
@@ -1153,10 +1636,10 @@ export const nativityRouter = createTRPCRouter({
 
       // Step 1: Load natal data
       console.log(chalk.cyan('\n[STEP 1] Loading Natal Planetary Data...'));
-      const natalPlanets = chart.ephemerisData?.planets.map((p) => ({
+      const natalPlanets = chart.planetaryProfiles.map((p) => ({
         planet: p.planet,
         longitude: p.longitude,
-      })) ?? [];
+      }));
       console.log(chalk.green(`  ✓ Loaded ${natalPlanets.length} natal planets`));
       natalPlanets.forEach((p) => {
         console.log(chalk.gray(`    • ${p.planet}: ${p.longitude.toFixed(2)}°`));
@@ -1199,10 +1682,9 @@ export const nativityRouter = createTRPCRouter({
       console.log(chalk.cyan('\n[STEP 5] Synthesizing Scene Attributes from Astro-Data...'));
       const scenesWithAttributes = await Promise.all(
         newScenes.map(async (scene) => {
-          const natalPlanet = chart.ephemerisData?.planets.find((p) => p.planet === scene.planet);
+          const natalPlanet = chart.planetaryProfiles.find((p) => p.planet === scene.planet);
           if (!natalPlanet) return { ...scene, sceneAttributes: null };
 
-          const planetProfile = chart.planetaryProfiles.find((p) => p.planet === scene.planet);
           const activeAspects = Array.isArray(scene.aspectsActive) ? scene.aspectsActive : [];
 
           const sign = natalPlanet.houseSign || [
@@ -1219,7 +1701,7 @@ export const nativityRouter = createTRPCRouter({
             currentLongitude: scene.currentPosition,
             movementDegrees: scene.movementDegrees,
             intensity: Math.round(scene.intensity),
-            planetProfile,
+            planetProfile: natalPlanet,
             activeAspects: activeAspects.map((aspect) => ({ aspectType: aspect.aspectType })),
           });
           console.log(chalk.bgRed(`    • ${scene.planet}: Synthesized attributes - Pressure: ${attributes.pressureState?.dominantPressure}, Behavioral Pattern: ${attributes.behavioralState?.behavioralPatterns?.[0] || attributes.behavioralState?.primaryBehavior}, External Conflict: ${attributes.situationalState?.sceneHooks?.[0]}, Relationship Effect: ${attributes.relationalState?.relationshipDynamics?.[0]}`));
@@ -1335,7 +1817,7 @@ export const nativityRouter = createTRPCRouter({
 
       // Step 1: Get natal position for this planet
       console.log(chalk.cyan('\n[STEP 1] Loading Natal Data for ' + sceneToUpdate.planet));
-      const natalPlanet = chart.ephemerisData?.planets.find((p) => p.planet === sceneToUpdate.planet);
+      const natalPlanet = chart.planetaryProfiles.find((p) => p.planet === sceneToUpdate.planet);
       if (!natalPlanet) throw new Error(`Natal data not found for ${sceneToUpdate.planet}`);
       console.log(chalk.green(`  ✓ Natal position: ${natalPlanet.longitude.toFixed(2)}°`));
 
@@ -1370,10 +1852,11 @@ export const nativityRouter = createTRPCRouter({
       console.log(chalk.gray(`    External Conflict: ${updatedScene.externalConflict}`));
       console.log(chalk.gray(`    Likely Mistake: ${updatedScene.likelyMistake}`));
 
-      const planetProfile = chart.planetaryProfiles.find((p) => p.planet === sceneToUpdate.planet);
       const planetAspects = chart.aspects.filter(
         (a) => a.planet1 === sceneToUpdate.planet || a.planet2 === sceneToUpdate.planet,
       );
+      const planetOntology = await getPlanetOntology(sceneToUpdate.planet);
+
       const activeAspects = Array.isArray(updatedScene.aspectsActive) ? updatedScene.aspectsActive : [];
       const movementDegrees = typeof updatedScene.movementDegrees === 'number' ? updatedScene.movementDegrees : 0;
 
@@ -1392,9 +1875,15 @@ export const nativityRouter = createTRPCRouter({
         currentLongitude: transitPlanet.longitude,
         movementDegrees,
         intensity: Math.round(updatedScene.intensity),
-        planetProfile,
+        planetProfile: natalPlanet,
         activeAspects: activeAspects.map((aspect) => ({ aspectType: aspect.aspectType })),
       });
+
+      const fullSceneAttributes = {
+        ...sceneAttributes,
+        cognitiveVector: planetOntology?.cognitiveVector ?? null,
+      };
+
       // Step 5: Update database
       console.log(chalk.cyan('\n[STEP 5] Updating Database'));
       const updatedPlanetaryScene = await db.planetaryScene.update({
@@ -1416,7 +1905,7 @@ export const nativityRouter = createTRPCRouter({
           momentumDirection: sceneAttributes.behavioralState?.behavioralMomentum || sceneAttributes.metaState?.adaptationPressure,
           storyFunction: sceneAttributes.narrativeState?.storyFunction,
           activeAspects: updatedScene.aspectsActive.map((a) => JSON.stringify(a)),
-          sceneAttributes: sceneAttributes,
+          sceneAttributes: fullSceneAttributes,
         },
       });
       console.log(chalk.green('  ✓ Scene updated in database'));
@@ -1626,7 +2115,7 @@ User said: "${input.userMessage}"
       return {
         chartId: chart.id,
         chartName: chart.name,
-        planets: chart.ephemerisData?.planets || [],
+        planets: chart.planetaryProfiles,
         aspects: chart.aspects,
         planetaryProfiles: chart.planetaryProfiles,
       };
@@ -1679,52 +2168,27 @@ INTERACTION GUIDELINES:
 • Maintain character as this planetary principle
 • Respond conversationally as if this is genuine dialog with a principle within their psyche`;
 
-        // Build a compact nativity context suitable for the story generator / LLM
-        const nativityContext: NativityContext = {
-          planets: [
-            {
-              planet: context.planet,
-              longitude: context.longitude ?? 0,
-              latitude: context.latitude ?? null,
-              speed: context.speed ?? 0,
-              direction: context.isRetrograde ? 'Retrograde' : 'Direct',
-              houseCusp: context.houseCusp ?? 1,
-              houseSign: context.houseSign || context.zodiacSign || '',
-            },
-          ],
-          aspects: (context.aspectsWithOthers || []).map((a: any) => ({
-            planet1: context.planet,
-            planet2: a.planet,
-            aspectType: a.aspectType,
-            orbDistance: a.orb ?? 0,
-            isApplying: a.isApplying ?? false,
-            exactnessScore: a.strength ?? 0,
-          })),
-          planetaryProfiles: [],
-        };
-
         // Include conversation history in the prompt to provide continuity
         const historyText = (input.conversationHistory || [])
           .map((h) => `${h.role === 'user' ? 'User' : context.planet}: ${h.content} `)
           .join('\n');
 
         const userPrompt = input.userMessage === 'greet'
-          ? `Greet the user as ${context.planet} in ${context.zodiacSign} (house ${context.houseCusp}). Keep it short and in -character.`
-          : `${input.userMessage} \n\nConversation history: \n${historyText} `;
+          ? `Greet the user as ${context.planet} in ${context.zodiacSign} (house ${context.houseCusp}). Keep it short and in-character.`
+          : `${input.userMessage} \n\nConversation history: \n${historyText}`;
 
-        const generator = new StoryGenerator({
-          useLocal: process.env.USE_LOCAL_LLM === 'true',
-          baseUrl: process.env.OLLAMA_URL || 'http://127.0.0.1:11434',
-          model: process.env.OLLAMA_MODEL || 'qwen3-coder-next:cloud',
-          timeoutMs: process.env.LLM_TIMEOUT_MS ? parseInt(process.env.LLM_TIMEOUT_MS) : undefined,
-          maxContextTokens: process.env.LLM_MAX_CONTEXT ? parseInt(process.env.LLM_MAX_CONTEXT) : 1_000_000,
+        const provider = createProvider({
+          provider: 'groq',
+          model: process.env.GROQ_MODEL || 'mixtral-8x7b-32768',
         });
 
-        // Generate a single-turn response using the configured LLM
-        const reply = await generator.generateStory(nativityContext, userPrompt);
+        const response = await provider.generate({
+          system: systemPrompt,
+          user: userPrompt,
+        });
 
         return {
-          message: reply,
+          message: response.text.trim(),
           planet: context.planet,
         };
       } catch (error) {
@@ -1848,13 +2312,13 @@ Theme:`;
     .query(async ({ ctx, input }) => {
       const chart = await db.nativityChart.findUnique({
         where: { id: input.nativityChartId },
-        include: { ephemerisData: { include: { planets: true } } },
+        include: { planetaryProfiles: true },
       });
 
       if (!chart) throw new Error('Chart not found');
       if (chart.userId !== ctx.session.user.id) throw new Error('Unauthorized');
 
-      const natalPlanets = (chart.ephemerisData?.planets || []).map((p) => ({ planet: p.planet, longitude: p.longitude }));
+      const natalPlanets = chart.planetaryProfiles.map((p) => ({ planet: p.planet, longitude: p.longitude }));
 
       const start = new Date(input.startDate);
       const end = new Date(input.endDate);
@@ -1877,7 +2341,7 @@ Theme:`;
 
       for (const d of days) {
         const snapshot = await transitCalc.getTransitSnapshot(d, chart.latitude || 0, chart.longitude || 0);
-        const scenes = await transitCalc.calculateTransitAspects(natalPlanets, snapshot.planets);
+        const scenes = await transitCalc.calculatePlanetaryTithis(natalPlanets, snapshot.planets);
 
         const avgIntensity = scenes.length ? Math.round(scenes.reduce((s, sc) => s + sc.intensity, 0) / scenes.length) : 0;
 
@@ -1905,4 +2369,55 @@ Theme:`;
 
       return { timeline, vedhaScores, retroVolatility, aspectTriggers };
     }),
+
+  /**
+   * Get Sarvatobhadra Chakra timeline for auspicious timing analysis
+   */
+  getSarvatobhadraTimeline: protectedProcedure
+    .input(
+      z.object({
+        nativityChartId: z.string(),
+        startDate: z.string(),
+        endDate: z.string(),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      const chart = await db.nativityChart.findUnique({
+        where: { id: input.nativityChartId },
+        include: { ephemerisData: true },
+      });
+
+      if (!chart) throw new Error('Chart not found');
+      if (chart.userId !== ctx.session.user.id) throw new Error('Unauthorized');
+
+      const start = new Date(input.startDate);
+      const end = new Date(input.endDate);
+      if (isNaN(start.getTime()) || isNaN(end.getTime())) throw new Error('Invalid dates');
+
+      const calc = new SarvatobhadraCalculator();
+      const timeline = await calc.calculateSarvatobhadraTimeline(
+        start,
+        end,
+        chart.latitude || 0,
+        chart.longitude || 0,
+        chart.natalLongitude || undefined,
+      );
+
+      return timeline.map((item) => ({
+        date: item.date.toISOString(),
+        overallAuspiciousness: item.overallAuspiciousness,
+        dominantVara: item.dominantVara,
+        dominantNakshatra: item.dominantNakshatra,
+        auspiciousHours: item.auspiciousHours,
+        warningHours: item.warningHours,
+        bestTimeWindow: item.bestTimeWindow,
+        cellsSummary: {
+          total: item.activeCells.length,
+          highScore: Math.max(...item.activeCells.map((c) => c.auspiciousnessScore)),
+          lowScore: Math.min(...item.activeCells.map((c) => c.auspiciousnessScore)),
+          avgScore: Math.round(item.activeCells.reduce((sum, c) => sum + c.auspiciousnessScore, 0) / item.activeCells.length),
+        },
+      }));
+    }),
 });
+

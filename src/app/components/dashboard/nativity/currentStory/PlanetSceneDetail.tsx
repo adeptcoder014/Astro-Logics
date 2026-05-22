@@ -153,11 +153,38 @@ const parseAspects = (aspectStrings: string[]) => {
                        <div className="w-24 h-1.5 bg-black/40 rounded-full overflow-hidden">
                           <div 
                             className="h-full bg-[var(--color-accent-glow)] shadow-[0_0_8px_var(--color-accent-glow)]" 
-                            style={{ width: `${Math.min(100, (Number(value) / 10) * 100)}%` }} 
+                            style={{ width: `${Math.min(100, Number(value) * 100)}%` }} 
                           />
                        </div>
                        <span className="font-black text-[var(--color-accent-glow)] w-6 text-right">
                          {typeof value === 'number' ? value.toFixed(1) : value}
+                       </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {scene.sceneAttributes?.cognitiveVector && (
+            <div className="rounded-3xl bg-[var(--color-primary-dark)] p-6 shadow-xl border border-white/10">
+              <div className="flex items-center gap-2 mb-4 pb-2 border-b border-white/5">
+                <Zap size={14} className="text-[var(--color-accent-glow)]" />
+                <h4 className="text-[10px] uppercase tracking-[0.4em] text-[var(--color-primary-light)] font-black">Planetary Cognitive Vector</h4>
+              </div>
+              <div className="grid grid-cols-1 gap-3 font-mono text-[10px]">
+                {Object.entries(scene.sceneAttributes.cognitiveVector).map(([key, value]) => (
+                  <div key={key} className="flex justify-between items-center text-[var(--color-primary-light)]/80">
+                    <span className="capitalize opacity-60">{key.replace(/([A-Z])/g, ' $1').trim()}</span>
+                    <div className="flex items-center gap-2">
+                       <div className="w-24 h-1.5 bg-black/40 rounded-full overflow-hidden">
+                          <div 
+                            className="h-full bg-[var(--color-accent-glow)] shadow-[0_0_8px_var(--color-accent-glow)]" 
+                            style={{ width: `${Math.min(100, Number(value) * 100)}%` }} 
+                          />
+                       </div>
+                       <span className="font-black text-[var(--color-accent-glow)] w-6 text-right">
+                         {typeof value === 'number' ? value.toFixed(2) : value}
                        </span>
                     </div>
                   </div>

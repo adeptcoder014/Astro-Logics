@@ -184,24 +184,6 @@ exports.Prisma.EphemerisSnapshotScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
-exports.Prisma.PlanetDataScalarFieldEnum = {
-  id: 'id',
-  ephemerisSnapshotId: 'ephemerisSnapshotId',
-  planet: 'planet',
-  longitude: 'longitude',
-  latitude: 'latitude',
-  speed: 'speed',
-  acceleration: 'acceleration',
-  direction: 'direction',
-  stationaryEnterTime: 'stationaryEnterTime',
-  stationaryExitTime: 'stationaryExitTime',
-  houseCusp: 'houseCusp',
-  houseDegree: 'houseDegree',
-  houseSign: 'houseSign',
-  relativeAngularIndex: 'relativeAngularIndex',
-  createdAt: 'createdAt'
-};
-
 exports.Prisma.GeometryIndexScalarFieldEnum = {
   id: 'id',
   nativityChartId: 'nativityChartId',
@@ -245,17 +227,21 @@ exports.Prisma.PlanetaryProfileScalarFieldEnum = {
   id: 'id',
   nativityChartId: 'nativityChartId',
   planet: 'planet',
+  longitude: 'longitude',
+  latitude: 'latitude',
+  speed: 'speed',
+  acceleration: 'acceleration',
+  direction: 'direction',
+  stationaryEnterTime: 'stationaryEnterTime',
+  stationaryExitTime: 'stationaryExitTime',
+  houseCusp: 'houseCusp',
+  houseDegree: 'houseDegree',
+  houseSign: 'houseSign',
+  relativeAngularIndex: 'relativeAngularIndex',
   primaryDomain: 'primaryDomain',
   secondaryDomain: 'secondaryDomain',
   dignity: 'dignity',
   strength: 'strength',
-  speed: 'speed',
-  visibility: 'visibility',
-  expressionBandwidth: 'expressionBandwidth',
-  saturationLevel: 'saturationLevel',
-  distortionFactor: 'distortionFactor',
-  housePosition: 'housePosition',
-  signPosition: 'signPosition',
   createdAt: 'createdAt'
 };
 
@@ -349,6 +335,29 @@ exports.Prisma.PlanetarySceneScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.ConsciousnessStateScalarFieldEnum = {
+  id: 'id',
+  nativityChartId: 'nativityChartId',
+  timestamp: 'timestamp',
+  timestampMicro: 'timestampMicro',
+  ephemerisSnapshotId: 'ephemerisSnapshotId',
+  geometryIndexId: 'geometryIndexId',
+  existentialField: 'existentialField',
+  cognitiveField: 'cognitiveField',
+  planetaryStates: 'planetaryStates',
+  couplingStates: 'couplingStates',
+  entropyScore: 'entropyScore',
+  coherenceScore: 'coherenceScore',
+  tensionScore: 'tensionScore',
+  noveltyScore: 'noveltyScore',
+  trajectoryVector: 'trajectoryVector',
+  latentVector: 'latentVector',
+  vectorVersion: 'vectorVersion',
+  simulationSource: 'simulationSource',
+  confidenceScore: 'confidenceScore',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -381,7 +390,6 @@ exports.Prisma.ModelName = {
   Session: 'Session',
   NativityChart: 'NativityChart',
   EphemerisSnapshot: 'EphemerisSnapshot',
-  PlanetData: 'PlanetData',
   GeometryIndex: 'GeometryIndex',
   AngularDistance: 'AngularDistance',
   NativityAspect: 'NativityAspect',
@@ -390,7 +398,8 @@ exports.Prisma.ModelName = {
   PurposeState: 'PurposeState',
   SimilarityRecord: 'SimilarityRecord',
   CurrentStory: 'CurrentStory',
-  PlanetaryScene: 'PlanetaryScene'
+  PlanetaryScene: 'PlanetaryScene',
+  ConsciousnessState: 'ConsciousnessState'
 };
 
 /**

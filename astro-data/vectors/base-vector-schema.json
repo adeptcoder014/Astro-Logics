@@ -1,8 +1,18 @@
-{
-    "self_vs_other": 0,
-    "resource_vs_loss": 0,
-    "local_vs_expansive": 0,
-    "private_vs_public": 0,
-    "creation_vs_collective": 0,
-    "order_vs_dissolution": 0
-}
+    {
+        "self_vs_other": 0,
+        "resource_vs_loss": 0,
+        "local_vs_expansive": 0,
+        "private_vs_public": 0,
+        "creation_vs_collective": 0,
+        "order_vs_dissolution": 0
+    }
+    {
+        "arousal": 0, // calm ↔ activated
+        "agency": 0, // passive ↔ assertive
+        "coherence": 0, // fragmented ↔ integrated
+        "stability": 0, // volatile ↔ stable
+        "orientation": 0, // inward ↔ outward
+        "novelty": 0, // familiar ↔ exploratory
+        "abstraction": 0, // concrete ↔ symbolic
+        "valence": 0 // difficult ↔ pleasant
+    }  

@@ -1,5 +1,6 @@
-'use client'
-import React, { useState, useEffect, useMemo } from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import { api } from '~/trpc/react';
 import PlanetPersonalityChat from './PlanetPersonalityChat';
 import PlanetCharacter2D, { type CharacterConfig, type CharacterMood } from './PlanetCharacter2D';
@@ -36,16 +37,13 @@ function contextToCharacterConfig(context: PlanetContext): CharacterConfig {
 
   const colors = planetColorMap[context.planet] || { primary: '#888888', secondary: '#555555' };
 
-  // Derive animation speed from aspects and retrograde status
   const aspectCount = context.aspectsWithOthers?.length || 0;
   const isRetrograde = context.isRetrograde;
 
-  // More aspects = faster, more tense character
   const baseTempoFromAspects = 0.3 + (Math.min(aspectCount, 5) / 5) * 0.7;
-  const tempoMultiplier = isRetrograde ? 0.7 : 1.0; // Retrograde = slower
+  const tempoMultiplier = isRetrograde ? 0.7 : 1.0;
   const tempo = baseTempoFromAspects * tempoMultiplier;
 
-  // Determine mood from aspects and dignity
   let mood: CharacterMood = 'neutral';
   const tensionAspects = context.aspectsWithOthers?.filter(a =>
     ['SQUARE', 'OPPOSITION', 'QUINCUNX'].includes(a.aspectType)
@@ -54,7 +52,7 @@ function contextToCharacterConfig(context: PlanetContext): CharacterConfig {
   if (tensionAspects.length > 2) {
     mood = 'shocked';
   } else if (aspectCount === 0) {
-    mood = 'sleepy'; // Unaspected planets
+    mood = 'sleepy';
   } else if (context.dignityScore && context.dignityScore > 2) {
     mood = 'happy';
   }
@@ -78,9 +76,8 @@ function contextToPersona(
   context: PlanetContext,
   personality: any
 ): PlanetPersona {
-  // Map planet name to valid persona planet type
   const planetMap: Record<string, PlanetPersona['planet']> = {
-    SUN: 'Mercury',       // fallback mapping
+    SUN: 'Mercury',
     MOON: 'Mercury',
     MERCURY: 'Mercury',
     VENUS: 'Venus',
@@ -91,7 +88,6 @@ function contextToPersona(
 
   const planetKey = planetMap[context.planet] || 'Mercury';
 
-  // Determine temperament from aspects and retrograde status
   function getTemperament(): PlanetPersona['temperament'] {
     if (context.isRetrograde) return 'calm';
     if (context.aspectsWithOthers.length > 3) return 'agitated';
@@ -99,7 +95,6 @@ function contextToPersona(
     return 'playful';
   }
 
-  // Determine dignity from calculated score
   function getDignity(): PlanetPersona['dignity'] {
     if (context.dignityScore > 3) return 'exalted';
     if (context.dignityScore > 1.5) return 'own';
@@ -107,7 +102,6 @@ function contextToPersona(
     return 'neutral';
   }
 
-  // Calculate expression bias from aspects
   function getExpressionBias() {
     const aspectCount = context.aspectsWithOthers.length;
     const hasHarmonious = context.aspectsWithOthers.some(
@@ -135,13 +129,11 @@ function contextToPersona(
 }
 
 export default function NativityMeetPlanetsTab({ nativityChartId }: MeetProps) {
-  // Fetch full chart data including planets, houses, and aspects
   const { data: chartData, isLoading, error } = api.nativity.getNativityChart.useQuery(
     { nativityChartId },
     { enabled: !!nativityChartId }
   );
 
-  // Fetch personality data for planets
   const { data: planetsData } = api.nativity.getNativityPlanets.useQuery(
     { nativityChartId },
     { enabled: !!nativityChartId }
@@ -152,7 +144,6 @@ export default function NativityMeetPlanetsTab({ nativityChartId }: MeetProps) {
   const [planetPersonas, setPlanetPersonas] = useState<Record<string, PlanetPersona>>({});
   const [planetCharacterConfigs, setPlanetCharacterConfigs] = useState<Record<string, CharacterConfig>>({});
 
-  // Build planet contexts and personas from chart data
   useEffect(() => {
     if (!chartData?.planets || !planetsData?.planets) return;
 
@@ -168,15 +159,11 @@ export default function NativityMeetPlanetsTab({ nativityChartId }: MeetProps) {
       );
       contexts[planet.planet] = context;
 
-      // Find personality data for this planet
       const personData = planetsData.planets.find(
         p => p.planet === planet.planet
       );
 
-      // Convert to visual persona
       personas[planet.planet] = contextToPersona(context, personData);
-
-      // Convert to character animation config
       configs[planet.planet] = contextToCharacterConfig(context);
     }
 
@@ -184,7 +171,6 @@ export default function NativityMeetPlanetsTab({ nativityChartId }: MeetProps) {
     setPlanetPersonas(personas);
     setPlanetCharacterConfigs(configs);
 
-    // Default to first planet
     if (!selectedPlanet && chartData.planets.length > 0) {
       setSelectedPlanet(chartData.planets[0].planet);
     }
@@ -192,16 +178,21 @@ export default function NativityMeetPlanetsTab({ nativityChartId }: MeetProps) {
 
   if (isLoading) {
     return (
-      <div className="h-full flex items-center justify-center bg-[#0F0D0C]">
-        <div className="text-stone-400">Loading chart context...</div>
+      <div className="h-full flex items-center justify-center bg-(--color-primary-dark) text-(--color-primary-light)">
+        <div className="animate-pulse font-medium tracking-wide opacity-80">
+          Mapping planetary alignments...
+        </div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="h-full flex items-center justify-center bg-[#0F0D0C]">
-        <div className="text-red-400">Error loading chart</div>
+      <div className="h-full flex items-center justify-center bg-(--color-primary-dark)">
+        <div className="px-4 py-3 rounded-lg border border-red-500/30 bg-red-500/10 text-red-300 text-sm max-w-md text-center">
+          <p className="font-semibold mb-1">Celestial Interference</p>
+          <p className="opacity-80 text-xs">Failed to gather your natal configuration metrics.</p>
+        </div>
       </div>
     );
   }
@@ -210,70 +201,96 @@ export default function NativityMeetPlanetsTab({ nativityChartId }: MeetProps) {
   const selectedConfig = selectedPlanet ? planetCharacterConfigs[selectedPlanet] : null;
 
   return (
-    <div className="h-full flex flex-col bg-[#0F0D0C]">
-      {/* Header */}
-      <div className="px-6 py-4 border-b border-[#2D241E]">
-        <h3 className="text-lg font-bold text-[#E29626] mb-2">
-          🪐 Meet Your Planets
-        </h3>
-        <p className="text-xs text-stone-400">
-          Each planet embodies an archetypal force within you. Select one to explore and converse with them.
+    <div className="h-full flex flex-col bg-(--color-primary-dark) text-(--color-primary-light) selection:bg-(--color-accent-orange)/30">
+      {/* Header Panel */}
+      <header className="px-6 py-5 border-b border-(--color-primary-light)/10 bg-black/10 backdrop-blur-sm">
+        <div className="flex items-center gap-2 mb-1">
+          <span className="text-xl text-(--color-accent-orange)">🪐</span>
+          <h3 className="text-lg font-bold tracking-tight text-(--color-primary-light)">
+            Meet Your Council of Planets
+          </h3>
+        </div>
+        <p className="text-xs text-(--color-accent-glow) max-w-2xl leading-relaxed">
+          Each celestial body coordinates specific facets of your consciousness. Select an active entity below to view its localized avatar and converse with its archetype.
         </p>
-      </div>
+      </header>
 
-      {/* Main Layout */}
-      <div className="flex-1 flex gap-4 min-h-0 p-6 overflow-hidden">
-
-        {/* Left: Character Display + Info */}
-        <div className="flex-1 flex flex-col gap-4 overflow-hidden">
-
-          {/* Planet Selector Tabs */}
-          <div className="w-full overflow-x-auto flex gap-2 pb-2 border-b border-[#2D241E]">
-            {Object.keys(planetPersonas).map((planet) => (
-              <button
-                key={planet}
-                onClick={() => setSelectedPlanet(planet)}
-                className={`px-3 py-2 rounded text-xs font-semibold uppercase tracking-wide transition-all flex-shrink-0 ${selectedPlanet === planet
-                    ? 'bg-[#E29626] text-black shadow-lg'
-                    : 'bg-[#2D241E] border border-[#3D3530] text-stone-300 hover:border-[#E29626]'
+      {/* Main Framework Container */}
+      <div className="flex-1 flex flex-col lg:flex-row min-h-0 p-6 gap-6 overflow-hidden">
+        
+        {/* Left Side Workspace: Navigation and Character view */}
+        <div className="flex-1 flex flex-col gap-4 min-h-0 min-w-0">
+          
+          {/* Universal Horizontal Navigation Bar */}
+          <nav className="w-full overflow-x-auto no-scrollbar flex items-center gap-2 pb-2 border-b border-(--color-primary-light)/10">
+            {Object.keys(planetPersonas).map((planet) => {
+              const isActive = selectedPlanet === planet;
+              return (
+                <button
+                  key={planet}
+                  onClick={() => setSelectedPlanet(planet)}
+                  className={`px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-(--color-accent-orange) ${
+                    isActive
+                      ? 'bg-(--color-accent-orange) text-(--bg-main) shadow-lg shadow-(--color-accent-orange)/10 hover:brightness-110'
+                      : 'bg-black/20 border border-(--color-primary-light)/10 text-(--color-primary-light)/70 hover:text-(--color-primary-light) hover:bg-black/40 hover:border-(--color-primary-light)/30'
                   }`}
-              >
-                {planet}
-              </button>
-            ))}
-          </div>
+                >
+                  {planet}
+                </button>
+              );
+            })}
+          </nav>
 
-          {/* 2D Character Display */}
-          {selectedConfig && (
-            <div className="flex-1 flex flex-col items-center justify-center border border-[#2D241E] rounded bg-[#1A1714] overflow-hidden">
-              <div className="w-full h-full flex items-center justify-center">
+          {/* 2D Canvas Display Area */}
+          <main className="flex-1 flex flex-col items-center justify-center border border-(--color-primary-light)/10 rounded-2xl bg-black/20 relative shadow-inner overflow-hidden group">
+            {/* Soft Ambient Background Light Effect */}
+            <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,var(--color-accent-glow)_0%,transparent_65%)] opacity-5 group-hover:opacity-10 transition-opacity duration-700" />
+            
+            {selectedConfig && (
+              <div className="w-full h-full flex items-center justify-center p-4">
                 <PlanetCharacter2D
                   config={selectedConfig}
                   planet={selectedPlanet as any}
                   mood={selectedConfig.mood}
-                  className="w-full h-full"
+                  className="w-full h-full max-h-[80vh] transition-transform duration-300"
                 />
               </div>
-            </div>
-          )}
-
-
+            )}
+            
+            {/* Visual Metadata Overlay Label */}
+            {selectedPlanet && (
+              <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center bg-black/40 backdrop-blur-md px-4 py-2 rounded-xl border border-(--color-primary-light)/10">
+                <span className="text-xs tracking-widest uppercase font-semibold text-(--color-accent-glow)">
+                  Entity: {selectedPlanet}
+                </span>
+                {selectedConfig?.mood && (
+                  <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-(--color-ring-bronze)/20 text-(--color-primary-light)/90 border border-(--color-ring-bronze)/30">
+                    Mood: {selectedConfig.mood}
+                  </span>
+                )}
+              </div>
+            )}
+          </main>
         </div>
 
-        {/* Right: Chat Interface */}
-        <div className="w-96 flex flex-col gap-3 bg-[#1A1714] border border-[#2D241E] rounded p-4 overflow-hidden">
+        {/* Right Side Panel: Threaded Chat Interface */}
+        <aside className="w-full lg:w-96 shrink-0 flex flex-col bg-black/30 border border-(--color-primary-light)/10 rounded-2xl p-4 shadow-xl overflow-hidden backdrop-blur-sm">
           {selectedPlanet && selectedContext ? (
-            <PlanetPersonalityChat
-              planet={selectedPlanet}
-              context={selectedContext}
-              isActive={!!selectedPlanet}
-            />
+            <div className="h-full flex flex-col min-h-0">
+              <PlanetPersonalityChat
+                planet={selectedPlanet}
+                context={selectedContext}
+                isActive={true}
+              />
+            </div>
           ) : (
-            <div className="h-full flex items-center justify-center text-stone-500 text-xs">
-              Select a planet to chat
+            <div className="h-full flex flex-col items-center justify-center text-center p-6 text-(--color-primary-light)/40">
+              <span className="text-3xl mb-2 opacity-50">✦</span>
+              <p className="text-xs tracking-wide">Select a planet from the telemetry bar to establish interactive communication links.</p>
             </div>
           )}
-        </div>
+        </aside>
+
       </div>
     </div>
   );

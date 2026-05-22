@@ -39,11 +39,6 @@ export type NativityChart = $Result.DefaultSelection<Prisma.$NativityChartPayloa
  */
 export type EphemerisSnapshot = $Result.DefaultSelection<Prisma.$EphemerisSnapshotPayload>
 /**
- * Model PlanetData
- * 
- */
-export type PlanetData = $Result.DefaultSelection<Prisma.$PlanetDataPayload>
-/**
  * Model GeometryIndex
  * 
  */
@@ -88,6 +83,11 @@ export type CurrentStory = $Result.DefaultSelection<Prisma.$CurrentStoryPayload>
  * 
  */
 export type PlanetaryScene = $Result.DefaultSelection<Prisma.$PlanetaryScenePayload>
+/**
+ * Model ConsciousnessState
+ * 
+ */
+export type ConsciousnessState = $Result.DefaultSelection<Prisma.$ConsciousnessStatePayload>
 
 /**
  * Enums
@@ -578,16 +578,6 @@ export class PrismaClient<
   get ephemerisSnapshot(): Prisma.EphemerisSnapshotDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.planetData`: Exposes CRUD operations for the **PlanetData** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more PlanetData
-    * const planetData = await prisma.planetData.findMany()
-    * ```
-    */
-  get planetData(): Prisma.PlanetDataDelegate<ExtArgs, ClientOptions>;
-
-  /**
    * `prisma.geometryIndex`: Exposes CRUD operations for the **GeometryIndex** model.
     * Example usage:
     * ```ts
@@ -676,6 +666,16 @@ export class PrismaClient<
     * ```
     */
   get planetaryScene(): Prisma.PlanetarySceneDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.consciousnessState`: Exposes CRUD operations for the **ConsciousnessState** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ConsciousnessStates
+    * const consciousnessStates = await prisma.consciousnessState.findMany()
+    * ```
+    */
+  get consciousnessState(): Prisma.ConsciousnessStateDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -1122,7 +1122,6 @@ export namespace Prisma {
     Session: 'Session',
     NativityChart: 'NativityChart',
     EphemerisSnapshot: 'EphemerisSnapshot',
-    PlanetData: 'PlanetData',
     GeometryIndex: 'GeometryIndex',
     AngularDistance: 'AngularDistance',
     NativityAspect: 'NativityAspect',
@@ -1131,7 +1130,8 @@ export namespace Prisma {
     PurposeState: 'PurposeState',
     SimilarityRecord: 'SimilarityRecord',
     CurrentStory: 'CurrentStory',
-    PlanetaryScene: 'PlanetaryScene'
+    PlanetaryScene: 'PlanetaryScene',
+    ConsciousnessState: 'ConsciousnessState'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1150,7 +1150,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "account" | "session" | "nativityChart" | "ephemerisSnapshot" | "planetData" | "geometryIndex" | "angularDistance" | "nativityAspect" | "planetaryProfile" | "stateVector" | "purposeState" | "similarityRecord" | "currentStory" | "planetaryScene"
+      modelProps: "user" | "account" | "session" | "nativityChart" | "ephemerisSnapshot" | "geometryIndex" | "angularDistance" | "nativityAspect" | "planetaryProfile" | "stateVector" | "purposeState" | "similarityRecord" | "currentStory" | "planetaryScene" | "consciousnessState"
       txIsolationLevel: never
     }
     model: {
@@ -1521,80 +1521,6 @@ export namespace Prisma {
           count: {
             args: Prisma.EphemerisSnapshotCountArgs<ExtArgs>
             result: $Utils.Optional<EphemerisSnapshotCountAggregateOutputType> | number
-          }
-        }
-      }
-      PlanetData: {
-        payload: Prisma.$PlanetDataPayload<ExtArgs>
-        fields: Prisma.PlanetDataFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.PlanetDataFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PlanetDataPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.PlanetDataFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PlanetDataPayload>
-          }
-          findFirst: {
-            args: Prisma.PlanetDataFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PlanetDataPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.PlanetDataFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PlanetDataPayload>
-          }
-          findMany: {
-            args: Prisma.PlanetDataFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PlanetDataPayload>[]
-          }
-          create: {
-            args: Prisma.PlanetDataCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PlanetDataPayload>
-          }
-          createMany: {
-            args: Prisma.PlanetDataCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          delete: {
-            args: Prisma.PlanetDataDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PlanetDataPayload>
-          }
-          update: {
-            args: Prisma.PlanetDataUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PlanetDataPayload>
-          }
-          deleteMany: {
-            args: Prisma.PlanetDataDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.PlanetDataUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          upsert: {
-            args: Prisma.PlanetDataUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PlanetDataPayload>
-          }
-          aggregate: {
-            args: Prisma.PlanetDataAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregatePlanetData>
-          }
-          groupBy: {
-            args: Prisma.PlanetDataGroupByArgs<ExtArgs>
-            result: $Utils.Optional<PlanetDataGroupByOutputType>[]
-          }
-          findRaw: {
-            args: Prisma.PlanetDataFindRawArgs<ExtArgs>
-            result: JsonObject
-          }
-          aggregateRaw: {
-            args: Prisma.PlanetDataAggregateRawArgs<ExtArgs>
-            result: JsonObject
-          }
-          count: {
-            args: Prisma.PlanetDataCountArgs<ExtArgs>
-            result: $Utils.Optional<PlanetDataCountAggregateOutputType> | number
           }
         }
       }
@@ -2264,6 +2190,80 @@ export namespace Prisma {
           }
         }
       }
+      ConsciousnessState: {
+        payload: Prisma.$ConsciousnessStatePayload<ExtArgs>
+        fields: Prisma.ConsciousnessStateFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ConsciousnessStateFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ConsciousnessStatePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ConsciousnessStateFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ConsciousnessStatePayload>
+          }
+          findFirst: {
+            args: Prisma.ConsciousnessStateFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ConsciousnessStatePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ConsciousnessStateFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ConsciousnessStatePayload>
+          }
+          findMany: {
+            args: Prisma.ConsciousnessStateFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ConsciousnessStatePayload>[]
+          }
+          create: {
+            args: Prisma.ConsciousnessStateCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ConsciousnessStatePayload>
+          }
+          createMany: {
+            args: Prisma.ConsciousnessStateCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.ConsciousnessStateDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ConsciousnessStatePayload>
+          }
+          update: {
+            args: Prisma.ConsciousnessStateUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ConsciousnessStatePayload>
+          }
+          deleteMany: {
+            args: Prisma.ConsciousnessStateDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ConsciousnessStateUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ConsciousnessStateUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ConsciousnessStatePayload>
+          }
+          aggregate: {
+            args: Prisma.ConsciousnessStateAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateConsciousnessState>
+          }
+          groupBy: {
+            args: Prisma.ConsciousnessStateGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ConsciousnessStateGroupByOutputType>[]
+          }
+          findRaw: {
+            args: Prisma.ConsciousnessStateFindRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          aggregateRaw: {
+            args: Prisma.ConsciousnessStateAggregateRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          count: {
+            args: Prisma.ConsciousnessStateCountArgs<ExtArgs>
+            result: $Utils.Optional<ConsciousnessStateCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -2348,7 +2348,6 @@ export namespace Prisma {
     session?: SessionOmit
     nativityChart?: NativityChartOmit
     ephemerisSnapshot?: EphemerisSnapshotOmit
-    planetData?: PlanetDataOmit
     geometryIndex?: GeometryIndexOmit
     angularDistance?: AngularDistanceOmit
     nativityAspect?: NativityAspectOmit
@@ -2358,6 +2357,7 @@ export namespace Prisma {
     similarityRecord?: SimilarityRecordOmit
     currentStory?: CurrentStoryOmit
     planetaryScene?: PlanetarySceneOmit
+    consciousnessState?: ConsciousnessStateOmit
   }
 
   /* Types for Logging */
@@ -2493,6 +2493,7 @@ export namespace Prisma {
     purposeStates: number
     similarities: number
     currentStories: number
+    consciousnessStates: number
   }
 
   export type NativityChartCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2502,6 +2503,7 @@ export namespace Prisma {
     purposeStates?: boolean | NativityChartCountOutputTypeCountPurposeStatesArgs
     similarities?: boolean | NativityChartCountOutputTypeCountSimilaritiesArgs
     currentStories?: boolean | NativityChartCountOutputTypeCountCurrentStoriesArgs
+    consciousnessStates?: boolean | NativityChartCountOutputTypeCountConsciousnessStatesArgs
   }
 
   // Custom InputTypes
@@ -2557,35 +2559,11 @@ export namespace Prisma {
     where?: CurrentStoryWhereInput
   }
 
-
   /**
-   * Count Type EphemerisSnapshotCountOutputType
+   * NativityChartCountOutputType without action
    */
-
-  export type EphemerisSnapshotCountOutputType = {
-    planets: number
-  }
-
-  export type EphemerisSnapshotCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    planets?: boolean | EphemerisSnapshotCountOutputTypeCountPlanetsArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * EphemerisSnapshotCountOutputType without action
-   */
-  export type EphemerisSnapshotCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the EphemerisSnapshotCountOutputType
-     */
-    select?: EphemerisSnapshotCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * EphemerisSnapshotCountOutputType without action
-   */
-  export type EphemerisSnapshotCountOutputTypeCountPlanetsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PlanetDataWhereInput
+  export type NativityChartCountOutputTypeCountConsciousnessStatesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ConsciousnessStateWhereInput
   }
 
 
@@ -6310,6 +6288,7 @@ export namespace Prisma {
     purposeStates?: boolean | NativityChart$purposeStatesArgs<ExtArgs>
     similarities?: boolean | NativityChart$similaritiesArgs<ExtArgs>
     currentStories?: boolean | NativityChart$currentStoriesArgs<ExtArgs>
+    consciousnessStates?: boolean | NativityChart$consciousnessStatesArgs<ExtArgs>
     _count?: boolean | NativityChartCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["nativityChart"]>
 
@@ -6344,6 +6323,7 @@ export namespace Prisma {
     purposeStates?: boolean | NativityChart$purposeStatesArgs<ExtArgs>
     similarities?: boolean | NativityChart$similaritiesArgs<ExtArgs>
     currentStories?: boolean | NativityChart$currentStoriesArgs<ExtArgs>
+    consciousnessStates?: boolean | NativityChart$consciousnessStatesArgs<ExtArgs>
     _count?: boolean | NativityChartCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -6359,6 +6339,7 @@ export namespace Prisma {
       purposeStates: Prisma.$PurposeStatePayload<ExtArgs>[]
       similarities: Prisma.$SimilarityRecordPayload<ExtArgs>[]
       currentStories: Prisma.$CurrentStoryPayload<ExtArgs>[]
+      consciousnessStates: Prisma.$ConsciousnessStatePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -6748,6 +6729,7 @@ export namespace Prisma {
     purposeStates<T extends NativityChart$purposeStatesArgs<ExtArgs> = {}>(args?: Subset<T, NativityChart$purposeStatesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PurposeStatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     similarities<T extends NativityChart$similaritiesArgs<ExtArgs> = {}>(args?: Subset<T, NativityChart$similaritiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SimilarityRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     currentStories<T extends NativityChart$currentStoriesArgs<ExtArgs> = {}>(args?: Subset<T, NativityChart$currentStoriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CurrentStoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    consciousnessStates<T extends NativityChart$consciousnessStatesArgs<ExtArgs> = {}>(args?: Subset<T, NativityChart$consciousnessStatesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ConsciousnessStatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7344,6 +7326,30 @@ export namespace Prisma {
   }
 
   /**
+   * NativityChart.consciousnessStates
+   */
+  export type NativityChart$consciousnessStatesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ConsciousnessState
+     */
+    select?: ConsciousnessStateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ConsciousnessState
+     */
+    omit?: ConsciousnessStateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConsciousnessStateInclude<ExtArgs> | null
+    where?: ConsciousnessStateWhereInput
+    orderBy?: ConsciousnessStateOrderByWithRelationInput | ConsciousnessStateOrderByWithRelationInput[]
+    cursor?: ConsciousnessStateWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ConsciousnessStateScalarFieldEnum | ConsciousnessStateScalarFieldEnum[]
+  }
+
+  /**
    * NativityChart without action
    */
   export type NativityChartDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -7561,8 +7567,6 @@ export namespace Prisma {
     phase?: boolean
     createdAt?: boolean
     nativityChart?: boolean | NativityChartDefaultArgs<ExtArgs>
-    planets?: boolean | EphemerisSnapshot$planetsArgs<ExtArgs>
-    _count?: boolean | EphemerisSnapshotCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["ephemerisSnapshot"]>
 
 
@@ -7578,15 +7582,12 @@ export namespace Prisma {
   export type EphemerisSnapshotOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nativityChartId" | "absoluteTimeIndex" | "phase" | "createdAt", ExtArgs["result"]["ephemerisSnapshot"]>
   export type EphemerisSnapshotInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     nativityChart?: boolean | NativityChartDefaultArgs<ExtArgs>
-    planets?: boolean | EphemerisSnapshot$planetsArgs<ExtArgs>
-    _count?: boolean | EphemerisSnapshotCountOutputTypeDefaultArgs<ExtArgs>
   }
 
   export type $EphemerisSnapshotPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "EphemerisSnapshot"
     objects: {
       nativityChart: Prisma.$NativityChartPayload<ExtArgs>
-      planets: Prisma.$PlanetDataPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -7958,7 +7959,6 @@ export namespace Prisma {
   export interface Prisma__EphemerisSnapshotClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     nativityChart<T extends NativityChartDefaultArgs<ExtArgs> = {}>(args?: Subset<T, NativityChartDefaultArgs<ExtArgs>>): Prisma__NativityChartClient<$Result.GetResult<Prisma.$NativityChartPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    planets<T extends EphemerisSnapshot$planetsArgs<ExtArgs> = {}>(args?: Subset<T, EphemerisSnapshot$planetsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlanetDataPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8363,30 +8363,6 @@ export namespace Prisma {
   }
 
   /**
-   * EphemerisSnapshot.planets
-   */
-  export type EphemerisSnapshot$planetsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PlanetData
-     */
-    select?: PlanetDataSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the PlanetData
-     */
-    omit?: PlanetDataOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlanetDataInclude<ExtArgs> | null
-    where?: PlanetDataWhereInput
-    orderBy?: PlanetDataOrderByWithRelationInput | PlanetDataOrderByWithRelationInput[]
-    cursor?: PlanetDataWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: PlanetDataScalarFieldEnum | PlanetDataScalarFieldEnum[]
-  }
-
-  /**
    * EphemerisSnapshot without action
    */
   export type EphemerisSnapshotDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -8402,1153 +8378,6 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: EphemerisSnapshotInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model PlanetData
-   */
-
-  export type AggregatePlanetData = {
-    _count: PlanetDataCountAggregateOutputType | null
-    _avg: PlanetDataAvgAggregateOutputType | null
-    _sum: PlanetDataSumAggregateOutputType | null
-    _min: PlanetDataMinAggregateOutputType | null
-    _max: PlanetDataMaxAggregateOutputType | null
-  }
-
-  export type PlanetDataAvgAggregateOutputType = {
-    longitude: number | null
-    latitude: number | null
-    speed: number | null
-    acceleration: number | null
-    houseCusp: number | null
-    houseDegree: number | null
-    relativeAngularIndex: number | null
-  }
-
-  export type PlanetDataSumAggregateOutputType = {
-    longitude: number | null
-    latitude: number | null
-    speed: number | null
-    acceleration: number | null
-    houseCusp: number | null
-    houseDegree: number | null
-    relativeAngularIndex: number | null
-  }
-
-  export type PlanetDataMinAggregateOutputType = {
-    id: string | null
-    ephemerisSnapshotId: string | null
-    planet: string | null
-    longitude: number | null
-    latitude: number | null
-    speed: number | null
-    acceleration: number | null
-    direction: $Enums.PlanetDirection | null
-    stationaryEnterTime: Date | null
-    stationaryExitTime: Date | null
-    houseCusp: number | null
-    houseDegree: number | null
-    houseSign: string | null
-    relativeAngularIndex: number | null
-    createdAt: Date | null
-  }
-
-  export type PlanetDataMaxAggregateOutputType = {
-    id: string | null
-    ephemerisSnapshotId: string | null
-    planet: string | null
-    longitude: number | null
-    latitude: number | null
-    speed: number | null
-    acceleration: number | null
-    direction: $Enums.PlanetDirection | null
-    stationaryEnterTime: Date | null
-    stationaryExitTime: Date | null
-    houseCusp: number | null
-    houseDegree: number | null
-    houseSign: string | null
-    relativeAngularIndex: number | null
-    createdAt: Date | null
-  }
-
-  export type PlanetDataCountAggregateOutputType = {
-    id: number
-    ephemerisSnapshotId: number
-    planet: number
-    longitude: number
-    latitude: number
-    speed: number
-    acceleration: number
-    direction: number
-    stationaryEnterTime: number
-    stationaryExitTime: number
-    houseCusp: number
-    houseDegree: number
-    houseSign: number
-    relativeAngularIndex: number
-    createdAt: number
-    _all: number
-  }
-
-
-  export type PlanetDataAvgAggregateInputType = {
-    longitude?: true
-    latitude?: true
-    speed?: true
-    acceleration?: true
-    houseCusp?: true
-    houseDegree?: true
-    relativeAngularIndex?: true
-  }
-
-  export type PlanetDataSumAggregateInputType = {
-    longitude?: true
-    latitude?: true
-    speed?: true
-    acceleration?: true
-    houseCusp?: true
-    houseDegree?: true
-    relativeAngularIndex?: true
-  }
-
-  export type PlanetDataMinAggregateInputType = {
-    id?: true
-    ephemerisSnapshotId?: true
-    planet?: true
-    longitude?: true
-    latitude?: true
-    speed?: true
-    acceleration?: true
-    direction?: true
-    stationaryEnterTime?: true
-    stationaryExitTime?: true
-    houseCusp?: true
-    houseDegree?: true
-    houseSign?: true
-    relativeAngularIndex?: true
-    createdAt?: true
-  }
-
-  export type PlanetDataMaxAggregateInputType = {
-    id?: true
-    ephemerisSnapshotId?: true
-    planet?: true
-    longitude?: true
-    latitude?: true
-    speed?: true
-    acceleration?: true
-    direction?: true
-    stationaryEnterTime?: true
-    stationaryExitTime?: true
-    houseCusp?: true
-    houseDegree?: true
-    houseSign?: true
-    relativeAngularIndex?: true
-    createdAt?: true
-  }
-
-  export type PlanetDataCountAggregateInputType = {
-    id?: true
-    ephemerisSnapshotId?: true
-    planet?: true
-    longitude?: true
-    latitude?: true
-    speed?: true
-    acceleration?: true
-    direction?: true
-    stationaryEnterTime?: true
-    stationaryExitTime?: true
-    houseCusp?: true
-    houseDegree?: true
-    houseSign?: true
-    relativeAngularIndex?: true
-    createdAt?: true
-    _all?: true
-  }
-
-  export type PlanetDataAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which PlanetData to aggregate.
-     */
-    where?: PlanetDataWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of PlanetData to fetch.
-     */
-    orderBy?: PlanetDataOrderByWithRelationInput | PlanetDataOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: PlanetDataWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` PlanetData from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` PlanetData.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned PlanetData
-    **/
-    _count?: true | PlanetDataCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: PlanetDataAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: PlanetDataSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: PlanetDataMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: PlanetDataMaxAggregateInputType
-  }
-
-  export type GetPlanetDataAggregateType<T extends PlanetDataAggregateArgs> = {
-        [P in keyof T & keyof AggregatePlanetData]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregatePlanetData[P]>
-      : GetScalarType<T[P], AggregatePlanetData[P]>
-  }
-
-
-
-
-  export type PlanetDataGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PlanetDataWhereInput
-    orderBy?: PlanetDataOrderByWithAggregationInput | PlanetDataOrderByWithAggregationInput[]
-    by: PlanetDataScalarFieldEnum[] | PlanetDataScalarFieldEnum
-    having?: PlanetDataScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: PlanetDataCountAggregateInputType | true
-    _avg?: PlanetDataAvgAggregateInputType
-    _sum?: PlanetDataSumAggregateInputType
-    _min?: PlanetDataMinAggregateInputType
-    _max?: PlanetDataMaxAggregateInputType
-  }
-
-  export type PlanetDataGroupByOutputType = {
-    id: string
-    ephemerisSnapshotId: string
-    planet: string
-    longitude: number
-    latitude: number | null
-    speed: number
-    acceleration: number | null
-    direction: $Enums.PlanetDirection
-    stationaryEnterTime: Date | null
-    stationaryExitTime: Date | null
-    houseCusp: number | null
-    houseDegree: number | null
-    houseSign: string | null
-    relativeAngularIndex: number | null
-    createdAt: Date
-    _count: PlanetDataCountAggregateOutputType | null
-    _avg: PlanetDataAvgAggregateOutputType | null
-    _sum: PlanetDataSumAggregateOutputType | null
-    _min: PlanetDataMinAggregateOutputType | null
-    _max: PlanetDataMaxAggregateOutputType | null
-  }
-
-  type GetPlanetDataGroupByPayload<T extends PlanetDataGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<PlanetDataGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof PlanetDataGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], PlanetDataGroupByOutputType[P]>
-            : GetScalarType<T[P], PlanetDataGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type PlanetDataSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    ephemerisSnapshotId?: boolean
-    planet?: boolean
-    longitude?: boolean
-    latitude?: boolean
-    speed?: boolean
-    acceleration?: boolean
-    direction?: boolean
-    stationaryEnterTime?: boolean
-    stationaryExitTime?: boolean
-    houseCusp?: boolean
-    houseDegree?: boolean
-    houseSign?: boolean
-    relativeAngularIndex?: boolean
-    createdAt?: boolean
-    ephemerisSnapshot?: boolean | EphemerisSnapshotDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["planetData"]>
-
-
-
-  export type PlanetDataSelectScalar = {
-    id?: boolean
-    ephemerisSnapshotId?: boolean
-    planet?: boolean
-    longitude?: boolean
-    latitude?: boolean
-    speed?: boolean
-    acceleration?: boolean
-    direction?: boolean
-    stationaryEnterTime?: boolean
-    stationaryExitTime?: boolean
-    houseCusp?: boolean
-    houseDegree?: boolean
-    houseSign?: boolean
-    relativeAngularIndex?: boolean
-    createdAt?: boolean
-  }
-
-  export type PlanetDataOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ephemerisSnapshotId" | "planet" | "longitude" | "latitude" | "speed" | "acceleration" | "direction" | "stationaryEnterTime" | "stationaryExitTime" | "houseCusp" | "houseDegree" | "houseSign" | "relativeAngularIndex" | "createdAt", ExtArgs["result"]["planetData"]>
-  export type PlanetDataInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    ephemerisSnapshot?: boolean | EphemerisSnapshotDefaultArgs<ExtArgs>
-  }
-
-  export type $PlanetDataPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "PlanetData"
-    objects: {
-      ephemerisSnapshot: Prisma.$EphemerisSnapshotPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      ephemerisSnapshotId: string
-      planet: string
-      longitude: number
-      latitude: number | null
-      speed: number
-      acceleration: number | null
-      direction: $Enums.PlanetDirection
-      stationaryEnterTime: Date | null
-      stationaryExitTime: Date | null
-      houseCusp: number | null
-      houseDegree: number | null
-      houseSign: string | null
-      relativeAngularIndex: number | null
-      createdAt: Date
-    }, ExtArgs["result"]["planetData"]>
-    composites: {}
-  }
-
-  type PlanetDataGetPayload<S extends boolean | null | undefined | PlanetDataDefaultArgs> = $Result.GetResult<Prisma.$PlanetDataPayload, S>
-
-  type PlanetDataCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<PlanetDataFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: PlanetDataCountAggregateInputType | true
-    }
-
-  export interface PlanetDataDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PlanetData'], meta: { name: 'PlanetData' } }
-    /**
-     * Find zero or one PlanetData that matches the filter.
-     * @param {PlanetDataFindUniqueArgs} args - Arguments to find a PlanetData
-     * @example
-     * // Get one PlanetData
-     * const planetData = await prisma.planetData.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends PlanetDataFindUniqueArgs>(args: SelectSubset<T, PlanetDataFindUniqueArgs<ExtArgs>>): Prisma__PlanetDataClient<$Result.GetResult<Prisma.$PlanetDataPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one PlanetData that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {PlanetDataFindUniqueOrThrowArgs} args - Arguments to find a PlanetData
-     * @example
-     * // Get one PlanetData
-     * const planetData = await prisma.planetData.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends PlanetDataFindUniqueOrThrowArgs>(args: SelectSubset<T, PlanetDataFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PlanetDataClient<$Result.GetResult<Prisma.$PlanetDataPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first PlanetData that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PlanetDataFindFirstArgs} args - Arguments to find a PlanetData
-     * @example
-     * // Get one PlanetData
-     * const planetData = await prisma.planetData.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends PlanetDataFindFirstArgs>(args?: SelectSubset<T, PlanetDataFindFirstArgs<ExtArgs>>): Prisma__PlanetDataClient<$Result.GetResult<Prisma.$PlanetDataPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first PlanetData that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PlanetDataFindFirstOrThrowArgs} args - Arguments to find a PlanetData
-     * @example
-     * // Get one PlanetData
-     * const planetData = await prisma.planetData.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends PlanetDataFindFirstOrThrowArgs>(args?: SelectSubset<T, PlanetDataFindFirstOrThrowArgs<ExtArgs>>): Prisma__PlanetDataClient<$Result.GetResult<Prisma.$PlanetDataPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more PlanetData that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PlanetDataFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all PlanetData
-     * const planetData = await prisma.planetData.findMany()
-     * 
-     * // Get first 10 PlanetData
-     * const planetData = await prisma.planetData.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const planetDataWithIdOnly = await prisma.planetData.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends PlanetDataFindManyArgs>(args?: SelectSubset<T, PlanetDataFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlanetDataPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a PlanetData.
-     * @param {PlanetDataCreateArgs} args - Arguments to create a PlanetData.
-     * @example
-     * // Create one PlanetData
-     * const PlanetData = await prisma.planetData.create({
-     *   data: {
-     *     // ... data to create a PlanetData
-     *   }
-     * })
-     * 
-     */
-    create<T extends PlanetDataCreateArgs>(args: SelectSubset<T, PlanetDataCreateArgs<ExtArgs>>): Prisma__PlanetDataClient<$Result.GetResult<Prisma.$PlanetDataPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many PlanetData.
-     * @param {PlanetDataCreateManyArgs} args - Arguments to create many PlanetData.
-     * @example
-     * // Create many PlanetData
-     * const planetData = await prisma.planetData.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends PlanetDataCreateManyArgs>(args?: SelectSubset<T, PlanetDataCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a PlanetData.
-     * @param {PlanetDataDeleteArgs} args - Arguments to delete one PlanetData.
-     * @example
-     * // Delete one PlanetData
-     * const PlanetData = await prisma.planetData.delete({
-     *   where: {
-     *     // ... filter to delete one PlanetData
-     *   }
-     * })
-     * 
-     */
-    delete<T extends PlanetDataDeleteArgs>(args: SelectSubset<T, PlanetDataDeleteArgs<ExtArgs>>): Prisma__PlanetDataClient<$Result.GetResult<Prisma.$PlanetDataPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one PlanetData.
-     * @param {PlanetDataUpdateArgs} args - Arguments to update one PlanetData.
-     * @example
-     * // Update one PlanetData
-     * const planetData = await prisma.planetData.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends PlanetDataUpdateArgs>(args: SelectSubset<T, PlanetDataUpdateArgs<ExtArgs>>): Prisma__PlanetDataClient<$Result.GetResult<Prisma.$PlanetDataPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more PlanetData.
-     * @param {PlanetDataDeleteManyArgs} args - Arguments to filter PlanetData to delete.
-     * @example
-     * // Delete a few PlanetData
-     * const { count } = await prisma.planetData.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends PlanetDataDeleteManyArgs>(args?: SelectSubset<T, PlanetDataDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more PlanetData.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PlanetDataUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many PlanetData
-     * const planetData = await prisma.planetData.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends PlanetDataUpdateManyArgs>(args: SelectSubset<T, PlanetDataUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one PlanetData.
-     * @param {PlanetDataUpsertArgs} args - Arguments to update or create a PlanetData.
-     * @example
-     * // Update or create a PlanetData
-     * const planetData = await prisma.planetData.upsert({
-     *   create: {
-     *     // ... data to create a PlanetData
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the PlanetData we want to update
-     *   }
-     * })
-     */
-    upsert<T extends PlanetDataUpsertArgs>(args: SelectSubset<T, PlanetDataUpsertArgs<ExtArgs>>): Prisma__PlanetDataClient<$Result.GetResult<Prisma.$PlanetDataPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more PlanetData that matches the filter.
-     * @param {PlanetDataFindRawArgs} args - Select which filters you would like to apply.
-     * @example
-     * const planetData = await prisma.planetData.findRaw({
-     *   filter: { age: { $gt: 25 } }
-     * })
-     */
-    findRaw(args?: PlanetDataFindRawArgs): Prisma.PrismaPromise<JsonObject>
-
-    /**
-     * Perform aggregation operations on a PlanetData.
-     * @param {PlanetDataAggregateRawArgs} args - Select which aggregations you would like to apply.
-     * @example
-     * const planetData = await prisma.planetData.aggregateRaw({
-     *   pipeline: [
-     *     { $match: { status: "registered" } },
-     *     { $group: { _id: "$country", total: { $sum: 1 } } }
-     *   ]
-     * })
-     */
-    aggregateRaw(args?: PlanetDataAggregateRawArgs): Prisma.PrismaPromise<JsonObject>
-
-
-    /**
-     * Count the number of PlanetData.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PlanetDataCountArgs} args - Arguments to filter PlanetData to count.
-     * @example
-     * // Count the number of PlanetData
-     * const count = await prisma.planetData.count({
-     *   where: {
-     *     // ... the filter for the PlanetData we want to count
-     *   }
-     * })
-    **/
-    count<T extends PlanetDataCountArgs>(
-      args?: Subset<T, PlanetDataCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], PlanetDataCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a PlanetData.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PlanetDataAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends PlanetDataAggregateArgs>(args: Subset<T, PlanetDataAggregateArgs>): Prisma.PrismaPromise<GetPlanetDataAggregateType<T>>
-
-    /**
-     * Group by PlanetData.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PlanetDataGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends PlanetDataGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: PlanetDataGroupByArgs['orderBy'] }
-        : { orderBy?: PlanetDataGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, PlanetDataGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPlanetDataGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the PlanetData model
-   */
-  readonly fields: PlanetDataFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for PlanetData.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__PlanetDataClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    ephemerisSnapshot<T extends EphemerisSnapshotDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EphemerisSnapshotDefaultArgs<ExtArgs>>): Prisma__EphemerisSnapshotClient<$Result.GetResult<Prisma.$EphemerisSnapshotPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the PlanetData model
-   */
-  interface PlanetDataFieldRefs {
-    readonly id: FieldRef<"PlanetData", 'String'>
-    readonly ephemerisSnapshotId: FieldRef<"PlanetData", 'String'>
-    readonly planet: FieldRef<"PlanetData", 'String'>
-    readonly longitude: FieldRef<"PlanetData", 'Float'>
-    readonly latitude: FieldRef<"PlanetData", 'Float'>
-    readonly speed: FieldRef<"PlanetData", 'Float'>
-    readonly acceleration: FieldRef<"PlanetData", 'Float'>
-    readonly direction: FieldRef<"PlanetData", 'PlanetDirection'>
-    readonly stationaryEnterTime: FieldRef<"PlanetData", 'DateTime'>
-    readonly stationaryExitTime: FieldRef<"PlanetData", 'DateTime'>
-    readonly houseCusp: FieldRef<"PlanetData", 'Int'>
-    readonly houseDegree: FieldRef<"PlanetData", 'Float'>
-    readonly houseSign: FieldRef<"PlanetData", 'String'>
-    readonly relativeAngularIndex: FieldRef<"PlanetData", 'Float'>
-    readonly createdAt: FieldRef<"PlanetData", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * PlanetData findUnique
-   */
-  export type PlanetDataFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PlanetData
-     */
-    select?: PlanetDataSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the PlanetData
-     */
-    omit?: PlanetDataOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlanetDataInclude<ExtArgs> | null
-    /**
-     * Filter, which PlanetData to fetch.
-     */
-    where: PlanetDataWhereUniqueInput
-  }
-
-  /**
-   * PlanetData findUniqueOrThrow
-   */
-  export type PlanetDataFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PlanetData
-     */
-    select?: PlanetDataSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the PlanetData
-     */
-    omit?: PlanetDataOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlanetDataInclude<ExtArgs> | null
-    /**
-     * Filter, which PlanetData to fetch.
-     */
-    where: PlanetDataWhereUniqueInput
-  }
-
-  /**
-   * PlanetData findFirst
-   */
-  export type PlanetDataFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PlanetData
-     */
-    select?: PlanetDataSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the PlanetData
-     */
-    omit?: PlanetDataOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlanetDataInclude<ExtArgs> | null
-    /**
-     * Filter, which PlanetData to fetch.
-     */
-    where?: PlanetDataWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of PlanetData to fetch.
-     */
-    orderBy?: PlanetDataOrderByWithRelationInput | PlanetDataOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for PlanetData.
-     */
-    cursor?: PlanetDataWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` PlanetData from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` PlanetData.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of PlanetData.
-     */
-    distinct?: PlanetDataScalarFieldEnum | PlanetDataScalarFieldEnum[]
-  }
-
-  /**
-   * PlanetData findFirstOrThrow
-   */
-  export type PlanetDataFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PlanetData
-     */
-    select?: PlanetDataSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the PlanetData
-     */
-    omit?: PlanetDataOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlanetDataInclude<ExtArgs> | null
-    /**
-     * Filter, which PlanetData to fetch.
-     */
-    where?: PlanetDataWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of PlanetData to fetch.
-     */
-    orderBy?: PlanetDataOrderByWithRelationInput | PlanetDataOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for PlanetData.
-     */
-    cursor?: PlanetDataWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` PlanetData from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` PlanetData.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of PlanetData.
-     */
-    distinct?: PlanetDataScalarFieldEnum | PlanetDataScalarFieldEnum[]
-  }
-
-  /**
-   * PlanetData findMany
-   */
-  export type PlanetDataFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PlanetData
-     */
-    select?: PlanetDataSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the PlanetData
-     */
-    omit?: PlanetDataOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlanetDataInclude<ExtArgs> | null
-    /**
-     * Filter, which PlanetData to fetch.
-     */
-    where?: PlanetDataWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of PlanetData to fetch.
-     */
-    orderBy?: PlanetDataOrderByWithRelationInput | PlanetDataOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing PlanetData.
-     */
-    cursor?: PlanetDataWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` PlanetData from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` PlanetData.
-     */
-    skip?: number
-    distinct?: PlanetDataScalarFieldEnum | PlanetDataScalarFieldEnum[]
-  }
-
-  /**
-   * PlanetData create
-   */
-  export type PlanetDataCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PlanetData
-     */
-    select?: PlanetDataSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the PlanetData
-     */
-    omit?: PlanetDataOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlanetDataInclude<ExtArgs> | null
-    /**
-     * The data needed to create a PlanetData.
-     */
-    data: XOR<PlanetDataCreateInput, PlanetDataUncheckedCreateInput>
-  }
-
-  /**
-   * PlanetData createMany
-   */
-  export type PlanetDataCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many PlanetData.
-     */
-    data: PlanetDataCreateManyInput | PlanetDataCreateManyInput[]
-  }
-
-  /**
-   * PlanetData update
-   */
-  export type PlanetDataUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PlanetData
-     */
-    select?: PlanetDataSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the PlanetData
-     */
-    omit?: PlanetDataOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlanetDataInclude<ExtArgs> | null
-    /**
-     * The data needed to update a PlanetData.
-     */
-    data: XOR<PlanetDataUpdateInput, PlanetDataUncheckedUpdateInput>
-    /**
-     * Choose, which PlanetData to update.
-     */
-    where: PlanetDataWhereUniqueInput
-  }
-
-  /**
-   * PlanetData updateMany
-   */
-  export type PlanetDataUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update PlanetData.
-     */
-    data: XOR<PlanetDataUpdateManyMutationInput, PlanetDataUncheckedUpdateManyInput>
-    /**
-     * Filter which PlanetData to update
-     */
-    where?: PlanetDataWhereInput
-    /**
-     * Limit how many PlanetData to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * PlanetData upsert
-   */
-  export type PlanetDataUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PlanetData
-     */
-    select?: PlanetDataSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the PlanetData
-     */
-    omit?: PlanetDataOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlanetDataInclude<ExtArgs> | null
-    /**
-     * The filter to search for the PlanetData to update in case it exists.
-     */
-    where: PlanetDataWhereUniqueInput
-    /**
-     * In case the PlanetData found by the `where` argument doesn't exist, create a new PlanetData with this data.
-     */
-    create: XOR<PlanetDataCreateInput, PlanetDataUncheckedCreateInput>
-    /**
-     * In case the PlanetData was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<PlanetDataUpdateInput, PlanetDataUncheckedUpdateInput>
-  }
-
-  /**
-   * PlanetData delete
-   */
-  export type PlanetDataDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PlanetData
-     */
-    select?: PlanetDataSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the PlanetData
-     */
-    omit?: PlanetDataOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlanetDataInclude<ExtArgs> | null
-    /**
-     * Filter which PlanetData to delete.
-     */
-    where: PlanetDataWhereUniqueInput
-  }
-
-  /**
-   * PlanetData deleteMany
-   */
-  export type PlanetDataDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which PlanetData to delete
-     */
-    where?: PlanetDataWhereInput
-    /**
-     * Limit how many PlanetData to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * PlanetData findRaw
-   */
-  export type PlanetDataFindRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The query predicate filter. If unspecified, then all documents in the collection will match the predicate. ${@link https://docs.mongodb.com/manual/reference/operator/query MongoDB Docs}.
-     */
-    filter?: InputJsonValue
-    /**
-     * Additional options to pass to the `find` command ${@link https://docs.mongodb.com/manual/reference/command/find/#command-fields MongoDB Docs}.
-     */
-    options?: InputJsonValue
-  }
-
-  /**
-   * PlanetData aggregateRaw
-   */
-  export type PlanetDataAggregateRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * An array of aggregation stages to process and transform the document stream via the aggregation pipeline. ${@link https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline MongoDB Docs}.
-     */
-    pipeline?: InputJsonValue[]
-    /**
-     * Additional options to pass to the `aggregate` command ${@link https://docs.mongodb.com/manual/reference/command/aggregate/#command-fields MongoDB Docs}.
-     */
-    options?: InputJsonValue
-  }
-
-  /**
-   * PlanetData without action
-   */
-  export type PlanetDataDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PlanetData
-     */
-    select?: PlanetDataSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the PlanetData
-     */
-    omit?: PlanetDataOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlanetDataInclude<ExtArgs> | null
   }
 
 
@@ -12867,40 +11696,46 @@ export namespace Prisma {
   }
 
   export type PlanetaryProfileAvgAggregateOutputType = {
-    strength: number | null
+    longitude: number | null
+    latitude: number | null
     speed: number | null
-    visibility: number | null
-    expressionBandwidth: number | null
-    saturationLevel: number | null
-    distortionFactor: number | null
-    housePosition: number | null
+    acceleration: number | null
+    houseCusp: number | null
+    houseDegree: number | null
+    relativeAngularIndex: number | null
+    strength: number | null
   }
 
   export type PlanetaryProfileSumAggregateOutputType = {
-    strength: number | null
+    longitude: number | null
+    latitude: number | null
     speed: number | null
-    visibility: number | null
-    expressionBandwidth: number | null
-    saturationLevel: number | null
-    distortionFactor: number | null
-    housePosition: number | null
+    acceleration: number | null
+    houseCusp: number | null
+    houseDegree: number | null
+    relativeAngularIndex: number | null
+    strength: number | null
   }
 
   export type PlanetaryProfileMinAggregateOutputType = {
     id: string | null
     nativityChartId: string | null
     planet: string | null
+    longitude: number | null
+    latitude: number | null
+    speed: number | null
+    acceleration: number | null
+    direction: $Enums.PlanetDirection | null
+    stationaryEnterTime: Date | null
+    stationaryExitTime: Date | null
+    houseCusp: number | null
+    houseDegree: number | null
+    houseSign: string | null
+    relativeAngularIndex: number | null
     primaryDomain: string | null
     secondaryDomain: string | null
     dignity: string | null
     strength: number | null
-    speed: number | null
-    visibility: number | null
-    expressionBandwidth: number | null
-    saturationLevel: number | null
-    distortionFactor: number | null
-    housePosition: number | null
-    signPosition: string | null
     createdAt: Date | null
   }
 
@@ -12908,17 +11743,21 @@ export namespace Prisma {
     id: string | null
     nativityChartId: string | null
     planet: string | null
+    longitude: number | null
+    latitude: number | null
+    speed: number | null
+    acceleration: number | null
+    direction: $Enums.PlanetDirection | null
+    stationaryEnterTime: Date | null
+    stationaryExitTime: Date | null
+    houseCusp: number | null
+    houseDegree: number | null
+    houseSign: string | null
+    relativeAngularIndex: number | null
     primaryDomain: string | null
     secondaryDomain: string | null
     dignity: string | null
     strength: number | null
-    speed: number | null
-    visibility: number | null
-    expressionBandwidth: number | null
-    saturationLevel: number | null
-    distortionFactor: number | null
-    housePosition: number | null
-    signPosition: string | null
     createdAt: Date | null
   }
 
@@ -12926,57 +11765,67 @@ export namespace Prisma {
     id: number
     nativityChartId: number
     planet: number
+    longitude: number
+    latitude: number
+    speed: number
+    acceleration: number
+    direction: number
+    stationaryEnterTime: number
+    stationaryExitTime: number
+    houseCusp: number
+    houseDegree: number
+    houseSign: number
+    relativeAngularIndex: number
     primaryDomain: number
     secondaryDomain: number
     dignity: number
     strength: number
-    speed: number
-    visibility: number
-    expressionBandwidth: number
-    saturationLevel: number
-    distortionFactor: number
-    housePosition: number
-    signPosition: number
     createdAt: number
     _all: number
   }
 
 
   export type PlanetaryProfileAvgAggregateInputType = {
-    strength?: true
+    longitude?: true
+    latitude?: true
     speed?: true
-    visibility?: true
-    expressionBandwidth?: true
-    saturationLevel?: true
-    distortionFactor?: true
-    housePosition?: true
+    acceleration?: true
+    houseCusp?: true
+    houseDegree?: true
+    relativeAngularIndex?: true
+    strength?: true
   }
 
   export type PlanetaryProfileSumAggregateInputType = {
-    strength?: true
+    longitude?: true
+    latitude?: true
     speed?: true
-    visibility?: true
-    expressionBandwidth?: true
-    saturationLevel?: true
-    distortionFactor?: true
-    housePosition?: true
+    acceleration?: true
+    houseCusp?: true
+    houseDegree?: true
+    relativeAngularIndex?: true
+    strength?: true
   }
 
   export type PlanetaryProfileMinAggregateInputType = {
     id?: true
     nativityChartId?: true
     planet?: true
+    longitude?: true
+    latitude?: true
+    speed?: true
+    acceleration?: true
+    direction?: true
+    stationaryEnterTime?: true
+    stationaryExitTime?: true
+    houseCusp?: true
+    houseDegree?: true
+    houseSign?: true
+    relativeAngularIndex?: true
     primaryDomain?: true
     secondaryDomain?: true
     dignity?: true
     strength?: true
-    speed?: true
-    visibility?: true
-    expressionBandwidth?: true
-    saturationLevel?: true
-    distortionFactor?: true
-    housePosition?: true
-    signPosition?: true
     createdAt?: true
   }
 
@@ -12984,17 +11833,21 @@ export namespace Prisma {
     id?: true
     nativityChartId?: true
     planet?: true
+    longitude?: true
+    latitude?: true
+    speed?: true
+    acceleration?: true
+    direction?: true
+    stationaryEnterTime?: true
+    stationaryExitTime?: true
+    houseCusp?: true
+    houseDegree?: true
+    houseSign?: true
+    relativeAngularIndex?: true
     primaryDomain?: true
     secondaryDomain?: true
     dignity?: true
     strength?: true
-    speed?: true
-    visibility?: true
-    expressionBandwidth?: true
-    saturationLevel?: true
-    distortionFactor?: true
-    housePosition?: true
-    signPosition?: true
     createdAt?: true
   }
 
@@ -13002,17 +11855,21 @@ export namespace Prisma {
     id?: true
     nativityChartId?: true
     planet?: true
+    longitude?: true
+    latitude?: true
+    speed?: true
+    acceleration?: true
+    direction?: true
+    stationaryEnterTime?: true
+    stationaryExitTime?: true
+    houseCusp?: true
+    houseDegree?: true
+    houseSign?: true
+    relativeAngularIndex?: true
     primaryDomain?: true
     secondaryDomain?: true
     dignity?: true
     strength?: true
-    speed?: true
-    visibility?: true
-    expressionBandwidth?: true
-    saturationLevel?: true
-    distortionFactor?: true
-    housePosition?: true
-    signPosition?: true
     createdAt?: true
     _all?: true
   }
@@ -13107,17 +11964,21 @@ export namespace Prisma {
     id: string
     nativityChartId: string
     planet: string
+    longitude: number
+    latitude: number | null
+    speed: number | null
+    acceleration: number | null
+    direction: $Enums.PlanetDirection
+    stationaryEnterTime: Date | null
+    stationaryExitTime: Date | null
+    houseCusp: number | null
+    houseDegree: number | null
+    houseSign: string | null
+    relativeAngularIndex: number | null
     primaryDomain: string | null
     secondaryDomain: string | null
     dignity: string | null
-    strength: number
-    speed: number
-    visibility: number
-    expressionBandwidth: number
-    saturationLevel: number
-    distortionFactor: number
-    housePosition: number | null
-    signPosition: string | null
+    strength: number | null
     createdAt: Date
     _count: PlanetaryProfileCountAggregateOutputType | null
     _avg: PlanetaryProfileAvgAggregateOutputType | null
@@ -13144,17 +12005,21 @@ export namespace Prisma {
     id?: boolean
     nativityChartId?: boolean
     planet?: boolean
+    longitude?: boolean
+    latitude?: boolean
+    speed?: boolean
+    acceleration?: boolean
+    direction?: boolean
+    stationaryEnterTime?: boolean
+    stationaryExitTime?: boolean
+    houseCusp?: boolean
+    houseDegree?: boolean
+    houseSign?: boolean
+    relativeAngularIndex?: boolean
     primaryDomain?: boolean
     secondaryDomain?: boolean
     dignity?: boolean
     strength?: boolean
-    speed?: boolean
-    visibility?: boolean
-    expressionBandwidth?: boolean
-    saturationLevel?: boolean
-    distortionFactor?: boolean
-    housePosition?: boolean
-    signPosition?: boolean
     createdAt?: boolean
     nativityChart?: boolean | NativityChartDefaultArgs<ExtArgs>
     aspectsAsP1?: boolean | PlanetaryProfile$aspectsAsP1Args<ExtArgs>
@@ -13168,21 +12033,25 @@ export namespace Prisma {
     id?: boolean
     nativityChartId?: boolean
     planet?: boolean
+    longitude?: boolean
+    latitude?: boolean
+    speed?: boolean
+    acceleration?: boolean
+    direction?: boolean
+    stationaryEnterTime?: boolean
+    stationaryExitTime?: boolean
+    houseCusp?: boolean
+    houseDegree?: boolean
+    houseSign?: boolean
+    relativeAngularIndex?: boolean
     primaryDomain?: boolean
     secondaryDomain?: boolean
     dignity?: boolean
     strength?: boolean
-    speed?: boolean
-    visibility?: boolean
-    expressionBandwidth?: boolean
-    saturationLevel?: boolean
-    distortionFactor?: boolean
-    housePosition?: boolean
-    signPosition?: boolean
     createdAt?: boolean
   }
 
-  export type PlanetaryProfileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nativityChartId" | "planet" | "primaryDomain" | "secondaryDomain" | "dignity" | "strength" | "speed" | "visibility" | "expressionBandwidth" | "saturationLevel" | "distortionFactor" | "housePosition" | "signPosition" | "createdAt", ExtArgs["result"]["planetaryProfile"]>
+  export type PlanetaryProfileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nativityChartId" | "planet" | "longitude" | "latitude" | "speed" | "acceleration" | "direction" | "stationaryEnterTime" | "stationaryExitTime" | "houseCusp" | "houseDegree" | "houseSign" | "relativeAngularIndex" | "primaryDomain" | "secondaryDomain" | "dignity" | "strength" | "createdAt", ExtArgs["result"]["planetaryProfile"]>
   export type PlanetaryProfileInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     nativityChart?: boolean | NativityChartDefaultArgs<ExtArgs>
     aspectsAsP1?: boolean | PlanetaryProfile$aspectsAsP1Args<ExtArgs>
@@ -13201,17 +12070,21 @@ export namespace Prisma {
       id: string
       nativityChartId: string
       planet: string
+      longitude: number
+      latitude: number | null
+      speed: number | null
+      acceleration: number | null
+      direction: $Enums.PlanetDirection
+      stationaryEnterTime: Date | null
+      stationaryExitTime: Date | null
+      houseCusp: number | null
+      houseDegree: number | null
+      houseSign: string | null
+      relativeAngularIndex: number | null
       primaryDomain: string | null
       secondaryDomain: string | null
       dignity: string | null
-      strength: number
-      speed: number
-      visibility: number
-      expressionBandwidth: number
-      saturationLevel: number
-      distortionFactor: number
-      housePosition: number | null
-      signPosition: string | null
+      strength: number | null
       createdAt: Date
     }, ExtArgs["result"]["planetaryProfile"]>
     composites: {}
@@ -13611,17 +12484,21 @@ export namespace Prisma {
     readonly id: FieldRef<"PlanetaryProfile", 'String'>
     readonly nativityChartId: FieldRef<"PlanetaryProfile", 'String'>
     readonly planet: FieldRef<"PlanetaryProfile", 'String'>
+    readonly longitude: FieldRef<"PlanetaryProfile", 'Float'>
+    readonly latitude: FieldRef<"PlanetaryProfile", 'Float'>
+    readonly speed: FieldRef<"PlanetaryProfile", 'Float'>
+    readonly acceleration: FieldRef<"PlanetaryProfile", 'Float'>
+    readonly direction: FieldRef<"PlanetaryProfile", 'PlanetDirection'>
+    readonly stationaryEnterTime: FieldRef<"PlanetaryProfile", 'DateTime'>
+    readonly stationaryExitTime: FieldRef<"PlanetaryProfile", 'DateTime'>
+    readonly houseCusp: FieldRef<"PlanetaryProfile", 'Int'>
+    readonly houseDegree: FieldRef<"PlanetaryProfile", 'Float'>
+    readonly houseSign: FieldRef<"PlanetaryProfile", 'String'>
+    readonly relativeAngularIndex: FieldRef<"PlanetaryProfile", 'Float'>
     readonly primaryDomain: FieldRef<"PlanetaryProfile", 'String'>
     readonly secondaryDomain: FieldRef<"PlanetaryProfile", 'String'>
     readonly dignity: FieldRef<"PlanetaryProfile", 'String'>
     readonly strength: FieldRef<"PlanetaryProfile", 'Float'>
-    readonly speed: FieldRef<"PlanetaryProfile", 'Float'>
-    readonly visibility: FieldRef<"PlanetaryProfile", 'Float'>
-    readonly expressionBandwidth: FieldRef<"PlanetaryProfile", 'Float'>
-    readonly saturationLevel: FieldRef<"PlanetaryProfile", 'Float'>
-    readonly distortionFactor: FieldRef<"PlanetaryProfile", 'Float'>
-    readonly housePosition: FieldRef<"PlanetaryProfile", 'Int'>
-    readonly signPosition: FieldRef<"PlanetaryProfile", 'String'>
     readonly createdAt: FieldRef<"PlanetaryProfile", 'DateTime'>
   }
     
@@ -19733,6 +18610,1180 @@ export namespace Prisma {
 
 
   /**
+   * Model ConsciousnessState
+   */
+
+  export type AggregateConsciousnessState = {
+    _count: ConsciousnessStateCountAggregateOutputType | null
+    _avg: ConsciousnessStateAvgAggregateOutputType | null
+    _sum: ConsciousnessStateSumAggregateOutputType | null
+    _min: ConsciousnessStateMinAggregateOutputType | null
+    _max: ConsciousnessStateMaxAggregateOutputType | null
+  }
+
+  export type ConsciousnessStateAvgAggregateOutputType = {
+    timestampMicro: number | null
+    entropyScore: number | null
+    coherenceScore: number | null
+    tensionScore: number | null
+    noveltyScore: number | null
+    confidenceScore: number | null
+  }
+
+  export type ConsciousnessStateSumAggregateOutputType = {
+    timestampMicro: bigint | null
+    entropyScore: number | null
+    coherenceScore: number | null
+    tensionScore: number | null
+    noveltyScore: number | null
+    confidenceScore: number | null
+  }
+
+  export type ConsciousnessStateMinAggregateOutputType = {
+    id: string | null
+    nativityChartId: string | null
+    timestamp: Date | null
+    timestampMicro: bigint | null
+    ephemerisSnapshotId: string | null
+    geometryIndexId: string | null
+    entropyScore: number | null
+    coherenceScore: number | null
+    tensionScore: number | null
+    noveltyScore: number | null
+    vectorVersion: string | null
+    simulationSource: string | null
+    confidenceScore: number | null
+    createdAt: Date | null
+  }
+
+  export type ConsciousnessStateMaxAggregateOutputType = {
+    id: string | null
+    nativityChartId: string | null
+    timestamp: Date | null
+    timestampMicro: bigint | null
+    ephemerisSnapshotId: string | null
+    geometryIndexId: string | null
+    entropyScore: number | null
+    coherenceScore: number | null
+    tensionScore: number | null
+    noveltyScore: number | null
+    vectorVersion: string | null
+    simulationSource: string | null
+    confidenceScore: number | null
+    createdAt: Date | null
+  }
+
+  export type ConsciousnessStateCountAggregateOutputType = {
+    id: number
+    nativityChartId: number
+    timestamp: number
+    timestampMicro: number
+    ephemerisSnapshotId: number
+    geometryIndexId: number
+    existentialField: number
+    cognitiveField: number
+    planetaryStates: number
+    couplingStates: number
+    entropyScore: number
+    coherenceScore: number
+    tensionScore: number
+    noveltyScore: number
+    trajectoryVector: number
+    latentVector: number
+    vectorVersion: number
+    simulationSource: number
+    confidenceScore: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type ConsciousnessStateAvgAggregateInputType = {
+    timestampMicro?: true
+    entropyScore?: true
+    coherenceScore?: true
+    tensionScore?: true
+    noveltyScore?: true
+    confidenceScore?: true
+  }
+
+  export type ConsciousnessStateSumAggregateInputType = {
+    timestampMicro?: true
+    entropyScore?: true
+    coherenceScore?: true
+    tensionScore?: true
+    noveltyScore?: true
+    confidenceScore?: true
+  }
+
+  export type ConsciousnessStateMinAggregateInputType = {
+    id?: true
+    nativityChartId?: true
+    timestamp?: true
+    timestampMicro?: true
+    ephemerisSnapshotId?: true
+    geometryIndexId?: true
+    entropyScore?: true
+    coherenceScore?: true
+    tensionScore?: true
+    noveltyScore?: true
+    vectorVersion?: true
+    simulationSource?: true
+    confidenceScore?: true
+    createdAt?: true
+  }
+
+  export type ConsciousnessStateMaxAggregateInputType = {
+    id?: true
+    nativityChartId?: true
+    timestamp?: true
+    timestampMicro?: true
+    ephemerisSnapshotId?: true
+    geometryIndexId?: true
+    entropyScore?: true
+    coherenceScore?: true
+    tensionScore?: true
+    noveltyScore?: true
+    vectorVersion?: true
+    simulationSource?: true
+    confidenceScore?: true
+    createdAt?: true
+  }
+
+  export type ConsciousnessStateCountAggregateInputType = {
+    id?: true
+    nativityChartId?: true
+    timestamp?: true
+    timestampMicro?: true
+    ephemerisSnapshotId?: true
+    geometryIndexId?: true
+    existentialField?: true
+    cognitiveField?: true
+    planetaryStates?: true
+    couplingStates?: true
+    entropyScore?: true
+    coherenceScore?: true
+    tensionScore?: true
+    noveltyScore?: true
+    trajectoryVector?: true
+    latentVector?: true
+    vectorVersion?: true
+    simulationSource?: true
+    confidenceScore?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type ConsciousnessStateAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ConsciousnessState to aggregate.
+     */
+    where?: ConsciousnessStateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ConsciousnessStates to fetch.
+     */
+    orderBy?: ConsciousnessStateOrderByWithRelationInput | ConsciousnessStateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ConsciousnessStateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ConsciousnessStates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ConsciousnessStates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ConsciousnessStates
+    **/
+    _count?: true | ConsciousnessStateCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ConsciousnessStateAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ConsciousnessStateSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ConsciousnessStateMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ConsciousnessStateMaxAggregateInputType
+  }
+
+  export type GetConsciousnessStateAggregateType<T extends ConsciousnessStateAggregateArgs> = {
+        [P in keyof T & keyof AggregateConsciousnessState]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateConsciousnessState[P]>
+      : GetScalarType<T[P], AggregateConsciousnessState[P]>
+  }
+
+
+
+
+  export type ConsciousnessStateGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ConsciousnessStateWhereInput
+    orderBy?: ConsciousnessStateOrderByWithAggregationInput | ConsciousnessStateOrderByWithAggregationInput[]
+    by: ConsciousnessStateScalarFieldEnum[] | ConsciousnessStateScalarFieldEnum
+    having?: ConsciousnessStateScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ConsciousnessStateCountAggregateInputType | true
+    _avg?: ConsciousnessStateAvgAggregateInputType
+    _sum?: ConsciousnessStateSumAggregateInputType
+    _min?: ConsciousnessStateMinAggregateInputType
+    _max?: ConsciousnessStateMaxAggregateInputType
+  }
+
+  export type ConsciousnessStateGroupByOutputType = {
+    id: string
+    nativityChartId: string
+    timestamp: Date
+    timestampMicro: bigint
+    ephemerisSnapshotId: string | null
+    geometryIndexId: string | null
+    existentialField: JsonValue
+    cognitiveField: JsonValue
+    planetaryStates: JsonValue
+    couplingStates: JsonValue
+    entropyScore: number
+    coherenceScore: number
+    tensionScore: number
+    noveltyScore: number
+    trajectoryVector: JsonValue | null
+    latentVector: JsonValue | null
+    vectorVersion: string
+    simulationSource: string | null
+    confidenceScore: number
+    createdAt: Date
+    _count: ConsciousnessStateCountAggregateOutputType | null
+    _avg: ConsciousnessStateAvgAggregateOutputType | null
+    _sum: ConsciousnessStateSumAggregateOutputType | null
+    _min: ConsciousnessStateMinAggregateOutputType | null
+    _max: ConsciousnessStateMaxAggregateOutputType | null
+  }
+
+  type GetConsciousnessStateGroupByPayload<T extends ConsciousnessStateGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ConsciousnessStateGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ConsciousnessStateGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ConsciousnessStateGroupByOutputType[P]>
+            : GetScalarType<T[P], ConsciousnessStateGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ConsciousnessStateSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nativityChartId?: boolean
+    timestamp?: boolean
+    timestampMicro?: boolean
+    ephemerisSnapshotId?: boolean
+    geometryIndexId?: boolean
+    existentialField?: boolean
+    cognitiveField?: boolean
+    planetaryStates?: boolean
+    couplingStates?: boolean
+    entropyScore?: boolean
+    coherenceScore?: boolean
+    tensionScore?: boolean
+    noveltyScore?: boolean
+    trajectoryVector?: boolean
+    latentVector?: boolean
+    vectorVersion?: boolean
+    simulationSource?: boolean
+    confidenceScore?: boolean
+    createdAt?: boolean
+    nativityChart?: boolean | NativityChartDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["consciousnessState"]>
+
+
+
+  export type ConsciousnessStateSelectScalar = {
+    id?: boolean
+    nativityChartId?: boolean
+    timestamp?: boolean
+    timestampMicro?: boolean
+    ephemerisSnapshotId?: boolean
+    geometryIndexId?: boolean
+    existentialField?: boolean
+    cognitiveField?: boolean
+    planetaryStates?: boolean
+    couplingStates?: boolean
+    entropyScore?: boolean
+    coherenceScore?: boolean
+    tensionScore?: boolean
+    noveltyScore?: boolean
+    trajectoryVector?: boolean
+    latentVector?: boolean
+    vectorVersion?: boolean
+    simulationSource?: boolean
+    confidenceScore?: boolean
+    createdAt?: boolean
+  }
+
+  export type ConsciousnessStateOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nativityChartId" | "timestamp" | "timestampMicro" | "ephemerisSnapshotId" | "geometryIndexId" | "existentialField" | "cognitiveField" | "planetaryStates" | "couplingStates" | "entropyScore" | "coherenceScore" | "tensionScore" | "noveltyScore" | "trajectoryVector" | "latentVector" | "vectorVersion" | "simulationSource" | "confidenceScore" | "createdAt", ExtArgs["result"]["consciousnessState"]>
+  export type ConsciousnessStateInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    nativityChart?: boolean | NativityChartDefaultArgs<ExtArgs>
+  }
+
+  export type $ConsciousnessStatePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ConsciousnessState"
+    objects: {
+      nativityChart: Prisma.$NativityChartPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      nativityChartId: string
+      timestamp: Date
+      timestampMicro: bigint
+      ephemerisSnapshotId: string | null
+      geometryIndexId: string | null
+      existentialField: Prisma.JsonValue
+      cognitiveField: Prisma.JsonValue
+      planetaryStates: Prisma.JsonValue
+      couplingStates: Prisma.JsonValue
+      entropyScore: number
+      coherenceScore: number
+      tensionScore: number
+      noveltyScore: number
+      trajectoryVector: Prisma.JsonValue | null
+      latentVector: Prisma.JsonValue | null
+      vectorVersion: string
+      simulationSource: string | null
+      confidenceScore: number
+      createdAt: Date
+    }, ExtArgs["result"]["consciousnessState"]>
+    composites: {}
+  }
+
+  type ConsciousnessStateGetPayload<S extends boolean | null | undefined | ConsciousnessStateDefaultArgs> = $Result.GetResult<Prisma.$ConsciousnessStatePayload, S>
+
+  type ConsciousnessStateCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ConsciousnessStateFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ConsciousnessStateCountAggregateInputType | true
+    }
+
+  export interface ConsciousnessStateDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ConsciousnessState'], meta: { name: 'ConsciousnessState' } }
+    /**
+     * Find zero or one ConsciousnessState that matches the filter.
+     * @param {ConsciousnessStateFindUniqueArgs} args - Arguments to find a ConsciousnessState
+     * @example
+     * // Get one ConsciousnessState
+     * const consciousnessState = await prisma.consciousnessState.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ConsciousnessStateFindUniqueArgs>(args: SelectSubset<T, ConsciousnessStateFindUniqueArgs<ExtArgs>>): Prisma__ConsciousnessStateClient<$Result.GetResult<Prisma.$ConsciousnessStatePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ConsciousnessState that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ConsciousnessStateFindUniqueOrThrowArgs} args - Arguments to find a ConsciousnessState
+     * @example
+     * // Get one ConsciousnessState
+     * const consciousnessState = await prisma.consciousnessState.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ConsciousnessStateFindUniqueOrThrowArgs>(args: SelectSubset<T, ConsciousnessStateFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ConsciousnessStateClient<$Result.GetResult<Prisma.$ConsciousnessStatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ConsciousnessState that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ConsciousnessStateFindFirstArgs} args - Arguments to find a ConsciousnessState
+     * @example
+     * // Get one ConsciousnessState
+     * const consciousnessState = await prisma.consciousnessState.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ConsciousnessStateFindFirstArgs>(args?: SelectSubset<T, ConsciousnessStateFindFirstArgs<ExtArgs>>): Prisma__ConsciousnessStateClient<$Result.GetResult<Prisma.$ConsciousnessStatePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ConsciousnessState that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ConsciousnessStateFindFirstOrThrowArgs} args - Arguments to find a ConsciousnessState
+     * @example
+     * // Get one ConsciousnessState
+     * const consciousnessState = await prisma.consciousnessState.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ConsciousnessStateFindFirstOrThrowArgs>(args?: SelectSubset<T, ConsciousnessStateFindFirstOrThrowArgs<ExtArgs>>): Prisma__ConsciousnessStateClient<$Result.GetResult<Prisma.$ConsciousnessStatePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ConsciousnessStates that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ConsciousnessStateFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ConsciousnessStates
+     * const consciousnessStates = await prisma.consciousnessState.findMany()
+     * 
+     * // Get first 10 ConsciousnessStates
+     * const consciousnessStates = await prisma.consciousnessState.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const consciousnessStateWithIdOnly = await prisma.consciousnessState.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ConsciousnessStateFindManyArgs>(args?: SelectSubset<T, ConsciousnessStateFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ConsciousnessStatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ConsciousnessState.
+     * @param {ConsciousnessStateCreateArgs} args - Arguments to create a ConsciousnessState.
+     * @example
+     * // Create one ConsciousnessState
+     * const ConsciousnessState = await prisma.consciousnessState.create({
+     *   data: {
+     *     // ... data to create a ConsciousnessState
+     *   }
+     * })
+     * 
+     */
+    create<T extends ConsciousnessStateCreateArgs>(args: SelectSubset<T, ConsciousnessStateCreateArgs<ExtArgs>>): Prisma__ConsciousnessStateClient<$Result.GetResult<Prisma.$ConsciousnessStatePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ConsciousnessStates.
+     * @param {ConsciousnessStateCreateManyArgs} args - Arguments to create many ConsciousnessStates.
+     * @example
+     * // Create many ConsciousnessStates
+     * const consciousnessState = await prisma.consciousnessState.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ConsciousnessStateCreateManyArgs>(args?: SelectSubset<T, ConsciousnessStateCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a ConsciousnessState.
+     * @param {ConsciousnessStateDeleteArgs} args - Arguments to delete one ConsciousnessState.
+     * @example
+     * // Delete one ConsciousnessState
+     * const ConsciousnessState = await prisma.consciousnessState.delete({
+     *   where: {
+     *     // ... filter to delete one ConsciousnessState
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ConsciousnessStateDeleteArgs>(args: SelectSubset<T, ConsciousnessStateDeleteArgs<ExtArgs>>): Prisma__ConsciousnessStateClient<$Result.GetResult<Prisma.$ConsciousnessStatePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ConsciousnessState.
+     * @param {ConsciousnessStateUpdateArgs} args - Arguments to update one ConsciousnessState.
+     * @example
+     * // Update one ConsciousnessState
+     * const consciousnessState = await prisma.consciousnessState.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ConsciousnessStateUpdateArgs>(args: SelectSubset<T, ConsciousnessStateUpdateArgs<ExtArgs>>): Prisma__ConsciousnessStateClient<$Result.GetResult<Prisma.$ConsciousnessStatePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ConsciousnessStates.
+     * @param {ConsciousnessStateDeleteManyArgs} args - Arguments to filter ConsciousnessStates to delete.
+     * @example
+     * // Delete a few ConsciousnessStates
+     * const { count } = await prisma.consciousnessState.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ConsciousnessStateDeleteManyArgs>(args?: SelectSubset<T, ConsciousnessStateDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ConsciousnessStates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ConsciousnessStateUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ConsciousnessStates
+     * const consciousnessState = await prisma.consciousnessState.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ConsciousnessStateUpdateManyArgs>(args: SelectSubset<T, ConsciousnessStateUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one ConsciousnessState.
+     * @param {ConsciousnessStateUpsertArgs} args - Arguments to update or create a ConsciousnessState.
+     * @example
+     * // Update or create a ConsciousnessState
+     * const consciousnessState = await prisma.consciousnessState.upsert({
+     *   create: {
+     *     // ... data to create a ConsciousnessState
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ConsciousnessState we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ConsciousnessStateUpsertArgs>(args: SelectSubset<T, ConsciousnessStateUpsertArgs<ExtArgs>>): Prisma__ConsciousnessStateClient<$Result.GetResult<Prisma.$ConsciousnessStatePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ConsciousnessStates that matches the filter.
+     * @param {ConsciousnessStateFindRawArgs} args - Select which filters you would like to apply.
+     * @example
+     * const consciousnessState = await prisma.consciousnessState.findRaw({
+     *   filter: { age: { $gt: 25 } }
+     * })
+     */
+    findRaw(args?: ConsciousnessStateFindRawArgs): Prisma.PrismaPromise<JsonObject>
+
+    /**
+     * Perform aggregation operations on a ConsciousnessState.
+     * @param {ConsciousnessStateAggregateRawArgs} args - Select which aggregations you would like to apply.
+     * @example
+     * const consciousnessState = await prisma.consciousnessState.aggregateRaw({
+     *   pipeline: [
+     *     { $match: { status: "registered" } },
+     *     { $group: { _id: "$country", total: { $sum: 1 } } }
+     *   ]
+     * })
+     */
+    aggregateRaw(args?: ConsciousnessStateAggregateRawArgs): Prisma.PrismaPromise<JsonObject>
+
+
+    /**
+     * Count the number of ConsciousnessStates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ConsciousnessStateCountArgs} args - Arguments to filter ConsciousnessStates to count.
+     * @example
+     * // Count the number of ConsciousnessStates
+     * const count = await prisma.consciousnessState.count({
+     *   where: {
+     *     // ... the filter for the ConsciousnessStates we want to count
+     *   }
+     * })
+    **/
+    count<T extends ConsciousnessStateCountArgs>(
+      args?: Subset<T, ConsciousnessStateCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ConsciousnessStateCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ConsciousnessState.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ConsciousnessStateAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ConsciousnessStateAggregateArgs>(args: Subset<T, ConsciousnessStateAggregateArgs>): Prisma.PrismaPromise<GetConsciousnessStateAggregateType<T>>
+
+    /**
+     * Group by ConsciousnessState.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ConsciousnessStateGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ConsciousnessStateGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ConsciousnessStateGroupByArgs['orderBy'] }
+        : { orderBy?: ConsciousnessStateGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ConsciousnessStateGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetConsciousnessStateGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ConsciousnessState model
+   */
+  readonly fields: ConsciousnessStateFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ConsciousnessState.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ConsciousnessStateClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    nativityChart<T extends NativityChartDefaultArgs<ExtArgs> = {}>(args?: Subset<T, NativityChartDefaultArgs<ExtArgs>>): Prisma__NativityChartClient<$Result.GetResult<Prisma.$NativityChartPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ConsciousnessState model
+   */
+  interface ConsciousnessStateFieldRefs {
+    readonly id: FieldRef<"ConsciousnessState", 'String'>
+    readonly nativityChartId: FieldRef<"ConsciousnessState", 'String'>
+    readonly timestamp: FieldRef<"ConsciousnessState", 'DateTime'>
+    readonly timestampMicro: FieldRef<"ConsciousnessState", 'BigInt'>
+    readonly ephemerisSnapshotId: FieldRef<"ConsciousnessState", 'String'>
+    readonly geometryIndexId: FieldRef<"ConsciousnessState", 'String'>
+    readonly existentialField: FieldRef<"ConsciousnessState", 'Json'>
+    readonly cognitiveField: FieldRef<"ConsciousnessState", 'Json'>
+    readonly planetaryStates: FieldRef<"ConsciousnessState", 'Json'>
+    readonly couplingStates: FieldRef<"ConsciousnessState", 'Json'>
+    readonly entropyScore: FieldRef<"ConsciousnessState", 'Float'>
+    readonly coherenceScore: FieldRef<"ConsciousnessState", 'Float'>
+    readonly tensionScore: FieldRef<"ConsciousnessState", 'Float'>
+    readonly noveltyScore: FieldRef<"ConsciousnessState", 'Float'>
+    readonly trajectoryVector: FieldRef<"ConsciousnessState", 'Json'>
+    readonly latentVector: FieldRef<"ConsciousnessState", 'Json'>
+    readonly vectorVersion: FieldRef<"ConsciousnessState", 'String'>
+    readonly simulationSource: FieldRef<"ConsciousnessState", 'String'>
+    readonly confidenceScore: FieldRef<"ConsciousnessState", 'Float'>
+    readonly createdAt: FieldRef<"ConsciousnessState", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ConsciousnessState findUnique
+   */
+  export type ConsciousnessStateFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ConsciousnessState
+     */
+    select?: ConsciousnessStateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ConsciousnessState
+     */
+    omit?: ConsciousnessStateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConsciousnessStateInclude<ExtArgs> | null
+    /**
+     * Filter, which ConsciousnessState to fetch.
+     */
+    where: ConsciousnessStateWhereUniqueInput
+  }
+
+  /**
+   * ConsciousnessState findUniqueOrThrow
+   */
+  export type ConsciousnessStateFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ConsciousnessState
+     */
+    select?: ConsciousnessStateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ConsciousnessState
+     */
+    omit?: ConsciousnessStateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConsciousnessStateInclude<ExtArgs> | null
+    /**
+     * Filter, which ConsciousnessState to fetch.
+     */
+    where: ConsciousnessStateWhereUniqueInput
+  }
+
+  /**
+   * ConsciousnessState findFirst
+   */
+  export type ConsciousnessStateFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ConsciousnessState
+     */
+    select?: ConsciousnessStateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ConsciousnessState
+     */
+    omit?: ConsciousnessStateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConsciousnessStateInclude<ExtArgs> | null
+    /**
+     * Filter, which ConsciousnessState to fetch.
+     */
+    where?: ConsciousnessStateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ConsciousnessStates to fetch.
+     */
+    orderBy?: ConsciousnessStateOrderByWithRelationInput | ConsciousnessStateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ConsciousnessStates.
+     */
+    cursor?: ConsciousnessStateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ConsciousnessStates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ConsciousnessStates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ConsciousnessStates.
+     */
+    distinct?: ConsciousnessStateScalarFieldEnum | ConsciousnessStateScalarFieldEnum[]
+  }
+
+  /**
+   * ConsciousnessState findFirstOrThrow
+   */
+  export type ConsciousnessStateFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ConsciousnessState
+     */
+    select?: ConsciousnessStateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ConsciousnessState
+     */
+    omit?: ConsciousnessStateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConsciousnessStateInclude<ExtArgs> | null
+    /**
+     * Filter, which ConsciousnessState to fetch.
+     */
+    where?: ConsciousnessStateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ConsciousnessStates to fetch.
+     */
+    orderBy?: ConsciousnessStateOrderByWithRelationInput | ConsciousnessStateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ConsciousnessStates.
+     */
+    cursor?: ConsciousnessStateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ConsciousnessStates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ConsciousnessStates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ConsciousnessStates.
+     */
+    distinct?: ConsciousnessStateScalarFieldEnum | ConsciousnessStateScalarFieldEnum[]
+  }
+
+  /**
+   * ConsciousnessState findMany
+   */
+  export type ConsciousnessStateFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ConsciousnessState
+     */
+    select?: ConsciousnessStateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ConsciousnessState
+     */
+    omit?: ConsciousnessStateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConsciousnessStateInclude<ExtArgs> | null
+    /**
+     * Filter, which ConsciousnessStates to fetch.
+     */
+    where?: ConsciousnessStateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ConsciousnessStates to fetch.
+     */
+    orderBy?: ConsciousnessStateOrderByWithRelationInput | ConsciousnessStateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ConsciousnessStates.
+     */
+    cursor?: ConsciousnessStateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ConsciousnessStates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ConsciousnessStates.
+     */
+    skip?: number
+    distinct?: ConsciousnessStateScalarFieldEnum | ConsciousnessStateScalarFieldEnum[]
+  }
+
+  /**
+   * ConsciousnessState create
+   */
+  export type ConsciousnessStateCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ConsciousnessState
+     */
+    select?: ConsciousnessStateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ConsciousnessState
+     */
+    omit?: ConsciousnessStateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConsciousnessStateInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ConsciousnessState.
+     */
+    data: XOR<ConsciousnessStateCreateInput, ConsciousnessStateUncheckedCreateInput>
+  }
+
+  /**
+   * ConsciousnessState createMany
+   */
+  export type ConsciousnessStateCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ConsciousnessStates.
+     */
+    data: ConsciousnessStateCreateManyInput | ConsciousnessStateCreateManyInput[]
+  }
+
+  /**
+   * ConsciousnessState update
+   */
+  export type ConsciousnessStateUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ConsciousnessState
+     */
+    select?: ConsciousnessStateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ConsciousnessState
+     */
+    omit?: ConsciousnessStateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConsciousnessStateInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ConsciousnessState.
+     */
+    data: XOR<ConsciousnessStateUpdateInput, ConsciousnessStateUncheckedUpdateInput>
+    /**
+     * Choose, which ConsciousnessState to update.
+     */
+    where: ConsciousnessStateWhereUniqueInput
+  }
+
+  /**
+   * ConsciousnessState updateMany
+   */
+  export type ConsciousnessStateUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ConsciousnessStates.
+     */
+    data: XOR<ConsciousnessStateUpdateManyMutationInput, ConsciousnessStateUncheckedUpdateManyInput>
+    /**
+     * Filter which ConsciousnessStates to update
+     */
+    where?: ConsciousnessStateWhereInput
+    /**
+     * Limit how many ConsciousnessStates to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ConsciousnessState upsert
+   */
+  export type ConsciousnessStateUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ConsciousnessState
+     */
+    select?: ConsciousnessStateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ConsciousnessState
+     */
+    omit?: ConsciousnessStateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConsciousnessStateInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ConsciousnessState to update in case it exists.
+     */
+    where: ConsciousnessStateWhereUniqueInput
+    /**
+     * In case the ConsciousnessState found by the `where` argument doesn't exist, create a new ConsciousnessState with this data.
+     */
+    create: XOR<ConsciousnessStateCreateInput, ConsciousnessStateUncheckedCreateInput>
+    /**
+     * In case the ConsciousnessState was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ConsciousnessStateUpdateInput, ConsciousnessStateUncheckedUpdateInput>
+  }
+
+  /**
+   * ConsciousnessState delete
+   */
+  export type ConsciousnessStateDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ConsciousnessState
+     */
+    select?: ConsciousnessStateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ConsciousnessState
+     */
+    omit?: ConsciousnessStateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConsciousnessStateInclude<ExtArgs> | null
+    /**
+     * Filter which ConsciousnessState to delete.
+     */
+    where: ConsciousnessStateWhereUniqueInput
+  }
+
+  /**
+   * ConsciousnessState deleteMany
+   */
+  export type ConsciousnessStateDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ConsciousnessStates to delete
+     */
+    where?: ConsciousnessStateWhereInput
+    /**
+     * Limit how many ConsciousnessStates to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ConsciousnessState findRaw
+   */
+  export type ConsciousnessStateFindRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The query predicate filter. If unspecified, then all documents in the collection will match the predicate. ${@link https://docs.mongodb.com/manual/reference/operator/query MongoDB Docs}.
+     */
+    filter?: InputJsonValue
+    /**
+     * Additional options to pass to the `find` command ${@link https://docs.mongodb.com/manual/reference/command/find/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * ConsciousnessState aggregateRaw
+   */
+  export type ConsciousnessStateAggregateRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * An array of aggregation stages to process and transform the document stream via the aggregation pipeline. ${@link https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline MongoDB Docs}.
+     */
+    pipeline?: InputJsonValue[]
+    /**
+     * Additional options to pass to the `aggregate` command ${@link https://docs.mongodb.com/manual/reference/command/aggregate/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * ConsciousnessState without action
+   */
+  export type ConsciousnessStateDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ConsciousnessState
+     */
+    select?: ConsciousnessStateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ConsciousnessState
+     */
+    omit?: ConsciousnessStateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConsciousnessStateInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -19821,27 +19872,6 @@ export namespace Prisma {
   export type EphemerisSnapshotScalarFieldEnum = (typeof EphemerisSnapshotScalarFieldEnum)[keyof typeof EphemerisSnapshotScalarFieldEnum]
 
 
-  export const PlanetDataScalarFieldEnum: {
-    id: 'id',
-    ephemerisSnapshotId: 'ephemerisSnapshotId',
-    planet: 'planet',
-    longitude: 'longitude',
-    latitude: 'latitude',
-    speed: 'speed',
-    acceleration: 'acceleration',
-    direction: 'direction',
-    stationaryEnterTime: 'stationaryEnterTime',
-    stationaryExitTime: 'stationaryExitTime',
-    houseCusp: 'houseCusp',
-    houseDegree: 'houseDegree',
-    houseSign: 'houseSign',
-    relativeAngularIndex: 'relativeAngularIndex',
-    createdAt: 'createdAt'
-  };
-
-  export type PlanetDataScalarFieldEnum = (typeof PlanetDataScalarFieldEnum)[keyof typeof PlanetDataScalarFieldEnum]
-
-
   export const GeometryIndexScalarFieldEnum: {
     id: 'id',
     nativityChartId: 'nativityChartId',
@@ -19894,17 +19924,21 @@ export namespace Prisma {
     id: 'id',
     nativityChartId: 'nativityChartId',
     planet: 'planet',
+    longitude: 'longitude',
+    latitude: 'latitude',
+    speed: 'speed',
+    acceleration: 'acceleration',
+    direction: 'direction',
+    stationaryEnterTime: 'stationaryEnterTime',
+    stationaryExitTime: 'stationaryExitTime',
+    houseCusp: 'houseCusp',
+    houseDegree: 'houseDegree',
+    houseSign: 'houseSign',
+    relativeAngularIndex: 'relativeAngularIndex',
     primaryDomain: 'primaryDomain',
     secondaryDomain: 'secondaryDomain',
     dignity: 'dignity',
     strength: 'strength',
-    speed: 'speed',
-    visibility: 'visibility',
-    expressionBandwidth: 'expressionBandwidth',
-    saturationLevel: 'saturationLevel',
-    distortionFactor: 'distortionFactor',
-    housePosition: 'housePosition',
-    signPosition: 'signPosition',
     createdAt: 'createdAt'
   };
 
@@ -20014,6 +20048,32 @@ export namespace Prisma {
   };
 
   export type PlanetarySceneScalarFieldEnum = (typeof PlanetarySceneScalarFieldEnum)[keyof typeof PlanetarySceneScalarFieldEnum]
+
+
+  export const ConsciousnessStateScalarFieldEnum: {
+    id: 'id',
+    nativityChartId: 'nativityChartId',
+    timestamp: 'timestamp',
+    timestampMicro: 'timestampMicro',
+    ephemerisSnapshotId: 'ephemerisSnapshotId',
+    geometryIndexId: 'geometryIndexId',
+    existentialField: 'existentialField',
+    cognitiveField: 'cognitiveField',
+    planetaryStates: 'planetaryStates',
+    couplingStates: 'couplingStates',
+    entropyScore: 'entropyScore',
+    coherenceScore: 'coherenceScore',
+    tensionScore: 'tensionScore',
+    noveltyScore: 'noveltyScore',
+    trajectoryVector: 'trajectoryVector',
+    latentVector: 'latentVector',
+    vectorVersion: 'vectorVersion',
+    simulationSource: 'simulationSource',
+    confidenceScore: 'confidenceScore',
+    createdAt: 'createdAt'
+  };
+
+  export type ConsciousnessStateScalarFieldEnum = (typeof ConsciousnessStateScalarFieldEnum)[keyof typeof ConsciousnessStateScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -20470,6 +20530,7 @@ export namespace Prisma {
     purposeStates?: PurposeStateListRelationFilter
     similarities?: SimilarityRecordListRelationFilter
     currentStories?: CurrentStoryListRelationFilter
+    consciousnessStates?: ConsciousnessStateListRelationFilter
   }
 
   export type NativityChartOrderByWithRelationInput = {
@@ -20497,6 +20558,7 @@ export namespace Prisma {
     purposeStates?: PurposeStateOrderByRelationAggregateInput
     similarities?: SimilarityRecordOrderByRelationAggregateInput
     currentStories?: CurrentStoryOrderByRelationAggregateInput
+    consciousnessStates?: ConsciousnessStateOrderByRelationAggregateInput
   }
 
   export type NativityChartWhereUniqueInput = Prisma.AtLeast<{
@@ -20527,6 +20589,7 @@ export namespace Prisma {
     purposeStates?: PurposeStateListRelationFilter
     similarities?: SimilarityRecordListRelationFilter
     currentStories?: CurrentStoryListRelationFilter
+    consciousnessStates?: ConsciousnessStateListRelationFilter
   }, "id">
 
   export type NativityChartOrderByWithAggregationInput = {
@@ -20583,7 +20646,6 @@ export namespace Prisma {
     phase?: StringNullableFilter<"EphemerisSnapshot"> | string | null
     createdAt?: DateTimeFilter<"EphemerisSnapshot"> | Date | string
     nativityChart?: XOR<NativityChartScalarRelationFilter, NativityChartWhereInput>
-    planets?: PlanetDataListRelationFilter
   }
 
   export type EphemerisSnapshotOrderByWithRelationInput = {
@@ -20593,7 +20655,6 @@ export namespace Prisma {
     phase?: SortOrder
     createdAt?: SortOrder
     nativityChart?: NativityChartOrderByWithRelationInput
-    planets?: PlanetDataOrderByRelationAggregateInput
   }
 
   export type EphemerisSnapshotWhereUniqueInput = Prisma.AtLeast<{
@@ -20606,7 +20667,6 @@ export namespace Prisma {
     phase?: StringNullableFilter<"EphemerisSnapshot"> | string | null
     createdAt?: DateTimeFilter<"EphemerisSnapshot"> | Date | string
     nativityChart?: XOR<NativityChartScalarRelationFilter, NativityChartWhereInput>
-    planets?: PlanetDataListRelationFilter
   }, "id" | "nativityChartId">
 
   export type EphemerisSnapshotOrderByWithAggregationInput = {
@@ -20631,113 +20691,6 @@ export namespace Prisma {
     absoluteTimeIndex?: BigIntWithAggregatesFilter<"EphemerisSnapshot"> | bigint | number
     phase?: StringNullableWithAggregatesFilter<"EphemerisSnapshot"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"EphemerisSnapshot"> | Date | string
-  }
-
-  export type PlanetDataWhereInput = {
-    AND?: PlanetDataWhereInput | PlanetDataWhereInput[]
-    OR?: PlanetDataWhereInput[]
-    NOT?: PlanetDataWhereInput | PlanetDataWhereInput[]
-    id?: StringFilter<"PlanetData"> | string
-    ephemerisSnapshotId?: StringFilter<"PlanetData"> | string
-    planet?: StringFilter<"PlanetData"> | string
-    longitude?: FloatFilter<"PlanetData"> | number
-    latitude?: FloatNullableFilter<"PlanetData"> | number | null
-    speed?: FloatFilter<"PlanetData"> | number
-    acceleration?: FloatNullableFilter<"PlanetData"> | number | null
-    direction?: EnumPlanetDirectionFilter<"PlanetData"> | $Enums.PlanetDirection
-    stationaryEnterTime?: DateTimeNullableFilter<"PlanetData"> | Date | string | null
-    stationaryExitTime?: DateTimeNullableFilter<"PlanetData"> | Date | string | null
-    houseCusp?: IntNullableFilter<"PlanetData"> | number | null
-    houseDegree?: FloatNullableFilter<"PlanetData"> | number | null
-    houseSign?: StringNullableFilter<"PlanetData"> | string | null
-    relativeAngularIndex?: FloatNullableFilter<"PlanetData"> | number | null
-    createdAt?: DateTimeFilter<"PlanetData"> | Date | string
-    ephemerisSnapshot?: XOR<EphemerisSnapshotScalarRelationFilter, EphemerisSnapshotWhereInput>
-  }
-
-  export type PlanetDataOrderByWithRelationInput = {
-    id?: SortOrder
-    ephemerisSnapshotId?: SortOrder
-    planet?: SortOrder
-    longitude?: SortOrder
-    latitude?: SortOrder
-    speed?: SortOrder
-    acceleration?: SortOrder
-    direction?: SortOrder
-    stationaryEnterTime?: SortOrder
-    stationaryExitTime?: SortOrder
-    houseCusp?: SortOrder
-    houseDegree?: SortOrder
-    houseSign?: SortOrder
-    relativeAngularIndex?: SortOrder
-    createdAt?: SortOrder
-    ephemerisSnapshot?: EphemerisSnapshotOrderByWithRelationInput
-  }
-
-  export type PlanetDataWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    AND?: PlanetDataWhereInput | PlanetDataWhereInput[]
-    OR?: PlanetDataWhereInput[]
-    NOT?: PlanetDataWhereInput | PlanetDataWhereInput[]
-    ephemerisSnapshotId?: StringFilter<"PlanetData"> | string
-    planet?: StringFilter<"PlanetData"> | string
-    longitude?: FloatFilter<"PlanetData"> | number
-    latitude?: FloatNullableFilter<"PlanetData"> | number | null
-    speed?: FloatFilter<"PlanetData"> | number
-    acceleration?: FloatNullableFilter<"PlanetData"> | number | null
-    direction?: EnumPlanetDirectionFilter<"PlanetData"> | $Enums.PlanetDirection
-    stationaryEnterTime?: DateTimeNullableFilter<"PlanetData"> | Date | string | null
-    stationaryExitTime?: DateTimeNullableFilter<"PlanetData"> | Date | string | null
-    houseCusp?: IntNullableFilter<"PlanetData"> | number | null
-    houseDegree?: FloatNullableFilter<"PlanetData"> | number | null
-    houseSign?: StringNullableFilter<"PlanetData"> | string | null
-    relativeAngularIndex?: FloatNullableFilter<"PlanetData"> | number | null
-    createdAt?: DateTimeFilter<"PlanetData"> | Date | string
-    ephemerisSnapshot?: XOR<EphemerisSnapshotScalarRelationFilter, EphemerisSnapshotWhereInput>
-  }, "id">
-
-  export type PlanetDataOrderByWithAggregationInput = {
-    id?: SortOrder
-    ephemerisSnapshotId?: SortOrder
-    planet?: SortOrder
-    longitude?: SortOrder
-    latitude?: SortOrder
-    speed?: SortOrder
-    acceleration?: SortOrder
-    direction?: SortOrder
-    stationaryEnterTime?: SortOrder
-    stationaryExitTime?: SortOrder
-    houseCusp?: SortOrder
-    houseDegree?: SortOrder
-    houseSign?: SortOrder
-    relativeAngularIndex?: SortOrder
-    createdAt?: SortOrder
-    _count?: PlanetDataCountOrderByAggregateInput
-    _avg?: PlanetDataAvgOrderByAggregateInput
-    _max?: PlanetDataMaxOrderByAggregateInput
-    _min?: PlanetDataMinOrderByAggregateInput
-    _sum?: PlanetDataSumOrderByAggregateInput
-  }
-
-  export type PlanetDataScalarWhereWithAggregatesInput = {
-    AND?: PlanetDataScalarWhereWithAggregatesInput | PlanetDataScalarWhereWithAggregatesInput[]
-    OR?: PlanetDataScalarWhereWithAggregatesInput[]
-    NOT?: PlanetDataScalarWhereWithAggregatesInput | PlanetDataScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"PlanetData"> | string
-    ephemerisSnapshotId?: StringWithAggregatesFilter<"PlanetData"> | string
-    planet?: StringWithAggregatesFilter<"PlanetData"> | string
-    longitude?: FloatWithAggregatesFilter<"PlanetData"> | number
-    latitude?: FloatNullableWithAggregatesFilter<"PlanetData"> | number | null
-    speed?: FloatWithAggregatesFilter<"PlanetData"> | number
-    acceleration?: FloatNullableWithAggregatesFilter<"PlanetData"> | number | null
-    direction?: EnumPlanetDirectionWithAggregatesFilter<"PlanetData"> | $Enums.PlanetDirection
-    stationaryEnterTime?: DateTimeNullableWithAggregatesFilter<"PlanetData"> | Date | string | null
-    stationaryExitTime?: DateTimeNullableWithAggregatesFilter<"PlanetData"> | Date | string | null
-    houseCusp?: IntNullableWithAggregatesFilter<"PlanetData"> | number | null
-    houseDegree?: FloatNullableWithAggregatesFilter<"PlanetData"> | number | null
-    houseSign?: StringNullableWithAggregatesFilter<"PlanetData"> | string | null
-    relativeAngularIndex?: FloatNullableWithAggregatesFilter<"PlanetData"> | number | null
-    createdAt?: DateTimeWithAggregatesFilter<"PlanetData"> | Date | string
   }
 
   export type GeometryIndexWhereInput = {
@@ -21007,17 +20960,21 @@ export namespace Prisma {
     id?: StringFilter<"PlanetaryProfile"> | string
     nativityChartId?: StringFilter<"PlanetaryProfile"> | string
     planet?: StringFilter<"PlanetaryProfile"> | string
+    longitude?: FloatFilter<"PlanetaryProfile"> | number
+    latitude?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    speed?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    acceleration?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    direction?: EnumPlanetDirectionFilter<"PlanetaryProfile"> | $Enums.PlanetDirection
+    stationaryEnterTime?: DateTimeNullableFilter<"PlanetaryProfile"> | Date | string | null
+    stationaryExitTime?: DateTimeNullableFilter<"PlanetaryProfile"> | Date | string | null
+    houseCusp?: IntNullableFilter<"PlanetaryProfile"> | number | null
+    houseDegree?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    houseSign?: StringNullableFilter<"PlanetaryProfile"> | string | null
+    relativeAngularIndex?: FloatNullableFilter<"PlanetaryProfile"> | number | null
     primaryDomain?: StringNullableFilter<"PlanetaryProfile"> | string | null
     secondaryDomain?: StringNullableFilter<"PlanetaryProfile"> | string | null
     dignity?: StringNullableFilter<"PlanetaryProfile"> | string | null
-    strength?: FloatFilter<"PlanetaryProfile"> | number
-    speed?: FloatFilter<"PlanetaryProfile"> | number
-    visibility?: FloatFilter<"PlanetaryProfile"> | number
-    expressionBandwidth?: FloatFilter<"PlanetaryProfile"> | number
-    saturationLevel?: FloatFilter<"PlanetaryProfile"> | number
-    distortionFactor?: FloatFilter<"PlanetaryProfile"> | number
-    housePosition?: IntNullableFilter<"PlanetaryProfile"> | number | null
-    signPosition?: StringNullableFilter<"PlanetaryProfile"> | string | null
+    strength?: FloatNullableFilter<"PlanetaryProfile"> | number | null
     createdAt?: DateTimeFilter<"PlanetaryProfile"> | Date | string
     nativityChart?: XOR<NativityChartScalarRelationFilter, NativityChartWhereInput>
     aspectsAsP1?: NativityAspectListRelationFilter
@@ -21028,17 +20985,21 @@ export namespace Prisma {
     id?: SortOrder
     nativityChartId?: SortOrder
     planet?: SortOrder
+    longitude?: SortOrder
+    latitude?: SortOrder
+    speed?: SortOrder
+    acceleration?: SortOrder
+    direction?: SortOrder
+    stationaryEnterTime?: SortOrder
+    stationaryExitTime?: SortOrder
+    houseCusp?: SortOrder
+    houseDegree?: SortOrder
+    houseSign?: SortOrder
+    relativeAngularIndex?: SortOrder
     primaryDomain?: SortOrder
     secondaryDomain?: SortOrder
     dignity?: SortOrder
     strength?: SortOrder
-    speed?: SortOrder
-    visibility?: SortOrder
-    expressionBandwidth?: SortOrder
-    saturationLevel?: SortOrder
-    distortionFactor?: SortOrder
-    housePosition?: SortOrder
-    signPosition?: SortOrder
     createdAt?: SortOrder
     nativityChart?: NativityChartOrderByWithRelationInput
     aspectsAsP1?: NativityAspectOrderByRelationAggregateInput
@@ -21052,17 +21013,21 @@ export namespace Prisma {
     NOT?: PlanetaryProfileWhereInput | PlanetaryProfileWhereInput[]
     nativityChartId?: StringFilter<"PlanetaryProfile"> | string
     planet?: StringFilter<"PlanetaryProfile"> | string
+    longitude?: FloatFilter<"PlanetaryProfile"> | number
+    latitude?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    speed?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    acceleration?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    direction?: EnumPlanetDirectionFilter<"PlanetaryProfile"> | $Enums.PlanetDirection
+    stationaryEnterTime?: DateTimeNullableFilter<"PlanetaryProfile"> | Date | string | null
+    stationaryExitTime?: DateTimeNullableFilter<"PlanetaryProfile"> | Date | string | null
+    houseCusp?: IntNullableFilter<"PlanetaryProfile"> | number | null
+    houseDegree?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    houseSign?: StringNullableFilter<"PlanetaryProfile"> | string | null
+    relativeAngularIndex?: FloatNullableFilter<"PlanetaryProfile"> | number | null
     primaryDomain?: StringNullableFilter<"PlanetaryProfile"> | string | null
     secondaryDomain?: StringNullableFilter<"PlanetaryProfile"> | string | null
     dignity?: StringNullableFilter<"PlanetaryProfile"> | string | null
-    strength?: FloatFilter<"PlanetaryProfile"> | number
-    speed?: FloatFilter<"PlanetaryProfile"> | number
-    visibility?: FloatFilter<"PlanetaryProfile"> | number
-    expressionBandwidth?: FloatFilter<"PlanetaryProfile"> | number
-    saturationLevel?: FloatFilter<"PlanetaryProfile"> | number
-    distortionFactor?: FloatFilter<"PlanetaryProfile"> | number
-    housePosition?: IntNullableFilter<"PlanetaryProfile"> | number | null
-    signPosition?: StringNullableFilter<"PlanetaryProfile"> | string | null
+    strength?: FloatNullableFilter<"PlanetaryProfile"> | number | null
     createdAt?: DateTimeFilter<"PlanetaryProfile"> | Date | string
     nativityChart?: XOR<NativityChartScalarRelationFilter, NativityChartWhereInput>
     aspectsAsP1?: NativityAspectListRelationFilter
@@ -21073,17 +21038,21 @@ export namespace Prisma {
     id?: SortOrder
     nativityChartId?: SortOrder
     planet?: SortOrder
+    longitude?: SortOrder
+    latitude?: SortOrder
+    speed?: SortOrder
+    acceleration?: SortOrder
+    direction?: SortOrder
+    stationaryEnterTime?: SortOrder
+    stationaryExitTime?: SortOrder
+    houseCusp?: SortOrder
+    houseDegree?: SortOrder
+    houseSign?: SortOrder
+    relativeAngularIndex?: SortOrder
     primaryDomain?: SortOrder
     secondaryDomain?: SortOrder
     dignity?: SortOrder
     strength?: SortOrder
-    speed?: SortOrder
-    visibility?: SortOrder
-    expressionBandwidth?: SortOrder
-    saturationLevel?: SortOrder
-    distortionFactor?: SortOrder
-    housePosition?: SortOrder
-    signPosition?: SortOrder
     createdAt?: SortOrder
     _count?: PlanetaryProfileCountOrderByAggregateInput
     _avg?: PlanetaryProfileAvgOrderByAggregateInput
@@ -21099,17 +21068,21 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"PlanetaryProfile"> | string
     nativityChartId?: StringWithAggregatesFilter<"PlanetaryProfile"> | string
     planet?: StringWithAggregatesFilter<"PlanetaryProfile"> | string
+    longitude?: FloatWithAggregatesFilter<"PlanetaryProfile"> | number
+    latitude?: FloatNullableWithAggregatesFilter<"PlanetaryProfile"> | number | null
+    speed?: FloatNullableWithAggregatesFilter<"PlanetaryProfile"> | number | null
+    acceleration?: FloatNullableWithAggregatesFilter<"PlanetaryProfile"> | number | null
+    direction?: EnumPlanetDirectionWithAggregatesFilter<"PlanetaryProfile"> | $Enums.PlanetDirection
+    stationaryEnterTime?: DateTimeNullableWithAggregatesFilter<"PlanetaryProfile"> | Date | string | null
+    stationaryExitTime?: DateTimeNullableWithAggregatesFilter<"PlanetaryProfile"> | Date | string | null
+    houseCusp?: IntNullableWithAggregatesFilter<"PlanetaryProfile"> | number | null
+    houseDegree?: FloatNullableWithAggregatesFilter<"PlanetaryProfile"> | number | null
+    houseSign?: StringNullableWithAggregatesFilter<"PlanetaryProfile"> | string | null
+    relativeAngularIndex?: FloatNullableWithAggregatesFilter<"PlanetaryProfile"> | number | null
     primaryDomain?: StringNullableWithAggregatesFilter<"PlanetaryProfile"> | string | null
     secondaryDomain?: StringNullableWithAggregatesFilter<"PlanetaryProfile"> | string | null
     dignity?: StringNullableWithAggregatesFilter<"PlanetaryProfile"> | string | null
-    strength?: FloatWithAggregatesFilter<"PlanetaryProfile"> | number
-    speed?: FloatWithAggregatesFilter<"PlanetaryProfile"> | number
-    visibility?: FloatWithAggregatesFilter<"PlanetaryProfile"> | number
-    expressionBandwidth?: FloatWithAggregatesFilter<"PlanetaryProfile"> | number
-    saturationLevel?: FloatWithAggregatesFilter<"PlanetaryProfile"> | number
-    distortionFactor?: FloatWithAggregatesFilter<"PlanetaryProfile"> | number
-    housePosition?: IntNullableWithAggregatesFilter<"PlanetaryProfile"> | number | null
-    signPosition?: StringNullableWithAggregatesFilter<"PlanetaryProfile"> | string | null
+    strength?: FloatNullableWithAggregatesFilter<"PlanetaryProfile"> | number | null
     createdAt?: DateTimeWithAggregatesFilter<"PlanetaryProfile"> | Date | string
   }
 
@@ -21651,6 +21624,138 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"PlanetaryScene"> | Date | string
   }
 
+  export type ConsciousnessStateWhereInput = {
+    AND?: ConsciousnessStateWhereInput | ConsciousnessStateWhereInput[]
+    OR?: ConsciousnessStateWhereInput[]
+    NOT?: ConsciousnessStateWhereInput | ConsciousnessStateWhereInput[]
+    id?: StringFilter<"ConsciousnessState"> | string
+    nativityChartId?: StringFilter<"ConsciousnessState"> | string
+    timestamp?: DateTimeFilter<"ConsciousnessState"> | Date | string
+    timestampMicro?: BigIntFilter<"ConsciousnessState"> | bigint | number
+    ephemerisSnapshotId?: StringNullableFilter<"ConsciousnessState"> | string | null
+    geometryIndexId?: StringNullableFilter<"ConsciousnessState"> | string | null
+    existentialField?: JsonFilter<"ConsciousnessState">
+    cognitiveField?: JsonFilter<"ConsciousnessState">
+    planetaryStates?: JsonFilter<"ConsciousnessState">
+    couplingStates?: JsonFilter<"ConsciousnessState">
+    entropyScore?: FloatFilter<"ConsciousnessState"> | number
+    coherenceScore?: FloatFilter<"ConsciousnessState"> | number
+    tensionScore?: FloatFilter<"ConsciousnessState"> | number
+    noveltyScore?: FloatFilter<"ConsciousnessState"> | number
+    trajectoryVector?: JsonNullableFilter<"ConsciousnessState">
+    latentVector?: JsonNullableFilter<"ConsciousnessState">
+    vectorVersion?: StringFilter<"ConsciousnessState"> | string
+    simulationSource?: StringNullableFilter<"ConsciousnessState"> | string | null
+    confidenceScore?: FloatFilter<"ConsciousnessState"> | number
+    createdAt?: DateTimeFilter<"ConsciousnessState"> | Date | string
+    nativityChart?: XOR<NativityChartScalarRelationFilter, NativityChartWhereInput>
+  }
+
+  export type ConsciousnessStateOrderByWithRelationInput = {
+    id?: SortOrder
+    nativityChartId?: SortOrder
+    timestamp?: SortOrder
+    timestampMicro?: SortOrder
+    ephemerisSnapshotId?: SortOrder
+    geometryIndexId?: SortOrder
+    existentialField?: SortOrder
+    cognitiveField?: SortOrder
+    planetaryStates?: SortOrder
+    couplingStates?: SortOrder
+    entropyScore?: SortOrder
+    coherenceScore?: SortOrder
+    tensionScore?: SortOrder
+    noveltyScore?: SortOrder
+    trajectoryVector?: SortOrder
+    latentVector?: SortOrder
+    vectorVersion?: SortOrder
+    simulationSource?: SortOrder
+    confidenceScore?: SortOrder
+    createdAt?: SortOrder
+    nativityChart?: NativityChartOrderByWithRelationInput
+  }
+
+  export type ConsciousnessStateWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ConsciousnessStateWhereInput | ConsciousnessStateWhereInput[]
+    OR?: ConsciousnessStateWhereInput[]
+    NOT?: ConsciousnessStateWhereInput | ConsciousnessStateWhereInput[]
+    nativityChartId?: StringFilter<"ConsciousnessState"> | string
+    timestamp?: DateTimeFilter<"ConsciousnessState"> | Date | string
+    timestampMicro?: BigIntFilter<"ConsciousnessState"> | bigint | number
+    ephemerisSnapshotId?: StringNullableFilter<"ConsciousnessState"> | string | null
+    geometryIndexId?: StringNullableFilter<"ConsciousnessState"> | string | null
+    existentialField?: JsonFilter<"ConsciousnessState">
+    cognitiveField?: JsonFilter<"ConsciousnessState">
+    planetaryStates?: JsonFilter<"ConsciousnessState">
+    couplingStates?: JsonFilter<"ConsciousnessState">
+    entropyScore?: FloatFilter<"ConsciousnessState"> | number
+    coherenceScore?: FloatFilter<"ConsciousnessState"> | number
+    tensionScore?: FloatFilter<"ConsciousnessState"> | number
+    noveltyScore?: FloatFilter<"ConsciousnessState"> | number
+    trajectoryVector?: JsonNullableFilter<"ConsciousnessState">
+    latentVector?: JsonNullableFilter<"ConsciousnessState">
+    vectorVersion?: StringFilter<"ConsciousnessState"> | string
+    simulationSource?: StringNullableFilter<"ConsciousnessState"> | string | null
+    confidenceScore?: FloatFilter<"ConsciousnessState"> | number
+    createdAt?: DateTimeFilter<"ConsciousnessState"> | Date | string
+    nativityChart?: XOR<NativityChartScalarRelationFilter, NativityChartWhereInput>
+  }, "id">
+
+  export type ConsciousnessStateOrderByWithAggregationInput = {
+    id?: SortOrder
+    nativityChartId?: SortOrder
+    timestamp?: SortOrder
+    timestampMicro?: SortOrder
+    ephemerisSnapshotId?: SortOrder
+    geometryIndexId?: SortOrder
+    existentialField?: SortOrder
+    cognitiveField?: SortOrder
+    planetaryStates?: SortOrder
+    couplingStates?: SortOrder
+    entropyScore?: SortOrder
+    coherenceScore?: SortOrder
+    tensionScore?: SortOrder
+    noveltyScore?: SortOrder
+    trajectoryVector?: SortOrder
+    latentVector?: SortOrder
+    vectorVersion?: SortOrder
+    simulationSource?: SortOrder
+    confidenceScore?: SortOrder
+    createdAt?: SortOrder
+    _count?: ConsciousnessStateCountOrderByAggregateInput
+    _avg?: ConsciousnessStateAvgOrderByAggregateInput
+    _max?: ConsciousnessStateMaxOrderByAggregateInput
+    _min?: ConsciousnessStateMinOrderByAggregateInput
+    _sum?: ConsciousnessStateSumOrderByAggregateInput
+  }
+
+  export type ConsciousnessStateScalarWhereWithAggregatesInput = {
+    AND?: ConsciousnessStateScalarWhereWithAggregatesInput | ConsciousnessStateScalarWhereWithAggregatesInput[]
+    OR?: ConsciousnessStateScalarWhereWithAggregatesInput[]
+    NOT?: ConsciousnessStateScalarWhereWithAggregatesInput | ConsciousnessStateScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ConsciousnessState"> | string
+    nativityChartId?: StringWithAggregatesFilter<"ConsciousnessState"> | string
+    timestamp?: DateTimeWithAggregatesFilter<"ConsciousnessState"> | Date | string
+    timestampMicro?: BigIntWithAggregatesFilter<"ConsciousnessState"> | bigint | number
+    ephemerisSnapshotId?: StringNullableWithAggregatesFilter<"ConsciousnessState"> | string | null
+    geometryIndexId?: StringNullableWithAggregatesFilter<"ConsciousnessState"> | string | null
+    existentialField?: JsonWithAggregatesFilter<"ConsciousnessState">
+    cognitiveField?: JsonWithAggregatesFilter<"ConsciousnessState">
+    planetaryStates?: JsonWithAggregatesFilter<"ConsciousnessState">
+    couplingStates?: JsonWithAggregatesFilter<"ConsciousnessState">
+    entropyScore?: FloatWithAggregatesFilter<"ConsciousnessState"> | number
+    coherenceScore?: FloatWithAggregatesFilter<"ConsciousnessState"> | number
+    tensionScore?: FloatWithAggregatesFilter<"ConsciousnessState"> | number
+    noveltyScore?: FloatWithAggregatesFilter<"ConsciousnessState"> | number
+    trajectoryVector?: JsonNullableWithAggregatesFilter<"ConsciousnessState">
+    latentVector?: JsonNullableWithAggregatesFilter<"ConsciousnessState">
+    vectorVersion?: StringWithAggregatesFilter<"ConsciousnessState"> | string
+    simulationSource?: StringNullableWithAggregatesFilter<"ConsciousnessState"> | string | null
+    confidenceScore?: FloatWithAggregatesFilter<"ConsciousnessState"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"ConsciousnessState"> | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     name: string
@@ -21981,6 +22086,7 @@ export namespace Prisma {
     purposeStates?: PurposeStateCreateNestedManyWithoutNativityChartInput
     similarities?: SimilarityRecordCreateNestedManyWithoutNativityChartInput
     currentStories?: CurrentStoryCreateNestedManyWithoutNativityChartInput
+    consciousnessStates?: ConsciousnessStateCreateNestedManyWithoutNativityChartInput
   }
 
   export type NativityChartUncheckedCreateInput = {
@@ -22007,6 +22113,7 @@ export namespace Prisma {
     purposeStates?: PurposeStateUncheckedCreateNestedManyWithoutNativityChartInput
     similarities?: SimilarityRecordUncheckedCreateNestedManyWithoutNativityChartInput
     currentStories?: CurrentStoryUncheckedCreateNestedManyWithoutNativityChartInput
+    consciousnessStates?: ConsciousnessStateUncheckedCreateNestedManyWithoutNativityChartInput
   }
 
   export type NativityChartUpdateInput = {
@@ -22032,6 +22139,7 @@ export namespace Prisma {
     purposeStates?: PurposeStateUpdateManyWithoutNativityChartNestedInput
     similarities?: SimilarityRecordUpdateManyWithoutNativityChartNestedInput
     currentStories?: CurrentStoryUpdateManyWithoutNativityChartNestedInput
+    consciousnessStates?: ConsciousnessStateUpdateManyWithoutNativityChartNestedInput
   }
 
   export type NativityChartUncheckedUpdateInput = {
@@ -22057,6 +22165,7 @@ export namespace Prisma {
     purposeStates?: PurposeStateUncheckedUpdateManyWithoutNativityChartNestedInput
     similarities?: SimilarityRecordUncheckedUpdateManyWithoutNativityChartNestedInput
     currentStories?: CurrentStoryUncheckedUpdateManyWithoutNativityChartNestedInput
+    consciousnessStates?: ConsciousnessStateUncheckedUpdateManyWithoutNativityChartNestedInput
   }
 
   export type NativityChartCreateManyInput = {
@@ -22116,7 +22225,6 @@ export namespace Prisma {
     phase?: string | null
     createdAt?: Date | string
     nativityChart: NativityChartCreateNestedOneWithoutEphemerisDataInput
-    planets?: PlanetDataCreateNestedManyWithoutEphemerisSnapshotInput
   }
 
   export type EphemerisSnapshotUncheckedCreateInput = {
@@ -22125,7 +22233,6 @@ export namespace Prisma {
     absoluteTimeIndex: bigint | number
     phase?: string | null
     createdAt?: Date | string
-    planets?: PlanetDataUncheckedCreateNestedManyWithoutEphemerisSnapshotInput
   }
 
   export type EphemerisSnapshotUpdateInput = {
@@ -22133,7 +22240,6 @@ export namespace Prisma {
     phase?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nativityChart?: NativityChartUpdateOneRequiredWithoutEphemerisDataNestedInput
-    planets?: PlanetDataUpdateManyWithoutEphemerisSnapshotNestedInput
   }
 
   export type EphemerisSnapshotUncheckedUpdateInput = {
@@ -22141,7 +22247,6 @@ export namespace Prisma {
     absoluteTimeIndex?: BigIntFieldUpdateOperationsInput | bigint | number
     phase?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    planets?: PlanetDataUncheckedUpdateManyWithoutEphemerisSnapshotNestedInput
   }
 
   export type EphemerisSnapshotCreateManyInput = {
@@ -22162,127 +22267,6 @@ export namespace Prisma {
     nativityChartId?: StringFieldUpdateOperationsInput | string
     absoluteTimeIndex?: BigIntFieldUpdateOperationsInput | bigint | number
     phase?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PlanetDataCreateInput = {
-    id?: string
-    planet: string
-    longitude: number
-    latitude?: number | null
-    speed: number
-    acceleration?: number | null
-    direction?: $Enums.PlanetDirection
-    stationaryEnterTime?: Date | string | null
-    stationaryExitTime?: Date | string | null
-    houseCusp?: number | null
-    houseDegree?: number | null
-    houseSign?: string | null
-    relativeAngularIndex?: number | null
-    createdAt?: Date | string
-    ephemerisSnapshot: EphemerisSnapshotCreateNestedOneWithoutPlanetsInput
-  }
-
-  export type PlanetDataUncheckedCreateInput = {
-    id?: string
-    ephemerisSnapshotId: string
-    planet: string
-    longitude: number
-    latitude?: number | null
-    speed: number
-    acceleration?: number | null
-    direction?: $Enums.PlanetDirection
-    stationaryEnterTime?: Date | string | null
-    stationaryExitTime?: Date | string | null
-    houseCusp?: number | null
-    houseDegree?: number | null
-    houseSign?: string | null
-    relativeAngularIndex?: number | null
-    createdAt?: Date | string
-  }
-
-  export type PlanetDataUpdateInput = {
-    planet?: StringFieldUpdateOperationsInput | string
-    longitude?: FloatFieldUpdateOperationsInput | number
-    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    speed?: FloatFieldUpdateOperationsInput | number
-    acceleration?: NullableFloatFieldUpdateOperationsInput | number | null
-    direction?: EnumPlanetDirectionFieldUpdateOperationsInput | $Enums.PlanetDirection
-    stationaryEnterTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    stationaryExitTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    houseCusp?: NullableIntFieldUpdateOperationsInput | number | null
-    houseDegree?: NullableFloatFieldUpdateOperationsInput | number | null
-    houseSign?: NullableStringFieldUpdateOperationsInput | string | null
-    relativeAngularIndex?: NullableFloatFieldUpdateOperationsInput | number | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    ephemerisSnapshot?: EphemerisSnapshotUpdateOneRequiredWithoutPlanetsNestedInput
-  }
-
-  export type PlanetDataUncheckedUpdateInput = {
-    ephemerisSnapshotId?: StringFieldUpdateOperationsInput | string
-    planet?: StringFieldUpdateOperationsInput | string
-    longitude?: FloatFieldUpdateOperationsInput | number
-    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    speed?: FloatFieldUpdateOperationsInput | number
-    acceleration?: NullableFloatFieldUpdateOperationsInput | number | null
-    direction?: EnumPlanetDirectionFieldUpdateOperationsInput | $Enums.PlanetDirection
-    stationaryEnterTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    stationaryExitTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    houseCusp?: NullableIntFieldUpdateOperationsInput | number | null
-    houseDegree?: NullableFloatFieldUpdateOperationsInput | number | null
-    houseSign?: NullableStringFieldUpdateOperationsInput | string | null
-    relativeAngularIndex?: NullableFloatFieldUpdateOperationsInput | number | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PlanetDataCreateManyInput = {
-    id?: string
-    ephemerisSnapshotId: string
-    planet: string
-    longitude: number
-    latitude?: number | null
-    speed: number
-    acceleration?: number | null
-    direction?: $Enums.PlanetDirection
-    stationaryEnterTime?: Date | string | null
-    stationaryExitTime?: Date | string | null
-    houseCusp?: number | null
-    houseDegree?: number | null
-    houseSign?: string | null
-    relativeAngularIndex?: number | null
-    createdAt?: Date | string
-  }
-
-  export type PlanetDataUpdateManyMutationInput = {
-    planet?: StringFieldUpdateOperationsInput | string
-    longitude?: FloatFieldUpdateOperationsInput | number
-    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    speed?: FloatFieldUpdateOperationsInput | number
-    acceleration?: NullableFloatFieldUpdateOperationsInput | number | null
-    direction?: EnumPlanetDirectionFieldUpdateOperationsInput | $Enums.PlanetDirection
-    stationaryEnterTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    stationaryExitTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    houseCusp?: NullableIntFieldUpdateOperationsInput | number | null
-    houseDegree?: NullableFloatFieldUpdateOperationsInput | number | null
-    houseSign?: NullableStringFieldUpdateOperationsInput | string | null
-    relativeAngularIndex?: NullableFloatFieldUpdateOperationsInput | number | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PlanetDataUncheckedUpdateManyInput = {
-    ephemerisSnapshotId?: StringFieldUpdateOperationsInput | string
-    planet?: StringFieldUpdateOperationsInput | string
-    longitude?: FloatFieldUpdateOperationsInput | number
-    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    speed?: FloatFieldUpdateOperationsInput | number
-    acceleration?: NullableFloatFieldUpdateOperationsInput | number | null
-    direction?: EnumPlanetDirectionFieldUpdateOperationsInput | $Enums.PlanetDirection
-    stationaryEnterTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    stationaryExitTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    houseCusp?: NullableIntFieldUpdateOperationsInput | number | null
-    houseDegree?: NullableFloatFieldUpdateOperationsInput | number | null
-    houseSign?: NullableStringFieldUpdateOperationsInput | string | null
-    relativeAngularIndex?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -22552,17 +22536,21 @@ export namespace Prisma {
   export type PlanetaryProfileCreateInput = {
     id?: string
     planet: string
+    longitude: number
+    latitude?: number | null
+    speed?: number | null
+    acceleration?: number | null
+    direction?: $Enums.PlanetDirection
+    stationaryEnterTime?: Date | string | null
+    stationaryExitTime?: Date | string | null
+    houseCusp?: number | null
+    houseDegree?: number | null
+    houseSign?: string | null
+    relativeAngularIndex?: number | null
     primaryDomain?: string | null
     secondaryDomain?: string | null
     dignity?: string | null
-    strength?: number
-    speed: number
-    visibility?: number
-    expressionBandwidth?: number
-    saturationLevel?: number
-    distortionFactor?: number
-    housePosition?: number | null
-    signPosition?: string | null
+    strength?: number | null
     createdAt?: Date | string
     nativityChart: NativityChartCreateNestedOneWithoutPlanetaryProfilesInput
     aspectsAsP1?: NativityAspectCreateNestedManyWithoutPlanet1ProfileInput
@@ -22573,17 +22561,21 @@ export namespace Prisma {
     id?: string
     nativityChartId: string
     planet: string
+    longitude: number
+    latitude?: number | null
+    speed?: number | null
+    acceleration?: number | null
+    direction?: $Enums.PlanetDirection
+    stationaryEnterTime?: Date | string | null
+    stationaryExitTime?: Date | string | null
+    houseCusp?: number | null
+    houseDegree?: number | null
+    houseSign?: string | null
+    relativeAngularIndex?: number | null
     primaryDomain?: string | null
     secondaryDomain?: string | null
     dignity?: string | null
-    strength?: number
-    speed: number
-    visibility?: number
-    expressionBandwidth?: number
-    saturationLevel?: number
-    distortionFactor?: number
-    housePosition?: number | null
-    signPosition?: string | null
+    strength?: number | null
     createdAt?: Date | string
     aspectsAsP1?: NativityAspectUncheckedCreateNestedManyWithoutPlanet1ProfileInput
     aspectsAsP2?: NativityAspectUncheckedCreateNestedManyWithoutPlanet2ProfileInput
@@ -22591,17 +22583,21 @@ export namespace Prisma {
 
   export type PlanetaryProfileUpdateInput = {
     planet?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    speed?: NullableFloatFieldUpdateOperationsInput | number | null
+    acceleration?: NullableFloatFieldUpdateOperationsInput | number | null
+    direction?: EnumPlanetDirectionFieldUpdateOperationsInput | $Enums.PlanetDirection
+    stationaryEnterTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    stationaryExitTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    houseCusp?: NullableIntFieldUpdateOperationsInput | number | null
+    houseDegree?: NullableFloatFieldUpdateOperationsInput | number | null
+    houseSign?: NullableStringFieldUpdateOperationsInput | string | null
+    relativeAngularIndex?: NullableFloatFieldUpdateOperationsInput | number | null
     primaryDomain?: NullableStringFieldUpdateOperationsInput | string | null
     secondaryDomain?: NullableStringFieldUpdateOperationsInput | string | null
     dignity?: NullableStringFieldUpdateOperationsInput | string | null
-    strength?: FloatFieldUpdateOperationsInput | number
-    speed?: FloatFieldUpdateOperationsInput | number
-    visibility?: FloatFieldUpdateOperationsInput | number
-    expressionBandwidth?: FloatFieldUpdateOperationsInput | number
-    saturationLevel?: FloatFieldUpdateOperationsInput | number
-    distortionFactor?: FloatFieldUpdateOperationsInput | number
-    housePosition?: NullableIntFieldUpdateOperationsInput | number | null
-    signPosition?: NullableStringFieldUpdateOperationsInput | string | null
+    strength?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nativityChart?: NativityChartUpdateOneRequiredWithoutPlanetaryProfilesNestedInput
     aspectsAsP1?: NativityAspectUpdateManyWithoutPlanet1ProfileNestedInput
@@ -22611,17 +22607,21 @@ export namespace Prisma {
   export type PlanetaryProfileUncheckedUpdateInput = {
     nativityChartId?: StringFieldUpdateOperationsInput | string
     planet?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    speed?: NullableFloatFieldUpdateOperationsInput | number | null
+    acceleration?: NullableFloatFieldUpdateOperationsInput | number | null
+    direction?: EnumPlanetDirectionFieldUpdateOperationsInput | $Enums.PlanetDirection
+    stationaryEnterTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    stationaryExitTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    houseCusp?: NullableIntFieldUpdateOperationsInput | number | null
+    houseDegree?: NullableFloatFieldUpdateOperationsInput | number | null
+    houseSign?: NullableStringFieldUpdateOperationsInput | string | null
+    relativeAngularIndex?: NullableFloatFieldUpdateOperationsInput | number | null
     primaryDomain?: NullableStringFieldUpdateOperationsInput | string | null
     secondaryDomain?: NullableStringFieldUpdateOperationsInput | string | null
     dignity?: NullableStringFieldUpdateOperationsInput | string | null
-    strength?: FloatFieldUpdateOperationsInput | number
-    speed?: FloatFieldUpdateOperationsInput | number
-    visibility?: FloatFieldUpdateOperationsInput | number
-    expressionBandwidth?: FloatFieldUpdateOperationsInput | number
-    saturationLevel?: FloatFieldUpdateOperationsInput | number
-    distortionFactor?: FloatFieldUpdateOperationsInput | number
-    housePosition?: NullableIntFieldUpdateOperationsInput | number | null
-    signPosition?: NullableStringFieldUpdateOperationsInput | string | null
+    strength?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     aspectsAsP1?: NativityAspectUncheckedUpdateManyWithoutPlanet1ProfileNestedInput
     aspectsAsP2?: NativityAspectUncheckedUpdateManyWithoutPlanet2ProfileNestedInput
@@ -22631,50 +22631,62 @@ export namespace Prisma {
     id?: string
     nativityChartId: string
     planet: string
+    longitude: number
+    latitude?: number | null
+    speed?: number | null
+    acceleration?: number | null
+    direction?: $Enums.PlanetDirection
+    stationaryEnterTime?: Date | string | null
+    stationaryExitTime?: Date | string | null
+    houseCusp?: number | null
+    houseDegree?: number | null
+    houseSign?: string | null
+    relativeAngularIndex?: number | null
     primaryDomain?: string | null
     secondaryDomain?: string | null
     dignity?: string | null
-    strength?: number
-    speed: number
-    visibility?: number
-    expressionBandwidth?: number
-    saturationLevel?: number
-    distortionFactor?: number
-    housePosition?: number | null
-    signPosition?: string | null
+    strength?: number | null
     createdAt?: Date | string
   }
 
   export type PlanetaryProfileUpdateManyMutationInput = {
     planet?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    speed?: NullableFloatFieldUpdateOperationsInput | number | null
+    acceleration?: NullableFloatFieldUpdateOperationsInput | number | null
+    direction?: EnumPlanetDirectionFieldUpdateOperationsInput | $Enums.PlanetDirection
+    stationaryEnterTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    stationaryExitTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    houseCusp?: NullableIntFieldUpdateOperationsInput | number | null
+    houseDegree?: NullableFloatFieldUpdateOperationsInput | number | null
+    houseSign?: NullableStringFieldUpdateOperationsInput | string | null
+    relativeAngularIndex?: NullableFloatFieldUpdateOperationsInput | number | null
     primaryDomain?: NullableStringFieldUpdateOperationsInput | string | null
     secondaryDomain?: NullableStringFieldUpdateOperationsInput | string | null
     dignity?: NullableStringFieldUpdateOperationsInput | string | null
-    strength?: FloatFieldUpdateOperationsInput | number
-    speed?: FloatFieldUpdateOperationsInput | number
-    visibility?: FloatFieldUpdateOperationsInput | number
-    expressionBandwidth?: FloatFieldUpdateOperationsInput | number
-    saturationLevel?: FloatFieldUpdateOperationsInput | number
-    distortionFactor?: FloatFieldUpdateOperationsInput | number
-    housePosition?: NullableIntFieldUpdateOperationsInput | number | null
-    signPosition?: NullableStringFieldUpdateOperationsInput | string | null
+    strength?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PlanetaryProfileUncheckedUpdateManyInput = {
     nativityChartId?: StringFieldUpdateOperationsInput | string
     planet?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    speed?: NullableFloatFieldUpdateOperationsInput | number | null
+    acceleration?: NullableFloatFieldUpdateOperationsInput | number | null
+    direction?: EnumPlanetDirectionFieldUpdateOperationsInput | $Enums.PlanetDirection
+    stationaryEnterTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    stationaryExitTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    houseCusp?: NullableIntFieldUpdateOperationsInput | number | null
+    houseDegree?: NullableFloatFieldUpdateOperationsInput | number | null
+    houseSign?: NullableStringFieldUpdateOperationsInput | string | null
+    relativeAngularIndex?: NullableFloatFieldUpdateOperationsInput | number | null
     primaryDomain?: NullableStringFieldUpdateOperationsInput | string | null
     secondaryDomain?: NullableStringFieldUpdateOperationsInput | string | null
     dignity?: NullableStringFieldUpdateOperationsInput | string | null
-    strength?: FloatFieldUpdateOperationsInput | number
-    speed?: FloatFieldUpdateOperationsInput | number
-    visibility?: FloatFieldUpdateOperationsInput | number
-    expressionBandwidth?: FloatFieldUpdateOperationsInput | number
-    saturationLevel?: FloatFieldUpdateOperationsInput | number
-    distortionFactor?: FloatFieldUpdateOperationsInput | number
-    housePosition?: NullableIntFieldUpdateOperationsInput | number | null
-    signPosition?: NullableStringFieldUpdateOperationsInput | string | null
+    strength?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -23287,6 +23299,162 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type ConsciousnessStateCreateInput = {
+    id?: string
+    timestamp: Date | string
+    timestampMicro: bigint | number
+    ephemerisSnapshotId?: string | null
+    geometryIndexId?: string | null
+    existentialField: InputJsonValue
+    cognitiveField: InputJsonValue
+    planetaryStates: InputJsonValue
+    couplingStates: InputJsonValue
+    entropyScore: number
+    coherenceScore: number
+    tensionScore: number
+    noveltyScore: number
+    trajectoryVector?: InputJsonValue | null
+    latentVector?: InputJsonValue | null
+    vectorVersion?: string
+    simulationSource?: string | null
+    confidenceScore?: number
+    createdAt?: Date | string
+    nativityChart: NativityChartCreateNestedOneWithoutConsciousnessStatesInput
+  }
+
+  export type ConsciousnessStateUncheckedCreateInput = {
+    id?: string
+    nativityChartId: string
+    timestamp: Date | string
+    timestampMicro: bigint | number
+    ephemerisSnapshotId?: string | null
+    geometryIndexId?: string | null
+    existentialField: InputJsonValue
+    cognitiveField: InputJsonValue
+    planetaryStates: InputJsonValue
+    couplingStates: InputJsonValue
+    entropyScore: number
+    coherenceScore: number
+    tensionScore: number
+    noveltyScore: number
+    trajectoryVector?: InputJsonValue | null
+    latentVector?: InputJsonValue | null
+    vectorVersion?: string
+    simulationSource?: string | null
+    confidenceScore?: number
+    createdAt?: Date | string
+  }
+
+  export type ConsciousnessStateUpdateInput = {
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    timestampMicro?: BigIntFieldUpdateOperationsInput | bigint | number
+    ephemerisSnapshotId?: NullableStringFieldUpdateOperationsInput | string | null
+    geometryIndexId?: NullableStringFieldUpdateOperationsInput | string | null
+    existentialField?: InputJsonValue | InputJsonValue
+    cognitiveField?: InputJsonValue | InputJsonValue
+    planetaryStates?: InputJsonValue | InputJsonValue
+    couplingStates?: InputJsonValue | InputJsonValue
+    entropyScore?: FloatFieldUpdateOperationsInput | number
+    coherenceScore?: FloatFieldUpdateOperationsInput | number
+    tensionScore?: FloatFieldUpdateOperationsInput | number
+    noveltyScore?: FloatFieldUpdateOperationsInput | number
+    trajectoryVector?: InputJsonValue | InputJsonValue | null
+    latentVector?: InputJsonValue | InputJsonValue | null
+    vectorVersion?: StringFieldUpdateOperationsInput | string
+    simulationSource?: NullableStringFieldUpdateOperationsInput | string | null
+    confidenceScore?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    nativityChart?: NativityChartUpdateOneRequiredWithoutConsciousnessStatesNestedInput
+  }
+
+  export type ConsciousnessStateUncheckedUpdateInput = {
+    nativityChartId?: StringFieldUpdateOperationsInput | string
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    timestampMicro?: BigIntFieldUpdateOperationsInput | bigint | number
+    ephemerisSnapshotId?: NullableStringFieldUpdateOperationsInput | string | null
+    geometryIndexId?: NullableStringFieldUpdateOperationsInput | string | null
+    existentialField?: InputJsonValue | InputJsonValue
+    cognitiveField?: InputJsonValue | InputJsonValue
+    planetaryStates?: InputJsonValue | InputJsonValue
+    couplingStates?: InputJsonValue | InputJsonValue
+    entropyScore?: FloatFieldUpdateOperationsInput | number
+    coherenceScore?: FloatFieldUpdateOperationsInput | number
+    tensionScore?: FloatFieldUpdateOperationsInput | number
+    noveltyScore?: FloatFieldUpdateOperationsInput | number
+    trajectoryVector?: InputJsonValue | InputJsonValue | null
+    latentVector?: InputJsonValue | InputJsonValue | null
+    vectorVersion?: StringFieldUpdateOperationsInput | string
+    simulationSource?: NullableStringFieldUpdateOperationsInput | string | null
+    confidenceScore?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ConsciousnessStateCreateManyInput = {
+    id?: string
+    nativityChartId: string
+    timestamp: Date | string
+    timestampMicro: bigint | number
+    ephemerisSnapshotId?: string | null
+    geometryIndexId?: string | null
+    existentialField: InputJsonValue
+    cognitiveField: InputJsonValue
+    planetaryStates: InputJsonValue
+    couplingStates: InputJsonValue
+    entropyScore: number
+    coherenceScore: number
+    tensionScore: number
+    noveltyScore: number
+    trajectoryVector?: InputJsonValue | null
+    latentVector?: InputJsonValue | null
+    vectorVersion?: string
+    simulationSource?: string | null
+    confidenceScore?: number
+    createdAt?: Date | string
+  }
+
+  export type ConsciousnessStateUpdateManyMutationInput = {
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    timestampMicro?: BigIntFieldUpdateOperationsInput | bigint | number
+    ephemerisSnapshotId?: NullableStringFieldUpdateOperationsInput | string | null
+    geometryIndexId?: NullableStringFieldUpdateOperationsInput | string | null
+    existentialField?: InputJsonValue | InputJsonValue
+    cognitiveField?: InputJsonValue | InputJsonValue
+    planetaryStates?: InputJsonValue | InputJsonValue
+    couplingStates?: InputJsonValue | InputJsonValue
+    entropyScore?: FloatFieldUpdateOperationsInput | number
+    coherenceScore?: FloatFieldUpdateOperationsInput | number
+    tensionScore?: FloatFieldUpdateOperationsInput | number
+    noveltyScore?: FloatFieldUpdateOperationsInput | number
+    trajectoryVector?: InputJsonValue | InputJsonValue | null
+    latentVector?: InputJsonValue | InputJsonValue | null
+    vectorVersion?: StringFieldUpdateOperationsInput | string
+    simulationSource?: NullableStringFieldUpdateOperationsInput | string | null
+    confidenceScore?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ConsciousnessStateUncheckedUpdateManyInput = {
+    nativityChartId?: StringFieldUpdateOperationsInput | string
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    timestampMicro?: BigIntFieldUpdateOperationsInput | bigint | number
+    ephemerisSnapshotId?: NullableStringFieldUpdateOperationsInput | string | null
+    geometryIndexId?: NullableStringFieldUpdateOperationsInput | string | null
+    existentialField?: InputJsonValue | InputJsonValue
+    cognitiveField?: InputJsonValue | InputJsonValue
+    planetaryStates?: InputJsonValue | InputJsonValue
+    couplingStates?: InputJsonValue | InputJsonValue
+    entropyScore?: FloatFieldUpdateOperationsInput | number
+    coherenceScore?: FloatFieldUpdateOperationsInput | number
+    tensionScore?: FloatFieldUpdateOperationsInput | number
+    noveltyScore?: FloatFieldUpdateOperationsInput | number
+    trajectoryVector?: InputJsonValue | InputJsonValue | null
+    latentVector?: InputJsonValue | InputJsonValue | null
+    vectorVersion?: StringFieldUpdateOperationsInput | string
+    simulationSource?: NullableStringFieldUpdateOperationsInput | string | null
+    confidenceScore?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -23748,6 +23916,12 @@ export namespace Prisma {
     none?: CurrentStoryWhereInput
   }
 
+  export type ConsciousnessStateListRelationFilter = {
+    every?: ConsciousnessStateWhereInput
+    some?: ConsciousnessStateWhereInput
+    none?: ConsciousnessStateWhereInput
+  }
+
   export type PlanetaryProfileOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -23769,6 +23943,10 @@ export namespace Prisma {
   }
 
   export type CurrentStoryOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ConsciousnessStateOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -23895,16 +24073,6 @@ export namespace Prisma {
     isNot?: NativityChartWhereInput
   }
 
-  export type PlanetDataListRelationFilter = {
-    every?: PlanetDataWhereInput
-    some?: PlanetDataWhereInput
-    none?: PlanetDataWhereInput
-  }
-
-  export type PlanetDataOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type EphemerisSnapshotCountOrderByAggregateInput = {
     id?: SortOrder
     nativityChartId?: SortOrder
@@ -23937,131 +24105,6 @@ export namespace Prisma {
     absoluteTimeIndex?: SortOrder
   }
 
-  export type FloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-    isSet?: boolean
-  }
-
-  export type EnumPlanetDirectionFilter<$PrismaModel = never> = {
-    equals?: $Enums.PlanetDirection | EnumPlanetDirectionFieldRefInput<$PrismaModel>
-    in?: $Enums.PlanetDirection[] | ListEnumPlanetDirectionFieldRefInput<$PrismaModel>
-    notIn?: $Enums.PlanetDirection[] | ListEnumPlanetDirectionFieldRefInput<$PrismaModel>
-    not?: NestedEnumPlanetDirectionFilter<$PrismaModel> | $Enums.PlanetDirection
-  }
-
-  export type EphemerisSnapshotScalarRelationFilter = {
-    is?: EphemerisSnapshotWhereInput
-    isNot?: EphemerisSnapshotWhereInput
-  }
-
-  export type PlanetDataCountOrderByAggregateInput = {
-    id?: SortOrder
-    ephemerisSnapshotId?: SortOrder
-    planet?: SortOrder
-    longitude?: SortOrder
-    latitude?: SortOrder
-    speed?: SortOrder
-    acceleration?: SortOrder
-    direction?: SortOrder
-    stationaryEnterTime?: SortOrder
-    stationaryExitTime?: SortOrder
-    houseCusp?: SortOrder
-    houseDegree?: SortOrder
-    houseSign?: SortOrder
-    relativeAngularIndex?: SortOrder
-    createdAt?: SortOrder
-  }
-
-  export type PlanetDataAvgOrderByAggregateInput = {
-    longitude?: SortOrder
-    latitude?: SortOrder
-    speed?: SortOrder
-    acceleration?: SortOrder
-    houseCusp?: SortOrder
-    houseDegree?: SortOrder
-    relativeAngularIndex?: SortOrder
-  }
-
-  export type PlanetDataMaxOrderByAggregateInput = {
-    id?: SortOrder
-    ephemerisSnapshotId?: SortOrder
-    planet?: SortOrder
-    longitude?: SortOrder
-    latitude?: SortOrder
-    speed?: SortOrder
-    acceleration?: SortOrder
-    direction?: SortOrder
-    stationaryEnterTime?: SortOrder
-    stationaryExitTime?: SortOrder
-    houseCusp?: SortOrder
-    houseDegree?: SortOrder
-    houseSign?: SortOrder
-    relativeAngularIndex?: SortOrder
-    createdAt?: SortOrder
-  }
-
-  export type PlanetDataMinOrderByAggregateInput = {
-    id?: SortOrder
-    ephemerisSnapshotId?: SortOrder
-    planet?: SortOrder
-    longitude?: SortOrder
-    latitude?: SortOrder
-    speed?: SortOrder
-    acceleration?: SortOrder
-    direction?: SortOrder
-    stationaryEnterTime?: SortOrder
-    stationaryExitTime?: SortOrder
-    houseCusp?: SortOrder
-    houseDegree?: SortOrder
-    houseSign?: SortOrder
-    relativeAngularIndex?: SortOrder
-    createdAt?: SortOrder
-  }
-
-  export type PlanetDataSumOrderByAggregateInput = {
-    longitude?: SortOrder
-    latitude?: SortOrder
-    speed?: SortOrder
-    acceleration?: SortOrder
-    houseCusp?: SortOrder
-    houseDegree?: SortOrder
-    relativeAngularIndex?: SortOrder
-  }
-
-  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedFloatNullableFilter<$PrismaModel>
-    _min?: NestedFloatNullableFilter<$PrismaModel>
-    _max?: NestedFloatNullableFilter<$PrismaModel>
-    isSet?: boolean
-  }
-
-  export type EnumPlanetDirectionWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.PlanetDirection | EnumPlanetDirectionFieldRefInput<$PrismaModel>
-    in?: $Enums.PlanetDirection[] | ListEnumPlanetDirectionFieldRefInput<$PrismaModel>
-    notIn?: $Enums.PlanetDirection[] | ListEnumPlanetDirectionFieldRefInput<$PrismaModel>
-    not?: NestedEnumPlanetDirectionWithAggregatesFilter<$PrismaModel> | $Enums.PlanetDirection
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumPlanetDirectionFilter<$PrismaModel>
-    _max?: NestedEnumPlanetDirectionFilter<$PrismaModel>
-  }
-
   export type AngularDistanceListRelationFilter = {
     every?: AngularDistanceWhereInput
     some?: AngularDistanceWhereInput
@@ -24091,6 +24134,18 @@ export namespace Prisma {
     nativityChartId?: SortOrder
     clusterHash?: SortOrder
     createdAt?: SortOrder
+  }
+
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+    isSet?: boolean
   }
 
   export type GeometryIndexScalarRelationFilter = {
@@ -24152,6 +24207,23 @@ export namespace Prisma {
     minDistance?: SortOrder
     maxDistance?: SortOrder
     speedWeighting?: SortOrder
+  }
+
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+    isSet?: boolean
   }
 
   export type PlanetaryProfileNullableScalarRelationFilter = {
@@ -24233,49 +24305,65 @@ export namespace Prisma {
     speedWeighting?: SortOrder
   }
 
+  export type EnumPlanetDirectionFilter<$PrismaModel = never> = {
+    equals?: $Enums.PlanetDirection | EnumPlanetDirectionFieldRefInput<$PrismaModel>
+    in?: $Enums.PlanetDirection[] | ListEnumPlanetDirectionFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PlanetDirection[] | ListEnumPlanetDirectionFieldRefInput<$PrismaModel>
+    not?: NestedEnumPlanetDirectionFilter<$PrismaModel> | $Enums.PlanetDirection
+  }
+
   export type PlanetaryProfileCountOrderByAggregateInput = {
     id?: SortOrder
     nativityChartId?: SortOrder
     planet?: SortOrder
+    longitude?: SortOrder
+    latitude?: SortOrder
+    speed?: SortOrder
+    acceleration?: SortOrder
+    direction?: SortOrder
+    stationaryEnterTime?: SortOrder
+    stationaryExitTime?: SortOrder
+    houseCusp?: SortOrder
+    houseDegree?: SortOrder
+    houseSign?: SortOrder
+    relativeAngularIndex?: SortOrder
     primaryDomain?: SortOrder
     secondaryDomain?: SortOrder
     dignity?: SortOrder
     strength?: SortOrder
-    speed?: SortOrder
-    visibility?: SortOrder
-    expressionBandwidth?: SortOrder
-    saturationLevel?: SortOrder
-    distortionFactor?: SortOrder
-    housePosition?: SortOrder
-    signPosition?: SortOrder
     createdAt?: SortOrder
   }
 
   export type PlanetaryProfileAvgOrderByAggregateInput = {
-    strength?: SortOrder
+    longitude?: SortOrder
+    latitude?: SortOrder
     speed?: SortOrder
-    visibility?: SortOrder
-    expressionBandwidth?: SortOrder
-    saturationLevel?: SortOrder
-    distortionFactor?: SortOrder
-    housePosition?: SortOrder
+    acceleration?: SortOrder
+    houseCusp?: SortOrder
+    houseDegree?: SortOrder
+    relativeAngularIndex?: SortOrder
+    strength?: SortOrder
   }
 
   export type PlanetaryProfileMaxOrderByAggregateInput = {
     id?: SortOrder
     nativityChartId?: SortOrder
     planet?: SortOrder
+    longitude?: SortOrder
+    latitude?: SortOrder
+    speed?: SortOrder
+    acceleration?: SortOrder
+    direction?: SortOrder
+    stationaryEnterTime?: SortOrder
+    stationaryExitTime?: SortOrder
+    houseCusp?: SortOrder
+    houseDegree?: SortOrder
+    houseSign?: SortOrder
+    relativeAngularIndex?: SortOrder
     primaryDomain?: SortOrder
     secondaryDomain?: SortOrder
     dignity?: SortOrder
     strength?: SortOrder
-    speed?: SortOrder
-    visibility?: SortOrder
-    expressionBandwidth?: SortOrder
-    saturationLevel?: SortOrder
-    distortionFactor?: SortOrder
-    housePosition?: SortOrder
-    signPosition?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -24283,28 +24371,43 @@ export namespace Prisma {
     id?: SortOrder
     nativityChartId?: SortOrder
     planet?: SortOrder
+    longitude?: SortOrder
+    latitude?: SortOrder
+    speed?: SortOrder
+    acceleration?: SortOrder
+    direction?: SortOrder
+    stationaryEnterTime?: SortOrder
+    stationaryExitTime?: SortOrder
+    houseCusp?: SortOrder
+    houseDegree?: SortOrder
+    houseSign?: SortOrder
+    relativeAngularIndex?: SortOrder
     primaryDomain?: SortOrder
     secondaryDomain?: SortOrder
     dignity?: SortOrder
     strength?: SortOrder
-    speed?: SortOrder
-    visibility?: SortOrder
-    expressionBandwidth?: SortOrder
-    saturationLevel?: SortOrder
-    distortionFactor?: SortOrder
-    housePosition?: SortOrder
-    signPosition?: SortOrder
     createdAt?: SortOrder
   }
 
   export type PlanetaryProfileSumOrderByAggregateInput = {
-    strength?: SortOrder
+    longitude?: SortOrder
+    latitude?: SortOrder
     speed?: SortOrder
-    visibility?: SortOrder
-    expressionBandwidth?: SortOrder
-    saturationLevel?: SortOrder
-    distortionFactor?: SortOrder
-    housePosition?: SortOrder
+    acceleration?: SortOrder
+    houseCusp?: SortOrder
+    houseDegree?: SortOrder
+    relativeAngularIndex?: SortOrder
+    strength?: SortOrder
+  }
+
+  export type EnumPlanetDirectionWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PlanetDirection | EnumPlanetDirectionFieldRefInput<$PrismaModel>
+    in?: $Enums.PlanetDirection[] | ListEnumPlanetDirectionFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PlanetDirection[] | ListEnumPlanetDirectionFieldRefInput<$PrismaModel>
+    not?: NestedEnumPlanetDirectionWithAggregatesFilter<$PrismaModel> | $Enums.PlanetDirection
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPlanetDirectionFilter<$PrismaModel>
+    _max?: NestedEnumPlanetDirectionFilter<$PrismaModel>
   }
 
   export type StateVectorCountOrderByAggregateInput = {
@@ -24706,6 +24809,81 @@ export namespace Prisma {
     isSet?: boolean
   }
 
+  export type ConsciousnessStateCountOrderByAggregateInput = {
+    id?: SortOrder
+    nativityChartId?: SortOrder
+    timestamp?: SortOrder
+    timestampMicro?: SortOrder
+    ephemerisSnapshotId?: SortOrder
+    geometryIndexId?: SortOrder
+    existentialField?: SortOrder
+    cognitiveField?: SortOrder
+    planetaryStates?: SortOrder
+    couplingStates?: SortOrder
+    entropyScore?: SortOrder
+    coherenceScore?: SortOrder
+    tensionScore?: SortOrder
+    noveltyScore?: SortOrder
+    trajectoryVector?: SortOrder
+    latentVector?: SortOrder
+    vectorVersion?: SortOrder
+    simulationSource?: SortOrder
+    confidenceScore?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ConsciousnessStateAvgOrderByAggregateInput = {
+    timestampMicro?: SortOrder
+    entropyScore?: SortOrder
+    coherenceScore?: SortOrder
+    tensionScore?: SortOrder
+    noveltyScore?: SortOrder
+    confidenceScore?: SortOrder
+  }
+
+  export type ConsciousnessStateMaxOrderByAggregateInput = {
+    id?: SortOrder
+    nativityChartId?: SortOrder
+    timestamp?: SortOrder
+    timestampMicro?: SortOrder
+    ephemerisSnapshotId?: SortOrder
+    geometryIndexId?: SortOrder
+    entropyScore?: SortOrder
+    coherenceScore?: SortOrder
+    tensionScore?: SortOrder
+    noveltyScore?: SortOrder
+    vectorVersion?: SortOrder
+    simulationSource?: SortOrder
+    confidenceScore?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ConsciousnessStateMinOrderByAggregateInput = {
+    id?: SortOrder
+    nativityChartId?: SortOrder
+    timestamp?: SortOrder
+    timestampMicro?: SortOrder
+    ephemerisSnapshotId?: SortOrder
+    geometryIndexId?: SortOrder
+    entropyScore?: SortOrder
+    coherenceScore?: SortOrder
+    tensionScore?: SortOrder
+    noveltyScore?: SortOrder
+    vectorVersion?: SortOrder
+    simulationSource?: SortOrder
+    confidenceScore?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ConsciousnessStateSumOrderByAggregateInput = {
+    timestampMicro?: SortOrder
+    entropyScore?: SortOrder
+    coherenceScore?: SortOrder
+    tensionScore?: SortOrder
+    noveltyScore?: SortOrder
+    confidenceScore?: SortOrder
+  }
+
   export type AccountCreateNestedManyWithoutUserInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -24959,6 +25137,13 @@ export namespace Prisma {
     connect?: CurrentStoryWhereUniqueInput | CurrentStoryWhereUniqueInput[]
   }
 
+  export type ConsciousnessStateCreateNestedManyWithoutNativityChartInput = {
+    create?: XOR<ConsciousnessStateCreateWithoutNativityChartInput, ConsciousnessStateUncheckedCreateWithoutNativityChartInput> | ConsciousnessStateCreateWithoutNativityChartInput[] | ConsciousnessStateUncheckedCreateWithoutNativityChartInput[]
+    connectOrCreate?: ConsciousnessStateCreateOrConnectWithoutNativityChartInput | ConsciousnessStateCreateOrConnectWithoutNativityChartInput[]
+    createMany?: ConsciousnessStateCreateManyNativityChartInputEnvelope
+    connect?: ConsciousnessStateWhereUniqueInput | ConsciousnessStateWhereUniqueInput[]
+  }
+
   export type EphemerisSnapshotUncheckedCreateNestedOneWithoutNativityChartInput = {
     create?: XOR<EphemerisSnapshotCreateWithoutNativityChartInput, EphemerisSnapshotUncheckedCreateWithoutNativityChartInput>
     connectOrCreate?: EphemerisSnapshotCreateOrConnectWithoutNativityChartInput
@@ -25011,6 +25196,13 @@ export namespace Prisma {
     connectOrCreate?: CurrentStoryCreateOrConnectWithoutNativityChartInput | CurrentStoryCreateOrConnectWithoutNativityChartInput[]
     createMany?: CurrentStoryCreateManyNativityChartInputEnvelope
     connect?: CurrentStoryWhereUniqueInput | CurrentStoryWhereUniqueInput[]
+  }
+
+  export type ConsciousnessStateUncheckedCreateNestedManyWithoutNativityChartInput = {
+    create?: XOR<ConsciousnessStateCreateWithoutNativityChartInput, ConsciousnessStateUncheckedCreateWithoutNativityChartInput> | ConsciousnessStateCreateWithoutNativityChartInput[] | ConsciousnessStateUncheckedCreateWithoutNativityChartInput[]
+    connectOrCreate?: ConsciousnessStateCreateOrConnectWithoutNativityChartInput | ConsciousnessStateCreateOrConnectWithoutNativityChartInput[]
+    createMany?: ConsciousnessStateCreateManyNativityChartInputEnvelope
+    connect?: ConsciousnessStateWhereUniqueInput | ConsciousnessStateWhereUniqueInput[]
   }
 
   export type BigIntFieldUpdateOperationsInput = {
@@ -25149,6 +25341,20 @@ export namespace Prisma {
     deleteMany?: CurrentStoryScalarWhereInput | CurrentStoryScalarWhereInput[]
   }
 
+  export type ConsciousnessStateUpdateManyWithoutNativityChartNestedInput = {
+    create?: XOR<ConsciousnessStateCreateWithoutNativityChartInput, ConsciousnessStateUncheckedCreateWithoutNativityChartInput> | ConsciousnessStateCreateWithoutNativityChartInput[] | ConsciousnessStateUncheckedCreateWithoutNativityChartInput[]
+    connectOrCreate?: ConsciousnessStateCreateOrConnectWithoutNativityChartInput | ConsciousnessStateCreateOrConnectWithoutNativityChartInput[]
+    upsert?: ConsciousnessStateUpsertWithWhereUniqueWithoutNativityChartInput | ConsciousnessStateUpsertWithWhereUniqueWithoutNativityChartInput[]
+    createMany?: ConsciousnessStateCreateManyNativityChartInputEnvelope
+    set?: ConsciousnessStateWhereUniqueInput | ConsciousnessStateWhereUniqueInput[]
+    disconnect?: ConsciousnessStateWhereUniqueInput | ConsciousnessStateWhereUniqueInput[]
+    delete?: ConsciousnessStateWhereUniqueInput | ConsciousnessStateWhereUniqueInput[]
+    connect?: ConsciousnessStateWhereUniqueInput | ConsciousnessStateWhereUniqueInput[]
+    update?: ConsciousnessStateUpdateWithWhereUniqueWithoutNativityChartInput | ConsciousnessStateUpdateWithWhereUniqueWithoutNativityChartInput[]
+    updateMany?: ConsciousnessStateUpdateManyWithWhereWithoutNativityChartInput | ConsciousnessStateUpdateManyWithWhereWithoutNativityChartInput[]
+    deleteMany?: ConsciousnessStateScalarWhereInput | ConsciousnessStateScalarWhereInput[]
+  }
+
   export type EphemerisSnapshotUncheckedUpdateOneWithoutNativityChartNestedInput = {
     create?: XOR<EphemerisSnapshotCreateWithoutNativityChartInput, EphemerisSnapshotUncheckedCreateWithoutNativityChartInput>
     connectOrCreate?: EphemerisSnapshotCreateOrConnectWithoutNativityChartInput
@@ -25253,24 +25459,24 @@ export namespace Prisma {
     deleteMany?: CurrentStoryScalarWhereInput | CurrentStoryScalarWhereInput[]
   }
 
+  export type ConsciousnessStateUncheckedUpdateManyWithoutNativityChartNestedInput = {
+    create?: XOR<ConsciousnessStateCreateWithoutNativityChartInput, ConsciousnessStateUncheckedCreateWithoutNativityChartInput> | ConsciousnessStateCreateWithoutNativityChartInput[] | ConsciousnessStateUncheckedCreateWithoutNativityChartInput[]
+    connectOrCreate?: ConsciousnessStateCreateOrConnectWithoutNativityChartInput | ConsciousnessStateCreateOrConnectWithoutNativityChartInput[]
+    upsert?: ConsciousnessStateUpsertWithWhereUniqueWithoutNativityChartInput | ConsciousnessStateUpsertWithWhereUniqueWithoutNativityChartInput[]
+    createMany?: ConsciousnessStateCreateManyNativityChartInputEnvelope
+    set?: ConsciousnessStateWhereUniqueInput | ConsciousnessStateWhereUniqueInput[]
+    disconnect?: ConsciousnessStateWhereUniqueInput | ConsciousnessStateWhereUniqueInput[]
+    delete?: ConsciousnessStateWhereUniqueInput | ConsciousnessStateWhereUniqueInput[]
+    connect?: ConsciousnessStateWhereUniqueInput | ConsciousnessStateWhereUniqueInput[]
+    update?: ConsciousnessStateUpdateWithWhereUniqueWithoutNativityChartInput | ConsciousnessStateUpdateWithWhereUniqueWithoutNativityChartInput[]
+    updateMany?: ConsciousnessStateUpdateManyWithWhereWithoutNativityChartInput | ConsciousnessStateUpdateManyWithWhereWithoutNativityChartInput[]
+    deleteMany?: ConsciousnessStateScalarWhereInput | ConsciousnessStateScalarWhereInput[]
+  }
+
   export type NativityChartCreateNestedOneWithoutEphemerisDataInput = {
     create?: XOR<NativityChartCreateWithoutEphemerisDataInput, NativityChartUncheckedCreateWithoutEphemerisDataInput>
     connectOrCreate?: NativityChartCreateOrConnectWithoutEphemerisDataInput
     connect?: NativityChartWhereUniqueInput
-  }
-
-  export type PlanetDataCreateNestedManyWithoutEphemerisSnapshotInput = {
-    create?: XOR<PlanetDataCreateWithoutEphemerisSnapshotInput, PlanetDataUncheckedCreateWithoutEphemerisSnapshotInput> | PlanetDataCreateWithoutEphemerisSnapshotInput[] | PlanetDataUncheckedCreateWithoutEphemerisSnapshotInput[]
-    connectOrCreate?: PlanetDataCreateOrConnectWithoutEphemerisSnapshotInput | PlanetDataCreateOrConnectWithoutEphemerisSnapshotInput[]
-    createMany?: PlanetDataCreateManyEphemerisSnapshotInputEnvelope
-    connect?: PlanetDataWhereUniqueInput | PlanetDataWhereUniqueInput[]
-  }
-
-  export type PlanetDataUncheckedCreateNestedManyWithoutEphemerisSnapshotInput = {
-    create?: XOR<PlanetDataCreateWithoutEphemerisSnapshotInput, PlanetDataUncheckedCreateWithoutEphemerisSnapshotInput> | PlanetDataCreateWithoutEphemerisSnapshotInput[] | PlanetDataUncheckedCreateWithoutEphemerisSnapshotInput[]
-    connectOrCreate?: PlanetDataCreateOrConnectWithoutEphemerisSnapshotInput | PlanetDataCreateOrConnectWithoutEphemerisSnapshotInput[]
-    createMany?: PlanetDataCreateManyEphemerisSnapshotInputEnvelope
-    connect?: PlanetDataWhereUniqueInput | PlanetDataWhereUniqueInput[]
   }
 
   export type NativityChartUpdateOneRequiredWithoutEphemerisDataNestedInput = {
@@ -25279,61 +25485,6 @@ export namespace Prisma {
     upsert?: NativityChartUpsertWithoutEphemerisDataInput
     connect?: NativityChartWhereUniqueInput
     update?: XOR<XOR<NativityChartUpdateToOneWithWhereWithoutEphemerisDataInput, NativityChartUpdateWithoutEphemerisDataInput>, NativityChartUncheckedUpdateWithoutEphemerisDataInput>
-  }
-
-  export type PlanetDataUpdateManyWithoutEphemerisSnapshotNestedInput = {
-    create?: XOR<PlanetDataCreateWithoutEphemerisSnapshotInput, PlanetDataUncheckedCreateWithoutEphemerisSnapshotInput> | PlanetDataCreateWithoutEphemerisSnapshotInput[] | PlanetDataUncheckedCreateWithoutEphemerisSnapshotInput[]
-    connectOrCreate?: PlanetDataCreateOrConnectWithoutEphemerisSnapshotInput | PlanetDataCreateOrConnectWithoutEphemerisSnapshotInput[]
-    upsert?: PlanetDataUpsertWithWhereUniqueWithoutEphemerisSnapshotInput | PlanetDataUpsertWithWhereUniqueWithoutEphemerisSnapshotInput[]
-    createMany?: PlanetDataCreateManyEphemerisSnapshotInputEnvelope
-    set?: PlanetDataWhereUniqueInput | PlanetDataWhereUniqueInput[]
-    disconnect?: PlanetDataWhereUniqueInput | PlanetDataWhereUniqueInput[]
-    delete?: PlanetDataWhereUniqueInput | PlanetDataWhereUniqueInput[]
-    connect?: PlanetDataWhereUniqueInput | PlanetDataWhereUniqueInput[]
-    update?: PlanetDataUpdateWithWhereUniqueWithoutEphemerisSnapshotInput | PlanetDataUpdateWithWhereUniqueWithoutEphemerisSnapshotInput[]
-    updateMany?: PlanetDataUpdateManyWithWhereWithoutEphemerisSnapshotInput | PlanetDataUpdateManyWithWhereWithoutEphemerisSnapshotInput[]
-    deleteMany?: PlanetDataScalarWhereInput | PlanetDataScalarWhereInput[]
-  }
-
-  export type PlanetDataUncheckedUpdateManyWithoutEphemerisSnapshotNestedInput = {
-    create?: XOR<PlanetDataCreateWithoutEphemerisSnapshotInput, PlanetDataUncheckedCreateWithoutEphemerisSnapshotInput> | PlanetDataCreateWithoutEphemerisSnapshotInput[] | PlanetDataUncheckedCreateWithoutEphemerisSnapshotInput[]
-    connectOrCreate?: PlanetDataCreateOrConnectWithoutEphemerisSnapshotInput | PlanetDataCreateOrConnectWithoutEphemerisSnapshotInput[]
-    upsert?: PlanetDataUpsertWithWhereUniqueWithoutEphemerisSnapshotInput | PlanetDataUpsertWithWhereUniqueWithoutEphemerisSnapshotInput[]
-    createMany?: PlanetDataCreateManyEphemerisSnapshotInputEnvelope
-    set?: PlanetDataWhereUniqueInput | PlanetDataWhereUniqueInput[]
-    disconnect?: PlanetDataWhereUniqueInput | PlanetDataWhereUniqueInput[]
-    delete?: PlanetDataWhereUniqueInput | PlanetDataWhereUniqueInput[]
-    connect?: PlanetDataWhereUniqueInput | PlanetDataWhereUniqueInput[]
-    update?: PlanetDataUpdateWithWhereUniqueWithoutEphemerisSnapshotInput | PlanetDataUpdateWithWhereUniqueWithoutEphemerisSnapshotInput[]
-    updateMany?: PlanetDataUpdateManyWithWhereWithoutEphemerisSnapshotInput | PlanetDataUpdateManyWithWhereWithoutEphemerisSnapshotInput[]
-    deleteMany?: PlanetDataScalarWhereInput | PlanetDataScalarWhereInput[]
-  }
-
-  export type EphemerisSnapshotCreateNestedOneWithoutPlanetsInput = {
-    create?: XOR<EphemerisSnapshotCreateWithoutPlanetsInput, EphemerisSnapshotUncheckedCreateWithoutPlanetsInput>
-    connectOrCreate?: EphemerisSnapshotCreateOrConnectWithoutPlanetsInput
-    connect?: EphemerisSnapshotWhereUniqueInput
-  }
-
-  export type NullableFloatFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-    unset?: boolean
-  }
-
-  export type EnumPlanetDirectionFieldUpdateOperationsInput = {
-    set?: $Enums.PlanetDirection
-  }
-
-  export type EphemerisSnapshotUpdateOneRequiredWithoutPlanetsNestedInput = {
-    create?: XOR<EphemerisSnapshotCreateWithoutPlanetsInput, EphemerisSnapshotUncheckedCreateWithoutPlanetsInput>
-    connectOrCreate?: EphemerisSnapshotCreateOrConnectWithoutPlanetsInput
-    upsert?: EphemerisSnapshotUpsertWithoutPlanetsInput
-    connect?: EphemerisSnapshotWhereUniqueInput
-    update?: XOR<XOR<EphemerisSnapshotUpdateToOneWithWhereWithoutPlanetsInput, EphemerisSnapshotUpdateWithoutPlanetsInput>, EphemerisSnapshotUncheckedUpdateWithoutPlanetsInput>
   }
 
   export type NativityChartCreateNestedOneWithoutGeometryIndexInput = {
@@ -25440,6 +25591,15 @@ export namespace Prisma {
     connect?: GeometryIndexWhereUniqueInput
   }
 
+  export type NullableFloatFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+    unset?: boolean
+  }
+
   export type GeometryIndexUpdateOneRequiredWithoutAngularDistancesNestedInput = {
     create?: XOR<GeometryIndexCreateWithoutAngularDistancesInput, GeometryIndexUncheckedCreateWithoutAngularDistancesInput>
     connectOrCreate?: GeometryIndexCreateOrConnectWithoutAngularDistancesInput
@@ -25540,6 +25700,10 @@ export namespace Prisma {
     connectOrCreate?: NativityAspectCreateOrConnectWithoutPlanet2ProfileInput | NativityAspectCreateOrConnectWithoutPlanet2ProfileInput[]
     createMany?: NativityAspectCreateManyPlanet2ProfileInputEnvelope
     connect?: NativityAspectWhereUniqueInput | NativityAspectWhereUniqueInput[]
+  }
+
+  export type EnumPlanetDirectionFieldUpdateOperationsInput = {
+    set?: $Enums.PlanetDirection
   }
 
   export type NativityChartUpdateOneRequiredWithoutPlanetaryProfilesNestedInput = {
@@ -25734,6 +25898,20 @@ export namespace Prisma {
     upsert?: CurrentStoryUpsertWithoutScenesInput
     connect?: CurrentStoryWhereUniqueInput
     update?: XOR<XOR<CurrentStoryUpdateToOneWithWhereWithoutScenesInput, CurrentStoryUpdateWithoutScenesInput>, CurrentStoryUncheckedUpdateWithoutScenesInput>
+  }
+
+  export type NativityChartCreateNestedOneWithoutConsciousnessStatesInput = {
+    create?: XOR<NativityChartCreateWithoutConsciousnessStatesInput, NativityChartUncheckedCreateWithoutConsciousnessStatesInput>
+    connectOrCreate?: NativityChartCreateOrConnectWithoutConsciousnessStatesInput
+    connect?: NativityChartWhereUniqueInput
+  }
+
+  export type NativityChartUpdateOneRequiredWithoutConsciousnessStatesNestedInput = {
+    create?: XOR<NativityChartCreateWithoutConsciousnessStatesInput, NativityChartUncheckedCreateWithoutConsciousnessStatesInput>
+    connectOrCreate?: NativityChartCreateOrConnectWithoutConsciousnessStatesInput
+    upsert?: NativityChartUpsertWithoutConsciousnessStatesInput
+    connect?: NativityChartWhereUniqueInput
+    update?: XOR<XOR<NativityChartUpdateToOneWithWhereWithoutConsciousnessStatesInput, NativityChartUpdateWithoutConsciousnessStatesInput>, NativityChartUncheckedUpdateWithoutConsciousnessStatesInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -26021,13 +26199,6 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
-  export type NestedEnumPlanetDirectionFilter<$PrismaModel = never> = {
-    equals?: $Enums.PlanetDirection | EnumPlanetDirectionFieldRefInput<$PrismaModel>
-    in?: $Enums.PlanetDirection[] | ListEnumPlanetDirectionFieldRefInput<$PrismaModel>
-    notIn?: $Enums.PlanetDirection[] | ListEnumPlanetDirectionFieldRefInput<$PrismaModel>
-    not?: NestedEnumPlanetDirectionFilter<$PrismaModel> | $Enums.PlanetDirection
-  }
-
   export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel> | null
     in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
@@ -26043,6 +26214,13 @@ export namespace Prisma {
     _min?: NestedFloatNullableFilter<$PrismaModel>
     _max?: NestedFloatNullableFilter<$PrismaModel>
     isSet?: boolean
+  }
+
+  export type NestedEnumPlanetDirectionFilter<$PrismaModel = never> = {
+    equals?: $Enums.PlanetDirection | EnumPlanetDirectionFieldRefInput<$PrismaModel>
+    in?: $Enums.PlanetDirection[] | ListEnumPlanetDirectionFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PlanetDirection[] | ListEnumPlanetDirectionFieldRefInput<$PrismaModel>
+    not?: NestedEnumPlanetDirectionFilter<$PrismaModel> | $Enums.PlanetDirection
   }
 
   export type NestedEnumPlanetDirectionWithAggregatesFilter<$PrismaModel = never> = {
@@ -26167,6 +26345,7 @@ export namespace Prisma {
     purposeStates?: PurposeStateCreateNestedManyWithoutNativityChartInput
     similarities?: SimilarityRecordCreateNestedManyWithoutNativityChartInput
     currentStories?: CurrentStoryCreateNestedManyWithoutNativityChartInput
+    consciousnessStates?: ConsciousnessStateCreateNestedManyWithoutNativityChartInput
   }
 
   export type NativityChartUncheckedCreateWithoutUserInput = {
@@ -26192,6 +26371,7 @@ export namespace Prisma {
     purposeStates?: PurposeStateUncheckedCreateNestedManyWithoutNativityChartInput
     similarities?: SimilarityRecordUncheckedCreateNestedManyWithoutNativityChartInput
     currentStories?: CurrentStoryUncheckedCreateNestedManyWithoutNativityChartInput
+    consciousnessStates?: ConsciousnessStateUncheckedCreateNestedManyWithoutNativityChartInput
   }
 
   export type NativityChartCreateOrConnectWithoutUserInput = {
@@ -26542,7 +26722,6 @@ export namespace Prisma {
     absoluteTimeIndex: bigint | number
     phase?: string | null
     createdAt?: Date | string
-    planets?: PlanetDataCreateNestedManyWithoutEphemerisSnapshotInput
   }
 
   export type EphemerisSnapshotUncheckedCreateWithoutNativityChartInput = {
@@ -26550,7 +26729,6 @@ export namespace Prisma {
     absoluteTimeIndex: bigint | number
     phase?: string | null
     createdAt?: Date | string
-    planets?: PlanetDataUncheckedCreateNestedManyWithoutEphemerisSnapshotInput
   }
 
   export type EphemerisSnapshotCreateOrConnectWithoutNativityChartInput = {
@@ -26582,17 +26760,21 @@ export namespace Prisma {
   export type PlanetaryProfileCreateWithoutNativityChartInput = {
     id?: string
     planet: string
+    longitude: number
+    latitude?: number | null
+    speed?: number | null
+    acceleration?: number | null
+    direction?: $Enums.PlanetDirection
+    stationaryEnterTime?: Date | string | null
+    stationaryExitTime?: Date | string | null
+    houseCusp?: number | null
+    houseDegree?: number | null
+    houseSign?: string | null
+    relativeAngularIndex?: number | null
     primaryDomain?: string | null
     secondaryDomain?: string | null
     dignity?: string | null
-    strength?: number
-    speed: number
-    visibility?: number
-    expressionBandwidth?: number
-    saturationLevel?: number
-    distortionFactor?: number
-    housePosition?: number | null
-    signPosition?: string | null
+    strength?: number | null
     createdAt?: Date | string
     aspectsAsP1?: NativityAspectCreateNestedManyWithoutPlanet1ProfileInput
     aspectsAsP2?: NativityAspectCreateNestedManyWithoutPlanet2ProfileInput
@@ -26601,17 +26783,21 @@ export namespace Prisma {
   export type PlanetaryProfileUncheckedCreateWithoutNativityChartInput = {
     id?: string
     planet: string
+    longitude: number
+    latitude?: number | null
+    speed?: number | null
+    acceleration?: number | null
+    direction?: $Enums.PlanetDirection
+    stationaryEnterTime?: Date | string | null
+    stationaryExitTime?: Date | string | null
+    houseCusp?: number | null
+    houseDegree?: number | null
+    houseSign?: string | null
+    relativeAngularIndex?: number | null
     primaryDomain?: string | null
     secondaryDomain?: string | null
     dignity?: string | null
-    strength?: number
-    speed: number
-    visibility?: number
-    expressionBandwidth?: number
-    saturationLevel?: number
-    distortionFactor?: number
-    housePosition?: number | null
-    signPosition?: string | null
+    strength?: number | null
     createdAt?: Date | string
     aspectsAsP1?: NativityAspectUncheckedCreateNestedManyWithoutPlanet1ProfileInput
     aspectsAsP2?: NativityAspectUncheckedCreateNestedManyWithoutPlanet2ProfileInput
@@ -26837,6 +27023,59 @@ export namespace Prisma {
     data: CurrentStoryCreateManyNativityChartInput | CurrentStoryCreateManyNativityChartInput[]
   }
 
+  export type ConsciousnessStateCreateWithoutNativityChartInput = {
+    id?: string
+    timestamp: Date | string
+    timestampMicro: bigint | number
+    ephemerisSnapshotId?: string | null
+    geometryIndexId?: string | null
+    existentialField: InputJsonValue
+    cognitiveField: InputJsonValue
+    planetaryStates: InputJsonValue
+    couplingStates: InputJsonValue
+    entropyScore: number
+    coherenceScore: number
+    tensionScore: number
+    noveltyScore: number
+    trajectoryVector?: InputJsonValue | null
+    latentVector?: InputJsonValue | null
+    vectorVersion?: string
+    simulationSource?: string | null
+    confidenceScore?: number
+    createdAt?: Date | string
+  }
+
+  export type ConsciousnessStateUncheckedCreateWithoutNativityChartInput = {
+    id?: string
+    timestamp: Date | string
+    timestampMicro: bigint | number
+    ephemerisSnapshotId?: string | null
+    geometryIndexId?: string | null
+    existentialField: InputJsonValue
+    cognitiveField: InputJsonValue
+    planetaryStates: InputJsonValue
+    couplingStates: InputJsonValue
+    entropyScore: number
+    coherenceScore: number
+    tensionScore: number
+    noveltyScore: number
+    trajectoryVector?: InputJsonValue | null
+    latentVector?: InputJsonValue | null
+    vectorVersion?: string
+    simulationSource?: string | null
+    confidenceScore?: number
+    createdAt?: Date | string
+  }
+
+  export type ConsciousnessStateCreateOrConnectWithoutNativityChartInput = {
+    where: ConsciousnessStateWhereUniqueInput
+    create: XOR<ConsciousnessStateCreateWithoutNativityChartInput, ConsciousnessStateUncheckedCreateWithoutNativityChartInput>
+  }
+
+  export type ConsciousnessStateCreateManyNativityChartInputEnvelope = {
+    data: ConsciousnessStateCreateManyNativityChartInput | ConsciousnessStateCreateManyNativityChartInput[]
+  }
+
   export type UserUpsertWithoutNativityChartsInput = {
     update: XOR<UserUpdateWithoutNativityChartsInput, UserUncheckedUpdateWithoutNativityChartsInput>
     create: XOR<UserCreateWithoutNativityChartsInput, UserUncheckedCreateWithoutNativityChartsInput>
@@ -26901,14 +27140,12 @@ export namespace Prisma {
     absoluteTimeIndex?: BigIntFieldUpdateOperationsInput | bigint | number
     phase?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    planets?: PlanetDataUpdateManyWithoutEphemerisSnapshotNestedInput
   }
 
   export type EphemerisSnapshotUncheckedUpdateWithoutNativityChartInput = {
     absoluteTimeIndex?: BigIntFieldUpdateOperationsInput | bigint | number
     phase?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    planets?: PlanetDataUncheckedUpdateManyWithoutEphemerisSnapshotNestedInput
   }
 
   export type GeometryIndexUpsertWithoutNativityChartInput = {
@@ -26959,17 +27196,21 @@ export namespace Prisma {
     id?: StringFilter<"PlanetaryProfile"> | string
     nativityChartId?: StringFilter<"PlanetaryProfile"> | string
     planet?: StringFilter<"PlanetaryProfile"> | string
+    longitude?: FloatFilter<"PlanetaryProfile"> | number
+    latitude?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    speed?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    acceleration?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    direction?: EnumPlanetDirectionFilter<"PlanetaryProfile"> | $Enums.PlanetDirection
+    stationaryEnterTime?: DateTimeNullableFilter<"PlanetaryProfile"> | Date | string | null
+    stationaryExitTime?: DateTimeNullableFilter<"PlanetaryProfile"> | Date | string | null
+    houseCusp?: IntNullableFilter<"PlanetaryProfile"> | number | null
+    houseDegree?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    houseSign?: StringNullableFilter<"PlanetaryProfile"> | string | null
+    relativeAngularIndex?: FloatNullableFilter<"PlanetaryProfile"> | number | null
     primaryDomain?: StringNullableFilter<"PlanetaryProfile"> | string | null
     secondaryDomain?: StringNullableFilter<"PlanetaryProfile"> | string | null
     dignity?: StringNullableFilter<"PlanetaryProfile"> | string | null
-    strength?: FloatFilter<"PlanetaryProfile"> | number
-    speed?: FloatFilter<"PlanetaryProfile"> | number
-    visibility?: FloatFilter<"PlanetaryProfile"> | number
-    expressionBandwidth?: FloatFilter<"PlanetaryProfile"> | number
-    saturationLevel?: FloatFilter<"PlanetaryProfile"> | number
-    distortionFactor?: FloatFilter<"PlanetaryProfile"> | number
-    housePosition?: IntNullableFilter<"PlanetaryProfile"> | number | null
-    signPosition?: StringNullableFilter<"PlanetaryProfile"> | string | null
+    strength?: FloatNullableFilter<"PlanetaryProfile"> | number | null
     createdAt?: DateTimeFilter<"PlanetaryProfile"> | Date | string
   }
 
@@ -27155,6 +27396,48 @@ export namespace Prisma {
     expiresAt?: DateTimeFilter<"CurrentStory"> | Date | string
   }
 
+  export type ConsciousnessStateUpsertWithWhereUniqueWithoutNativityChartInput = {
+    where: ConsciousnessStateWhereUniqueInput
+    update: XOR<ConsciousnessStateUpdateWithoutNativityChartInput, ConsciousnessStateUncheckedUpdateWithoutNativityChartInput>
+    create: XOR<ConsciousnessStateCreateWithoutNativityChartInput, ConsciousnessStateUncheckedCreateWithoutNativityChartInput>
+  }
+
+  export type ConsciousnessStateUpdateWithWhereUniqueWithoutNativityChartInput = {
+    where: ConsciousnessStateWhereUniqueInput
+    data: XOR<ConsciousnessStateUpdateWithoutNativityChartInput, ConsciousnessStateUncheckedUpdateWithoutNativityChartInput>
+  }
+
+  export type ConsciousnessStateUpdateManyWithWhereWithoutNativityChartInput = {
+    where: ConsciousnessStateScalarWhereInput
+    data: XOR<ConsciousnessStateUpdateManyMutationInput, ConsciousnessStateUncheckedUpdateManyWithoutNativityChartInput>
+  }
+
+  export type ConsciousnessStateScalarWhereInput = {
+    AND?: ConsciousnessStateScalarWhereInput | ConsciousnessStateScalarWhereInput[]
+    OR?: ConsciousnessStateScalarWhereInput[]
+    NOT?: ConsciousnessStateScalarWhereInput | ConsciousnessStateScalarWhereInput[]
+    id?: StringFilter<"ConsciousnessState"> | string
+    nativityChartId?: StringFilter<"ConsciousnessState"> | string
+    timestamp?: DateTimeFilter<"ConsciousnessState"> | Date | string
+    timestampMicro?: BigIntFilter<"ConsciousnessState"> | bigint | number
+    ephemerisSnapshotId?: StringNullableFilter<"ConsciousnessState"> | string | null
+    geometryIndexId?: StringNullableFilter<"ConsciousnessState"> | string | null
+    existentialField?: JsonFilter<"ConsciousnessState">
+    cognitiveField?: JsonFilter<"ConsciousnessState">
+    planetaryStates?: JsonFilter<"ConsciousnessState">
+    couplingStates?: JsonFilter<"ConsciousnessState">
+    entropyScore?: FloatFilter<"ConsciousnessState"> | number
+    coherenceScore?: FloatFilter<"ConsciousnessState"> | number
+    tensionScore?: FloatFilter<"ConsciousnessState"> | number
+    noveltyScore?: FloatFilter<"ConsciousnessState"> | number
+    trajectoryVector?: JsonNullableFilter<"ConsciousnessState">
+    latentVector?: JsonNullableFilter<"ConsciousnessState">
+    vectorVersion?: StringFilter<"ConsciousnessState"> | string
+    simulationSource?: StringNullableFilter<"ConsciousnessState"> | string | null
+    confidenceScore?: FloatFilter<"ConsciousnessState"> | number
+    createdAt?: DateTimeFilter<"ConsciousnessState"> | Date | string
+  }
+
   export type NativityChartCreateWithoutEphemerisDataInput = {
     id?: string
     name: string
@@ -27178,6 +27461,7 @@ export namespace Prisma {
     purposeStates?: PurposeStateCreateNestedManyWithoutNativityChartInput
     similarities?: SimilarityRecordCreateNestedManyWithoutNativityChartInput
     currentStories?: CurrentStoryCreateNestedManyWithoutNativityChartInput
+    consciousnessStates?: ConsciousnessStateCreateNestedManyWithoutNativityChartInput
   }
 
   export type NativityChartUncheckedCreateWithoutEphemerisDataInput = {
@@ -27203,54 +27487,12 @@ export namespace Prisma {
     purposeStates?: PurposeStateUncheckedCreateNestedManyWithoutNativityChartInput
     similarities?: SimilarityRecordUncheckedCreateNestedManyWithoutNativityChartInput
     currentStories?: CurrentStoryUncheckedCreateNestedManyWithoutNativityChartInput
+    consciousnessStates?: ConsciousnessStateUncheckedCreateNestedManyWithoutNativityChartInput
   }
 
   export type NativityChartCreateOrConnectWithoutEphemerisDataInput = {
     where: NativityChartWhereUniqueInput
     create: XOR<NativityChartCreateWithoutEphemerisDataInput, NativityChartUncheckedCreateWithoutEphemerisDataInput>
-  }
-
-  export type PlanetDataCreateWithoutEphemerisSnapshotInput = {
-    id?: string
-    planet: string
-    longitude: number
-    latitude?: number | null
-    speed: number
-    acceleration?: number | null
-    direction?: $Enums.PlanetDirection
-    stationaryEnterTime?: Date | string | null
-    stationaryExitTime?: Date | string | null
-    houseCusp?: number | null
-    houseDegree?: number | null
-    houseSign?: string | null
-    relativeAngularIndex?: number | null
-    createdAt?: Date | string
-  }
-
-  export type PlanetDataUncheckedCreateWithoutEphemerisSnapshotInput = {
-    id?: string
-    planet: string
-    longitude: number
-    latitude?: number | null
-    speed: number
-    acceleration?: number | null
-    direction?: $Enums.PlanetDirection
-    stationaryEnterTime?: Date | string | null
-    stationaryExitTime?: Date | string | null
-    houseCusp?: number | null
-    houseDegree?: number | null
-    houseSign?: string | null
-    relativeAngularIndex?: number | null
-    createdAt?: Date | string
-  }
-
-  export type PlanetDataCreateOrConnectWithoutEphemerisSnapshotInput = {
-    where: PlanetDataWhereUniqueInput
-    create: XOR<PlanetDataCreateWithoutEphemerisSnapshotInput, PlanetDataUncheckedCreateWithoutEphemerisSnapshotInput>
-  }
-
-  export type PlanetDataCreateManyEphemerisSnapshotInputEnvelope = {
-    data: PlanetDataCreateManyEphemerisSnapshotInput | PlanetDataCreateManyEphemerisSnapshotInput[]
   }
 
   export type NativityChartUpsertWithoutEphemerisDataInput = {
@@ -27286,6 +27528,7 @@ export namespace Prisma {
     purposeStates?: PurposeStateUpdateManyWithoutNativityChartNestedInput
     similarities?: SimilarityRecordUpdateManyWithoutNativityChartNestedInput
     currentStories?: CurrentStoryUpdateManyWithoutNativityChartNestedInput
+    consciousnessStates?: ConsciousnessStateUpdateManyWithoutNativityChartNestedInput
   }
 
   export type NativityChartUncheckedUpdateWithoutEphemerisDataInput = {
@@ -27310,89 +27553,7 @@ export namespace Prisma {
     purposeStates?: PurposeStateUncheckedUpdateManyWithoutNativityChartNestedInput
     similarities?: SimilarityRecordUncheckedUpdateManyWithoutNativityChartNestedInput
     currentStories?: CurrentStoryUncheckedUpdateManyWithoutNativityChartNestedInput
-  }
-
-  export type PlanetDataUpsertWithWhereUniqueWithoutEphemerisSnapshotInput = {
-    where: PlanetDataWhereUniqueInput
-    update: XOR<PlanetDataUpdateWithoutEphemerisSnapshotInput, PlanetDataUncheckedUpdateWithoutEphemerisSnapshotInput>
-    create: XOR<PlanetDataCreateWithoutEphemerisSnapshotInput, PlanetDataUncheckedCreateWithoutEphemerisSnapshotInput>
-  }
-
-  export type PlanetDataUpdateWithWhereUniqueWithoutEphemerisSnapshotInput = {
-    where: PlanetDataWhereUniqueInput
-    data: XOR<PlanetDataUpdateWithoutEphemerisSnapshotInput, PlanetDataUncheckedUpdateWithoutEphemerisSnapshotInput>
-  }
-
-  export type PlanetDataUpdateManyWithWhereWithoutEphemerisSnapshotInput = {
-    where: PlanetDataScalarWhereInput
-    data: XOR<PlanetDataUpdateManyMutationInput, PlanetDataUncheckedUpdateManyWithoutEphemerisSnapshotInput>
-  }
-
-  export type PlanetDataScalarWhereInput = {
-    AND?: PlanetDataScalarWhereInput | PlanetDataScalarWhereInput[]
-    OR?: PlanetDataScalarWhereInput[]
-    NOT?: PlanetDataScalarWhereInput | PlanetDataScalarWhereInput[]
-    id?: StringFilter<"PlanetData"> | string
-    ephemerisSnapshotId?: StringFilter<"PlanetData"> | string
-    planet?: StringFilter<"PlanetData"> | string
-    longitude?: FloatFilter<"PlanetData"> | number
-    latitude?: FloatNullableFilter<"PlanetData"> | number | null
-    speed?: FloatFilter<"PlanetData"> | number
-    acceleration?: FloatNullableFilter<"PlanetData"> | number | null
-    direction?: EnumPlanetDirectionFilter<"PlanetData"> | $Enums.PlanetDirection
-    stationaryEnterTime?: DateTimeNullableFilter<"PlanetData"> | Date | string | null
-    stationaryExitTime?: DateTimeNullableFilter<"PlanetData"> | Date | string | null
-    houseCusp?: IntNullableFilter<"PlanetData"> | number | null
-    houseDegree?: FloatNullableFilter<"PlanetData"> | number | null
-    houseSign?: StringNullableFilter<"PlanetData"> | string | null
-    relativeAngularIndex?: FloatNullableFilter<"PlanetData"> | number | null
-    createdAt?: DateTimeFilter<"PlanetData"> | Date | string
-  }
-
-  export type EphemerisSnapshotCreateWithoutPlanetsInput = {
-    id?: string
-    absoluteTimeIndex: bigint | number
-    phase?: string | null
-    createdAt?: Date | string
-    nativityChart: NativityChartCreateNestedOneWithoutEphemerisDataInput
-  }
-
-  export type EphemerisSnapshotUncheckedCreateWithoutPlanetsInput = {
-    id?: string
-    nativityChartId: string
-    absoluteTimeIndex: bigint | number
-    phase?: string | null
-    createdAt?: Date | string
-  }
-
-  export type EphemerisSnapshotCreateOrConnectWithoutPlanetsInput = {
-    where: EphemerisSnapshotWhereUniqueInput
-    create: XOR<EphemerisSnapshotCreateWithoutPlanetsInput, EphemerisSnapshotUncheckedCreateWithoutPlanetsInput>
-  }
-
-  export type EphemerisSnapshotUpsertWithoutPlanetsInput = {
-    update: XOR<EphemerisSnapshotUpdateWithoutPlanetsInput, EphemerisSnapshotUncheckedUpdateWithoutPlanetsInput>
-    create: XOR<EphemerisSnapshotCreateWithoutPlanetsInput, EphemerisSnapshotUncheckedCreateWithoutPlanetsInput>
-    where?: EphemerisSnapshotWhereInput
-  }
-
-  export type EphemerisSnapshotUpdateToOneWithWhereWithoutPlanetsInput = {
-    where?: EphemerisSnapshotWhereInput
-    data: XOR<EphemerisSnapshotUpdateWithoutPlanetsInput, EphemerisSnapshotUncheckedUpdateWithoutPlanetsInput>
-  }
-
-  export type EphemerisSnapshotUpdateWithoutPlanetsInput = {
-    absoluteTimeIndex?: BigIntFieldUpdateOperationsInput | bigint | number
-    phase?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    nativityChart?: NativityChartUpdateOneRequiredWithoutEphemerisDataNestedInput
-  }
-
-  export type EphemerisSnapshotUncheckedUpdateWithoutPlanetsInput = {
-    nativityChartId?: StringFieldUpdateOperationsInput | string
-    absoluteTimeIndex?: BigIntFieldUpdateOperationsInput | bigint | number
-    phase?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    consciousnessStates?: ConsciousnessStateUncheckedUpdateManyWithoutNativityChartNestedInput
   }
 
   export type NativityChartCreateWithoutGeometryIndexInput = {
@@ -27418,6 +27579,7 @@ export namespace Prisma {
     purposeStates?: PurposeStateCreateNestedManyWithoutNativityChartInput
     similarities?: SimilarityRecordCreateNestedManyWithoutNativityChartInput
     currentStories?: CurrentStoryCreateNestedManyWithoutNativityChartInput
+    consciousnessStates?: ConsciousnessStateCreateNestedManyWithoutNativityChartInput
   }
 
   export type NativityChartUncheckedCreateWithoutGeometryIndexInput = {
@@ -27443,6 +27605,7 @@ export namespace Prisma {
     purposeStates?: PurposeStateUncheckedCreateNestedManyWithoutNativityChartInput
     similarities?: SimilarityRecordUncheckedCreateNestedManyWithoutNativityChartInput
     currentStories?: CurrentStoryUncheckedCreateNestedManyWithoutNativityChartInput
+    consciousnessStates?: ConsciousnessStateUncheckedCreateNestedManyWithoutNativityChartInput
   }
 
   export type NativityChartCreateOrConnectWithoutGeometryIndexInput = {
@@ -27561,6 +27724,7 @@ export namespace Prisma {
     purposeStates?: PurposeStateUpdateManyWithoutNativityChartNestedInput
     similarities?: SimilarityRecordUpdateManyWithoutNativityChartNestedInput
     currentStories?: CurrentStoryUpdateManyWithoutNativityChartNestedInput
+    consciousnessStates?: ConsciousnessStateUpdateManyWithoutNativityChartNestedInput
   }
 
   export type NativityChartUncheckedUpdateWithoutGeometryIndexInput = {
@@ -27585,6 +27749,7 @@ export namespace Prisma {
     purposeStates?: PurposeStateUncheckedUpdateManyWithoutNativityChartNestedInput
     similarities?: SimilarityRecordUncheckedUpdateManyWithoutNativityChartNestedInput
     currentStories?: CurrentStoryUncheckedUpdateManyWithoutNativityChartNestedInput
+    consciousnessStates?: ConsciousnessStateUncheckedUpdateManyWithoutNativityChartNestedInput
   }
 
   export type AngularDistanceUpsertWithWhereUniqueWithoutGeometryIndexInput = {
@@ -27703,6 +27868,7 @@ export namespace Prisma {
     purposeStates?: PurposeStateCreateNestedManyWithoutNativityChartInput
     similarities?: SimilarityRecordCreateNestedManyWithoutNativityChartInput
     currentStories?: CurrentStoryCreateNestedManyWithoutNativityChartInput
+    consciousnessStates?: ConsciousnessStateCreateNestedManyWithoutNativityChartInput
   }
 
   export type NativityChartUncheckedCreateWithoutAspectsInput = {
@@ -27728,6 +27894,7 @@ export namespace Prisma {
     purposeStates?: PurposeStateUncheckedCreateNestedManyWithoutNativityChartInput
     similarities?: SimilarityRecordUncheckedCreateNestedManyWithoutNativityChartInput
     currentStories?: CurrentStoryUncheckedCreateNestedManyWithoutNativityChartInput
+    consciousnessStates?: ConsciousnessStateUncheckedCreateNestedManyWithoutNativityChartInput
   }
 
   export type NativityChartCreateOrConnectWithoutAspectsInput = {
@@ -27759,17 +27926,21 @@ export namespace Prisma {
   export type PlanetaryProfileCreateWithoutAspectsAsP1Input = {
     id?: string
     planet: string
+    longitude: number
+    latitude?: number | null
+    speed?: number | null
+    acceleration?: number | null
+    direction?: $Enums.PlanetDirection
+    stationaryEnterTime?: Date | string | null
+    stationaryExitTime?: Date | string | null
+    houseCusp?: number | null
+    houseDegree?: number | null
+    houseSign?: string | null
+    relativeAngularIndex?: number | null
     primaryDomain?: string | null
     secondaryDomain?: string | null
     dignity?: string | null
-    strength?: number
-    speed: number
-    visibility?: number
-    expressionBandwidth?: number
-    saturationLevel?: number
-    distortionFactor?: number
-    housePosition?: number | null
-    signPosition?: string | null
+    strength?: number | null
     createdAt?: Date | string
     nativityChart: NativityChartCreateNestedOneWithoutPlanetaryProfilesInput
     aspectsAsP2?: NativityAspectCreateNestedManyWithoutPlanet2ProfileInput
@@ -27779,17 +27950,21 @@ export namespace Prisma {
     id?: string
     nativityChartId: string
     planet: string
+    longitude: number
+    latitude?: number | null
+    speed?: number | null
+    acceleration?: number | null
+    direction?: $Enums.PlanetDirection
+    stationaryEnterTime?: Date | string | null
+    stationaryExitTime?: Date | string | null
+    houseCusp?: number | null
+    houseDegree?: number | null
+    houseSign?: string | null
+    relativeAngularIndex?: number | null
     primaryDomain?: string | null
     secondaryDomain?: string | null
     dignity?: string | null
-    strength?: number
-    speed: number
-    visibility?: number
-    expressionBandwidth?: number
-    saturationLevel?: number
-    distortionFactor?: number
-    housePosition?: number | null
-    signPosition?: string | null
+    strength?: number | null
     createdAt?: Date | string
     aspectsAsP2?: NativityAspectUncheckedCreateNestedManyWithoutPlanet2ProfileInput
   }
@@ -27802,17 +27977,21 @@ export namespace Prisma {
   export type PlanetaryProfileCreateWithoutAspectsAsP2Input = {
     id?: string
     planet: string
+    longitude: number
+    latitude?: number | null
+    speed?: number | null
+    acceleration?: number | null
+    direction?: $Enums.PlanetDirection
+    stationaryEnterTime?: Date | string | null
+    stationaryExitTime?: Date | string | null
+    houseCusp?: number | null
+    houseDegree?: number | null
+    houseSign?: string | null
+    relativeAngularIndex?: number | null
     primaryDomain?: string | null
     secondaryDomain?: string | null
     dignity?: string | null
-    strength?: number
-    speed: number
-    visibility?: number
-    expressionBandwidth?: number
-    saturationLevel?: number
-    distortionFactor?: number
-    housePosition?: number | null
-    signPosition?: string | null
+    strength?: number | null
     createdAt?: Date | string
     nativityChart: NativityChartCreateNestedOneWithoutPlanetaryProfilesInput
     aspectsAsP1?: NativityAspectCreateNestedManyWithoutPlanet1ProfileInput
@@ -27822,17 +28001,21 @@ export namespace Prisma {
     id?: string
     nativityChartId: string
     planet: string
+    longitude: number
+    latitude?: number | null
+    speed?: number | null
+    acceleration?: number | null
+    direction?: $Enums.PlanetDirection
+    stationaryEnterTime?: Date | string | null
+    stationaryExitTime?: Date | string | null
+    houseCusp?: number | null
+    houseDegree?: number | null
+    houseSign?: string | null
+    relativeAngularIndex?: number | null
     primaryDomain?: string | null
     secondaryDomain?: string | null
     dignity?: string | null
-    strength?: number
-    speed: number
-    visibility?: number
-    expressionBandwidth?: number
-    saturationLevel?: number
-    distortionFactor?: number
-    housePosition?: number | null
-    signPosition?: string | null
+    strength?: number | null
     createdAt?: Date | string
     aspectsAsP1?: NativityAspectUncheckedCreateNestedManyWithoutPlanet1ProfileInput
   }
@@ -27875,6 +28058,7 @@ export namespace Prisma {
     purposeStates?: PurposeStateUpdateManyWithoutNativityChartNestedInput
     similarities?: SimilarityRecordUpdateManyWithoutNativityChartNestedInput
     currentStories?: CurrentStoryUpdateManyWithoutNativityChartNestedInput
+    consciousnessStates?: ConsciousnessStateUpdateManyWithoutNativityChartNestedInput
   }
 
   export type NativityChartUncheckedUpdateWithoutAspectsInput = {
@@ -27899,6 +28083,7 @@ export namespace Prisma {
     purposeStates?: PurposeStateUncheckedUpdateManyWithoutNativityChartNestedInput
     similarities?: SimilarityRecordUncheckedUpdateManyWithoutNativityChartNestedInput
     currentStories?: CurrentStoryUncheckedUpdateManyWithoutNativityChartNestedInput
+    consciousnessStates?: ConsciousnessStateUncheckedUpdateManyWithoutNativityChartNestedInput
   }
 
   export type GeometryIndexUpsertWithoutAspectsInput = {
@@ -27939,17 +28124,21 @@ export namespace Prisma {
 
   export type PlanetaryProfileUpdateWithoutAspectsAsP1Input = {
     planet?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    speed?: NullableFloatFieldUpdateOperationsInput | number | null
+    acceleration?: NullableFloatFieldUpdateOperationsInput | number | null
+    direction?: EnumPlanetDirectionFieldUpdateOperationsInput | $Enums.PlanetDirection
+    stationaryEnterTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    stationaryExitTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    houseCusp?: NullableIntFieldUpdateOperationsInput | number | null
+    houseDegree?: NullableFloatFieldUpdateOperationsInput | number | null
+    houseSign?: NullableStringFieldUpdateOperationsInput | string | null
+    relativeAngularIndex?: NullableFloatFieldUpdateOperationsInput | number | null
     primaryDomain?: NullableStringFieldUpdateOperationsInput | string | null
     secondaryDomain?: NullableStringFieldUpdateOperationsInput | string | null
     dignity?: NullableStringFieldUpdateOperationsInput | string | null
-    strength?: FloatFieldUpdateOperationsInput | number
-    speed?: FloatFieldUpdateOperationsInput | number
-    visibility?: FloatFieldUpdateOperationsInput | number
-    expressionBandwidth?: FloatFieldUpdateOperationsInput | number
-    saturationLevel?: FloatFieldUpdateOperationsInput | number
-    distortionFactor?: FloatFieldUpdateOperationsInput | number
-    housePosition?: NullableIntFieldUpdateOperationsInput | number | null
-    signPosition?: NullableStringFieldUpdateOperationsInput | string | null
+    strength?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nativityChart?: NativityChartUpdateOneRequiredWithoutPlanetaryProfilesNestedInput
     aspectsAsP2?: NativityAspectUpdateManyWithoutPlanet2ProfileNestedInput
@@ -27958,17 +28147,21 @@ export namespace Prisma {
   export type PlanetaryProfileUncheckedUpdateWithoutAspectsAsP1Input = {
     nativityChartId?: StringFieldUpdateOperationsInput | string
     planet?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    speed?: NullableFloatFieldUpdateOperationsInput | number | null
+    acceleration?: NullableFloatFieldUpdateOperationsInput | number | null
+    direction?: EnumPlanetDirectionFieldUpdateOperationsInput | $Enums.PlanetDirection
+    stationaryEnterTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    stationaryExitTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    houseCusp?: NullableIntFieldUpdateOperationsInput | number | null
+    houseDegree?: NullableFloatFieldUpdateOperationsInput | number | null
+    houseSign?: NullableStringFieldUpdateOperationsInput | string | null
+    relativeAngularIndex?: NullableFloatFieldUpdateOperationsInput | number | null
     primaryDomain?: NullableStringFieldUpdateOperationsInput | string | null
     secondaryDomain?: NullableStringFieldUpdateOperationsInput | string | null
     dignity?: NullableStringFieldUpdateOperationsInput | string | null
-    strength?: FloatFieldUpdateOperationsInput | number
-    speed?: FloatFieldUpdateOperationsInput | number
-    visibility?: FloatFieldUpdateOperationsInput | number
-    expressionBandwidth?: FloatFieldUpdateOperationsInput | number
-    saturationLevel?: FloatFieldUpdateOperationsInput | number
-    distortionFactor?: FloatFieldUpdateOperationsInput | number
-    housePosition?: NullableIntFieldUpdateOperationsInput | number | null
-    signPosition?: NullableStringFieldUpdateOperationsInput | string | null
+    strength?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     aspectsAsP2?: NativityAspectUncheckedUpdateManyWithoutPlanet2ProfileNestedInput
   }
@@ -27986,17 +28179,21 @@ export namespace Prisma {
 
   export type PlanetaryProfileUpdateWithoutAspectsAsP2Input = {
     planet?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    speed?: NullableFloatFieldUpdateOperationsInput | number | null
+    acceleration?: NullableFloatFieldUpdateOperationsInput | number | null
+    direction?: EnumPlanetDirectionFieldUpdateOperationsInput | $Enums.PlanetDirection
+    stationaryEnterTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    stationaryExitTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    houseCusp?: NullableIntFieldUpdateOperationsInput | number | null
+    houseDegree?: NullableFloatFieldUpdateOperationsInput | number | null
+    houseSign?: NullableStringFieldUpdateOperationsInput | string | null
+    relativeAngularIndex?: NullableFloatFieldUpdateOperationsInput | number | null
     primaryDomain?: NullableStringFieldUpdateOperationsInput | string | null
     secondaryDomain?: NullableStringFieldUpdateOperationsInput | string | null
     dignity?: NullableStringFieldUpdateOperationsInput | string | null
-    strength?: FloatFieldUpdateOperationsInput | number
-    speed?: FloatFieldUpdateOperationsInput | number
-    visibility?: FloatFieldUpdateOperationsInput | number
-    expressionBandwidth?: FloatFieldUpdateOperationsInput | number
-    saturationLevel?: FloatFieldUpdateOperationsInput | number
-    distortionFactor?: FloatFieldUpdateOperationsInput | number
-    housePosition?: NullableIntFieldUpdateOperationsInput | number | null
-    signPosition?: NullableStringFieldUpdateOperationsInput | string | null
+    strength?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nativityChart?: NativityChartUpdateOneRequiredWithoutPlanetaryProfilesNestedInput
     aspectsAsP1?: NativityAspectUpdateManyWithoutPlanet1ProfileNestedInput
@@ -28005,17 +28202,21 @@ export namespace Prisma {
   export type PlanetaryProfileUncheckedUpdateWithoutAspectsAsP2Input = {
     nativityChartId?: StringFieldUpdateOperationsInput | string
     planet?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    speed?: NullableFloatFieldUpdateOperationsInput | number | null
+    acceleration?: NullableFloatFieldUpdateOperationsInput | number | null
+    direction?: EnumPlanetDirectionFieldUpdateOperationsInput | $Enums.PlanetDirection
+    stationaryEnterTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    stationaryExitTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    houseCusp?: NullableIntFieldUpdateOperationsInput | number | null
+    houseDegree?: NullableFloatFieldUpdateOperationsInput | number | null
+    houseSign?: NullableStringFieldUpdateOperationsInput | string | null
+    relativeAngularIndex?: NullableFloatFieldUpdateOperationsInput | number | null
     primaryDomain?: NullableStringFieldUpdateOperationsInput | string | null
     secondaryDomain?: NullableStringFieldUpdateOperationsInput | string | null
     dignity?: NullableStringFieldUpdateOperationsInput | string | null
-    strength?: FloatFieldUpdateOperationsInput | number
-    speed?: FloatFieldUpdateOperationsInput | number
-    visibility?: FloatFieldUpdateOperationsInput | number
-    expressionBandwidth?: FloatFieldUpdateOperationsInput | number
-    saturationLevel?: FloatFieldUpdateOperationsInput | number
-    distortionFactor?: FloatFieldUpdateOperationsInput | number
-    housePosition?: NullableIntFieldUpdateOperationsInput | number | null
-    signPosition?: NullableStringFieldUpdateOperationsInput | string | null
+    strength?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     aspectsAsP1?: NativityAspectUncheckedUpdateManyWithoutPlanet1ProfileNestedInput
   }
@@ -28043,6 +28244,7 @@ export namespace Prisma {
     purposeStates?: PurposeStateCreateNestedManyWithoutNativityChartInput
     similarities?: SimilarityRecordCreateNestedManyWithoutNativityChartInput
     currentStories?: CurrentStoryCreateNestedManyWithoutNativityChartInput
+    consciousnessStates?: ConsciousnessStateCreateNestedManyWithoutNativityChartInput
   }
 
   export type NativityChartUncheckedCreateWithoutPlanetaryProfilesInput = {
@@ -28068,6 +28270,7 @@ export namespace Prisma {
     purposeStates?: PurposeStateUncheckedCreateNestedManyWithoutNativityChartInput
     similarities?: SimilarityRecordUncheckedCreateNestedManyWithoutNativityChartInput
     currentStories?: CurrentStoryUncheckedCreateNestedManyWithoutNativityChartInput
+    consciousnessStates?: ConsciousnessStateUncheckedCreateNestedManyWithoutNativityChartInput
   }
 
   export type NativityChartCreateOrConnectWithoutPlanetaryProfilesInput = {
@@ -28202,6 +28405,7 @@ export namespace Prisma {
     purposeStates?: PurposeStateUpdateManyWithoutNativityChartNestedInput
     similarities?: SimilarityRecordUpdateManyWithoutNativityChartNestedInput
     currentStories?: CurrentStoryUpdateManyWithoutNativityChartNestedInput
+    consciousnessStates?: ConsciousnessStateUpdateManyWithoutNativityChartNestedInput
   }
 
   export type NativityChartUncheckedUpdateWithoutPlanetaryProfilesInput = {
@@ -28226,6 +28430,7 @@ export namespace Prisma {
     purposeStates?: PurposeStateUncheckedUpdateManyWithoutNativityChartNestedInput
     similarities?: SimilarityRecordUncheckedUpdateManyWithoutNativityChartNestedInput
     currentStories?: CurrentStoryUncheckedUpdateManyWithoutNativityChartNestedInput
+    consciousnessStates?: ConsciousnessStateUncheckedUpdateManyWithoutNativityChartNestedInput
   }
 
   export type NativityAspectUpsertWithWhereUniqueWithoutPlanet1ProfileInput = {
@@ -28283,6 +28488,7 @@ export namespace Prisma {
     purposeStates?: PurposeStateCreateNestedManyWithoutNativityChartInput
     similarities?: SimilarityRecordCreateNestedManyWithoutNativityChartInput
     currentStories?: CurrentStoryCreateNestedManyWithoutNativityChartInput
+    consciousnessStates?: ConsciousnessStateCreateNestedManyWithoutNativityChartInput
   }
 
   export type NativityChartUncheckedCreateWithoutStateVectorsInput = {
@@ -28308,6 +28514,7 @@ export namespace Prisma {
     purposeStates?: PurposeStateUncheckedCreateNestedManyWithoutNativityChartInput
     similarities?: SimilarityRecordUncheckedCreateNestedManyWithoutNativityChartInput
     currentStories?: CurrentStoryUncheckedCreateNestedManyWithoutNativityChartInput
+    consciousnessStates?: ConsciousnessStateUncheckedCreateNestedManyWithoutNativityChartInput
   }
 
   export type NativityChartCreateOrConnectWithoutStateVectorsInput = {
@@ -28348,6 +28555,7 @@ export namespace Prisma {
     purposeStates?: PurposeStateUpdateManyWithoutNativityChartNestedInput
     similarities?: SimilarityRecordUpdateManyWithoutNativityChartNestedInput
     currentStories?: CurrentStoryUpdateManyWithoutNativityChartNestedInput
+    consciousnessStates?: ConsciousnessStateUpdateManyWithoutNativityChartNestedInput
   }
 
   export type NativityChartUncheckedUpdateWithoutStateVectorsInput = {
@@ -28372,6 +28580,7 @@ export namespace Prisma {
     purposeStates?: PurposeStateUncheckedUpdateManyWithoutNativityChartNestedInput
     similarities?: SimilarityRecordUncheckedUpdateManyWithoutNativityChartNestedInput
     currentStories?: CurrentStoryUncheckedUpdateManyWithoutNativityChartNestedInput
+    consciousnessStates?: ConsciousnessStateUncheckedUpdateManyWithoutNativityChartNestedInput
   }
 
   export type NativityChartCreateWithoutPurposeStatesInput = {
@@ -28397,6 +28606,7 @@ export namespace Prisma {
     stateVectors?: StateVectorCreateNestedManyWithoutNativityChartInput
     similarities?: SimilarityRecordCreateNestedManyWithoutNativityChartInput
     currentStories?: CurrentStoryCreateNestedManyWithoutNativityChartInput
+    consciousnessStates?: ConsciousnessStateCreateNestedManyWithoutNativityChartInput
   }
 
   export type NativityChartUncheckedCreateWithoutPurposeStatesInput = {
@@ -28422,6 +28632,7 @@ export namespace Prisma {
     stateVectors?: StateVectorUncheckedCreateNestedManyWithoutNativityChartInput
     similarities?: SimilarityRecordUncheckedCreateNestedManyWithoutNativityChartInput
     currentStories?: CurrentStoryUncheckedCreateNestedManyWithoutNativityChartInput
+    consciousnessStates?: ConsciousnessStateUncheckedCreateNestedManyWithoutNativityChartInput
   }
 
   export type NativityChartCreateOrConnectWithoutPurposeStatesInput = {
@@ -28462,6 +28673,7 @@ export namespace Prisma {
     stateVectors?: StateVectorUpdateManyWithoutNativityChartNestedInput
     similarities?: SimilarityRecordUpdateManyWithoutNativityChartNestedInput
     currentStories?: CurrentStoryUpdateManyWithoutNativityChartNestedInput
+    consciousnessStates?: ConsciousnessStateUpdateManyWithoutNativityChartNestedInput
   }
 
   export type NativityChartUncheckedUpdateWithoutPurposeStatesInput = {
@@ -28486,6 +28698,7 @@ export namespace Prisma {
     stateVectors?: StateVectorUncheckedUpdateManyWithoutNativityChartNestedInput
     similarities?: SimilarityRecordUncheckedUpdateManyWithoutNativityChartNestedInput
     currentStories?: CurrentStoryUncheckedUpdateManyWithoutNativityChartNestedInput
+    consciousnessStates?: ConsciousnessStateUncheckedUpdateManyWithoutNativityChartNestedInput
   }
 
   export type NativityChartCreateWithoutSimilaritiesInput = {
@@ -28511,6 +28724,7 @@ export namespace Prisma {
     stateVectors?: StateVectorCreateNestedManyWithoutNativityChartInput
     purposeStates?: PurposeStateCreateNestedManyWithoutNativityChartInput
     currentStories?: CurrentStoryCreateNestedManyWithoutNativityChartInput
+    consciousnessStates?: ConsciousnessStateCreateNestedManyWithoutNativityChartInput
   }
 
   export type NativityChartUncheckedCreateWithoutSimilaritiesInput = {
@@ -28536,6 +28750,7 @@ export namespace Prisma {
     stateVectors?: StateVectorUncheckedCreateNestedManyWithoutNativityChartInput
     purposeStates?: PurposeStateUncheckedCreateNestedManyWithoutNativityChartInput
     currentStories?: CurrentStoryUncheckedCreateNestedManyWithoutNativityChartInput
+    consciousnessStates?: ConsciousnessStateUncheckedCreateNestedManyWithoutNativityChartInput
   }
 
   export type NativityChartCreateOrConnectWithoutSimilaritiesInput = {
@@ -28576,6 +28791,7 @@ export namespace Prisma {
     stateVectors?: StateVectorUpdateManyWithoutNativityChartNestedInput
     purposeStates?: PurposeStateUpdateManyWithoutNativityChartNestedInput
     currentStories?: CurrentStoryUpdateManyWithoutNativityChartNestedInput
+    consciousnessStates?: ConsciousnessStateUpdateManyWithoutNativityChartNestedInput
   }
 
   export type NativityChartUncheckedUpdateWithoutSimilaritiesInput = {
@@ -28600,6 +28816,7 @@ export namespace Prisma {
     stateVectors?: StateVectorUncheckedUpdateManyWithoutNativityChartNestedInput
     purposeStates?: PurposeStateUncheckedUpdateManyWithoutNativityChartNestedInput
     currentStories?: CurrentStoryUncheckedUpdateManyWithoutNativityChartNestedInput
+    consciousnessStates?: ConsciousnessStateUncheckedUpdateManyWithoutNativityChartNestedInput
   }
 
   export type NativityChartCreateWithoutCurrentStoriesInput = {
@@ -28625,6 +28842,7 @@ export namespace Prisma {
     stateVectors?: StateVectorCreateNestedManyWithoutNativityChartInput
     purposeStates?: PurposeStateCreateNestedManyWithoutNativityChartInput
     similarities?: SimilarityRecordCreateNestedManyWithoutNativityChartInput
+    consciousnessStates?: ConsciousnessStateCreateNestedManyWithoutNativityChartInput
   }
 
   export type NativityChartUncheckedCreateWithoutCurrentStoriesInput = {
@@ -28650,6 +28868,7 @@ export namespace Prisma {
     stateVectors?: StateVectorUncheckedCreateNestedManyWithoutNativityChartInput
     purposeStates?: PurposeStateUncheckedCreateNestedManyWithoutNativityChartInput
     similarities?: SimilarityRecordUncheckedCreateNestedManyWithoutNativityChartInput
+    consciousnessStates?: ConsciousnessStateUncheckedCreateNestedManyWithoutNativityChartInput
   }
 
   export type NativityChartCreateOrConnectWithoutCurrentStoriesInput = {
@@ -28743,6 +28962,7 @@ export namespace Prisma {
     stateVectors?: StateVectorUpdateManyWithoutNativityChartNestedInput
     purposeStates?: PurposeStateUpdateManyWithoutNativityChartNestedInput
     similarities?: SimilarityRecordUpdateManyWithoutNativityChartNestedInput
+    consciousnessStates?: ConsciousnessStateUpdateManyWithoutNativityChartNestedInput
   }
 
   export type NativityChartUncheckedUpdateWithoutCurrentStoriesInput = {
@@ -28767,6 +28987,7 @@ export namespace Prisma {
     stateVectors?: StateVectorUncheckedUpdateManyWithoutNativityChartNestedInput
     purposeStates?: PurposeStateUncheckedUpdateManyWithoutNativityChartNestedInput
     similarities?: SimilarityRecordUncheckedUpdateManyWithoutNativityChartNestedInput
+    consciousnessStates?: ConsciousnessStateUncheckedUpdateManyWithoutNativityChartNestedInput
   }
 
   export type PlanetarySceneUpsertWithWhereUniqueWithoutCurrentStoryInput = {
@@ -28887,6 +29108,124 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NativityChartCreateWithoutConsciousnessStatesInput = {
+    id?: string
+    name: string
+    description?: string | null
+    birthDateTime: Date | string
+    birthTimestamp: bigint | number
+    timeResolution?: $Enums.TimeResolution
+    coordinateSystem?: $Enums.CoordinateSystem
+    latitude: number
+    longitude: number
+    timezone: string
+    locationName?: string | null
+    isPublic?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutNativityChartsInput
+    ephemerisData?: EphemerisSnapshotCreateNestedOneWithoutNativityChartInput
+    geometryIndex?: GeometryIndexCreateNestedOneWithoutNativityChartInput
+    planetaryProfiles?: PlanetaryProfileCreateNestedManyWithoutNativityChartInput
+    aspects?: NativityAspectCreateNestedManyWithoutNativityChartInput
+    stateVectors?: StateVectorCreateNestedManyWithoutNativityChartInput
+    purposeStates?: PurposeStateCreateNestedManyWithoutNativityChartInput
+    similarities?: SimilarityRecordCreateNestedManyWithoutNativityChartInput
+    currentStories?: CurrentStoryCreateNestedManyWithoutNativityChartInput
+  }
+
+  export type NativityChartUncheckedCreateWithoutConsciousnessStatesInput = {
+    id?: string
+    userId: string
+    name: string
+    description?: string | null
+    birthDateTime: Date | string
+    birthTimestamp: bigint | number
+    timeResolution?: $Enums.TimeResolution
+    coordinateSystem?: $Enums.CoordinateSystem
+    latitude: number
+    longitude: number
+    timezone: string
+    locationName?: string | null
+    isPublic?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ephemerisData?: EphemerisSnapshotUncheckedCreateNestedOneWithoutNativityChartInput
+    geometryIndex?: GeometryIndexUncheckedCreateNestedOneWithoutNativityChartInput
+    planetaryProfiles?: PlanetaryProfileUncheckedCreateNestedManyWithoutNativityChartInput
+    aspects?: NativityAspectUncheckedCreateNestedManyWithoutNativityChartInput
+    stateVectors?: StateVectorUncheckedCreateNestedManyWithoutNativityChartInput
+    purposeStates?: PurposeStateUncheckedCreateNestedManyWithoutNativityChartInput
+    similarities?: SimilarityRecordUncheckedCreateNestedManyWithoutNativityChartInput
+    currentStories?: CurrentStoryUncheckedCreateNestedManyWithoutNativityChartInput
+  }
+
+  export type NativityChartCreateOrConnectWithoutConsciousnessStatesInput = {
+    where: NativityChartWhereUniqueInput
+    create: XOR<NativityChartCreateWithoutConsciousnessStatesInput, NativityChartUncheckedCreateWithoutConsciousnessStatesInput>
+  }
+
+  export type NativityChartUpsertWithoutConsciousnessStatesInput = {
+    update: XOR<NativityChartUpdateWithoutConsciousnessStatesInput, NativityChartUncheckedUpdateWithoutConsciousnessStatesInput>
+    create: XOR<NativityChartCreateWithoutConsciousnessStatesInput, NativityChartUncheckedCreateWithoutConsciousnessStatesInput>
+    where?: NativityChartWhereInput
+  }
+
+  export type NativityChartUpdateToOneWithWhereWithoutConsciousnessStatesInput = {
+    where?: NativityChartWhereInput
+    data: XOR<NativityChartUpdateWithoutConsciousnessStatesInput, NativityChartUncheckedUpdateWithoutConsciousnessStatesInput>
+  }
+
+  export type NativityChartUpdateWithoutConsciousnessStatesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDateTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthTimestamp?: BigIntFieldUpdateOperationsInput | bigint | number
+    timeResolution?: EnumTimeResolutionFieldUpdateOperationsInput | $Enums.TimeResolution
+    coordinateSystem?: EnumCoordinateSystemFieldUpdateOperationsInput | $Enums.CoordinateSystem
+    latitude?: FloatFieldUpdateOperationsInput | number
+    longitude?: FloatFieldUpdateOperationsInput | number
+    timezone?: StringFieldUpdateOperationsInput | string
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutNativityChartsNestedInput
+    ephemerisData?: EphemerisSnapshotUpdateOneWithoutNativityChartNestedInput
+    geometryIndex?: GeometryIndexUpdateOneWithoutNativityChartNestedInput
+    planetaryProfiles?: PlanetaryProfileUpdateManyWithoutNativityChartNestedInput
+    aspects?: NativityAspectUpdateManyWithoutNativityChartNestedInput
+    stateVectors?: StateVectorUpdateManyWithoutNativityChartNestedInput
+    purposeStates?: PurposeStateUpdateManyWithoutNativityChartNestedInput
+    similarities?: SimilarityRecordUpdateManyWithoutNativityChartNestedInput
+    currentStories?: CurrentStoryUpdateManyWithoutNativityChartNestedInput
+  }
+
+  export type NativityChartUncheckedUpdateWithoutConsciousnessStatesInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDateTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    birthTimestamp?: BigIntFieldUpdateOperationsInput | bigint | number
+    timeResolution?: EnumTimeResolutionFieldUpdateOperationsInput | $Enums.TimeResolution
+    coordinateSystem?: EnumCoordinateSystemFieldUpdateOperationsInput | $Enums.CoordinateSystem
+    latitude?: FloatFieldUpdateOperationsInput | number
+    longitude?: FloatFieldUpdateOperationsInput | number
+    timezone?: StringFieldUpdateOperationsInput | string
+    locationName?: NullableStringFieldUpdateOperationsInput | string | null
+    isPublic?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ephemerisData?: EphemerisSnapshotUncheckedUpdateOneWithoutNativityChartNestedInput
+    geometryIndex?: GeometryIndexUncheckedUpdateOneWithoutNativityChartNestedInput
+    planetaryProfiles?: PlanetaryProfileUncheckedUpdateManyWithoutNativityChartNestedInput
+    aspects?: NativityAspectUncheckedUpdateManyWithoutNativityChartNestedInput
+    stateVectors?: StateVectorUncheckedUpdateManyWithoutNativityChartNestedInput
+    purposeStates?: PurposeStateUncheckedUpdateManyWithoutNativityChartNestedInput
+    similarities?: SimilarityRecordUncheckedUpdateManyWithoutNativityChartNestedInput
+    currentStories?: CurrentStoryUncheckedUpdateManyWithoutNativityChartNestedInput
   }
 
   export type AccountCreateManyUserInput = {
@@ -29018,6 +29357,7 @@ export namespace Prisma {
     purposeStates?: PurposeStateUpdateManyWithoutNativityChartNestedInput
     similarities?: SimilarityRecordUpdateManyWithoutNativityChartNestedInput
     currentStories?: CurrentStoryUpdateManyWithoutNativityChartNestedInput
+    consciousnessStates?: ConsciousnessStateUpdateManyWithoutNativityChartNestedInput
   }
 
   export type NativityChartUncheckedUpdateWithoutUserInput = {
@@ -29042,6 +29382,7 @@ export namespace Prisma {
     purposeStates?: PurposeStateUncheckedUpdateManyWithoutNativityChartNestedInput
     similarities?: SimilarityRecordUncheckedUpdateManyWithoutNativityChartNestedInput
     currentStories?: CurrentStoryUncheckedUpdateManyWithoutNativityChartNestedInput
+    consciousnessStates?: ConsciousnessStateUncheckedUpdateManyWithoutNativityChartNestedInput
   }
 
   export type NativityChartUncheckedUpdateManyWithoutUserInput = {
@@ -29063,17 +29404,21 @@ export namespace Prisma {
   export type PlanetaryProfileCreateManyNativityChartInput = {
     id?: string
     planet: string
+    longitude: number
+    latitude?: number | null
+    speed?: number | null
+    acceleration?: number | null
+    direction?: $Enums.PlanetDirection
+    stationaryEnterTime?: Date | string | null
+    stationaryExitTime?: Date | string | null
+    houseCusp?: number | null
+    houseDegree?: number | null
+    houseSign?: string | null
+    relativeAngularIndex?: number | null
     primaryDomain?: string | null
     secondaryDomain?: string | null
     dignity?: string | null
-    strength?: number
-    speed: number
-    visibility?: number
-    expressionBandwidth?: number
-    saturationLevel?: number
-    distortionFactor?: number
-    housePosition?: number | null
-    signPosition?: string | null
+    strength?: number | null
     createdAt?: Date | string
   }
 
@@ -29159,19 +29504,45 @@ export namespace Prisma {
     expiresAt: Date | string
   }
 
+  export type ConsciousnessStateCreateManyNativityChartInput = {
+    id?: string
+    timestamp: Date | string
+    timestampMicro: bigint | number
+    ephemerisSnapshotId?: string | null
+    geometryIndexId?: string | null
+    existentialField: InputJsonValue
+    cognitiveField: InputJsonValue
+    planetaryStates: InputJsonValue
+    couplingStates: InputJsonValue
+    entropyScore: number
+    coherenceScore: number
+    tensionScore: number
+    noveltyScore: number
+    trajectoryVector?: InputJsonValue | null
+    latentVector?: InputJsonValue | null
+    vectorVersion?: string
+    simulationSource?: string | null
+    confidenceScore?: number
+    createdAt?: Date | string
+  }
+
   export type PlanetaryProfileUpdateWithoutNativityChartInput = {
     planet?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    speed?: NullableFloatFieldUpdateOperationsInput | number | null
+    acceleration?: NullableFloatFieldUpdateOperationsInput | number | null
+    direction?: EnumPlanetDirectionFieldUpdateOperationsInput | $Enums.PlanetDirection
+    stationaryEnterTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    stationaryExitTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    houseCusp?: NullableIntFieldUpdateOperationsInput | number | null
+    houseDegree?: NullableFloatFieldUpdateOperationsInput | number | null
+    houseSign?: NullableStringFieldUpdateOperationsInput | string | null
+    relativeAngularIndex?: NullableFloatFieldUpdateOperationsInput | number | null
     primaryDomain?: NullableStringFieldUpdateOperationsInput | string | null
     secondaryDomain?: NullableStringFieldUpdateOperationsInput | string | null
     dignity?: NullableStringFieldUpdateOperationsInput | string | null
-    strength?: FloatFieldUpdateOperationsInput | number
-    speed?: FloatFieldUpdateOperationsInput | number
-    visibility?: FloatFieldUpdateOperationsInput | number
-    expressionBandwidth?: FloatFieldUpdateOperationsInput | number
-    saturationLevel?: FloatFieldUpdateOperationsInput | number
-    distortionFactor?: FloatFieldUpdateOperationsInput | number
-    housePosition?: NullableIntFieldUpdateOperationsInput | number | null
-    signPosition?: NullableStringFieldUpdateOperationsInput | string | null
+    strength?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     aspectsAsP1?: NativityAspectUpdateManyWithoutPlanet1ProfileNestedInput
     aspectsAsP2?: NativityAspectUpdateManyWithoutPlanet2ProfileNestedInput
@@ -29179,17 +29550,21 @@ export namespace Prisma {
 
   export type PlanetaryProfileUncheckedUpdateWithoutNativityChartInput = {
     planet?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    speed?: NullableFloatFieldUpdateOperationsInput | number | null
+    acceleration?: NullableFloatFieldUpdateOperationsInput | number | null
+    direction?: EnumPlanetDirectionFieldUpdateOperationsInput | $Enums.PlanetDirection
+    stationaryEnterTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    stationaryExitTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    houseCusp?: NullableIntFieldUpdateOperationsInput | number | null
+    houseDegree?: NullableFloatFieldUpdateOperationsInput | number | null
+    houseSign?: NullableStringFieldUpdateOperationsInput | string | null
+    relativeAngularIndex?: NullableFloatFieldUpdateOperationsInput | number | null
     primaryDomain?: NullableStringFieldUpdateOperationsInput | string | null
     secondaryDomain?: NullableStringFieldUpdateOperationsInput | string | null
     dignity?: NullableStringFieldUpdateOperationsInput | string | null
-    strength?: FloatFieldUpdateOperationsInput | number
-    speed?: FloatFieldUpdateOperationsInput | number
-    visibility?: FloatFieldUpdateOperationsInput | number
-    expressionBandwidth?: FloatFieldUpdateOperationsInput | number
-    saturationLevel?: FloatFieldUpdateOperationsInput | number
-    distortionFactor?: FloatFieldUpdateOperationsInput | number
-    housePosition?: NullableIntFieldUpdateOperationsInput | number | null
-    signPosition?: NullableStringFieldUpdateOperationsInput | string | null
+    strength?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     aspectsAsP1?: NativityAspectUncheckedUpdateManyWithoutPlanet1ProfileNestedInput
     aspectsAsP2?: NativityAspectUncheckedUpdateManyWithoutPlanet2ProfileNestedInput
@@ -29197,17 +29572,21 @@ export namespace Prisma {
 
   export type PlanetaryProfileUncheckedUpdateManyWithoutNativityChartInput = {
     planet?: StringFieldUpdateOperationsInput | string
+    longitude?: FloatFieldUpdateOperationsInput | number
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    speed?: NullableFloatFieldUpdateOperationsInput | number | null
+    acceleration?: NullableFloatFieldUpdateOperationsInput | number | null
+    direction?: EnumPlanetDirectionFieldUpdateOperationsInput | $Enums.PlanetDirection
+    stationaryEnterTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    stationaryExitTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    houseCusp?: NullableIntFieldUpdateOperationsInput | number | null
+    houseDegree?: NullableFloatFieldUpdateOperationsInput | number | null
+    houseSign?: NullableStringFieldUpdateOperationsInput | string | null
+    relativeAngularIndex?: NullableFloatFieldUpdateOperationsInput | number | null
     primaryDomain?: NullableStringFieldUpdateOperationsInput | string | null
     secondaryDomain?: NullableStringFieldUpdateOperationsInput | string | null
     dignity?: NullableStringFieldUpdateOperationsInput | string | null
-    strength?: FloatFieldUpdateOperationsInput | number
-    speed?: FloatFieldUpdateOperationsInput | number
-    visibility?: FloatFieldUpdateOperationsInput | number
-    expressionBandwidth?: FloatFieldUpdateOperationsInput | number
-    saturationLevel?: FloatFieldUpdateOperationsInput | number
-    distortionFactor?: FloatFieldUpdateOperationsInput | number
-    housePosition?: NullableIntFieldUpdateOperationsInput | number | null
-    signPosition?: NullableStringFieldUpdateOperationsInput | string | null
+    strength?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -29444,68 +29823,66 @@ export namespace Prisma {
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PlanetDataCreateManyEphemerisSnapshotInput = {
-    id?: string
-    planet: string
-    longitude: number
-    latitude?: number | null
-    speed: number
-    acceleration?: number | null
-    direction?: $Enums.PlanetDirection
-    stationaryEnterTime?: Date | string | null
-    stationaryExitTime?: Date | string | null
-    houseCusp?: number | null
-    houseDegree?: number | null
-    houseSign?: string | null
-    relativeAngularIndex?: number | null
-    createdAt?: Date | string
-  }
-
-  export type PlanetDataUpdateWithoutEphemerisSnapshotInput = {
-    planet?: StringFieldUpdateOperationsInput | string
-    longitude?: FloatFieldUpdateOperationsInput | number
-    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    speed?: FloatFieldUpdateOperationsInput | number
-    acceleration?: NullableFloatFieldUpdateOperationsInput | number | null
-    direction?: EnumPlanetDirectionFieldUpdateOperationsInput | $Enums.PlanetDirection
-    stationaryEnterTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    stationaryExitTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    houseCusp?: NullableIntFieldUpdateOperationsInput | number | null
-    houseDegree?: NullableFloatFieldUpdateOperationsInput | number | null
-    houseSign?: NullableStringFieldUpdateOperationsInput | string | null
-    relativeAngularIndex?: NullableFloatFieldUpdateOperationsInput | number | null
+  export type ConsciousnessStateUpdateWithoutNativityChartInput = {
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    timestampMicro?: BigIntFieldUpdateOperationsInput | bigint | number
+    ephemerisSnapshotId?: NullableStringFieldUpdateOperationsInput | string | null
+    geometryIndexId?: NullableStringFieldUpdateOperationsInput | string | null
+    existentialField?: InputJsonValue | InputJsonValue
+    cognitiveField?: InputJsonValue | InputJsonValue
+    planetaryStates?: InputJsonValue | InputJsonValue
+    couplingStates?: InputJsonValue | InputJsonValue
+    entropyScore?: FloatFieldUpdateOperationsInput | number
+    coherenceScore?: FloatFieldUpdateOperationsInput | number
+    tensionScore?: FloatFieldUpdateOperationsInput | number
+    noveltyScore?: FloatFieldUpdateOperationsInput | number
+    trajectoryVector?: InputJsonValue | InputJsonValue | null
+    latentVector?: InputJsonValue | InputJsonValue | null
+    vectorVersion?: StringFieldUpdateOperationsInput | string
+    simulationSource?: NullableStringFieldUpdateOperationsInput | string | null
+    confidenceScore?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PlanetDataUncheckedUpdateWithoutEphemerisSnapshotInput = {
-    planet?: StringFieldUpdateOperationsInput | string
-    longitude?: FloatFieldUpdateOperationsInput | number
-    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    speed?: FloatFieldUpdateOperationsInput | number
-    acceleration?: NullableFloatFieldUpdateOperationsInput | number | null
-    direction?: EnumPlanetDirectionFieldUpdateOperationsInput | $Enums.PlanetDirection
-    stationaryEnterTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    stationaryExitTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    houseCusp?: NullableIntFieldUpdateOperationsInput | number | null
-    houseDegree?: NullableFloatFieldUpdateOperationsInput | number | null
-    houseSign?: NullableStringFieldUpdateOperationsInput | string | null
-    relativeAngularIndex?: NullableFloatFieldUpdateOperationsInput | number | null
+  export type ConsciousnessStateUncheckedUpdateWithoutNativityChartInput = {
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    timestampMicro?: BigIntFieldUpdateOperationsInput | bigint | number
+    ephemerisSnapshotId?: NullableStringFieldUpdateOperationsInput | string | null
+    geometryIndexId?: NullableStringFieldUpdateOperationsInput | string | null
+    existentialField?: InputJsonValue | InputJsonValue
+    cognitiveField?: InputJsonValue | InputJsonValue
+    planetaryStates?: InputJsonValue | InputJsonValue
+    couplingStates?: InputJsonValue | InputJsonValue
+    entropyScore?: FloatFieldUpdateOperationsInput | number
+    coherenceScore?: FloatFieldUpdateOperationsInput | number
+    tensionScore?: FloatFieldUpdateOperationsInput | number
+    noveltyScore?: FloatFieldUpdateOperationsInput | number
+    trajectoryVector?: InputJsonValue | InputJsonValue | null
+    latentVector?: InputJsonValue | InputJsonValue | null
+    vectorVersion?: StringFieldUpdateOperationsInput | string
+    simulationSource?: NullableStringFieldUpdateOperationsInput | string | null
+    confidenceScore?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PlanetDataUncheckedUpdateManyWithoutEphemerisSnapshotInput = {
-    planet?: StringFieldUpdateOperationsInput | string
-    longitude?: FloatFieldUpdateOperationsInput | number
-    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    speed?: FloatFieldUpdateOperationsInput | number
-    acceleration?: NullableFloatFieldUpdateOperationsInput | number | null
-    direction?: EnumPlanetDirectionFieldUpdateOperationsInput | $Enums.PlanetDirection
-    stationaryEnterTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    stationaryExitTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    houseCusp?: NullableIntFieldUpdateOperationsInput | number | null
-    houseDegree?: NullableFloatFieldUpdateOperationsInput | number | null
-    houseSign?: NullableStringFieldUpdateOperationsInput | string | null
-    relativeAngularIndex?: NullableFloatFieldUpdateOperationsInput | number | null
+  export type ConsciousnessStateUncheckedUpdateManyWithoutNativityChartInput = {
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    timestampMicro?: BigIntFieldUpdateOperationsInput | bigint | number
+    ephemerisSnapshotId?: NullableStringFieldUpdateOperationsInput | string | null
+    geometryIndexId?: NullableStringFieldUpdateOperationsInput | string | null
+    existentialField?: InputJsonValue | InputJsonValue
+    cognitiveField?: InputJsonValue | InputJsonValue
+    planetaryStates?: InputJsonValue | InputJsonValue
+    couplingStates?: InputJsonValue | InputJsonValue
+    entropyScore?: FloatFieldUpdateOperationsInput | number
+    coherenceScore?: FloatFieldUpdateOperationsInput | number
+    tensionScore?: FloatFieldUpdateOperationsInput | number
+    noveltyScore?: FloatFieldUpdateOperationsInput | number
+    trajectoryVector?: InputJsonValue | InputJsonValue | null
+    latentVector?: InputJsonValue | InputJsonValue | null
+    vectorVersion?: StringFieldUpdateOperationsInput | string
+    simulationSource?: NullableStringFieldUpdateOperationsInput | string | null
+    confidenceScore?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
