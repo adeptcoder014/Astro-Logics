@@ -26,6 +26,7 @@ export default function GPTImageMiniGenerator() {
           script.onload = resolve;
           script.onerror = reject;
 
+          
           document.body.appendChild(script);
         });
       }

@@ -1,314 +1,239 @@
-'use client';
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, X } from 'lucide-react';
-import Layout from '../components/Layout';
-import NativityChartForm from '../components/nativity/NativityChartForm';
-import NativityChartList from '../components/nativity/NativityChartList';
-import {
-
-  Sparkles,
-
-  ChevronRight,
-  HelpCircle
-} from 'lucide-react';
-import Link from 'next/link';
+'use client'
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { api } from '~/trpc/react';
+import {
+  ArrowRight,
+  Activity,
+  BookOpen,
+  Compass,
+  Sparkles,
+  ShieldAlert
+} from 'lucide-react';
+import Layout from '../components/Layout';
+import CurrentStoryHero from '../components/dashboard/CurrentStoryHero';
 
-const VITALS_DATA = [
-  { id: 'coherence', label: 'Coherence', value: 78, change: '+6', trend: 'up', points: [70, 72, 71, 75, 74, 76, 78] },
-  { id: 'agency', label: 'Agency', value: 64, change: '+4', trend: 'up', points: [60, 61, 59, 62, 63, 62, 64] },
-  { id: 'volatility', label: 'Volatility', value: 31, change: '-8', trend: 'down', points: [45, 42, 39, 38, 35, 33, 31] },
-  { id: 'adaptability', label: 'Adaptability', value: 42, change: '-3', trend: 'down', points: [48, 46, 47, 44, 45, 43, 42] },
-];
+export default function AstroLogicsHomeScreen() {
+  const router = useRouter();
 
-const WEATHER_DRIVERS = [
-  { name: 'Saturn', status: 'Rising', value: '+0.72', isPositive: true, symbol: '♄' },
-  { name: 'Mars', status: 'Rising', value: '+0.51', isPositive: true, symbol: '♂' },
-  { name: 'Moon', status: 'Falling', value: '-0.44', isPositive: false, symbol: '☽' },
-  { name: 'Neptune', status: 'Falling', value: '-0.38', isPositive: false, symbol: '♆' },
-];
+  // --- tRPC API Queries ---
+  const { data: currentStory, isLoading: storyLoading } = api.nativity.getCurrentStory.useQuery({ storyId: '6a1a8ec1880574e3556fad8b' });
+  const { data: planetaryScenes, isLoading: scenesLoading } = api.nativity.getPlanetaryScenes.useQuery({ currentStoryId: '6a1a8ec1880574e3556fad8b' });
 
-const PARLIAMENT_PREVIEW = [
-  { name: 'Saturn', role: 'Constraint & Consolidation', value: '0.72', color: 'bg-zinc-900', img: '🪐' },
-  { name: 'Mars', role: 'Structural Execution', value: '0.51', color: 'bg-amber-950', img: '🔴' },
-  { name: 'Moon', role: 'Relational Synchronization', value: '-0.44', color: 'bg-slate-900', img: '🌑' },
-  { name: 'Venus', role: 'Value Harmonization', value: '0.28', color: 'bg-orange-950', img: '🟡' },
-  { name: 'Neptune', role: 'Vision & Transcendence', value: '-0.38', color: 'bg-cyan-950', img: '🔵' },
-];
+  // Fallbacks using your exact data schema shapes
+  const story = currentStory || {}
+  const scenes = planetaryScenes || [];
 
-export default function CosmicClimatePage() {
-    const [viewMode, setViewMode] = useState<ViewMode>('list');
-    const [selectedChart, setSelectedChart] = useState<SelectedChart | null>(null);
-  
-  const chartsQuery = api.nativity.getCharts.useQuery();
-  const createMutation = api.nativity.createChart.useMutation({
-    onSuccess: (newChart) => {
-      chartsQuery.refetch();
-      setSelectedChart({ id: newChart.id, name: newChart.name });
-      setViewMode('view');
-    },
-  });
-  const [isFormOpen, setIsFormOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  // --- State for tracking selected Architectural Driver ---
+  const [selectedPlanetId, setSelectedPlanetId] = useState<string>('');
+  console.log(selectedPlanetId)
+  // Auto-select the first driver once data arrives
+  useEffect(() => {
+    if (scenes && scenes.length > 0) {
+      setSelectedPlanetId(scenes[0]._id);
+    }
+  }, [scenes]);
 
-  const handleCreateChart = async (data: any) => {
-    setIsLoading(true);
-    await new Promise(r => setTimeout(r, 1000));
-    setIsLoading(false);
-    setIsFormOpen(false);
-  };
+  if (storyLoading || scenesLoading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-[var(--color-primary-light)]">
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-[var(--color-accent-orange)] border-t-transparent" />
+      </div>
+    );
+  }
+
+  // Find the complete scene payload match based on selected label ID
+  const activeScene = scenes.find(s => s._id === selectedPlanetId) || scenes[0];
 
   return (
     <Layout>
-
-      {/* Main Dashboard Content Goes Here */}
-      {/* Header Metadata Bar with Trigger */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-black/[0.05] pb-4 gap-2">
-        <div>
-          <h2 className="text-2xl font-bold tracking-tight uppercase font-roboto text-slate-900">Cosmic Climate</h2>
-          <button
-            onClick={() => setIsFormOpen(true)}
-            className="mt-2 text-xs flex items-center gap-1 text-[var(--color-accent-orange)] font-bold hover:underline"
-          >
-            <Plus size={14} /> New Nativity Chart
-          </button>
-        </div>
-      </div>
-
-      <NativityChartList
-        charts={chartsQuery.data || []}
-        isLoading={chartsQuery.isLoading}
-        isError={chartsQuery.isError}
-        // onSelectChart={handleSelectChart}
-        // onDeleteChart={handleDeleteChart}
-      />
+      <div className="bg-[var(--color-primary-light)]  mx-auto space-y-2">
+        <CurrentStoryHero />
 
 
-
-
-
-      <div className="space-y-6 text-[var(--color-primary-dark)]">
-
-
-        {/* 2. Top Engine Split: Hero Regime vs Weather Drivers */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
-
-          {/* Left/Center: Huge Hero Metric Card */}
-          <div className="lg:col-span-2 flex flex-col justify-between bg-gradient-to-b from-[#1e325c] to-[#12203f] rounded-2xl p-6 shadow-xl text-[var(--color-primary-light)] relative overflow-hidden group min-h-[260px]">
-            {/* Subtle cosmic vector backdrop grid */}
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent pointer-events-none" />
-
-            <div className="text-center mx-auto space-y-1 relative z-10">
-              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[var(--color-ring-bronze)] font-mono">Current Regime</span>
-              <h3 className="text-3xl md:text-4xl font-black tracking-[0.12em] uppercase text-white font-roboto-mono filter drop-shadow-sm py-2">
-                Structured Expansion
-              </h3>
-            </div>
-
-            {/* Dial Graphic Overlay */}
-            <div className="relative flex flex-col items-center justify-center py-2 z-10">
-              <div className="absolute w-44 h-22 border-t-2 border-dashed border-[var(--color-ring-bronze)]/30 rounded-t-full -bottom-1" />
-              <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 font-mono">Confidence</span>
-              <span className="text-4xl font-extrabold text-white tracking-tight mt-1">71%</span>
-            </div>
-
-            <div className="border-t border-white/[0.06] pt-3 text-center z-10">
-              <p className="text-[11px] font-mono text-slate-400 uppercase tracking-widest">System Mechanics Validated Matrix</p>
-            </div>
+        {/* ================= 1. TOP NAV SECTION: LABELS SELECTOR ================= */}
+        <section className="space-y-3">
+          <div className="flex items-center justify-between">
+            <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-[var(--color-accent-orange)]">
+              Active Architectural Drivers // Click to Inspect Target
+            </p>
+            <span className="text-[10px] font-mono opacity-50">{scenes.length} Forces Present</span>
           </div>
 
-          {/* Right Area: Weather Drivers Attribution */}
-          <div className="bg-white/70 backdrop-blur-md rounded-2xl p-5 border border-white/60 shadow-sm flex flex-col justify-between">
-            <div>
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 font-mono">Weather Drivers</h3>
-                <HelpCircle size={14} className="text-slate-400" />
-              </div>
-
-              <div className="space-y-2.5">
-                {WEATHER_DRIVERS.map((driver) => (
-                  <div key={driver.name} className="flex items-center justify-between p-2.5 rounded-xl bg-black/[0.02] border border-black/[0.02]">
-                    <div className="flex items-center gap-3">
-                      <div className="w-7 h-7 rounded-lg bg-[var(--color-primary-dark)] text-white flex items-center justify-center font-mono text-sm font-bold shadow-inner">
-                        {driver.symbol}
-                      </div>
-                      <div>
-                        <h4 className="text-xs font-bold text-slate-800">{driver.name}</h4>
-                        <p className={`text-[10px] font-mono font-bold flex items-center gap-0.5 ${driver.isPositive ? 'text-emerald-600' : 'text-[var(--color-accent-orange)]'}`}>
-                          {driver.isPositive ? '↑' : '↓'} {driver.status}
-                        </p>
-                      </div>
-                    </div>
-                    <span className={`text-sm font-mono font-bold ${driver.isPositive ? 'text-emerald-600' : 'text-[var(--color-accent-orange)]'}`}>
-                      {driver.value}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <button className="w-full mt-4 py-2 bg-black/[0.03] hover:bg-black/[0.05] border border-black/[0.05] rounded-xl text-[11px] font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-1.5">
-              View All Forces <ChevronRight size={12} />
-            </button>
-          </div>
-        </div>
-
-        {/* 3. Mid Grid Module: State Vitals vs Regime Narrative */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
-
-          {/* State Vitals Group Matrix (4 Horizontal Grid Loops) */}
-          <div className="lg:col-span-2 grid grid-cols-2 sm:grid-cols-4 gap-3">
-            {VITALS_DATA.map((vital) => {
-              const isUp = vital.trend === 'up';
+          <div className="flex flex-wrap gap-2.5">
+            {scenes.map((scene) => {
+              const isSelected = scene._id === selectedPlanetId;
               return (
-                <div key={vital.id} className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-white/60 shadow-sm flex flex-col justify-between relative overflow-hidden">
-                  <div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 font-mono block mb-1">
-                      {vital.label}
-                    </span>
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-3xl font-extrabold tracking-tight text-slate-900">{vital.value}</span>
-                      <span className={`text-xs font-mono font-bold flex items-center ${isUp ? 'text-emerald-600' : 'text-[var(--color-accent-orange)]'}`}>
-                        {isUp ? '↑' : '↓'} {vital.change}
-                      </span>
-                    </div>
-                    <span className="text-[9px] font-mono text-slate-400">vs yesterday</span>
-                  </div>
+                <button
+                  key={scene._id}
+                  onClick={() => setSelectedPlanetId(scene._id)}
+                  className={`px-5 py-3 rounded-xl border text-xs font-bold tracking-widest uppercase transition-all duration-200 flex items-center gap-2 cursor-pointer
+            ${isSelected
+                      ? 'bg-white/90 text-[var(--color-primary-dark)] border-[var(--color-accent-orange)] shadow-md scale-[1.02]'
+                      : 'bg-[var(--color-primary-dark)] text-[var(--color-primary-light)] border-[var(--color-ring-bronze)]/30 hover:bg-white/5 hover:border-[var(--color-accent-orange)]'
+                    }`}
+                >
+                  {/* Status Indicator Dot */}
+                  <div className={`h-1.5 w-1.5 rounded-full ${isSelected ? 'bg-[var(--color-primary-dark)]/60' : 'bg-[var(--color-accent-orange)]'}`} />
 
-                  {/* Simple Sparkline Area Mock Generator */}
-                  <div className="h-8 mt-3 w-full flex items-end gap-[3px]">
-                    {vital.points.map((pt, i) => {
-                      const heightPercent = ((pt - 20) / 60) * 100;
-                      return (
-                        <div
-                          key={i}
-                          className={`flex-1 rounded-t-sm transition-all duration-500 ${isUp ? 'bg-emerald-500/20 group-hover:bg-emerald-500/40' : 'bg-[var(--color-accent-orange)]/20'}`}
-                          style={{ height: `${Math.max(15, Math.min(100, heightPercent))}%` }}
-                        />
-                      );
-                    })}
-                  </div>
-                </div>
+                  {scene.planet}
+
+                  {/* Micro System Function Tag */}
+                  <span className={`text-[10px] font-mono font-medium lowercase tracking-normal px-1.5 py-0.5 rounded ${isSelected
+                      ? 'bg-[var(--color-primary-dark)]/10 text-[var(--color-primary-dark)]/80'
+                      : 'bg-white/10 text-[var(--color-accent-glow)]'
+                    }`}>
+                    {scene.storyFunction}
+                  </span>
+                </button>
               );
             })}
           </div>
+        </section>
 
-          {/* Narrative Box Overlay */}
-          <div className="bg-white/50 border border-white/70 rounded-2xl p-5 shadow-sm relative">
-            <div className="absolute top-4 right-4 text-[var(--color-ring-bronze)]">
-              <Sparkles size={14} className="animate-pulse" />
+        {/* ================= 2. BENTO CENTER MODULE ================= */}
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 items-start">
+
+          {/* HERO STORY CONTAINER (2 Columns Wide) */}
+          <div className="xl:col-span-2 bg-[var(--color-primary-dark)] text-[var(--color-primary-light)] rounded-2xl p-6 md:p-10 shadow-xl relative overflow-hidden flex flex-col justify-between min-h-[440px]">
+            <div className="absolute -right-20 -top-20 w-80 h-80 bg-[var(--color-accent-glow)] rounded-full opacity-10 blur-3xl" />
+
+            <div className="relative z-10 space-y-6">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[var(--color-accent-orange)] text-[var(--color-accent-orange)] text-xs font-bold uppercase tracking-wider bg-[var(--color-accent-orange)]/10">
+                  <Sparkles size={12} /> Live Narrative Theme: {story.theme}
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <h1 className="text-4xl md:text-6xl font-black tracking-tighter uppercase italic text-white leading-none">
+                  {story.title}
+                </h1>
+                <p className="text-[var(--color-primary-light)]/80 text-base md:text-lg max-w-2xl font-normal leading-relaxed">
+                  {story.mainNarrative.replace(/\*\*[^*]+\*\*/g, '')}
+                </p>
+              </div>
             </div>
-            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 font-mono mb-2">Regime Narrative</h3>
-            <p className="text-xs text-slate-700 font-medium leading-relaxed font-sans space-y-2">
-              The system currently favors <span className="font-bold text-slate-900">structured growth</span> over exploration.
-              Coordination remains high while volatility remains contained. Decision quality improves when operating through existing structures.
+
+            <div className="relative z-10 pt-6 border-t border-white/10 mt-6 flex flex-wrap items-center justify-between gap-4">
+              <button
+                onClick={() => router.push('/dashboard/story')}
+                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[var(--color-accent-orange)] hover:text-white transition-colors group/btn"
+              >
+                View Full Story <ArrowRight size={14} className="transition-transform group-hover/btn:translate-x-1" />
+              </button>
+            </div>
+          </div>
+
+          {/* DYNAMIC SPOLIGHT CARD: READS SELECTOR STATE VALUES LIVE */}
+          {activeScene && (
+            <div className="bg-white/90 backdrop-blur-md border border-[var(--color-accent-orange)] rounded-2xl p-6 shadow-md flex flex-col justify-between min-h-[440px] transition-all duration-300">
+
+              <div className="space-y-5">
+                <div className="flex items-center justify-between border-b border-[var(--color-ring-bronze)]/20 pb-3">
+                  <div>
+                    <span className="text-[9px] uppercase font-mono opacity-50 block tracking-wider">Driver Spotlight</span>
+                    <h3 className="text-2xl font-black tracking-tight text-[var(--color-primary-dark)]">{activeScene.planet}</h3>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-[9px] uppercase font-mono opacity-50 block tracking-wider">Dynamic Function</span>
+                    <span className="text-xs font-mono font-bold text-[var(--color-accent-orange)] uppercase tracking-wide">{activeScene.storyFunction}</span>
+                  </div>
+                </div>
+
+                {/* Operational Scripts Map */}
+                <div className="space-y-4">
+                  <div>
+                    <span className="text-[9px] uppercase font-mono opacity-40 block tracking-wider mb-1">Active Behavioral Script</span>
+                    <p className="text-sm font-bold text-[var(--text-main)] leading-snug">{activeScene.behavioralPattern}</p>
+                  </div>
+
+                  <div className="bg-[var(--color-primary-light)]/30 border-l-2 border-[var(--color-accent-orange)] p-3 rounded-r-lg">
+                    <span className="text-[9px] uppercase font-mono opacity-50 block tracking-wider mb-0.5">Environmental Tension</span>
+                    <p className="text-xs text-[var(--text-muted)] italic font-medium leading-normal">
+                      "{activeScene.dominantPressure}"
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Crash / Threshold Progress Ring Bar */}
+              <div className="pt-5 border-t border-[var(--color-ring-bronze)]/20 mt-6 space-y-3">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <span className="text-[9px] uppercase font-mono opacity-40 block tracking-wider">Systemic Failure Vector</span>
+                    <span className="text-sm font-mono font-black">Collapse Risk: {activeScene.collapseRisk}%</span>
+                  </div>
+                  <div className={`p-2 rounded-lg ${activeScene.collapseRisk >= 50 ? 'bg-red-50 text-red-600' : 'bg-emerald-50 text-emerald-600'}`}>
+                    <ShieldAlert size={18} />
+                  </div>
+                </div>
+                <div className="w-full bg-[var(--color-primary-dark)]/10 h-2 rounded-full overflow-hidden">
+                  <div
+                    className={`h-full rounded-full transition-all duration-500 ${activeScene.collapseRisk >= 50 ? 'bg-[var(--color-accent-orange)]' : 'bg-emerald-500'}`}
+                    style={{ width: `${activeScene.collapseRisk}%` }}
+                  />
+                </div>
+              </div>
+
+            </div>
+          )}
+        </div>
+
+        {/* ================= 3. LOWER SECTION METRICS MATRIX ================= */}
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+          <div className="bg-white/50 backdrop-blur-sm border border-[var(--color-ring-bronze)]/30 rounded-2xl p-5 flex items-center justify-between lg:col-span-1">
+            <div>
+              <span className="text-[9px] uppercase font-mono opacity-40 block">Global Intensity</span>
+              <span className="text-3xl font-black font-mono tracking-tight">{story.intensity}</span>
+            </div>
+            <div className="text-right text-xs font-mono font-bold text-[var(--color-accent-orange)] bg-[var(--color-accent-orange)]/10 px-2 py-1 rounded">
+              SCALE // LIVE
+            </div>
+          </div>
+
+          <div className="bg-white/50 backdrop-blur-sm border border-[var(--color-ring-bronze)]/30 rounded-2xl p-4 grid grid-cols-3 gap-2 lg:col-span-2">
+            <div className="bg-white/60 rounded-xl p-2.5 text-center border border-black/5">
+              <span className="text-[9px] font-bold opacity-50 uppercase block">Focus</span>
+              <span className="text-xs font-mono font-bold text-emerald-600 flex items-center justify-center gap-0.5 mt-0.5">▲ HIGH</span>
+            </div>
+            <div className="bg-white/60 rounded-xl p-2.5 text-center border border-black/5">
+              <span className="text-[9px] font-bold opacity-50 uppercase block">Pressure</span>
+              <span className="text-xs font-mono font-bold text-[var(--color-accent-orange)] flex items-center justify-center gap-0.5 mt-0.5">▲ HIGH</span>
+            </div>
+            <div className="bg-white/60 rounded-xl p-2.5 text-center border border-black/5">
+              <span className="text-[9px] font-bold opacity-50 uppercase block">Adaptation</span>
+              <span className="text-xs font-mono font-bold text-amber-600 flex items-center justify-center gap-0.5 mt-0.5">▼ LOW</span>
+            </div>
+          </div>
+
+          <div className="bg-white/50 backdrop-blur-sm border border-[var(--color-ring-bronze)]/30 rounded-2xl p-4 flex items-center gap-3 lg:col-span-1">
+            <div className="p-2 bg-[var(--color-primary-dark)] text-[var(--color-primary-light)] rounded-lg shrink-0">
+              <BookOpen size={14} />
+            </div>
+            <p className="text-[11px] text-[var(--text-muted)] leading-tight">
+              Cosmic vectors map seamlessly to your behavioral scripts.
             </p>
-            <div className="mt-4 pt-3 border-t border-black/[0.04] flex items-center justify-between text-[9px] font-mono text-slate-400">
-              <span>ENGINE: LLM PARSE VECTOR</span>
-              <span>3-4 LINES MAX</span>
-            </div>
           </div>
         </div>
 
-        {/* 4. State Evolution Mini Graph Strip Container */}
-        <div className="bg-white/60 border border-white/60 rounded-xl p-4 shadow-sm">
-          <div className="flex justify-between items-center mb-3">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 font-mono">State Evolution <span className="text-slate-400 font-normal ml-1">• Last 7 Days</span></h3>
-            <span className="text-[10px] font-mono text-slate-400">Trajectory Timeline</span>
+        {/* TIMELINE INTERFACE LINK BANNER */}
+        <div
+          onClick={() => router.push('/dashboard/timeline')}
+          className="border border-dashed border-[var(--color-ring-bronze)] hover:border-[var(--color-accent-orange)] bg-white/30 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 cursor-pointer transition-all duration-300"
+        >
+          <div className="flex items-center gap-3">
+            <Activity size={16} className="text-[var(--color-accent-orange)]" />
+            <span className="text-xs font-bold uppercase tracking-wider text-[var(--color-primary-dark)]">
+              Historical Timeline Interface & Temporal Filtering
+            </span>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-2">
-            {VITALS_DATA.map((v) => (
-              <div key={v.id} className="flex items-center justify-between border-r border-black/[0.04] last:border-0 pr-4">
-                <span className="text-xs font-medium font-mono text-slate-600">{v.label}</span>
-                <div className="flex items-center gap-2">
-                  <div className="w-16 h-5 flex items-center justify-center gap-0.5">
-                    {[1, 2, 3, 4, 5].map((idx) => (
-                      <div
-                        key={idx}
-                        className={`w-2 rounded-full ${v.trend === 'up' ? 'bg-emerald-500' : 'bg-[var(--color-accent-orange)]'}`}
-                        style={{ height: `${20 + idx * 12}%`, opacity: 0.3 + idx * 0.15 }}
-                      />
-                    ))}
-                  </div>
-                  <span className={`text-xs font-bold ${v.trend === 'up' ? 'text-emerald-600' : 'text-[var(--color-accent-orange)]'}`}>
-                    {v.trend === 'up' ? '↑' : '↓'}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* 5. Bottom Segment: Planetary Parliament Preview Anchor Deck */}
-        <div className="bg-white/80 border border-white/60 rounded-2xl p-5 shadow-sm">
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 font-mono">Planetary Parliament Preview</h3>
-            <span className="text-[10px] font-mono text-slate-400">Operator Metrics Matrix</span>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
-            {PARLIAMENT_PREVIEW.map((p) => (
-              <div key={p.name} className="bg-[var(--color-primary-dark)] text-white rounded-xl p-3 flex flex-col justify-between border border-white/[0.04] shadow-md h-28 relative group hover:border-[var(--color-ring-bronze)]/40 transition-all duration-300">
-                <div>
-                  <div className="flex justify-between items-start">
-                    <span className="text-xl">{p.img}</span>
-                    <span className="text-[10px] font-mono text-[var(--color-ring-bronze)] font-bold bg-black/30 px-1.5 py-0.5 rounded">
-                      {p.value}
-                    </span>
-                  </div>
-                  <h4 className="text-xs font-bold tracking-wide mt-2 text-[var(--color-primary-light)]">{p.name}</h4>
-                  <p className="text-[9px] text-slate-400 truncate mt-0.5 font-medium leading-tight">{p.role}</p>
-                </div>
-                <div className="text-[8px] font-mono font-bold tracking-widest text-[var(--color-accent-glow)]/40 uppercase mt-2 group-hover:text-[var(--color-accent-orange)] transition-colors">
-                  INFLUENCE STATE
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Link Routing out to Screen 2 Deck */}
-          <div className="mt-4 pt-3 border-t border-black/[0.04] text-center">
-            <Link
-              href="/parliament"
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-[var(--color-primary-dark)] hover:text-[var(--color-accent-orange)] transition-colors uppercase tracking-wider font-mono"
-            >
-              Go to Planetary Parliament <ChevronRight size={14} />
-            </Link>
-          </div>
+          <span className="text-xs font-mono opacity-50 flex items-center gap-1 shrink-0">
+            Coming Soon <Compass size={14} />
+          </span>
         </div>
 
       </div>
-      {/* Sidebar Overlay */}
-      <AnimatePresence>
-        {isFormOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-              onClick={() => setIsFormOpen(false)}
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
-            />
-            <motion.div
-              initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 h-full w-[400px] bg-[var(--color-primary-dark)] z-50 shadow-2xl border-l border-[var(--color-ring-bronze)]/20"
-            >
-              <div className="flex justify-between items-center p-6 border-b border-[var(--color-ring-bronze)]/20">
-                <h3 className="text-[var(--color-primary-light)] font-bold uppercase tracking-widest">New Chart</h3>
-                <button onClick={() => setIsFormOpen(false)} className="text-[var(--color-primary-light)]">
-                  <X size={20} />
-                </button>
-              </div>
-              <NativityChartForm
-                isLoading={isLoading}
-                isError={false}
-                error={null}
-                onSubmit={handleCreateChart}
-              />
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
     </Layout>
   );
 }

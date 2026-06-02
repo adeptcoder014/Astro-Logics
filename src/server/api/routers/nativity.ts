@@ -1890,6 +1890,26 @@ const chart = await db.nativityChart.findFirst({
       });
     }),
 
+
+
+
+
+getPlanetaryScenes: protectedProcedure
+    .input(z.object({ currentStoryId: z.string() }))
+    .query(async ({ ctx, input }) => {
+      const scenes = await ctx.db.planetaryScene.findMany({
+        where: { 
+          currentStoryId: input.currentStoryId 
+        },
+        orderBy: {
+          // Orders by intensity so your dominant forces naturally float to the top of your Bento UI
+          intensity: 'desc' 
+        }
+      });
+
+      return scenes;
+    }),
+
   /**
    * Recalculate planetary scenes using vedic astrology from astro-data
    */
