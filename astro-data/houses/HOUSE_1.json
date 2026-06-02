@@ -1,15 +1,12 @@
 {
   "id": "HOUSE_1",
-
   "classification": {
     "axis": "SELF",
     "angularity": "ANGULAR",
     "elementalAffinity": "FIRE"
   },
-
   "coreEssence": {
     "corePrinciple": "identity emergence",
-
     "lifeDomains": [
       "selfhood",
       "appearance",
@@ -17,7 +14,6 @@
       "identity",
       "physical embodiment"
     ],
-
     "archetypes": [
       "the self",
       "the mask",
@@ -25,35 +21,22 @@
       "the embodied identity"
     ]
   },
-
   "environmentalContext": {
     "environmentType": [
       "identity arena",
       "personal projection field"
     ],
-
     "motivationalThemes": [
       "self-definition",
       "visibility",
       "autonomy"
     ],
-
     "developmentalThemes": [
       "identity formation",
       "ego stabilization",
       "self-awareness"
     ]
   },
-
-  "vectorModifiers": {
-    "self_vs_other": 1.0,
-    "resource_vs_loss": 0.3,
-    "local_vs_expansive": 0.4,
-    "private_vs_public": 0.7,
-    "creation_vs_collective": 0.5,
-    "order_vs_dissolution": 0.4
-  },
-
   "symbolicLayer": {
     "symbols": [
       "mirrors",
@@ -61,19 +44,100 @@
       "doorways",
       "faces"
     ],
-
     "associatedEnvironments": [
       "personal spaces",
       "identity-driven environments",
       "first impressions",
       "individual-centered settings"
     ],
-
     "bodyCorrelation": [
       "head",
       "face",
       "physical body",
       "outer appearance"
     ]
+  },
+  "latentVector": {
+    // =========================================
+    // CORE AFFECTIVE GEOMETRY
+    // =========================================
+    "valence": 0.44,
+    "arousal": 0.86,
+    "agency": 0.97,
+    "dominance": 0.92,
+    "coherence": 0.63,
+    "stability": 0.51,
+    "novelty": 0.72,
+    "volatility": 0.68,
+    // =========================================
+    // COGNITIVE STYLE
+    // =========================================
+    "abstraction": 0.58,
+    "symbolic_density": 0.62,
+    "pattern_recognition": 0.69,
+    "analyticity": 0.66,
+    "intuition": 0.61,
+    "mental_speed": 0.78,
+    "focus": 0.81,
+    "diffusion": 0.55,
+    // =========================================
+    // TEMPORAL ORIENTATION
+    // =========================================
+    "past_orientation": 0.22,
+    "present_orientation": 0.88,
+    "future_orientation": 0.61,
+    "cyclicality": 0.33,
+    "urgency": 0.79,
+    "patience": 0.41,
+    // =========================================
+    // MOTIVATIONAL FORCES
+    // =========================================
+    "desire_intensity": 0.83,
+    "attachment": 0.52,
+    "avoidance": 0.37,
+    "expansion": 0.74,
+    "contraction": 0.44,
+    "ambition": 0.86,
+    "survival_drive": 0.89,
+    // =========================================
+    // SOCIAL GEOMETRY
+    // =========================================
+    "sociality": 0.71,
+    "individuality": 0.94,
+    "collectivism": 0.42,
+    "relational_depth": 0.48,
+    "boundary_strength": 0.76,
+    "empathy": 0.59,
+    "dominance_social": 0.83,
+    // =========================================
+    // MATERIAL ↔ SYMBOLIC
+    // =========================================
+    "materiality": 0.77,
+    "spirituality": 0.46,
+    "sensory_density": 0.85,
+    "idealism": 0.52,
+    "pragmatism": 0.81,
+    // =========================================
+    // ORDER / CHAOS DYNAMICS
+    // =========================================
+    "integration": 0.64,
+    "fragmentation": 0.58,
+    "entropy": 0.66,
+    "adaptability": 0.71,
+    "rigidity": 0.54,
+    // =========================================
+    // EXPRESSION DYNAMICS
+    // =========================================
+    "expressiveness": 0.88,
+    "repression": 0.31,
+    "reactivity": 0.92,
+    "responsiveness": 0.77,
+    // =========================================
+    // EXISTENTIAL AXES
+    // =========================================
+    "meaning_orientation": 0.68,
+    "identity_coherence": 0.74,
+    "transcendence": 0.42,
+    "ego_density": 0.91
   }
 }

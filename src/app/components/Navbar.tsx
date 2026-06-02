@@ -1,13 +1,14 @@
 'use client';
-
-import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSession, signOut } from "next-auth/react";
 import { UserCircle, LogOut, Loader2 } from "lucide-react";
-
+// ==========================================================================================
 export default function Navbar() {
+  // ==========================================================================================
+
   const { data: session, status } = useSession();
+  // ==========================================================================================
 
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--color-ring-bronze)]/20 bg-[var(--bg-main)] bg-opacity-80 backdrop-blur-md text-[var(--text-main)] transition-colors duration-300">
@@ -34,14 +35,14 @@ export default function Navbar() {
 
           {status === "unauthenticated" && (
             <div className="flex items-center space-x-5">
-              <Link 
-                href="/login" 
+              <Link
+                href="/login"
                 className="text-sm font-medium text-[var(--text-muted)] hover:text-[var(--color-accent-orange)] transition-colors"
               >
                 Login
               </Link>
-              <Link 
-                href="/register" 
+              <Link
+                href="/register"
                 className="text-sm font-semibold bg-[var(--brand-gradient)] text-[var(--color-primary-light)] px-5 py-2.5 rounded-full transition shadow-md hover:shadow-lg hover:brightness-110 active:scale-95"
               >
                 Register
@@ -69,6 +70,13 @@ export default function Navbar() {
           )}
         </div>
       </nav>
+
+
+
     </header>
   );
 }
+// ==========================================================================================
+
+
+

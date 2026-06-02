@@ -11704,6 +11704,18 @@ export namespace Prisma {
     houseDegree: number | null
     relativeAngularIndex: number | null
     strength: number | null
+    agency: number | null
+    stability: number | null
+    abstraction: number | null
+    emotionality: number | null
+    novelty: number | null
+    coherence: number | null
+    sociality: number | null
+    futureOrientation: number | null
+    symbolicPressure: number | null
+    tensionLevel: number | null
+    integrationDifficulty: number | null
+    manifestationStrength: number | null
   }
 
   export type PlanetaryProfileSumAggregateOutputType = {
@@ -11715,6 +11727,18 @@ export namespace Prisma {
     houseDegree: number | null
     relativeAngularIndex: number | null
     strength: number | null
+    agency: number | null
+    stability: number | null
+    abstraction: number | null
+    emotionality: number | null
+    novelty: number | null
+    coherence: number | null
+    sociality: number | null
+    futureOrientation: number | null
+    symbolicPressure: number | null
+    tensionLevel: number | null
+    integrationDifficulty: number | null
+    manifestationStrength: number | null
   }
 
   export type PlanetaryProfileMinAggregateOutputType = {
@@ -11736,6 +11760,18 @@ export namespace Prisma {
     secondaryDomain: string | null
     dignity: string | null
     strength: number | null
+    agency: number | null
+    stability: number | null
+    abstraction: number | null
+    emotionality: number | null
+    novelty: number | null
+    coherence: number | null
+    sociality: number | null
+    futureOrientation: number | null
+    symbolicPressure: number | null
+    tensionLevel: number | null
+    integrationDifficulty: number | null
+    manifestationStrength: number | null
     createdAt: Date | null
   }
 
@@ -11758,6 +11794,18 @@ export namespace Prisma {
     secondaryDomain: string | null
     dignity: string | null
     strength: number | null
+    agency: number | null
+    stability: number | null
+    abstraction: number | null
+    emotionality: number | null
+    novelty: number | null
+    coherence: number | null
+    sociality: number | null
+    futureOrientation: number | null
+    symbolicPressure: number | null
+    tensionLevel: number | null
+    integrationDifficulty: number | null
+    manifestationStrength: number | null
     createdAt: Date | null
   }
 
@@ -11780,6 +11828,30 @@ export namespace Prisma {
     secondaryDomain: number
     dignity: number
     strength: number
+    agency: number
+    stability: number
+    abstraction: number
+    emotionality: number
+    novelty: number
+    coherence: number
+    sociality: number
+    futureOrientation: number
+    astroState: number
+    pressureState: number
+    behavioralState: number
+    relationalState: number
+    situationalState: number
+    narrativeState: number
+    metaState: number
+    planetOntology: number
+    signOntology: number
+    houseOntology: number
+    latentVector: number
+    symbolicPressure: number
+    tensionLevel: number
+    integrationDifficulty: number
+    manifestationStrength: number
+    finalState: number
     createdAt: number
     _all: number
   }
@@ -11794,6 +11866,18 @@ export namespace Prisma {
     houseDegree?: true
     relativeAngularIndex?: true
     strength?: true
+    agency?: true
+    stability?: true
+    abstraction?: true
+    emotionality?: true
+    novelty?: true
+    coherence?: true
+    sociality?: true
+    futureOrientation?: true
+    symbolicPressure?: true
+    tensionLevel?: true
+    integrationDifficulty?: true
+    manifestationStrength?: true
   }
 
   export type PlanetaryProfileSumAggregateInputType = {
@@ -11805,6 +11889,18 @@ export namespace Prisma {
     houseDegree?: true
     relativeAngularIndex?: true
     strength?: true
+    agency?: true
+    stability?: true
+    abstraction?: true
+    emotionality?: true
+    novelty?: true
+    coherence?: true
+    sociality?: true
+    futureOrientation?: true
+    symbolicPressure?: true
+    tensionLevel?: true
+    integrationDifficulty?: true
+    manifestationStrength?: true
   }
 
   export type PlanetaryProfileMinAggregateInputType = {
@@ -11826,6 +11922,18 @@ export namespace Prisma {
     secondaryDomain?: true
     dignity?: true
     strength?: true
+    agency?: true
+    stability?: true
+    abstraction?: true
+    emotionality?: true
+    novelty?: true
+    coherence?: true
+    sociality?: true
+    futureOrientation?: true
+    symbolicPressure?: true
+    tensionLevel?: true
+    integrationDifficulty?: true
+    manifestationStrength?: true
     createdAt?: true
   }
 
@@ -11848,6 +11956,18 @@ export namespace Prisma {
     secondaryDomain?: true
     dignity?: true
     strength?: true
+    agency?: true
+    stability?: true
+    abstraction?: true
+    emotionality?: true
+    novelty?: true
+    coherence?: true
+    sociality?: true
+    futureOrientation?: true
+    symbolicPressure?: true
+    tensionLevel?: true
+    integrationDifficulty?: true
+    manifestationStrength?: true
     createdAt?: true
   }
 
@@ -11870,6 +11990,30 @@ export namespace Prisma {
     secondaryDomain?: true
     dignity?: true
     strength?: true
+    agency?: true
+    stability?: true
+    abstraction?: true
+    emotionality?: true
+    novelty?: true
+    coherence?: true
+    sociality?: true
+    futureOrientation?: true
+    astroState?: true
+    pressureState?: true
+    behavioralState?: true
+    relationalState?: true
+    situationalState?: true
+    narrativeState?: true
+    metaState?: true
+    planetOntology?: true
+    signOntology?: true
+    houseOntology?: true
+    latentVector?: true
+    symbolicPressure?: true
+    tensionLevel?: true
+    integrationDifficulty?: true
+    manifestationStrength?: true
+    finalState?: true
     createdAt?: true
     _all?: true
   }
@@ -11979,6 +12123,30 @@ export namespace Prisma {
     secondaryDomain: string | null
     dignity: string | null
     strength: number | null
+    agency: number | null
+    stability: number | null
+    abstraction: number | null
+    emotionality: number | null
+    novelty: number | null
+    coherence: number | null
+    sociality: number | null
+    futureOrientation: number | null
+    astroState: JsonValue | null
+    pressureState: JsonValue | null
+    behavioralState: JsonValue | null
+    relationalState: JsonValue | null
+    situationalState: JsonValue | null
+    narrativeState: JsonValue | null
+    metaState: JsonValue | null
+    planetOntology: JsonValue | null
+    signOntology: JsonValue | null
+    houseOntology: JsonValue | null
+    latentVector: JsonValue | null
+    symbolicPressure: number | null
+    tensionLevel: number | null
+    integrationDifficulty: number | null
+    manifestationStrength: number | null
+    finalState: JsonValue | null
     createdAt: Date
     _count: PlanetaryProfileCountAggregateOutputType | null
     _avg: PlanetaryProfileAvgAggregateOutputType | null
@@ -12020,6 +12188,30 @@ export namespace Prisma {
     secondaryDomain?: boolean
     dignity?: boolean
     strength?: boolean
+    agency?: boolean
+    stability?: boolean
+    abstraction?: boolean
+    emotionality?: boolean
+    novelty?: boolean
+    coherence?: boolean
+    sociality?: boolean
+    futureOrientation?: boolean
+    astroState?: boolean
+    pressureState?: boolean
+    behavioralState?: boolean
+    relationalState?: boolean
+    situationalState?: boolean
+    narrativeState?: boolean
+    metaState?: boolean
+    planetOntology?: boolean
+    signOntology?: boolean
+    houseOntology?: boolean
+    latentVector?: boolean
+    symbolicPressure?: boolean
+    tensionLevel?: boolean
+    integrationDifficulty?: boolean
+    manifestationStrength?: boolean
+    finalState?: boolean
     createdAt?: boolean
     nativityChart?: boolean | NativityChartDefaultArgs<ExtArgs>
     aspectsAsP1?: boolean | PlanetaryProfile$aspectsAsP1Args<ExtArgs>
@@ -12048,10 +12240,34 @@ export namespace Prisma {
     secondaryDomain?: boolean
     dignity?: boolean
     strength?: boolean
+    agency?: boolean
+    stability?: boolean
+    abstraction?: boolean
+    emotionality?: boolean
+    novelty?: boolean
+    coherence?: boolean
+    sociality?: boolean
+    futureOrientation?: boolean
+    astroState?: boolean
+    pressureState?: boolean
+    behavioralState?: boolean
+    relationalState?: boolean
+    situationalState?: boolean
+    narrativeState?: boolean
+    metaState?: boolean
+    planetOntology?: boolean
+    signOntology?: boolean
+    houseOntology?: boolean
+    latentVector?: boolean
+    symbolicPressure?: boolean
+    tensionLevel?: boolean
+    integrationDifficulty?: boolean
+    manifestationStrength?: boolean
+    finalState?: boolean
     createdAt?: boolean
   }
 
-  export type PlanetaryProfileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nativityChartId" | "planet" | "longitude" | "latitude" | "speed" | "acceleration" | "direction" | "stationaryEnterTime" | "stationaryExitTime" | "houseCusp" | "houseDegree" | "houseSign" | "relativeAngularIndex" | "primaryDomain" | "secondaryDomain" | "dignity" | "strength" | "createdAt", ExtArgs["result"]["planetaryProfile"]>
+  export type PlanetaryProfileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nativityChartId" | "planet" | "longitude" | "latitude" | "speed" | "acceleration" | "direction" | "stationaryEnterTime" | "stationaryExitTime" | "houseCusp" | "houseDegree" | "houseSign" | "relativeAngularIndex" | "primaryDomain" | "secondaryDomain" | "dignity" | "strength" | "agency" | "stability" | "abstraction" | "emotionality" | "novelty" | "coherence" | "sociality" | "futureOrientation" | "astroState" | "pressureState" | "behavioralState" | "relationalState" | "situationalState" | "narrativeState" | "metaState" | "planetOntology" | "signOntology" | "houseOntology" | "latentVector" | "symbolicPressure" | "tensionLevel" | "integrationDifficulty" | "manifestationStrength" | "finalState" | "createdAt", ExtArgs["result"]["planetaryProfile"]>
   export type PlanetaryProfileInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     nativityChart?: boolean | NativityChartDefaultArgs<ExtArgs>
     aspectsAsP1?: boolean | PlanetaryProfile$aspectsAsP1Args<ExtArgs>
@@ -12085,6 +12301,30 @@ export namespace Prisma {
       secondaryDomain: string | null
       dignity: string | null
       strength: number | null
+      agency: number | null
+      stability: number | null
+      abstraction: number | null
+      emotionality: number | null
+      novelty: number | null
+      coherence: number | null
+      sociality: number | null
+      futureOrientation: number | null
+      astroState: Prisma.JsonValue | null
+      pressureState: Prisma.JsonValue | null
+      behavioralState: Prisma.JsonValue | null
+      relationalState: Prisma.JsonValue | null
+      situationalState: Prisma.JsonValue | null
+      narrativeState: Prisma.JsonValue | null
+      metaState: Prisma.JsonValue | null
+      planetOntology: Prisma.JsonValue | null
+      signOntology: Prisma.JsonValue | null
+      houseOntology: Prisma.JsonValue | null
+      latentVector: Prisma.JsonValue | null
+      symbolicPressure: number | null
+      tensionLevel: number | null
+      integrationDifficulty: number | null
+      manifestationStrength: number | null
+      finalState: Prisma.JsonValue | null
       createdAt: Date
     }, ExtArgs["result"]["planetaryProfile"]>
     composites: {}
@@ -12499,6 +12739,30 @@ export namespace Prisma {
     readonly secondaryDomain: FieldRef<"PlanetaryProfile", 'String'>
     readonly dignity: FieldRef<"PlanetaryProfile", 'String'>
     readonly strength: FieldRef<"PlanetaryProfile", 'Float'>
+    readonly agency: FieldRef<"PlanetaryProfile", 'Float'>
+    readonly stability: FieldRef<"PlanetaryProfile", 'Float'>
+    readonly abstraction: FieldRef<"PlanetaryProfile", 'Float'>
+    readonly emotionality: FieldRef<"PlanetaryProfile", 'Float'>
+    readonly novelty: FieldRef<"PlanetaryProfile", 'Float'>
+    readonly coherence: FieldRef<"PlanetaryProfile", 'Float'>
+    readonly sociality: FieldRef<"PlanetaryProfile", 'Float'>
+    readonly futureOrientation: FieldRef<"PlanetaryProfile", 'Float'>
+    readonly astroState: FieldRef<"PlanetaryProfile", 'Json'>
+    readonly pressureState: FieldRef<"PlanetaryProfile", 'Json'>
+    readonly behavioralState: FieldRef<"PlanetaryProfile", 'Json'>
+    readonly relationalState: FieldRef<"PlanetaryProfile", 'Json'>
+    readonly situationalState: FieldRef<"PlanetaryProfile", 'Json'>
+    readonly narrativeState: FieldRef<"PlanetaryProfile", 'Json'>
+    readonly metaState: FieldRef<"PlanetaryProfile", 'Json'>
+    readonly planetOntology: FieldRef<"PlanetaryProfile", 'Json'>
+    readonly signOntology: FieldRef<"PlanetaryProfile", 'Json'>
+    readonly houseOntology: FieldRef<"PlanetaryProfile", 'Json'>
+    readonly latentVector: FieldRef<"PlanetaryProfile", 'Json'>
+    readonly symbolicPressure: FieldRef<"PlanetaryProfile", 'Float'>
+    readonly tensionLevel: FieldRef<"PlanetaryProfile", 'Float'>
+    readonly integrationDifficulty: FieldRef<"PlanetaryProfile", 'Float'>
+    readonly manifestationStrength: FieldRef<"PlanetaryProfile", 'Float'>
+    readonly finalState: FieldRef<"PlanetaryProfile", 'Json'>
     readonly createdAt: FieldRef<"PlanetaryProfile", 'DateTime'>
   }
     
@@ -19939,6 +20203,30 @@ export namespace Prisma {
     secondaryDomain: 'secondaryDomain',
     dignity: 'dignity',
     strength: 'strength',
+    agency: 'agency',
+    stability: 'stability',
+    abstraction: 'abstraction',
+    emotionality: 'emotionality',
+    novelty: 'novelty',
+    coherence: 'coherence',
+    sociality: 'sociality',
+    futureOrientation: 'futureOrientation',
+    astroState: 'astroState',
+    pressureState: 'pressureState',
+    behavioralState: 'behavioralState',
+    relationalState: 'relationalState',
+    situationalState: 'situationalState',
+    narrativeState: 'narrativeState',
+    metaState: 'metaState',
+    planetOntology: 'planetOntology',
+    signOntology: 'signOntology',
+    houseOntology: 'houseOntology',
+    latentVector: 'latentVector',
+    symbolicPressure: 'symbolicPressure',
+    tensionLevel: 'tensionLevel',
+    integrationDifficulty: 'integrationDifficulty',
+    manifestationStrength: 'manifestationStrength',
+    finalState: 'finalState',
     createdAt: 'createdAt'
   };
 
@@ -20975,6 +21263,30 @@ export namespace Prisma {
     secondaryDomain?: StringNullableFilter<"PlanetaryProfile"> | string | null
     dignity?: StringNullableFilter<"PlanetaryProfile"> | string | null
     strength?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    agency?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    stability?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    abstraction?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    emotionality?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    novelty?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    coherence?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    sociality?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    futureOrientation?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    astroState?: JsonNullableFilter<"PlanetaryProfile">
+    pressureState?: JsonNullableFilter<"PlanetaryProfile">
+    behavioralState?: JsonNullableFilter<"PlanetaryProfile">
+    relationalState?: JsonNullableFilter<"PlanetaryProfile">
+    situationalState?: JsonNullableFilter<"PlanetaryProfile">
+    narrativeState?: JsonNullableFilter<"PlanetaryProfile">
+    metaState?: JsonNullableFilter<"PlanetaryProfile">
+    planetOntology?: JsonNullableFilter<"PlanetaryProfile">
+    signOntology?: JsonNullableFilter<"PlanetaryProfile">
+    houseOntology?: JsonNullableFilter<"PlanetaryProfile">
+    latentVector?: JsonNullableFilter<"PlanetaryProfile">
+    symbolicPressure?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    tensionLevel?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    integrationDifficulty?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    manifestationStrength?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    finalState?: JsonNullableFilter<"PlanetaryProfile">
     createdAt?: DateTimeFilter<"PlanetaryProfile"> | Date | string
     nativityChart?: XOR<NativityChartScalarRelationFilter, NativityChartWhereInput>
     aspectsAsP1?: NativityAspectListRelationFilter
@@ -21000,6 +21312,30 @@ export namespace Prisma {
     secondaryDomain?: SortOrder
     dignity?: SortOrder
     strength?: SortOrder
+    agency?: SortOrder
+    stability?: SortOrder
+    abstraction?: SortOrder
+    emotionality?: SortOrder
+    novelty?: SortOrder
+    coherence?: SortOrder
+    sociality?: SortOrder
+    futureOrientation?: SortOrder
+    astroState?: SortOrder
+    pressureState?: SortOrder
+    behavioralState?: SortOrder
+    relationalState?: SortOrder
+    situationalState?: SortOrder
+    narrativeState?: SortOrder
+    metaState?: SortOrder
+    planetOntology?: SortOrder
+    signOntology?: SortOrder
+    houseOntology?: SortOrder
+    latentVector?: SortOrder
+    symbolicPressure?: SortOrder
+    tensionLevel?: SortOrder
+    integrationDifficulty?: SortOrder
+    manifestationStrength?: SortOrder
+    finalState?: SortOrder
     createdAt?: SortOrder
     nativityChart?: NativityChartOrderByWithRelationInput
     aspectsAsP1?: NativityAspectOrderByRelationAggregateInput
@@ -21028,6 +21364,30 @@ export namespace Prisma {
     secondaryDomain?: StringNullableFilter<"PlanetaryProfile"> | string | null
     dignity?: StringNullableFilter<"PlanetaryProfile"> | string | null
     strength?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    agency?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    stability?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    abstraction?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    emotionality?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    novelty?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    coherence?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    sociality?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    futureOrientation?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    astroState?: JsonNullableFilter<"PlanetaryProfile">
+    pressureState?: JsonNullableFilter<"PlanetaryProfile">
+    behavioralState?: JsonNullableFilter<"PlanetaryProfile">
+    relationalState?: JsonNullableFilter<"PlanetaryProfile">
+    situationalState?: JsonNullableFilter<"PlanetaryProfile">
+    narrativeState?: JsonNullableFilter<"PlanetaryProfile">
+    metaState?: JsonNullableFilter<"PlanetaryProfile">
+    planetOntology?: JsonNullableFilter<"PlanetaryProfile">
+    signOntology?: JsonNullableFilter<"PlanetaryProfile">
+    houseOntology?: JsonNullableFilter<"PlanetaryProfile">
+    latentVector?: JsonNullableFilter<"PlanetaryProfile">
+    symbolicPressure?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    tensionLevel?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    integrationDifficulty?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    manifestationStrength?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    finalState?: JsonNullableFilter<"PlanetaryProfile">
     createdAt?: DateTimeFilter<"PlanetaryProfile"> | Date | string
     nativityChart?: XOR<NativityChartScalarRelationFilter, NativityChartWhereInput>
     aspectsAsP1?: NativityAspectListRelationFilter
@@ -21053,6 +21413,30 @@ export namespace Prisma {
     secondaryDomain?: SortOrder
     dignity?: SortOrder
     strength?: SortOrder
+    agency?: SortOrder
+    stability?: SortOrder
+    abstraction?: SortOrder
+    emotionality?: SortOrder
+    novelty?: SortOrder
+    coherence?: SortOrder
+    sociality?: SortOrder
+    futureOrientation?: SortOrder
+    astroState?: SortOrder
+    pressureState?: SortOrder
+    behavioralState?: SortOrder
+    relationalState?: SortOrder
+    situationalState?: SortOrder
+    narrativeState?: SortOrder
+    metaState?: SortOrder
+    planetOntology?: SortOrder
+    signOntology?: SortOrder
+    houseOntology?: SortOrder
+    latentVector?: SortOrder
+    symbolicPressure?: SortOrder
+    tensionLevel?: SortOrder
+    integrationDifficulty?: SortOrder
+    manifestationStrength?: SortOrder
+    finalState?: SortOrder
     createdAt?: SortOrder
     _count?: PlanetaryProfileCountOrderByAggregateInput
     _avg?: PlanetaryProfileAvgOrderByAggregateInput
@@ -21083,6 +21467,30 @@ export namespace Prisma {
     secondaryDomain?: StringNullableWithAggregatesFilter<"PlanetaryProfile"> | string | null
     dignity?: StringNullableWithAggregatesFilter<"PlanetaryProfile"> | string | null
     strength?: FloatNullableWithAggregatesFilter<"PlanetaryProfile"> | number | null
+    agency?: FloatNullableWithAggregatesFilter<"PlanetaryProfile"> | number | null
+    stability?: FloatNullableWithAggregatesFilter<"PlanetaryProfile"> | number | null
+    abstraction?: FloatNullableWithAggregatesFilter<"PlanetaryProfile"> | number | null
+    emotionality?: FloatNullableWithAggregatesFilter<"PlanetaryProfile"> | number | null
+    novelty?: FloatNullableWithAggregatesFilter<"PlanetaryProfile"> | number | null
+    coherence?: FloatNullableWithAggregatesFilter<"PlanetaryProfile"> | number | null
+    sociality?: FloatNullableWithAggregatesFilter<"PlanetaryProfile"> | number | null
+    futureOrientation?: FloatNullableWithAggregatesFilter<"PlanetaryProfile"> | number | null
+    astroState?: JsonNullableWithAggregatesFilter<"PlanetaryProfile">
+    pressureState?: JsonNullableWithAggregatesFilter<"PlanetaryProfile">
+    behavioralState?: JsonNullableWithAggregatesFilter<"PlanetaryProfile">
+    relationalState?: JsonNullableWithAggregatesFilter<"PlanetaryProfile">
+    situationalState?: JsonNullableWithAggregatesFilter<"PlanetaryProfile">
+    narrativeState?: JsonNullableWithAggregatesFilter<"PlanetaryProfile">
+    metaState?: JsonNullableWithAggregatesFilter<"PlanetaryProfile">
+    planetOntology?: JsonNullableWithAggregatesFilter<"PlanetaryProfile">
+    signOntology?: JsonNullableWithAggregatesFilter<"PlanetaryProfile">
+    houseOntology?: JsonNullableWithAggregatesFilter<"PlanetaryProfile">
+    latentVector?: JsonNullableWithAggregatesFilter<"PlanetaryProfile">
+    symbolicPressure?: FloatNullableWithAggregatesFilter<"PlanetaryProfile"> | number | null
+    tensionLevel?: FloatNullableWithAggregatesFilter<"PlanetaryProfile"> | number | null
+    integrationDifficulty?: FloatNullableWithAggregatesFilter<"PlanetaryProfile"> | number | null
+    manifestationStrength?: FloatNullableWithAggregatesFilter<"PlanetaryProfile"> | number | null
+    finalState?: JsonNullableWithAggregatesFilter<"PlanetaryProfile">
     createdAt?: DateTimeWithAggregatesFilter<"PlanetaryProfile"> | Date | string
   }
 
@@ -22551,6 +22959,30 @@ export namespace Prisma {
     secondaryDomain?: string | null
     dignity?: string | null
     strength?: number | null
+    agency?: number | null
+    stability?: number | null
+    abstraction?: number | null
+    emotionality?: number | null
+    novelty?: number | null
+    coherence?: number | null
+    sociality?: number | null
+    futureOrientation?: number | null
+    astroState?: InputJsonValue | null
+    pressureState?: InputJsonValue | null
+    behavioralState?: InputJsonValue | null
+    relationalState?: InputJsonValue | null
+    situationalState?: InputJsonValue | null
+    narrativeState?: InputJsonValue | null
+    metaState?: InputJsonValue | null
+    planetOntology?: InputJsonValue | null
+    signOntology?: InputJsonValue | null
+    houseOntology?: InputJsonValue | null
+    latentVector?: InputJsonValue | null
+    symbolicPressure?: number | null
+    tensionLevel?: number | null
+    integrationDifficulty?: number | null
+    manifestationStrength?: number | null
+    finalState?: InputJsonValue | null
     createdAt?: Date | string
     nativityChart: NativityChartCreateNestedOneWithoutPlanetaryProfilesInput
     aspectsAsP1?: NativityAspectCreateNestedManyWithoutPlanet1ProfileInput
@@ -22576,6 +23008,30 @@ export namespace Prisma {
     secondaryDomain?: string | null
     dignity?: string | null
     strength?: number | null
+    agency?: number | null
+    stability?: number | null
+    abstraction?: number | null
+    emotionality?: number | null
+    novelty?: number | null
+    coherence?: number | null
+    sociality?: number | null
+    futureOrientation?: number | null
+    astroState?: InputJsonValue | null
+    pressureState?: InputJsonValue | null
+    behavioralState?: InputJsonValue | null
+    relationalState?: InputJsonValue | null
+    situationalState?: InputJsonValue | null
+    narrativeState?: InputJsonValue | null
+    metaState?: InputJsonValue | null
+    planetOntology?: InputJsonValue | null
+    signOntology?: InputJsonValue | null
+    houseOntology?: InputJsonValue | null
+    latentVector?: InputJsonValue | null
+    symbolicPressure?: number | null
+    tensionLevel?: number | null
+    integrationDifficulty?: number | null
+    manifestationStrength?: number | null
+    finalState?: InputJsonValue | null
     createdAt?: Date | string
     aspectsAsP1?: NativityAspectUncheckedCreateNestedManyWithoutPlanet1ProfileInput
     aspectsAsP2?: NativityAspectUncheckedCreateNestedManyWithoutPlanet2ProfileInput
@@ -22598,6 +23054,30 @@ export namespace Prisma {
     secondaryDomain?: NullableStringFieldUpdateOperationsInput | string | null
     dignity?: NullableStringFieldUpdateOperationsInput | string | null
     strength?: NullableFloatFieldUpdateOperationsInput | number | null
+    agency?: NullableFloatFieldUpdateOperationsInput | number | null
+    stability?: NullableFloatFieldUpdateOperationsInput | number | null
+    abstraction?: NullableFloatFieldUpdateOperationsInput | number | null
+    emotionality?: NullableFloatFieldUpdateOperationsInput | number | null
+    novelty?: NullableFloatFieldUpdateOperationsInput | number | null
+    coherence?: NullableFloatFieldUpdateOperationsInput | number | null
+    sociality?: NullableFloatFieldUpdateOperationsInput | number | null
+    futureOrientation?: NullableFloatFieldUpdateOperationsInput | number | null
+    astroState?: InputJsonValue | InputJsonValue | null
+    pressureState?: InputJsonValue | InputJsonValue | null
+    behavioralState?: InputJsonValue | InputJsonValue | null
+    relationalState?: InputJsonValue | InputJsonValue | null
+    situationalState?: InputJsonValue | InputJsonValue | null
+    narrativeState?: InputJsonValue | InputJsonValue | null
+    metaState?: InputJsonValue | InputJsonValue | null
+    planetOntology?: InputJsonValue | InputJsonValue | null
+    signOntology?: InputJsonValue | InputJsonValue | null
+    houseOntology?: InputJsonValue | InputJsonValue | null
+    latentVector?: InputJsonValue | InputJsonValue | null
+    symbolicPressure?: NullableFloatFieldUpdateOperationsInput | number | null
+    tensionLevel?: NullableFloatFieldUpdateOperationsInput | number | null
+    integrationDifficulty?: NullableFloatFieldUpdateOperationsInput | number | null
+    manifestationStrength?: NullableFloatFieldUpdateOperationsInput | number | null
+    finalState?: InputJsonValue | InputJsonValue | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nativityChart?: NativityChartUpdateOneRequiredWithoutPlanetaryProfilesNestedInput
     aspectsAsP1?: NativityAspectUpdateManyWithoutPlanet1ProfileNestedInput
@@ -22622,6 +23102,30 @@ export namespace Prisma {
     secondaryDomain?: NullableStringFieldUpdateOperationsInput | string | null
     dignity?: NullableStringFieldUpdateOperationsInput | string | null
     strength?: NullableFloatFieldUpdateOperationsInput | number | null
+    agency?: NullableFloatFieldUpdateOperationsInput | number | null
+    stability?: NullableFloatFieldUpdateOperationsInput | number | null
+    abstraction?: NullableFloatFieldUpdateOperationsInput | number | null
+    emotionality?: NullableFloatFieldUpdateOperationsInput | number | null
+    novelty?: NullableFloatFieldUpdateOperationsInput | number | null
+    coherence?: NullableFloatFieldUpdateOperationsInput | number | null
+    sociality?: NullableFloatFieldUpdateOperationsInput | number | null
+    futureOrientation?: NullableFloatFieldUpdateOperationsInput | number | null
+    astroState?: InputJsonValue | InputJsonValue | null
+    pressureState?: InputJsonValue | InputJsonValue | null
+    behavioralState?: InputJsonValue | InputJsonValue | null
+    relationalState?: InputJsonValue | InputJsonValue | null
+    situationalState?: InputJsonValue | InputJsonValue | null
+    narrativeState?: InputJsonValue | InputJsonValue | null
+    metaState?: InputJsonValue | InputJsonValue | null
+    planetOntology?: InputJsonValue | InputJsonValue | null
+    signOntology?: InputJsonValue | InputJsonValue | null
+    houseOntology?: InputJsonValue | InputJsonValue | null
+    latentVector?: InputJsonValue | InputJsonValue | null
+    symbolicPressure?: NullableFloatFieldUpdateOperationsInput | number | null
+    tensionLevel?: NullableFloatFieldUpdateOperationsInput | number | null
+    integrationDifficulty?: NullableFloatFieldUpdateOperationsInput | number | null
+    manifestationStrength?: NullableFloatFieldUpdateOperationsInput | number | null
+    finalState?: InputJsonValue | InputJsonValue | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     aspectsAsP1?: NativityAspectUncheckedUpdateManyWithoutPlanet1ProfileNestedInput
     aspectsAsP2?: NativityAspectUncheckedUpdateManyWithoutPlanet2ProfileNestedInput
@@ -22646,6 +23150,30 @@ export namespace Prisma {
     secondaryDomain?: string | null
     dignity?: string | null
     strength?: number | null
+    agency?: number | null
+    stability?: number | null
+    abstraction?: number | null
+    emotionality?: number | null
+    novelty?: number | null
+    coherence?: number | null
+    sociality?: number | null
+    futureOrientation?: number | null
+    astroState?: InputJsonValue | null
+    pressureState?: InputJsonValue | null
+    behavioralState?: InputJsonValue | null
+    relationalState?: InputJsonValue | null
+    situationalState?: InputJsonValue | null
+    narrativeState?: InputJsonValue | null
+    metaState?: InputJsonValue | null
+    planetOntology?: InputJsonValue | null
+    signOntology?: InputJsonValue | null
+    houseOntology?: InputJsonValue | null
+    latentVector?: InputJsonValue | null
+    symbolicPressure?: number | null
+    tensionLevel?: number | null
+    integrationDifficulty?: number | null
+    manifestationStrength?: number | null
+    finalState?: InputJsonValue | null
     createdAt?: Date | string
   }
 
@@ -22666,6 +23194,30 @@ export namespace Prisma {
     secondaryDomain?: NullableStringFieldUpdateOperationsInput | string | null
     dignity?: NullableStringFieldUpdateOperationsInput | string | null
     strength?: NullableFloatFieldUpdateOperationsInput | number | null
+    agency?: NullableFloatFieldUpdateOperationsInput | number | null
+    stability?: NullableFloatFieldUpdateOperationsInput | number | null
+    abstraction?: NullableFloatFieldUpdateOperationsInput | number | null
+    emotionality?: NullableFloatFieldUpdateOperationsInput | number | null
+    novelty?: NullableFloatFieldUpdateOperationsInput | number | null
+    coherence?: NullableFloatFieldUpdateOperationsInput | number | null
+    sociality?: NullableFloatFieldUpdateOperationsInput | number | null
+    futureOrientation?: NullableFloatFieldUpdateOperationsInput | number | null
+    astroState?: InputJsonValue | InputJsonValue | null
+    pressureState?: InputJsonValue | InputJsonValue | null
+    behavioralState?: InputJsonValue | InputJsonValue | null
+    relationalState?: InputJsonValue | InputJsonValue | null
+    situationalState?: InputJsonValue | InputJsonValue | null
+    narrativeState?: InputJsonValue | InputJsonValue | null
+    metaState?: InputJsonValue | InputJsonValue | null
+    planetOntology?: InputJsonValue | InputJsonValue | null
+    signOntology?: InputJsonValue | InputJsonValue | null
+    houseOntology?: InputJsonValue | InputJsonValue | null
+    latentVector?: InputJsonValue | InputJsonValue | null
+    symbolicPressure?: NullableFloatFieldUpdateOperationsInput | number | null
+    tensionLevel?: NullableFloatFieldUpdateOperationsInput | number | null
+    integrationDifficulty?: NullableFloatFieldUpdateOperationsInput | number | null
+    manifestationStrength?: NullableFloatFieldUpdateOperationsInput | number | null
+    finalState?: InputJsonValue | InputJsonValue | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -22687,6 +23239,30 @@ export namespace Prisma {
     secondaryDomain?: NullableStringFieldUpdateOperationsInput | string | null
     dignity?: NullableStringFieldUpdateOperationsInput | string | null
     strength?: NullableFloatFieldUpdateOperationsInput | number | null
+    agency?: NullableFloatFieldUpdateOperationsInput | number | null
+    stability?: NullableFloatFieldUpdateOperationsInput | number | null
+    abstraction?: NullableFloatFieldUpdateOperationsInput | number | null
+    emotionality?: NullableFloatFieldUpdateOperationsInput | number | null
+    novelty?: NullableFloatFieldUpdateOperationsInput | number | null
+    coherence?: NullableFloatFieldUpdateOperationsInput | number | null
+    sociality?: NullableFloatFieldUpdateOperationsInput | number | null
+    futureOrientation?: NullableFloatFieldUpdateOperationsInput | number | null
+    astroState?: InputJsonValue | InputJsonValue | null
+    pressureState?: InputJsonValue | InputJsonValue | null
+    behavioralState?: InputJsonValue | InputJsonValue | null
+    relationalState?: InputJsonValue | InputJsonValue | null
+    situationalState?: InputJsonValue | InputJsonValue | null
+    narrativeState?: InputJsonValue | InputJsonValue | null
+    metaState?: InputJsonValue | InputJsonValue | null
+    planetOntology?: InputJsonValue | InputJsonValue | null
+    signOntology?: InputJsonValue | InputJsonValue | null
+    houseOntology?: InputJsonValue | InputJsonValue | null
+    latentVector?: InputJsonValue | InputJsonValue | null
+    symbolicPressure?: NullableFloatFieldUpdateOperationsInput | number | null
+    tensionLevel?: NullableFloatFieldUpdateOperationsInput | number | null
+    integrationDifficulty?: NullableFloatFieldUpdateOperationsInput | number | null
+    manifestationStrength?: NullableFloatFieldUpdateOperationsInput | number | null
+    finalState?: InputJsonValue | InputJsonValue | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -24311,6 +24887,18 @@ export namespace Prisma {
     notIn?: $Enums.PlanetDirection[] | ListEnumPlanetDirectionFieldRefInput<$PrismaModel>
     not?: NestedEnumPlanetDirectionFilter<$PrismaModel> | $Enums.PlanetDirection
   }
+  export type JsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    isSet?: boolean
+  }
 
   export type PlanetaryProfileCountOrderByAggregateInput = {
     id?: SortOrder
@@ -24331,6 +24919,30 @@ export namespace Prisma {
     secondaryDomain?: SortOrder
     dignity?: SortOrder
     strength?: SortOrder
+    agency?: SortOrder
+    stability?: SortOrder
+    abstraction?: SortOrder
+    emotionality?: SortOrder
+    novelty?: SortOrder
+    coherence?: SortOrder
+    sociality?: SortOrder
+    futureOrientation?: SortOrder
+    astroState?: SortOrder
+    pressureState?: SortOrder
+    behavioralState?: SortOrder
+    relationalState?: SortOrder
+    situationalState?: SortOrder
+    narrativeState?: SortOrder
+    metaState?: SortOrder
+    planetOntology?: SortOrder
+    signOntology?: SortOrder
+    houseOntology?: SortOrder
+    latentVector?: SortOrder
+    symbolicPressure?: SortOrder
+    tensionLevel?: SortOrder
+    integrationDifficulty?: SortOrder
+    manifestationStrength?: SortOrder
+    finalState?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -24343,6 +24955,18 @@ export namespace Prisma {
     houseDegree?: SortOrder
     relativeAngularIndex?: SortOrder
     strength?: SortOrder
+    agency?: SortOrder
+    stability?: SortOrder
+    abstraction?: SortOrder
+    emotionality?: SortOrder
+    novelty?: SortOrder
+    coherence?: SortOrder
+    sociality?: SortOrder
+    futureOrientation?: SortOrder
+    symbolicPressure?: SortOrder
+    tensionLevel?: SortOrder
+    integrationDifficulty?: SortOrder
+    manifestationStrength?: SortOrder
   }
 
   export type PlanetaryProfileMaxOrderByAggregateInput = {
@@ -24364,6 +24988,18 @@ export namespace Prisma {
     secondaryDomain?: SortOrder
     dignity?: SortOrder
     strength?: SortOrder
+    agency?: SortOrder
+    stability?: SortOrder
+    abstraction?: SortOrder
+    emotionality?: SortOrder
+    novelty?: SortOrder
+    coherence?: SortOrder
+    sociality?: SortOrder
+    futureOrientation?: SortOrder
+    symbolicPressure?: SortOrder
+    tensionLevel?: SortOrder
+    integrationDifficulty?: SortOrder
+    manifestationStrength?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -24386,6 +25022,18 @@ export namespace Prisma {
     secondaryDomain?: SortOrder
     dignity?: SortOrder
     strength?: SortOrder
+    agency?: SortOrder
+    stability?: SortOrder
+    abstraction?: SortOrder
+    emotionality?: SortOrder
+    novelty?: SortOrder
+    coherence?: SortOrder
+    sociality?: SortOrder
+    futureOrientation?: SortOrder
+    symbolicPressure?: SortOrder
+    tensionLevel?: SortOrder
+    integrationDifficulty?: SortOrder
+    manifestationStrength?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -24398,6 +25046,18 @@ export namespace Prisma {
     houseDegree?: SortOrder
     relativeAngularIndex?: SortOrder
     strength?: SortOrder
+    agency?: SortOrder
+    stability?: SortOrder
+    abstraction?: SortOrder
+    emotionality?: SortOrder
+    novelty?: SortOrder
+    coherence?: SortOrder
+    sociality?: SortOrder
+    futureOrientation?: SortOrder
+    symbolicPressure?: SortOrder
+    tensionLevel?: SortOrder
+    integrationDifficulty?: SortOrder
+    manifestationStrength?: SortOrder
   }
 
   export type EnumPlanetDirectionWithAggregatesFilter<$PrismaModel = never> = {
@@ -24408,6 +25068,21 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumPlanetDirectionFilter<$PrismaModel>
     _max?: NestedEnumPlanetDirectionFilter<$PrismaModel>
+  }
+  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedJsonNullableFilter<$PrismaModel>
+    _max?: NestedJsonNullableFilter<$PrismaModel>
+    isSet?: boolean
   }
 
   export type StateVectorCountOrderByAggregateInput = {
@@ -24693,18 +25368,6 @@ export namespace Prisma {
     _min?: NestedJsonFilter<$PrismaModel>
     _max?: NestedJsonFilter<$PrismaModel>
   }
-  export type JsonNullableFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonNullableFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    isSet?: boolean
-  }
 
   export type CurrentStoryScalarRelationFilter = {
     is?: CurrentStoryWhereInput
@@ -24792,21 +25455,6 @@ export namespace Prisma {
     movementDegrees?: SortOrder
     intensity?: SortOrder
     collapseRisk?: SortOrder
-  }
-  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedJsonNullableFilter<$PrismaModel>
-    _max?: NestedJsonNullableFilter<$PrismaModel>
-    isSet?: boolean
   }
 
   export type ConsciousnessStateCountOrderByAggregateInput = {
@@ -26232,17 +26880,6 @@ export namespace Prisma {
     _min?: NestedEnumPlanetDirectionFilter<$PrismaModel>
     _max?: NestedEnumPlanetDirectionFilter<$PrismaModel>
   }
-  export type NestedJsonFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
-        Required<NestedJsonFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>
-
-  export type NestedJsonFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-  }
   export type NestedJsonNullableFilter<$PrismaModel = never> =
     | PatchUndefined<
         Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
@@ -26254,6 +26891,17 @@ export namespace Prisma {
     equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     isSet?: boolean
+  }
+  export type NestedJsonFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
   }
 
   export type AccountCreateWithoutUserInput = {
@@ -26775,6 +27423,30 @@ export namespace Prisma {
     secondaryDomain?: string | null
     dignity?: string | null
     strength?: number | null
+    agency?: number | null
+    stability?: number | null
+    abstraction?: number | null
+    emotionality?: number | null
+    novelty?: number | null
+    coherence?: number | null
+    sociality?: number | null
+    futureOrientation?: number | null
+    astroState?: InputJsonValue | null
+    pressureState?: InputJsonValue | null
+    behavioralState?: InputJsonValue | null
+    relationalState?: InputJsonValue | null
+    situationalState?: InputJsonValue | null
+    narrativeState?: InputJsonValue | null
+    metaState?: InputJsonValue | null
+    planetOntology?: InputJsonValue | null
+    signOntology?: InputJsonValue | null
+    houseOntology?: InputJsonValue | null
+    latentVector?: InputJsonValue | null
+    symbolicPressure?: number | null
+    tensionLevel?: number | null
+    integrationDifficulty?: number | null
+    manifestationStrength?: number | null
+    finalState?: InputJsonValue | null
     createdAt?: Date | string
     aspectsAsP1?: NativityAspectCreateNestedManyWithoutPlanet1ProfileInput
     aspectsAsP2?: NativityAspectCreateNestedManyWithoutPlanet2ProfileInput
@@ -26798,6 +27470,30 @@ export namespace Prisma {
     secondaryDomain?: string | null
     dignity?: string | null
     strength?: number | null
+    agency?: number | null
+    stability?: number | null
+    abstraction?: number | null
+    emotionality?: number | null
+    novelty?: number | null
+    coherence?: number | null
+    sociality?: number | null
+    futureOrientation?: number | null
+    astroState?: InputJsonValue | null
+    pressureState?: InputJsonValue | null
+    behavioralState?: InputJsonValue | null
+    relationalState?: InputJsonValue | null
+    situationalState?: InputJsonValue | null
+    narrativeState?: InputJsonValue | null
+    metaState?: InputJsonValue | null
+    planetOntology?: InputJsonValue | null
+    signOntology?: InputJsonValue | null
+    houseOntology?: InputJsonValue | null
+    latentVector?: InputJsonValue | null
+    symbolicPressure?: number | null
+    tensionLevel?: number | null
+    integrationDifficulty?: number | null
+    manifestationStrength?: number | null
+    finalState?: InputJsonValue | null
     createdAt?: Date | string
     aspectsAsP1?: NativityAspectUncheckedCreateNestedManyWithoutPlanet1ProfileInput
     aspectsAsP2?: NativityAspectUncheckedCreateNestedManyWithoutPlanet2ProfileInput
@@ -27211,6 +27907,30 @@ export namespace Prisma {
     secondaryDomain?: StringNullableFilter<"PlanetaryProfile"> | string | null
     dignity?: StringNullableFilter<"PlanetaryProfile"> | string | null
     strength?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    agency?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    stability?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    abstraction?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    emotionality?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    novelty?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    coherence?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    sociality?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    futureOrientation?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    astroState?: JsonNullableFilter<"PlanetaryProfile">
+    pressureState?: JsonNullableFilter<"PlanetaryProfile">
+    behavioralState?: JsonNullableFilter<"PlanetaryProfile">
+    relationalState?: JsonNullableFilter<"PlanetaryProfile">
+    situationalState?: JsonNullableFilter<"PlanetaryProfile">
+    narrativeState?: JsonNullableFilter<"PlanetaryProfile">
+    metaState?: JsonNullableFilter<"PlanetaryProfile">
+    planetOntology?: JsonNullableFilter<"PlanetaryProfile">
+    signOntology?: JsonNullableFilter<"PlanetaryProfile">
+    houseOntology?: JsonNullableFilter<"PlanetaryProfile">
+    latentVector?: JsonNullableFilter<"PlanetaryProfile">
+    symbolicPressure?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    tensionLevel?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    integrationDifficulty?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    manifestationStrength?: FloatNullableFilter<"PlanetaryProfile"> | number | null
+    finalState?: JsonNullableFilter<"PlanetaryProfile">
     createdAt?: DateTimeFilter<"PlanetaryProfile"> | Date | string
   }
 
@@ -27941,6 +28661,30 @@ export namespace Prisma {
     secondaryDomain?: string | null
     dignity?: string | null
     strength?: number | null
+    agency?: number | null
+    stability?: number | null
+    abstraction?: number | null
+    emotionality?: number | null
+    novelty?: number | null
+    coherence?: number | null
+    sociality?: number | null
+    futureOrientation?: number | null
+    astroState?: InputJsonValue | null
+    pressureState?: InputJsonValue | null
+    behavioralState?: InputJsonValue | null
+    relationalState?: InputJsonValue | null
+    situationalState?: InputJsonValue | null
+    narrativeState?: InputJsonValue | null
+    metaState?: InputJsonValue | null
+    planetOntology?: InputJsonValue | null
+    signOntology?: InputJsonValue | null
+    houseOntology?: InputJsonValue | null
+    latentVector?: InputJsonValue | null
+    symbolicPressure?: number | null
+    tensionLevel?: number | null
+    integrationDifficulty?: number | null
+    manifestationStrength?: number | null
+    finalState?: InputJsonValue | null
     createdAt?: Date | string
     nativityChart: NativityChartCreateNestedOneWithoutPlanetaryProfilesInput
     aspectsAsP2?: NativityAspectCreateNestedManyWithoutPlanet2ProfileInput
@@ -27965,6 +28709,30 @@ export namespace Prisma {
     secondaryDomain?: string | null
     dignity?: string | null
     strength?: number | null
+    agency?: number | null
+    stability?: number | null
+    abstraction?: number | null
+    emotionality?: number | null
+    novelty?: number | null
+    coherence?: number | null
+    sociality?: number | null
+    futureOrientation?: number | null
+    astroState?: InputJsonValue | null
+    pressureState?: InputJsonValue | null
+    behavioralState?: InputJsonValue | null
+    relationalState?: InputJsonValue | null
+    situationalState?: InputJsonValue | null
+    narrativeState?: InputJsonValue | null
+    metaState?: InputJsonValue | null
+    planetOntology?: InputJsonValue | null
+    signOntology?: InputJsonValue | null
+    houseOntology?: InputJsonValue | null
+    latentVector?: InputJsonValue | null
+    symbolicPressure?: number | null
+    tensionLevel?: number | null
+    integrationDifficulty?: number | null
+    manifestationStrength?: number | null
+    finalState?: InputJsonValue | null
     createdAt?: Date | string
     aspectsAsP2?: NativityAspectUncheckedCreateNestedManyWithoutPlanet2ProfileInput
   }
@@ -27992,6 +28760,30 @@ export namespace Prisma {
     secondaryDomain?: string | null
     dignity?: string | null
     strength?: number | null
+    agency?: number | null
+    stability?: number | null
+    abstraction?: number | null
+    emotionality?: number | null
+    novelty?: number | null
+    coherence?: number | null
+    sociality?: number | null
+    futureOrientation?: number | null
+    astroState?: InputJsonValue | null
+    pressureState?: InputJsonValue | null
+    behavioralState?: InputJsonValue | null
+    relationalState?: InputJsonValue | null
+    situationalState?: InputJsonValue | null
+    narrativeState?: InputJsonValue | null
+    metaState?: InputJsonValue | null
+    planetOntology?: InputJsonValue | null
+    signOntology?: InputJsonValue | null
+    houseOntology?: InputJsonValue | null
+    latentVector?: InputJsonValue | null
+    symbolicPressure?: number | null
+    tensionLevel?: number | null
+    integrationDifficulty?: number | null
+    manifestationStrength?: number | null
+    finalState?: InputJsonValue | null
     createdAt?: Date | string
     nativityChart: NativityChartCreateNestedOneWithoutPlanetaryProfilesInput
     aspectsAsP1?: NativityAspectCreateNestedManyWithoutPlanet1ProfileInput
@@ -28016,6 +28808,30 @@ export namespace Prisma {
     secondaryDomain?: string | null
     dignity?: string | null
     strength?: number | null
+    agency?: number | null
+    stability?: number | null
+    abstraction?: number | null
+    emotionality?: number | null
+    novelty?: number | null
+    coherence?: number | null
+    sociality?: number | null
+    futureOrientation?: number | null
+    astroState?: InputJsonValue | null
+    pressureState?: InputJsonValue | null
+    behavioralState?: InputJsonValue | null
+    relationalState?: InputJsonValue | null
+    situationalState?: InputJsonValue | null
+    narrativeState?: InputJsonValue | null
+    metaState?: InputJsonValue | null
+    planetOntology?: InputJsonValue | null
+    signOntology?: InputJsonValue | null
+    houseOntology?: InputJsonValue | null
+    latentVector?: InputJsonValue | null
+    symbolicPressure?: number | null
+    tensionLevel?: number | null
+    integrationDifficulty?: number | null
+    manifestationStrength?: number | null
+    finalState?: InputJsonValue | null
     createdAt?: Date | string
     aspectsAsP1?: NativityAspectUncheckedCreateNestedManyWithoutPlanet1ProfileInput
   }
@@ -28139,6 +28955,30 @@ export namespace Prisma {
     secondaryDomain?: NullableStringFieldUpdateOperationsInput | string | null
     dignity?: NullableStringFieldUpdateOperationsInput | string | null
     strength?: NullableFloatFieldUpdateOperationsInput | number | null
+    agency?: NullableFloatFieldUpdateOperationsInput | number | null
+    stability?: NullableFloatFieldUpdateOperationsInput | number | null
+    abstraction?: NullableFloatFieldUpdateOperationsInput | number | null
+    emotionality?: NullableFloatFieldUpdateOperationsInput | number | null
+    novelty?: NullableFloatFieldUpdateOperationsInput | number | null
+    coherence?: NullableFloatFieldUpdateOperationsInput | number | null
+    sociality?: NullableFloatFieldUpdateOperationsInput | number | null
+    futureOrientation?: NullableFloatFieldUpdateOperationsInput | number | null
+    astroState?: InputJsonValue | InputJsonValue | null
+    pressureState?: InputJsonValue | InputJsonValue | null
+    behavioralState?: InputJsonValue | InputJsonValue | null
+    relationalState?: InputJsonValue | InputJsonValue | null
+    situationalState?: InputJsonValue | InputJsonValue | null
+    narrativeState?: InputJsonValue | InputJsonValue | null
+    metaState?: InputJsonValue | InputJsonValue | null
+    planetOntology?: InputJsonValue | InputJsonValue | null
+    signOntology?: InputJsonValue | InputJsonValue | null
+    houseOntology?: InputJsonValue | InputJsonValue | null
+    latentVector?: InputJsonValue | InputJsonValue | null
+    symbolicPressure?: NullableFloatFieldUpdateOperationsInput | number | null
+    tensionLevel?: NullableFloatFieldUpdateOperationsInput | number | null
+    integrationDifficulty?: NullableFloatFieldUpdateOperationsInput | number | null
+    manifestationStrength?: NullableFloatFieldUpdateOperationsInput | number | null
+    finalState?: InputJsonValue | InputJsonValue | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nativityChart?: NativityChartUpdateOneRequiredWithoutPlanetaryProfilesNestedInput
     aspectsAsP2?: NativityAspectUpdateManyWithoutPlanet2ProfileNestedInput
@@ -28162,6 +29002,30 @@ export namespace Prisma {
     secondaryDomain?: NullableStringFieldUpdateOperationsInput | string | null
     dignity?: NullableStringFieldUpdateOperationsInput | string | null
     strength?: NullableFloatFieldUpdateOperationsInput | number | null
+    agency?: NullableFloatFieldUpdateOperationsInput | number | null
+    stability?: NullableFloatFieldUpdateOperationsInput | number | null
+    abstraction?: NullableFloatFieldUpdateOperationsInput | number | null
+    emotionality?: NullableFloatFieldUpdateOperationsInput | number | null
+    novelty?: NullableFloatFieldUpdateOperationsInput | number | null
+    coherence?: NullableFloatFieldUpdateOperationsInput | number | null
+    sociality?: NullableFloatFieldUpdateOperationsInput | number | null
+    futureOrientation?: NullableFloatFieldUpdateOperationsInput | number | null
+    astroState?: InputJsonValue | InputJsonValue | null
+    pressureState?: InputJsonValue | InputJsonValue | null
+    behavioralState?: InputJsonValue | InputJsonValue | null
+    relationalState?: InputJsonValue | InputJsonValue | null
+    situationalState?: InputJsonValue | InputJsonValue | null
+    narrativeState?: InputJsonValue | InputJsonValue | null
+    metaState?: InputJsonValue | InputJsonValue | null
+    planetOntology?: InputJsonValue | InputJsonValue | null
+    signOntology?: InputJsonValue | InputJsonValue | null
+    houseOntology?: InputJsonValue | InputJsonValue | null
+    latentVector?: InputJsonValue | InputJsonValue | null
+    symbolicPressure?: NullableFloatFieldUpdateOperationsInput | number | null
+    tensionLevel?: NullableFloatFieldUpdateOperationsInput | number | null
+    integrationDifficulty?: NullableFloatFieldUpdateOperationsInput | number | null
+    manifestationStrength?: NullableFloatFieldUpdateOperationsInput | number | null
+    finalState?: InputJsonValue | InputJsonValue | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     aspectsAsP2?: NativityAspectUncheckedUpdateManyWithoutPlanet2ProfileNestedInput
   }
@@ -28194,6 +29058,30 @@ export namespace Prisma {
     secondaryDomain?: NullableStringFieldUpdateOperationsInput | string | null
     dignity?: NullableStringFieldUpdateOperationsInput | string | null
     strength?: NullableFloatFieldUpdateOperationsInput | number | null
+    agency?: NullableFloatFieldUpdateOperationsInput | number | null
+    stability?: NullableFloatFieldUpdateOperationsInput | number | null
+    abstraction?: NullableFloatFieldUpdateOperationsInput | number | null
+    emotionality?: NullableFloatFieldUpdateOperationsInput | number | null
+    novelty?: NullableFloatFieldUpdateOperationsInput | number | null
+    coherence?: NullableFloatFieldUpdateOperationsInput | number | null
+    sociality?: NullableFloatFieldUpdateOperationsInput | number | null
+    futureOrientation?: NullableFloatFieldUpdateOperationsInput | number | null
+    astroState?: InputJsonValue | InputJsonValue | null
+    pressureState?: InputJsonValue | InputJsonValue | null
+    behavioralState?: InputJsonValue | InputJsonValue | null
+    relationalState?: InputJsonValue | InputJsonValue | null
+    situationalState?: InputJsonValue | InputJsonValue | null
+    narrativeState?: InputJsonValue | InputJsonValue | null
+    metaState?: InputJsonValue | InputJsonValue | null
+    planetOntology?: InputJsonValue | InputJsonValue | null
+    signOntology?: InputJsonValue | InputJsonValue | null
+    houseOntology?: InputJsonValue | InputJsonValue | null
+    latentVector?: InputJsonValue | InputJsonValue | null
+    symbolicPressure?: NullableFloatFieldUpdateOperationsInput | number | null
+    tensionLevel?: NullableFloatFieldUpdateOperationsInput | number | null
+    integrationDifficulty?: NullableFloatFieldUpdateOperationsInput | number | null
+    manifestationStrength?: NullableFloatFieldUpdateOperationsInput | number | null
+    finalState?: InputJsonValue | InputJsonValue | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nativityChart?: NativityChartUpdateOneRequiredWithoutPlanetaryProfilesNestedInput
     aspectsAsP1?: NativityAspectUpdateManyWithoutPlanet1ProfileNestedInput
@@ -28217,6 +29105,30 @@ export namespace Prisma {
     secondaryDomain?: NullableStringFieldUpdateOperationsInput | string | null
     dignity?: NullableStringFieldUpdateOperationsInput | string | null
     strength?: NullableFloatFieldUpdateOperationsInput | number | null
+    agency?: NullableFloatFieldUpdateOperationsInput | number | null
+    stability?: NullableFloatFieldUpdateOperationsInput | number | null
+    abstraction?: NullableFloatFieldUpdateOperationsInput | number | null
+    emotionality?: NullableFloatFieldUpdateOperationsInput | number | null
+    novelty?: NullableFloatFieldUpdateOperationsInput | number | null
+    coherence?: NullableFloatFieldUpdateOperationsInput | number | null
+    sociality?: NullableFloatFieldUpdateOperationsInput | number | null
+    futureOrientation?: NullableFloatFieldUpdateOperationsInput | number | null
+    astroState?: InputJsonValue | InputJsonValue | null
+    pressureState?: InputJsonValue | InputJsonValue | null
+    behavioralState?: InputJsonValue | InputJsonValue | null
+    relationalState?: InputJsonValue | InputJsonValue | null
+    situationalState?: InputJsonValue | InputJsonValue | null
+    narrativeState?: InputJsonValue | InputJsonValue | null
+    metaState?: InputJsonValue | InputJsonValue | null
+    planetOntology?: InputJsonValue | InputJsonValue | null
+    signOntology?: InputJsonValue | InputJsonValue | null
+    houseOntology?: InputJsonValue | InputJsonValue | null
+    latentVector?: InputJsonValue | InputJsonValue | null
+    symbolicPressure?: NullableFloatFieldUpdateOperationsInput | number | null
+    tensionLevel?: NullableFloatFieldUpdateOperationsInput | number | null
+    integrationDifficulty?: NullableFloatFieldUpdateOperationsInput | number | null
+    manifestationStrength?: NullableFloatFieldUpdateOperationsInput | number | null
+    finalState?: InputJsonValue | InputJsonValue | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     aspectsAsP1?: NativityAspectUncheckedUpdateManyWithoutPlanet1ProfileNestedInput
   }
@@ -29419,6 +30331,30 @@ export namespace Prisma {
     secondaryDomain?: string | null
     dignity?: string | null
     strength?: number | null
+    agency?: number | null
+    stability?: number | null
+    abstraction?: number | null
+    emotionality?: number | null
+    novelty?: number | null
+    coherence?: number | null
+    sociality?: number | null
+    futureOrientation?: number | null
+    astroState?: InputJsonValue | null
+    pressureState?: InputJsonValue | null
+    behavioralState?: InputJsonValue | null
+    relationalState?: InputJsonValue | null
+    situationalState?: InputJsonValue | null
+    narrativeState?: InputJsonValue | null
+    metaState?: InputJsonValue | null
+    planetOntology?: InputJsonValue | null
+    signOntology?: InputJsonValue | null
+    houseOntology?: InputJsonValue | null
+    latentVector?: InputJsonValue | null
+    symbolicPressure?: number | null
+    tensionLevel?: number | null
+    integrationDifficulty?: number | null
+    manifestationStrength?: number | null
+    finalState?: InputJsonValue | null
     createdAt?: Date | string
   }
 
@@ -29543,6 +30479,30 @@ export namespace Prisma {
     secondaryDomain?: NullableStringFieldUpdateOperationsInput | string | null
     dignity?: NullableStringFieldUpdateOperationsInput | string | null
     strength?: NullableFloatFieldUpdateOperationsInput | number | null
+    agency?: NullableFloatFieldUpdateOperationsInput | number | null
+    stability?: NullableFloatFieldUpdateOperationsInput | number | null
+    abstraction?: NullableFloatFieldUpdateOperationsInput | number | null
+    emotionality?: NullableFloatFieldUpdateOperationsInput | number | null
+    novelty?: NullableFloatFieldUpdateOperationsInput | number | null
+    coherence?: NullableFloatFieldUpdateOperationsInput | number | null
+    sociality?: NullableFloatFieldUpdateOperationsInput | number | null
+    futureOrientation?: NullableFloatFieldUpdateOperationsInput | number | null
+    astroState?: InputJsonValue | InputJsonValue | null
+    pressureState?: InputJsonValue | InputJsonValue | null
+    behavioralState?: InputJsonValue | InputJsonValue | null
+    relationalState?: InputJsonValue | InputJsonValue | null
+    situationalState?: InputJsonValue | InputJsonValue | null
+    narrativeState?: InputJsonValue | InputJsonValue | null
+    metaState?: InputJsonValue | InputJsonValue | null
+    planetOntology?: InputJsonValue | InputJsonValue | null
+    signOntology?: InputJsonValue | InputJsonValue | null
+    houseOntology?: InputJsonValue | InputJsonValue | null
+    latentVector?: InputJsonValue | InputJsonValue | null
+    symbolicPressure?: NullableFloatFieldUpdateOperationsInput | number | null
+    tensionLevel?: NullableFloatFieldUpdateOperationsInput | number | null
+    integrationDifficulty?: NullableFloatFieldUpdateOperationsInput | number | null
+    manifestationStrength?: NullableFloatFieldUpdateOperationsInput | number | null
+    finalState?: InputJsonValue | InputJsonValue | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     aspectsAsP1?: NativityAspectUpdateManyWithoutPlanet1ProfileNestedInput
     aspectsAsP2?: NativityAspectUpdateManyWithoutPlanet2ProfileNestedInput
@@ -29565,6 +30525,30 @@ export namespace Prisma {
     secondaryDomain?: NullableStringFieldUpdateOperationsInput | string | null
     dignity?: NullableStringFieldUpdateOperationsInput | string | null
     strength?: NullableFloatFieldUpdateOperationsInput | number | null
+    agency?: NullableFloatFieldUpdateOperationsInput | number | null
+    stability?: NullableFloatFieldUpdateOperationsInput | number | null
+    abstraction?: NullableFloatFieldUpdateOperationsInput | number | null
+    emotionality?: NullableFloatFieldUpdateOperationsInput | number | null
+    novelty?: NullableFloatFieldUpdateOperationsInput | number | null
+    coherence?: NullableFloatFieldUpdateOperationsInput | number | null
+    sociality?: NullableFloatFieldUpdateOperationsInput | number | null
+    futureOrientation?: NullableFloatFieldUpdateOperationsInput | number | null
+    astroState?: InputJsonValue | InputJsonValue | null
+    pressureState?: InputJsonValue | InputJsonValue | null
+    behavioralState?: InputJsonValue | InputJsonValue | null
+    relationalState?: InputJsonValue | InputJsonValue | null
+    situationalState?: InputJsonValue | InputJsonValue | null
+    narrativeState?: InputJsonValue | InputJsonValue | null
+    metaState?: InputJsonValue | InputJsonValue | null
+    planetOntology?: InputJsonValue | InputJsonValue | null
+    signOntology?: InputJsonValue | InputJsonValue | null
+    houseOntology?: InputJsonValue | InputJsonValue | null
+    latentVector?: InputJsonValue | InputJsonValue | null
+    symbolicPressure?: NullableFloatFieldUpdateOperationsInput | number | null
+    tensionLevel?: NullableFloatFieldUpdateOperationsInput | number | null
+    integrationDifficulty?: NullableFloatFieldUpdateOperationsInput | number | null
+    manifestationStrength?: NullableFloatFieldUpdateOperationsInput | number | null
+    finalState?: InputJsonValue | InputJsonValue | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     aspectsAsP1?: NativityAspectUncheckedUpdateManyWithoutPlanet1ProfileNestedInput
     aspectsAsP2?: NativityAspectUncheckedUpdateManyWithoutPlanet2ProfileNestedInput
@@ -29587,6 +30571,30 @@ export namespace Prisma {
     secondaryDomain?: NullableStringFieldUpdateOperationsInput | string | null
     dignity?: NullableStringFieldUpdateOperationsInput | string | null
     strength?: NullableFloatFieldUpdateOperationsInput | number | null
+    agency?: NullableFloatFieldUpdateOperationsInput | number | null
+    stability?: NullableFloatFieldUpdateOperationsInput | number | null
+    abstraction?: NullableFloatFieldUpdateOperationsInput | number | null
+    emotionality?: NullableFloatFieldUpdateOperationsInput | number | null
+    novelty?: NullableFloatFieldUpdateOperationsInput | number | null
+    coherence?: NullableFloatFieldUpdateOperationsInput | number | null
+    sociality?: NullableFloatFieldUpdateOperationsInput | number | null
+    futureOrientation?: NullableFloatFieldUpdateOperationsInput | number | null
+    astroState?: InputJsonValue | InputJsonValue | null
+    pressureState?: InputJsonValue | InputJsonValue | null
+    behavioralState?: InputJsonValue | InputJsonValue | null
+    relationalState?: InputJsonValue | InputJsonValue | null
+    situationalState?: InputJsonValue | InputJsonValue | null
+    narrativeState?: InputJsonValue | InputJsonValue | null
+    metaState?: InputJsonValue | InputJsonValue | null
+    planetOntology?: InputJsonValue | InputJsonValue | null
+    signOntology?: InputJsonValue | InputJsonValue | null
+    houseOntology?: InputJsonValue | InputJsonValue | null
+    latentVector?: InputJsonValue | InputJsonValue | null
+    symbolicPressure?: NullableFloatFieldUpdateOperationsInput | number | null
+    tensionLevel?: NullableFloatFieldUpdateOperationsInput | number | null
+    integrationDifficulty?: NullableFloatFieldUpdateOperationsInput | number | null
+    manifestationStrength?: NullableFloatFieldUpdateOperationsInput | number | null
+    finalState?: InputJsonValue | InputJsonValue | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

@@ -1,15 +1,12 @@
 {
   "id": "HOUSE_5",
-
   "classification": {
     "axis": "CREATION",
     "angularity": "SUCCEDENT",
     "elementalAffinity": "FIRE"
   },
-
   "coreEssence": {
     "corePrinciple": "self-expression through creation and play",
-
     "lifeDomains": [
       "creativity",
       "romance",
@@ -18,7 +15,6 @@
       "joy",
       "personal expression"
     ],
-
     "archetypes": [
       "the creator",
       "the performer",
@@ -26,20 +22,17 @@
       "the child"
     ]
   },
-
   "environmentalContext": {
     "environmentType": [
       "creative projection field",
       "personal expression arena"
     ],
-
     "motivationalThemes": [
       "recognition",
       "joy",
       "creative impact",
       "self-celebration"
     ],
-
     "developmentalThemes": [
       "creative individuation",
       "authentic expression",
@@ -47,16 +40,6 @@
       "emotional vitality"
     ]
   },
-
-  "vectorModifiers": {
-    "self_vs_other": 0.85,
-    "resource_vs_loss": 0.35,
-    "local_vs_expansive": 0.65,
-    "private_vs_public": 0.75,
-    "creation_vs_collective": 1.0,
-    "order_vs_dissolution": 0.45
-  },
-
   "symbolicLayer": {
     "symbols": [
       "stages",
@@ -66,7 +49,6 @@
       "crowns",
       "children"
     ],
-
     "associatedEnvironments": [
       "theaters",
       "creative studios",
@@ -75,7 +57,6 @@
       "celebrations",
       "performance environments"
     ],
-
     "bodyCorrelation": [
       "heart",
       "spine",
@@ -84,5 +65,61 @@
       "joy response",
       "playful embodiment"
     ]
+  },
+  "latentVector": {
+    "valence": 0.91,
+    "arousal": 0.88,
+    "agency": 0.82,
+    "dominance": 0.76,
+    "coherence": 0.69,
+    "stability": 0.51,
+    "novelty": 0.94,
+    "volatility": 0.67,
+    "abstraction": 0.63,
+    "symbolic_density": 0.71,
+    "pattern_recognition": 0.66,
+    "analyticity": 0.54,
+    "intuition": 0.79,
+    "mental_speed": 0.88,
+    "focus": 0.61,
+    "diffusion": 0.72,
+    "past_orientation": 0.36,
+    "present_orientation": 0.92,
+    "future_orientation": 0.64,
+    "cyclicality": 0.55,
+    "urgency": 0.74,
+    "patience": 0.43,
+    "desire_intensity": 0.93,
+    "attachment": 0.66,
+    "avoidance": 0.28,
+    "expansion": 0.89,
+    "contraction": 0.34,
+    "ambition": 0.78,
+    "survival_drive": 0.62,
+    "sociality": 0.81,
+    "individuality": 0.88,
+    "collectivism": 0.52,
+    "relational_depth": 0.58,
+    "boundary_strength": 0.69,
+    "empathy": 0.73,
+    "dominance_social": 0.77,
+    "materiality": 0.67,
+    "spirituality": 0.62,
+    "sensory_density": 0.91,
+    "idealism": 0.84,
+    "pragmatism": 0.49,
+    "integration": 0.74,
+    "fragmentation": 0.45,
+    "entropy": 0.52,
+    "adaptability": 0.83,
+    "rigidity": 0.41,
+    "expressiveness": 0.95,
+    "repression": 0.22,
+    "reactivity": 0.88,
+    "responsiveness": 0.91,
+    "meaning_orientation": 0.86,
+    "identity_coherence": 0.71,
+    "transcendence": 0.74,
+    "ego_density": 0.68
   }
 }

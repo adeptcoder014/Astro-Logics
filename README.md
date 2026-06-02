@@ -79,3 +79,8 @@ Latent Manifold Geometry
 //     "observer_frame": {...},
 //     "temporal_phase": {...}
 // }
+============================================================
+symbolic state evolution
+inside a continuous latent manifold
+anchored to spacetime observer geometry
+============================================================

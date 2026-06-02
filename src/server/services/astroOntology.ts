@@ -25,9 +25,11 @@ export const getHouseSceneOntology = async (house: number) => {
   if (house < 1 || house > 12) {
     house = 1;
   }
+  console.log('========= house ====================', house)
+
   return (
-    await loadAstroData<Record<string, any>>(`scenes/house_${house}.json`) ||
-    (await loadAstroData<Record<string, any>>('scenes/house_1.json')) ||
+    await loadAstroData<Record<string, any>>(`houses/HOUSE_${house}.json`) ||
+    (await loadAstroData<Record<string, any>>('houses/HOUSE_1.json')) ||
     null
   );
 };
@@ -37,18 +39,77 @@ export const getPlanetOntology = async (planet: string) => {
   return await loadAstroData<Record<string, any>>(`planets/${normalized}.json`);
 };
 
-export interface SynthesizedSceneAttributes {
-  astroState: Record<string, any>;
-  pressureState: Record<string, any>;
-  behavioralState: Record<string, any>;
-  relationalState: Record<string, any>;
-  situationalState: Record<string, any>;
-  narrativeState: Record<string, any>;
-  metaState: Record<string, any>;
-  vectorState: Record<string, number>;
+export interface PlanetaryComputedState {
+
+  astroState: {
+    planet: string;
+    sign: string;
+    house: number;
+    natalLongitude: number;
+    currentLongitude: number;
+    movementDegrees: number;
+    intensity: number;
+    activeAspects: string[];
+  };
+
+  cognitionState: {
+    agency: number;
+    stability: number;
+    abstraction: number;
+    emotionality: number;
+    novelty: number;
+    coherence: number;
+    sociality: number;
+    futureOrientation: number;
+  };
+
+  vectorState: {
+    latentVector: number[];
+
+    symbolicPressure: number;
+
+    tensionLevel: number;
+
+    integrationDifficulty: number;
+
+    manifestationStrength: number;
+
+    [axis: string]: number | number[];
+  };
+
+  symbolicState: {
+    archetypes: string[];
+
+    dominantDrive: string;
+
+    shadowExpression: string;
+
+    behavioralExpression: string[];
+  };
+
+  narrativeState: {
+    storyFunction: string;
+
+    environmentalArena: string[];
+
+    cinematicExpressions: string[];
+
+    sceneHooks: string[];
+  };
 }
 
-export const synthesizeSceneAttributes = async (options: {
+
+
+
+
+
+
+
+
+
+
+
+export const computePlanetaryState = async (options: {
   planet: string;
   sign: string;
   house: number;
@@ -58,165 +119,554 @@ export const synthesizeSceneAttributes = async (options: {
   intensity: number;
   planetProfile?: Record<string, any> | null;
   activeAspects: Array<{ aspectType: string }>;
-}) => {
-  const signData = await getSignOntology(options.sign);
-  const houseData = await getHouseSceneOntology(options.house);
+}): Promise<PlanetaryComputedState> => {
 
-  const activeAspectTypes = options.activeAspects.map((aspect) => aspect.aspectType || '').filter(Boolean);
+  // =========================================================
+  // LOAD ONTOLOGIES
+  // =========================================================
 
-  const coreArchetype = dedupe([
-    ...(signData?.coreArchetype || []),
-    ...(signData?.styleModifiers || []),
-  ]).slice(0, 6);
+  const planetData =
+    await getPlanetOntology(
+      options.planet
+    );
 
-  const behavioralState = dedupe([
-    ...(signData?.behavioralMicroPatterns || []),
-    ...(houseData?.behavioralDynamics || []),
-    ...(signData?.shadowPatterns || []),
-  ]).slice(0, 6);
+  const signData =
+    await getSignOntology(
+      options.sign
+    );
 
-  const stressBehavior = dedupe([
-    ...(signData?.stressStyle || []),
-    ...(signData?.pressureResponses || []),
-    ...(houseData?.pressureSources || []),
-    ...(houseData?.conflictDynamics || []),
-  ]).slice(0, 6);
+  const houseData =
+    await getHouseSceneOntology(
+      options.house
+    );
 
-  const speechPatterns = dedupe([
-    ...(houseData?.speechPatterns || []),
-    ...(signData?.speechPatterns || []),
-  ]).slice(0, 6);
+  // =========================================================
+  // ACTIVE ASPECTS
+  // =========================================================
 
-  const bodyLanguage = dedupe([
-    ...(houseData?.bodyLanguagePatterns || []),
-    ...(signData?.bodyLanguage || []),
-  ]).slice(0, 6);
+  const activeAspectTypes =
+    options.activeAspects
+      .map(a =>
+        (a.aspectType || "")
+          .toUpperCase()
+          .trim()
+      )
+      .filter(Boolean);
 
-  const environmentalArena = dedupe([
-    ...(houseData?.environment?.specificLocations || []),
-    ...(signData?.environmentPreferences || []),
-  ]).slice(0, 6);
+  // =========================================================
+  // UNIVERSAL AXES
+  // =========================================================
 
-  const relationshipDynamics = dedupe([
-    ...(houseData?.relationshipDynamics || []),
-    ...(signData?.relationshipPatterns || []),
-  ]).slice(0, 6);
+  const UNIVERSAL_AXES = [
 
-  const decisionDistortions = dedupe([
-    ...(signData?.decisionStyle || []),
-    ...(houseData?.conflictDynamics || []),
-  ]).slice(0, 6);
+    "valence",
+    "arousal",
+    "agency",
+    "dominance",
+    "coherence",
+    "stability",
+    "novelty",
+    "volatility",
 
-  const emotionalDrivers = dedupe([
-    ...(signData?.emotionalNeeds || []),
-    ...(signData?.emotionalTriggers || []),
-  ]).slice(0, 6);
+    "abstraction",
+    "symbolic_density",
+    "pattern_recognition",
+    "analyticity",
+    "intuition",
+    "mental_speed",
+    "focus",
+    "diffusion",
 
-  const behavioralMomentum = options.movementDegrees > 15
-    ? 'accelerated adaptation'
-    : options.movementDegrees < -15
-      ? 'slow internal pressure'
-      : 'steady emotional flow';
+    "past_orientation",
+    "present_orientation",
+    "future_orientation",
+    "cyclicality",
+    "urgency",
+    "patience",
 
-  const pressureManifestation = houseData?.pressureSources?.[0]
-    || signData?.pressureResponses?.[0]
-    || 'pressure converges through familiar life patterns';
+    "desire_intensity",
+    "attachment",
+    "avoidance",
+    "expansion",
+    "contraction",
+    "ambition",
+    "survival_drive",
 
-  const adaptationPressure = signData?.growthDirection?.[0]
-    || (houseData?.escalationStages?.early || [])[0]
-    || 'adapt slowly through grounded awareness';
+    "sociality",
+    "individuality",
+    "collectivism",
+    "relational_depth",
+    "boundary_strength",
+    "empathy",
+    "dominance_social",
 
-  const dominantConflictAxis = dedupe([
-    ...(houseData?.conflictDynamics || []),
-    ...activeAspectTypes,
-  ]).slice(0, 6);
+    "materiality",
+    "spirituality",
+    "sensory_density",
+    "idealism",
+    "pragmatism",
 
-  const microBehaviors = dedupe([
-    ...(houseData?.microBehaviors || []),
-    ...(signData?.behavioralMicroPatterns || []),
-  ]).slice(0, 6);
+    "integration",
+    "fragmentation",
+    "entropy",
+    "adaptability",
+    "rigidity",
 
-  const sceneHooks = dedupe([
-    ...(houseData?.sceneTriggers || []),
-    ...activeAspectTypes.map((type) => `${type} tension`),
-  ]).slice(0, 6);
+    "expressiveness",
+    "repression",
+    "reactivity",
+    "responsiveness",
 
-  const symbolicObjects = dedupe([
-    ...(signData?.element ? [`${signData.element.toLowerCase()} symbol`] : []),
-    options.planetProfile?.primaryDomain ? [`${options.planetProfile.primaryDomain.toLowerCase()} motif`] : [],
-    ...(houseData?.environment?.specificLocations || []),
-  ]).slice(0, 6);
+    "meaning_orientation",
+    "identity_coherence",
+    "transcendence",
+    "ego_density",
+  ];
 
-  const cinematicExpressions = dedupe([
-    ...(houseData?.cinematicExpressions || []),
-    ...(signData?.cinematicExpressions || []),
-  ]).slice(0, 6);
+  // =========================================================
+  // LATENT ACCESSORS
+  // =========================================================
 
-  const storyFunction = houseData?.narrativeFunction?.[0]
-    || `${options.planet} activates a practical pressure story in ${options.sign}`;
+  const getPlanetAxis = (axis: string) =>
+    planetData?.latentVector?.[axis] ?? 0;
 
-  const resolutionVector = signData?.growthDirection?.[1]
-    || (houseData?.escalationStages?.middle || [])[0]
-    || 'move toward balanced expression';
+  const getSignModifier = (axis: string) =>
+    signData?.latentVector?.[axis] ?? 0;
 
-  const vectorState = {
-    controlNeed: options.intensity > 60 ? 0.8 : options.intensity > 30 ? 0.5 : 0.2,
-    emotionalVolatility: Math.min(1, Math.abs(options.movementDegrees) / 180),
-    socialPressure: options.house > 6 ? 0.8 : 0.4,
-    adaptability: ['GEMINI', 'SAGITTARIUS', 'AQUARIUS'].includes(options.sign) ? 0.9 : 0.5,
-    impulsiveness: ['ARIES', 'LEO', 'SAGITTARIUS'].includes(options.sign) ? 0.7 : 0.3,
-    caution: ['VIRGO', 'CAPRICORN', 'TAURUS'].includes(options.sign) ? 0.9 : 0.4,
-    aggression: options.planet === 'MARS' || ['ARIES', 'SCORPIO'].includes(options.sign) ? 0.8 : 0.2,
-    attachmentNeed: ['VENUS', 'MOON'].includes(options.planet) ? 0.8 : 0.4,
+  const getHouseModifier = (axis: string) =>
+    houseData?.latentVector?.[axis] ?? 0;
+
+  // =========================================================
+  // SOFT NORMALIZATION
+  // =========================================================
+  //
+  // Prevents saturation collapse.
+  // Keeps semantic gradients alive.
+  //
+  // Old:
+  // clamp(-1, 1)
+  //
+  // New:
+  // smooth bounded compression
+  //
+  // =========================================================
+
+  const softNormalize = (v: number) => {
+
+    const normalized =
+      v / (1 + Math.abs(v));
+
+    return Number(
+      normalized.toFixed(4)
+    );
   };
 
+  // =========================================================
+  // BASE VECTOR SYNTHESIS
+  // =========================================================
+
+  const latentVector: Record<string, number> = {};
+
+  for (const axis of UNIVERSAL_AXES) {
+
+    const planetValue =
+      getPlanetAxis(axis);
+
+    const signValue =
+      getSignModifier(axis);
+
+    const houseValue =
+      getHouseModifier(axis);
+
+    // =====================================================
+    // PLANET CORE
+    // =====================================================
+
+    const baseIdentity =
+      planetValue;
+
+    // =====================================================
+    // SIGN MODULATION
+    // =====================================================
+
+    const signInfluence =
+
+      1 +
+
+      (
+        signValue * 0.35
+      );
+
+    // =====================================================
+    // HOUSE PROJECTION
+    // =====================================================
+
+    const houseInfluence =
+
+      1 +
+
+      (
+        houseValue * 0.25
+      );
+
+    // =====================================================
+    // SYNTHESIS
+    // =====================================================
+
+    const synthesized =
+
+      baseIdentity
+
+      *
+
+      signInfluence
+
+      *
+
+      houseInfluence;
+
+    latentVector[axis] =
+      softNormalize(
+        synthesized
+      );
+  }
+
+  // =========================================================
+  // ASPECT DISTORTION FIELD
+  // =========================================================
+
+  for (const aspect of activeAspectTypes) {
+
+    switch (aspect) {
+
+      case "SQUARE":
+
+        latentVector.coherence *= 0.72;
+        latentVector.stability *= 0.81;
+
+        latentVector.agency *= 1.12;
+
+        latentVector.reactivity *= 1.18;
+        latentVector.fragmentation *= 1.16;
+        latentVector.volatility *= 1.14;
+
+        break;
+
+      case "OPPOSITION":
+
+        latentVector.coherence *= 0.68;
+
+        latentVector.relational_depth *= 1.18;
+
+        latentVector.fragmentation *= 1.18;
+
+        latentVector.intuition *= 1.06;
+
+        latentVector.identity_coherence *= 0.82;
+
+        break;
+
+      case "TRINE":
+
+        latentVector.coherence *= 1.14;
+        latentVector.stability *= 1.12;
+
+        latentVector.integration *= 1.16;
+
+        latentVector.responsiveness *= 1.08;
+
+        break;
+
+      case "SEXTILE":
+
+        latentVector.novelty *= 1.08;
+
+        latentVector.sociality *= 1.06;
+
+        latentVector.adaptability *= 1.12;
+
+        latentVector.pattern_recognition *= 1.08;
+
+        break;
+
+      case "CONJUNCTION":
+
+        latentVector.agency *= 1.12;
+
+        latentVector.desire_intensity *= 1.12;
+
+        latentVector.focus *= 1.10;
+
+        latentVector.ego_density *= 1.06;
+
+        break;
+
+      case "QUINCUNX":
+
+        latentVector.coherence *= 0.82;
+
+        latentVector.diffusion *= 1.14;
+
+        latentVector.adaptability *= 1.08;
+
+        break;
+
+      default:
+        break;
+    }
+  }
+
+  // =========================================================
+  // FINAL SOFT NORMALIZATION
+  // =========================================================
+
+  for (const axis of Object.keys(latentVector)) {
+
+    latentVector[axis] =
+      softNormalize(
+        latentVector[axis]
+      );
+  }
+
+  // =========================================================
+  // PLANETARY IDENTITY ANCHOR
+  // =========================================================
+  //
+  // Prevents semantic drift.
+  //
+  // Keeps:
+  // Mercury -> Mercury-like
+  // Saturn -> Saturn-like
+  //
+  // even after many transformations.
+  //
+  // =========================================================
+
+  for (const axis of UNIVERSAL_AXES) {
+
+    const corePlanetValue =
+      getPlanetAxis(axis);
+
+    const transformedValue =
+      latentVector[axis] ?? 0;
+
+    latentVector[axis] = softNormalize(
+
+      (
+        transformedValue * 0.72
+      )
+
+      +
+
+      (
+        corePlanetValue * 0.28
+      )
+    );
+  }
+
+  // =========================================================
+  // COGNITION STATE
+  // =========================================================
+
+  const cognitionState = {
+
+    agency:
+      latentVector.agency,
+
+    stability:
+      latentVector.stability,
+
+    abstraction:
+      latentVector.abstraction,
+
+    novelty:
+      latentVector.novelty,
+
+    coherence:
+      latentVector.coherence,
+
+    sociality:
+      latentVector.sociality,
+
+    futureOrientation:
+      latentVector.future_orientation,
+  };
+
+  // =========================================================
+  // DERIVED METRICS
+  // =========================================================
+
+  const symbolicPressure =
+    softNormalize(
+
+      Math.abs(
+
+        (
+          latentVector.coherence ?? 0
+        )
+
+        -
+
+        (
+          latentVector.novelty ?? 0
+        )
+      )
+    );
+
+  const tensionLevel =
+    softNormalize(
+
+      (
+        activeAspectTypes.includes("SQUARE")
+          ? 0.8
+          : 0.2
+      )
+
+      +
+
+      (
+        activeAspectTypes.includes("OPPOSITION")
+          ? 0.5
+          : 0
+      )
+
+      +
+
+      (
+        activeAspectTypes.includes("QUINCUNX")
+          ? 0.35
+          : 0
+      )
+    );
+
+  const integrationDifficulty =
+    softNormalize(
+
+      1 -
+
+      (
+        latentVector.integration ?? 0
+      )
+    );
+
+  const manifestationStrength =
+    softNormalize(
+
+      (
+        latentVector.agency ?? 0
+      )
+
+      *
+
+      (
+        latentVector.coherence ?? 0
+      )
+    );
+
+  // =========================================================
+  // ARCHETYPAL SYNTHESIS
+  // =========================================================
+
+  const archetypes = dedupe([
+
+    ...(planetData?.coreEssence?.archetypes || []),
+
+    ...(signData?.coreEssence?.archetypes || []),
+
+    ...(houseData?.archetypes || []),
+
+  ]).slice(0, 12);
+
+  // =========================================================
+  // SYMBOLIC STATE
+  // =========================================================
+
+  const symbolicState = {
+
+    archetypes,
+
+    dominantDrive:
+
+      planetData?.motivationalStructure
+        ?.coreNeeds?.[0]
+
+      ||
+
+      "self-expression",
+
+    shadowExpression:
+
+      signData?.shadowPatterns?.[0]
+
+      ||
+
+      "internal contradiction",
+
+    behavioralExpression:
+
+      dedupe([
+
+        ...(signData?.behavioralMicroPatterns || []),
+
+        ...(houseData?.behavioralDynamics || []),
+
+      ]).slice(0, 12),
+  };
+
+  // =========================================================
+  // FINAL RETURN
+  // =========================================================
+
   return {
+
     astroState: {
+
       planet: options.planet,
+
       sign: options.sign,
+
       house: options.house,
-      natalLongitude: options.natalLongitude,
-      currentLongitude: options.currentLongitude,
-      movementDegrees: options.movementDegrees,
-      intensity: options.intensity,
-      activeAspects: activeAspectTypes,
-      coreArchetype,
+
+      natalLongitude:
+        options.natalLongitude,
+
+      currentLongitude:
+        options.currentLongitude,
+
+      movementDegrees:
+        options.movementDegrees,
+
+      intensity:
+        options.intensity,
+
+      activeAspects:
+        activeAspectTypes,
     },
-    pressureState: {
-      dominantPressure: signData?.pressureResponses?.[0] || houseData?.pressureSources?.[0] || "performance overload",
-      pressureDirection: adaptationPressure,
-      collapseRisk: options.intensity > 70 ? 72 : Math.round(options.intensity * 0.8),
-      stressAcceleration: options.movementDegrees > 10 ? "increasing" : options.movementDegrees < -10 ? "decreasing" : "stable",
-      unresolvedPattern: signData?.shadowPatterns?.[0] || "overcompensating through work",
+
+    cognitionState,
+
+    vectorState: {
+
+      ...latentVector,
+
+      latentVector:
+
+        UNIVERSAL_AXES.map(
+
+          axis =>
+
+            latentVector[axis] ?? 0
+        ),
+
+      symbolicPressure,
+
+      tensionLevel,
+
+      integrationDifficulty,
+
+      manifestationStrength,
     },
-    behavioralState: {
-      behavioralPatterns: behavioralState,
-      stressBehavior,
-      emotionalDrivers,
-      behavioralMomentum,
-      bodyLanguage,
-      speechPatterns,
-      microBehaviors,
-    },
-    relationalState: {
-      relationshipDynamics,
-      decisionDistortions,
-      dominantConflictAxis,
-    },
-    situationalState: {
-      environmentalArena,
-      sceneHooks,
-      symbolicObjects,
-    },
-    narrativeState: {
-      cinematicExpressions,
-      storyFunction,
-      resolutionVector,
-    },
-    metaState: {
-      pressureManifestation,
-      adaptationPressure,
-    },
-    vectorState,
+
+    symbolicState,
   };
 };

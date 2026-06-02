@@ -474,8 +474,45 @@ model PlanetaryProfile {
   secondaryDomain String?
 
   // Incentive model inputs
-  dignity  String? // Exalted, Domicile, Detriment, Fall
-  strength Float?
+  dignity           String? // Exalted, Domicile, Detriment, Fall
+  strength          Float?
+  // Raw scalar cognition vector (stored for quick queries)
+  agency            Float?
+  stability         Float?
+  abstraction       Float?
+  emotionality      Float?
+  novelty           Float?
+  coherence         Float?
+  sociality         Float?
+  futureOrientation Float?
+
+  // Structured symbolic/state layers
+  astroState       Json?
+  pressureState    Json?
+  behavioralState  Json?
+  relationalState  Json?
+  situationalState Json?
+  narrativeState   Json?
+  metaState        Json?
+
+  // Raw ontologies / snapshots
+  planetOntology Json?
+  signOntology   Json?
+  houseOntology  Json?
+
+  // Embeddings / latent representations
+  latentVector Json?
+
+  // Derived scalar metrics
+  symbolicPressure      Float?
+  tensionLevel          Float?
+  integrationDifficulty Float?
+  manifestationStrength Float?
+
+  // Final synthesized numeric vector/state (JSON map)
+  finalState Json?
+  // finalState   Json?
+
   // ============= PLANETARY ENERGY BUDGET =============
   // expressionBandwidth Float? // Finite bandwidth (optional)
   // saturationLevel     Float? @default(0.0) // Over-aspected detection

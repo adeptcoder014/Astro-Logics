@@ -1,6 +1,5 @@
 {
   "id": "SATURN",
-
   "classification": {
     "planetType": "SOCIAL",
     "elementalNature": [
@@ -20,10 +19,8 @@
       "DRY"
     ]
   },
-
   "coreEssence": {
     "corePrinciple": "structural limitation",
-
     "archetypes": [
       "discipline",
       "restriction",
@@ -32,7 +29,6 @@
       "endurance",
       "structure"
     ],
-
     "expressionDomains": [
       "duty",
       "boundaries",
@@ -41,7 +37,6 @@
       "survival pressure",
       "maturity"
     ],
-
     "governingFunctions": [
       "creating structure",
       "enforcing boundaries",
@@ -51,7 +46,6 @@
       "preserving long-term continuity"
     ]
   },
-
   "motivationalStructure": {
     "coreNeeds": [
       "stability",
@@ -60,7 +54,6 @@
       "competence",
       "security"
     ],
-
     "coreFears": [
       "failure",
       "chaos",
@@ -68,7 +61,6 @@
       "dependency",
       "loss of control"
     ],
-
     "desirePatterns": [
       "to endure",
       "to master reality",
@@ -77,16 +69,6 @@
       "to survive through discipline"
     ]
   },
-
-  "vectorModifiers": {
-    "self_vs_other": 0.7,
-    "resource_vs_loss": 0.95,
-    "local_vs_expansive": 0.2,
-    "private_vs_public": 0.85,
-    "creation_vs_collective": 0.6,
-    "order_vs_dissolution": 1.0
-  },
-
   "symbolicLayer": {
     "symbols": [
       "clocks",
@@ -97,7 +79,6 @@
       "walls",
       "shadows"
     ],
-
     "associatedEnvironments": [
       "institutions",
       "government systems",
@@ -106,7 +87,6 @@
       "hierarchical structures",
       "survival-oriented settings"
     ],
-
     "bodyCorrelation": [
       "bones",
       "teeth",
@@ -115,5 +95,61 @@
       "aging processes",
       "structural integrity"
     ]
+  },
+  "latentVector": {
+    "valence": -0.42,
+    "arousal": -0.18,
+    "agency": 0.62,
+    "dominance": 0.58,
+    "coherence": 0.96,
+    "stability": 0.99,
+    "novelty": -0.72,
+    "volatility": -0.84,
+    "abstraction": 0.82,
+    "symbolic_density": 0.71,
+    "pattern_recognition": 0.92,
+    "analyticity": 0.97,
+    "intuition": 0.38,
+    "mental_speed": -0.18,
+    "focus": 0.99,
+    "diffusion": -0.92,
+    "past_orientation": 0.88,
+    "present_orientation": 0.42,
+    "future_orientation": 0.74,
+    "cyclicality": 0.91,
+    "urgency": -0.72,
+    "patience": 0.99,
+    "desire_intensity": -0.24,
+    "attachment": 0.58,
+    "avoidance": 0.62,
+    "expansion": -0.81,
+    "contraction": 0.96,
+    "ambition": 0.88,
+    "survival_drive": 0.82,
+    "sociality": -0.48,
+    "individuality": 0.71,
+    "collectivism": 0.18,
+    "relational_depth": 0.41,
+    "boundary_strength": 0.99,
+    "empathy": 0.22,
+    "dominance_social": 0.74,
+    "materiality": 0.88,
+    "spirituality": 0.22,
+    "sensory_density": 0.52,
+    "idealism": -0.42,
+    "pragmatism": 0.98,
+    "integration": 0.94,
+    "fragmentation": -0.88,
+    "entropy": -0.91,
+    "adaptability": -0.28,
+    "rigidity": 0.97,
+    "expressiveness": -0.58,
+    "repression": 0.94,
+    "reactivity": -0.48,
+    "responsiveness": 0.52,
+    "meaning_orientation": 0.88,
+    "identity_coherence": 0.96,
+    "transcendence": 0.34,
+    "ego_density": 0.82
   }
 }

@@ -1,6 +1,5 @@
 {
   "id": "PLUTO",
-
   "classification": {
     "planetType": "TRANSPERSONAL",
     "elementalNature": [
@@ -19,10 +18,8 @@
       "COLD"
     ]
   },
-
   "coreEssence": {
     "corePrinciple": "transformational destruction",
-
     "archetypes": [
       "death",
       "rebirth",
@@ -31,7 +28,6 @@
       "transformation",
       "underworld"
     ],
-
     "expressionDomains": [
       "psychological depth",
       "trauma",
@@ -40,7 +36,6 @@
       "survival instincts",
       "irreversible change"
     ],
-
     "governingFunctions": [
       "destroying obsolete structures",
       "forcing transformation",
@@ -50,7 +45,6 @@
       "compressing evolution through crisis"
     ]
   },
-
   "motivationalStructure": {
     "coreNeeds": [
       "control",
@@ -59,7 +53,6 @@
       "depth",
       "psychological power"
     ],
-
     "coreFears": [
       "powerlessness",
       "betrayal",
@@ -67,7 +60,6 @@
       "loss of control",
       "annihilation"
     ],
-
     "desirePatterns": [
       "to penetrate hidden truths",
       "to transform completely",
@@ -76,16 +68,6 @@
       "to expose corruption"
     ]
   },
-
-  "vectorModifiers": {
-    "self_vs_other": 0.8,
-    "resource_vs_loss": 1.0,
-    "local_vs_expansive": 0.4,
-    "private_vs_public": 0.1,
-    "creation_vs_collective": 0.7,
-    "order_vs_dissolution": 0.95
-  },
-
   "symbolicLayer": {
     "symbols": [
       "ashes",
@@ -96,7 +78,6 @@
       "black fire",
       "ruins"
     ],
-
     "associatedEnvironments": [
       "crisis zones",
       "psychological depths",
@@ -105,7 +86,6 @@
       "transformational environments",
       "high-pressure survival situations"
     ],
-
     "bodyCorrelation": [
       "reproductive systems",
       "cellular regeneration",
@@ -114,5 +94,61 @@
       "survival responses",
       "trauma storage"
     ]
+  },
+  "latentVector": {
+    "valence": -0.42,
+    "arousal": 0.82,
+    "agency": 0.74,
+    "dominance": 0.97,
+    "coherence": 0.28,
+    "stability": -0.48,
+    "novelty": 0.44,
+    "volatility": 0.92,
+    "abstraction": 0.82,
+    "symbolic_density": 0.96,
+    "pattern_recognition": 0.91,
+    "analyticity": 0.72,
+    "intuition": 0.88,
+    "mental_speed": 0.48,
+    "focus": 0.99,
+    "diffusion": -0.76,
+    "past_orientation": 0.91,
+    "present_orientation": -0.24,
+    "future_orientation": 0.58,
+    "cyclicality": 0.82,
+    "urgency": 0.36,
+    "patience": 0.94,
+    "desire_intensity": 0.99,
+    "attachment": 0.84,
+    "avoidance": 0.42,
+    "expansion": 0.18,
+    "contraction": 0.94,
+    "ambition": 0.92,
+    "survival_drive": 0.99,
+    "sociality": -0.44,
+    "individuality": 0.88,
+    "collectivism": -0.18,
+    "relational_depth": 0.98,
+    "boundary_strength": 0.96,
+    "empathy": 0.38,
+    "dominance_social": 0.94,
+    "materiality": 0.44,
+    "spirituality": 0.72,
+    "sensory_density": 0.58,
+    "idealism": 0.12,
+    "pragmatism": 0.82,
+    "integration": 0.66,
+    "fragmentation": 0.88,
+    "entropy": 0.84,
+    "adaptability": 0.41,
+    "rigidity": 0.78,
+    "expressiveness": -0.22,
+    "repression": 0.88,
+    "reactivity": 0.74,
+    "responsiveness": 0.42,
+    "meaning_orientation": 0.96,
+    "identity_coherence": 0.82,
+    "transcendence": 0.78,
+    "ego_density": 0.97
   }
 }

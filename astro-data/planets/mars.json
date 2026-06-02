@@ -68,24 +68,6 @@
       "to express raw energy"
     ]
   },
-  "vectorModifiers": {
-    "self_vs_other": 0.95,
-    "resource_vs_loss": 0.6,
-    "local_vs_expansive": 0.7,
-    "private_vs_public": 0.5,
-    "creation_vs_collective": 0.4,
-    "order_vs_dissolution": 0.8
-  },
-  "cognitiveVector": {
-    "arousal": 0.9,
-    "agency": 0.85,
-    "coherence": -0.2,
-    "stability": -0.4,
-    "orientation": 0.8,
-    "novelty": 0.7,
-    "abstraction": -0.5,
-    "valence": -0.1
-  },
   "symbolicLayer": {
     "symbols": [
       "weapons",
@@ -112,5 +94,89 @@
       "inflammatory response",
       "motor activity"
     ]
+  },
+  //  ----------- Eigenstates ----------------- 
+  "latentVector": {
+    // =========================================
+    // CORE AFFECTIVE GEOMETRY
+    // =========================================
+    "valence": -0.15,
+    "arousal": 0.95,
+    "agency": 0.92,
+    "dominance": 0.88,
+    "coherence": -0.25,
+    "stability": -0.35,
+    "novelty": 0.72,
+    "volatility": 0.84,
+    // =========================================
+    // COGNITIVE STYLE
+    // =========================================
+    "abstraction": -0.45,
+    "symbolic_density": 0.20,
+    "pattern_recognition": 0.42,
+    "analyticity": 0.48,
+    "intuition": 0.38,
+    "mental_speed": 0.86,
+    "focus": 0.93,
+    "diffusion": -0.52,
+    // =========================================
+    // TEMPORAL ORIENTATION
+    // =========================================
+    "past_orientation": -0.72,
+    "present_orientation": 0.96,
+    "future_orientation": 0.42,
+    "cyclicality": 0.18,
+    "urgency": 0.97,
+    "patience": -0.82,
+    // =========================================
+    // MOTIVATIONAL FORCES
+    // =========================================
+    "desire_intensity": 0.98,
+    "attachment": 0.18,
+    "avoidance": -0.66,
+    "expansion": 0.62,
+    "contraction": 0.28,
+    "ambition": 0.86,
+    "survival_drive": 0.94,
+    // =========================================
+    // SOCIAL GEOMETRY
+    // =========================================
+    "sociality": 0.24,
+    "individuality": 0.91,
+    "collectivism": -0.48,
+    "relational_depth": 0.14,
+    "boundary_strength": 0.97,
+    "empathy": 0.16,
+    "dominance_social": 0.83,
+    // =========================================
+    // MATERIAL ↔ SYMBOLIC
+    // =========================================
+    "materiality": 0.82,
+    "spirituality": -0.58,
+    "sensory_density": 0.76,
+    "idealism": -0.34,
+    "pragmatism": 0.81,
+    // =========================================
+    // ORDER / CHAOS DYNAMICS
+    // =========================================
+    "integration": 0.22,
+    "fragmentation": 0.74,
+    "entropy": 0.79,
+    "adaptability": 0.57,
+    "rigidity": 0.41,
+    // =========================================
+    // EXPRESSION DYNAMICS
+    // =========================================
+    "expressiveness": 0.94,
+    "repression": -0.61,
+    "reactivity": 0.97,
+    "responsiveness": 0.46,
+    // =========================================
+    // EXISTENTIAL AXES
+    // =========================================
+    "meaning_orientation": 0.24,
+    "identity_coherence": 0.71,
+    "transcendence": -0.66,
+    "ego_density": 0.91
   }
 }

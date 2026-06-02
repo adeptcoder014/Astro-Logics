@@ -7,7 +7,7 @@ import { StoryGenerator, type NativityContext } from "~/server/services/storyGen
 import { PlanetaryPersonalityService } from "~/server/services/planetaryPersonality";
 import { TransitCalculator } from "~/server/services/transitCalculator";
 import { SarvatobhadraCalculator } from "~/server/services/sarvatobhadraCalculator";
-import { getPlanetOntology, synthesizeSceneAttributes } from "~/server/services/astroOntology";
+import { getPlanetOntology, getHouseSceneOntology, getSignOntology, computePlanetaryState } from "~/server/services/astroOntology";
 import { buildComicPrompt, type PromptInput } from "~/lib/promptCompiler";
 import {
   calculatePlanetaryDignity,
@@ -213,6 +213,200 @@ Return ONLY valid JSON with all fields populated based on the planetary data ana
   };
 }
 
+type VectorState = Record<string, number>;
+
+interface ComputeFinalStateInput {
+  planetVector: VectorState;
+  signTransform?: Partial<VectorState>;
+  houseProjection?: Partial<VectorState>;
+  aspectDistortion?: Partial<VectorState>;
+  nakshatraModulation?: Partial<VectorState>;
+  observerFrame?: Partial<VectorState>;
+  transitEvolution?: Partial<VectorState>;
+}
+
+/**
+ * =========================================================
+ * FINAL SYMBOLIC STATE SYNTHESIS
+ * =========================================================
+ *
+ * FinalState =
+ * PlanetVector
+ * × SignTransform
+ * × HouseProjection
+ * × AspectDistortion
+ * × NakshatraModulation
+ * × ObserverFrame
+ * × TransitEvolution
+ *
+ * Multiplicative weighted symbolic field synthesis.
+ *
+ * =========================================================
+ */
+
+export function computeFinalState({
+  planetVector,
+  signTransform = {},
+  houseProjection = {},
+  aspectDistortion = {},
+  nakshatraModulation = {},
+  observerFrame = {},
+  transitEvolution = {},
+}: ComputeFinalStateInput): VectorState {
+
+  const finalState: VectorState = {};
+
+  const allKeys = new Set<string>([
+    ...Object.keys(planetVector || {}),
+    ...Object.keys(signTransform || {}),
+    ...Object.keys(houseProjection || {}),
+    ...Object.keys(aspectDistortion || {}),
+    ...Object.keys(nakshatraModulation || {}),
+    ...Object.keys(observerFrame || {}),
+    ...Object.keys(transitEvolution || {}),
+  ]);
+
+  for (const key of allKeys) {
+
+    const base =
+      planetVector[key] ?? 0;
+
+    const sign =
+      signTransform[key] ?? 0;
+
+    const house =
+      houseProjection[key] ?? 0;
+
+    const aspect =
+      aspectDistortion[key] ?? 0;
+
+    const nak =
+      nakshatraModulation[key] ?? 0;
+
+    const observer =
+      observerFrame[key] ?? 0;
+
+    const transit =
+      transitEvolution[key] ?? 0;
+
+    /**
+     * =====================================================
+     * SYMBOLIC FIELD SYNTHESIS
+     * =====================================================
+     */
+
+    const synthesized =
+      base +
+
+      sign * 0.22 +
+      house * 0.18 +
+      aspect * 0.24 +
+      nak * 0.14 +
+      observer * 0.08 +
+      transit * 0.14;
+
+    /**
+     * =====================================================
+     * NORMALIZATION
+     * Clamp into latent symbolic bounds.
+     * =====================================================
+     */
+
+    finalState[key] =
+      Math.max(
+        -1,
+        Math.min(1, synthesized)
+      );
+  }
+
+  return finalState;
+}
+export function mergeVectors(
+  base: Record<string, number>,
+  modifier: Record<string, number>,
+  baseWeight = 0.5,
+  modifierWeight = 0.5
+) {
+  const result: Record<string, number> = {};
+
+  const keys = new Set([
+    ...Object.keys(base),
+    ...Object.keys(modifier),
+  ]);
+
+  for (const key of keys) {
+
+    result[key] =
+      (base[key] ?? 0) * baseWeight +
+      (modifier[key] ?? 0) * modifierWeight;
+  }
+
+  return result;
+}
+const computeAspectDistortion = (
+  activeAspects: Array<{ aspectType?: string }>
+): Partial<VectorState> => {
+  const distortion: Partial<VectorState> = {};
+  const types = activeAspects
+    .map((aspect) => aspect.aspectType?.toUpperCase?.() || "")
+    .filter(Boolean);
+
+  if (types.includes("SQUARE")) {
+    distortion.tensionLevel = 0.24;
+    distortion.coherence = -0.08;
+  }
+
+  if (types.includes("OPPOSITION")) {
+    distortion.symbolicPressure = 0.18;
+    distortion.emotionality = 0.12;
+  }
+
+  if (types.includes("TRINE")) {
+    distortion.integrationDifficulty = -0.1;
+    distortion.manifestationStrength = 0.14;
+  }
+
+  if (types.includes("SEXTILE")) {
+    distortion.novelty = 0.08;
+    distortion.sociality = 0.1;
+  }
+
+  if (types.includes("CONJUNCTION")) {
+    distortion.agency = 0.16;
+    distortion.manifestationStrength =
+      (distortion.manifestationStrength ?? 0) + 0.18;
+  }
+
+  return distortion;
+};
+
+const computeNakshatraModulation = (longitude: number): Partial<VectorState> => {
+  const normalized = ((longitude % 360) + 360) % 360;
+  const nakshatraIndex = Math.floor(normalized / (360 / 27));
+  const bias = (nakshatraIndex % 3) - 1;
+
+  return {
+    coherence: bias * 0.06,
+    emotionality: bias * 0.05,
+    novelty: nakshatraIndex % 2 === 0 ? 0.07 : -0.03,
+  };
+};
+
+const computeTransitEvolution = (options: {
+  planet: string;
+  jd: number;
+}): Partial<VectorState> => {
+  const isOuter = ["URANUS", "NEPTUNE", "PLUTO"].includes(options.planet);
+  const cyclePhase = (options.jd % 29.5) / 29.5;
+
+  return {
+    futureOrientation: isOuter ? 0.12 : 0.05,
+    sociality: isOuter ? 0.08 : 0.03,
+    agency: isOuter ? -0.02 : 0.04,
+    novelty: cyclePhase > 0.5 ? 0.06 : -0.02,
+  };
+};
+
 // ============================================================================
 // SCHEMAS & TYPES
 // ============================================================================
@@ -264,28 +458,15 @@ export const nativityRouter = createTRPCRouter({
   getChartById: protectedProcedure
     .input(z.object({ id: z.string() }))
     .query(async ({ ctx, input }) => {
-      const chart = await db.nativityChart.findUnique({
-        where: { id: input.id },
-        include: {
-          ephemerisData: {
-            include: { planets: true },
-          },
-          geometryIndex: {
-            include: { angularDistances: true },
-          },
-          planetaryProfiles: {
-            include: {
-              aspectsAsP1: true,
-              aspectsAsP2: true,
-            },
-          },
-          aspects: true,
-          stateVectors: {
-            orderBy: { timestamp: "desc" },
-            take: 10,
-          },
-        },
-      });
+const chart = await db.nativityChart.findFirst({
+    where: {
+      OR: [
+        { id: input.id },
+        { userId: input.id }
+      ],
+    },
+    // include: { ... } (your includes remain the same)
+  });
 
       if (!chart || chart.userId !== ctx.session.user.id) {
         throw new Error("Unauthorized");
@@ -304,44 +485,11 @@ export const nativityRouter = createTRPCRouter({
 
       const swe = await getSwissEph();
 
-      logSection("Nativity Chart Creation");
-
       try {
-
-        // ===================================================
-        // INITIALIZATION
-        // ===================================================
-
-        logStep(
-          `Creating chart for ${input.name}`
-        );
-
-        logData(
-          "Birth Date",
-          input.birthDateTime
-        );
-
-        logData(
-          "Coordinates",
-          {
-            latitude: input.latitude,
-            longitude: input.longitude
-          }
-        );
-
-        logData(
-          "Coordinate System",
-          input.coordinateSystem
-        );
-
-        logDivider();
-
 
         // ===================================================
         // TIME COMPUTATION
         // ===================================================
-
-        logSection("Astronomical Time Computation");
 
         const birthTimestamp =
           input.birthDateTime.getTime();
@@ -359,46 +507,48 @@ export const nativityRouter = createTRPCRouter({
           dateTime.getUTCDate();
 
         const hours =
-          dateTime.getUTCHours() +
-          dateTime.getUTCMinutes() / 60 +
-          dateTime.getUTCSeconds() / 3600;
+          dateTime.getUTCHours()
+          +
+          (dateTime.getUTCMinutes() / 60)
+          +
+          (dateTime.getUTCSeconds() / 3600);
 
-
-        const jd = swe.julday(
-          year,
-          month,
-          day,
-          hours,
-          1
-        );
-
-        logSuccess(
-          "Computed Julian Day"
-        );
-
-        logData(
-          "Julian Day",
-          jd
-        );
+        const jd =
+          swe.julday(
+            year,
+            month,
+            day,
+            hours,
+            1
+          );
 
         const flags =
           input.coordinateSystem === "SIDEREAL"
             ? swe.SEFLG_SIDEREAL
             : swe.SEFLG_TROPIC;
 
-        logData(
-          "Swiss Flags",
-          flags
-        );
+        // ===================================================
+        // HOUSES
+        // ===================================================
 
-        logDivider();
+        const housesResult =
+          swe.houses_ex(
+            jd,
+            flags,
+            input.latitude,
+            input.longitude,
+            "P"
+          );
 
+        const ascendantLongitude =
+          housesResult.ascmc?.[0] || 0;
 
         // ===================================================
-        // PLANET DEFINITIONS
+        // PLANETS
         // ===================================================
 
         const planetsToCalc = [
+
           swe.SE_SUN,
           swe.SE_MOON,
           swe.SE_MERCURY,
@@ -413,6 +563,7 @@ export const nativityRouter = createTRPCRouter({
         ];
 
         const planetNames = [
+
           "SUN",
           "MOON",
           "MERCURY",
@@ -426,225 +577,104 @@ export const nativityRouter = createTRPCRouter({
           "MEAN_NODE",
         ];
 
-
-        // ===================================================
-        // HOUSES
-        // ===================================================
-
-        logSection(
-          "Observer Frame Geometry"
-        );
-
-        const housesResult =
-          swe.houses_ex(
-            jd,
-            flags,
-            input.latitude,
-            input.longitude,
-            "P"
-          );
-
-        const cusps =
-          housesResult.cusps || [];
-
-        const ascmc =
-          housesResult.ascmc || [];
-
-        const ascendantLongitude =
-          ascmc[0] || 0;
-
-        logSuccess(
-          "Computed Ascendant"
-        );
-
-        logData(
-          "Ascendant Longitude",
-          ascendantLongitude
-        );
-
-        logData(
-          "House Cusps",
-          cusps
-        );
-
-        logDivider();
-
-
-        // ===================================================
-        // PLANETARY COMPUTATION
-        // ===================================================
-
-        logSection(
-          "Planetary State Computation"
-        );
-
         const planetDataForCreate =
-          planetsToCalc.map(
-            (planetId, idx) => {
+          planetsToCalc.map((planetId, idx) => {
 
-              const res =
-                swe.calc_ut(
-                  jd,
-                  planetId,
-                  flags
-                );
-
-              const planetName =
-                planetNames[idx]!;
-
-              let direction =
-                "DIRECT";
-
-              if (res[3] < 0) {
-                direction =
-                  "RETROGRADE";
-              }
-
-              const houseInfo =
-                calculateWholeSignHouse(
-                  res[0],
-                  ascendantLongitude
-                );
-
-              const houseCusp =
-                houseInfo.house;
-
-              const houseDegree =
-                houseInfo.degree;
-
-              const houseSign =
-                houseInfo.sign;
-
-
-              // ===============================================
-              // LIVE TERMINAL VISUALIZATION
-              // ===============================================
-
-              console.log(
-                chalk.yellow(
-                  planetName.padEnd(12)
-                ),
-
-                chalk.white(
-                  `${res[0].toFixed(2)}°`
-                ),
-
-                chalk.cyan(
-                  houseSign.padEnd(10)
-                ),
-
-                chalk.green(
-                  `H${houseCusp}`
-                ),
-
-                direction === "RETROGRADE"
-                  ? chalk.red("Rx")
-                  : chalk.gray("D")
+            const res =
+              swe.calc_ut(
+                jd,
+                planetId,
+                flags
               );
 
+            const planetName =
+              planetNames[idx]!;
 
-              return {
+            const direction =
+              res[3] < 0
+                ? "RETROGRADE"
+                : "DIRECT";
 
-                planet: planetName,
+            const houseInfo =
+              calculateWholeSignHouse(
+                res[0],
+                ascendantLongitude
+              );
 
-                longitude: res[0],
+            return {
 
-                latitude: res[1],
+              planet: planetName,
 
-                speed: res[3],
+              longitude: res[0],
 
-                acceleration: res[5],
+              latitude: res[1],
 
-                direction,
+              speed: res[3],
 
-                houseCusp,
+              acceleration: res[5],
 
-                houseDegree,
+              direction,
 
-                houseSign,
-              };
-            }
-          );
+              houseCusp:
+                houseInfo.house,
 
-        logSuccess(
-          "Computed all planetary states"
-        );
+              houseDegree:
+                houseInfo.degree,
 
-        logDivider();
-
+              houseSign:
+                houseInfo.sign,
+            };
+          });
 
         // ===================================================
-        // CREATE MAIN CHART
+        // CHART PERSISTENCE
         // ===================================================
-
-        logSection(
-          "Persisting Nativity Chart"
-        );
-
-        const chartData: any = {
-
-          userId:
-            ctx.session.user.id!,
-
-          name:
-            input.name,
-
-          description:
-            input.description || "",
-
-          birthDateTime:
-            input.birthDateTime,
-
-          birthTimestamp:
-            BigInt(birthTimestamp),
-
-          timeResolution:
-            input.timeResolution,
-
-          coordinateSystem:
-            input.coordinateSystem,
-
-          latitude:
-            input.latitude,
-
-          longitude:
-            input.longitude,
-
-          timezone:
-            input.timezone,
-
-          locationName:
-            input.locationName || "",
-        };
 
         const nativityChart =
           await db.nativityChart.create({
-            data: chartData,
+
+            data: {
+
+              userId:
+                ctx.session.user.id!,
+
+              name:
+                input.name,
+
+              description:
+                input.description || "",
+
+              birthDateTime:
+                input.birthDateTime,
+
+              birthTimestamp:
+                BigInt(birthTimestamp),
+
+              timeResolution:
+                input.timeResolution,
+
+              coordinateSystem:
+                input.coordinateSystem,
+
+              latitude:
+                input.latitude,
+
+              longitude:
+                input.longitude,
+
+              timezone:
+                input.timezone,
+
+              locationName:
+                input.locationName || "",
+            },
           });
-
-        logSuccess(
-          "Created nativity chart"
-        );
-
-        logData(
-          "Chart ID",
-          nativityChart.id
-        );
-
-        logDivider();
-
-
-        // ===================================================
-        // EPHEMERIS SNAPSHOT
-        // ===================================================
-
-        logSection(
-          "Ephemeris Snapshot"
-        );
 
         const ephemerisData =
           await db.ephemerisSnapshot.create({
+
             data: {
+
               nativityChartId:
                 nativityChart.id,
 
@@ -653,32 +683,23 @@ export const nativityRouter = createTRPCRouter({
             },
           });
 
-        logSuccess(
-          "Stored ephemeris snapshot"
-        );
-
-        logDivider();
-
-
         // ===================================================
-        // GEOMETRIC RELATIONS
+        // GEOMETRY + ASPECTS
         // ===================================================
-
-        logSection(
-          "Angular Geometry Network"
-        );
 
         const angularDistances =
           planetDataForCreate
             .slice(0, -1)
             .flatMap((p1, i) =>
+
               planetDataForCreate
                 .slice(i + 1)
                 .map((p2) => {
 
                   let distance =
                     Math.abs(
-                      p1.longitude -
+                      p1.longitude
+                      -
                       p2.longitude
                     );
 
@@ -688,6 +709,7 @@ export const nativityRouter = createTRPCRouter({
                   }
 
                   return {
+
                     planet1:
                       p1.planet,
 
@@ -698,16 +720,13 @@ export const nativityRouter = createTRPCRouter({
 
                     speedWeighting:
                       Math.abs(
-                        p1.speed -
-                        p2.speed
+                        (p1.speed || 0)
+                        -
+                        (p2.speed || 0)
                       ),
                   };
                 })
             );
-
-        logSuccess(
-          `Computed ${angularDistances.length} angular relations`
-        );
 
         const geometryIndex =
           await db.geometryIndex.create({
@@ -720,97 +739,78 @@ export const nativityRouter = createTRPCRouter({
               angularDistances: {
 
                 create:
-                  angularDistances.map(
-                    d => ({
+                  angularDistances.map((d) => ({
 
-                      planet1:
-                        d.planet1,
+                    planet1:
+                      d.planet1,
 
-                      planet2:
-                        d.planet2,
+                    planet2:
+                      d.planet2,
 
-                      distance:
-                        d.distance,
+                    distance:
+                      d.distance,
 
-                      speedWeighting:
-                        d.speedWeighting || 0,
-                    })
-                  ),
+                    speedWeighting:
+                      d.speedWeighting,
+                  })),
               },
             },
 
             include: {
-              angularDistances: true
+              angularDistances: true,
             },
           });
 
-        logSuccess(
-          "Stored geometry index"
-        );
-
-        logDivider();
-
-
-        // ===================================================
-        // ASPECT DETECTION
-        // ===================================================
-
-        logSection(
-          "Aspect Network Detection"
-        );
-
         const detectedAspects =
           detectAspects(
-            planetDataForCreate as PlanetDataType[],
+            planetDataForCreate,
             input.birthDateTime
           );
 
-        logSuccess(
-          `Detected ${detectedAspects.length} aspects`
-        );
-
-        detectedAspects.forEach(
-          (asp) => {
-
-            console.log(
-
-              chalk.magenta(
-                asp.planet1.padEnd(10)
-              ),
-
-              chalk.gray("—"),
-
-              chalk.cyan(
-                asp.aspectType.padEnd(12)
-              ),
-
-              chalk.gray("—"),
-
-              chalk.magenta(
-                asp.planet2.padEnd(10)
-              ),
-
-              chalk.yellow(
-                `orb ${asp.orbDistance.toFixed(2)}°`
-              )
-            );
-          }
-        );
-
-        logDivider();
-
-
         // ===================================================
-        // PLANETARY PROFILES
+        // SYMBOLIC PIPELINE
         // ===================================================
-
-        logSection(
-          "Relational Symbolic Profiles"
-        );
 
         const planetaryProfilesData =
-          planetDataForCreate.map(
-            (planetData) => {
+          await Promise.all(
+
+            planetDataForCreate.map(async (planetData) => {
+
+              // ===============================================
+              // LOAD ONTOLOGIES
+              // ===============================================
+
+              const planetOntology =
+                await getPlanetOntology(
+                  planetData.planet
+                );
+
+              const signOntology =
+                await getSignOntology(
+                  planetData.houseSign || "ARIES"
+                );
+
+              const houseOntology =
+                await getHouseSceneOntology(
+                  planetData.houseCusp || 1
+                );
+
+              // ===============================================
+              // ACTIVE ASPECTS
+              // ===============================================
+
+              const activeAspects =
+                detectedAspects.filter(
+                  (a) =>
+
+                    a.planet1 === planetData.planet
+                    ||
+                    a.planet2 === planetData.planet
+                );
+
+              // ===============================================
+              // DIGNITY
+              // ===============================================
 
               const dignity =
                 calculatePlanetaryDignity(
@@ -819,13 +819,120 @@ export const nativityRouter = createTRPCRouter({
                   planetData.houseCusp || 1
                 );
 
+              // ===============================================
+              // COMPUTED STATE
+              // ===============================================
+
+              const computedState =
+                await computePlanetaryState({
+
+                  planet:
+                    planetData.planet,
+
+                  sign:
+                    planetData.houseSign || "ARIES",
+
+                  house:
+                    planetData.houseCusp || 1,
+
+                  natalLongitude:
+                    planetData.longitude,
+
+                  currentLongitude:
+                    planetData.longitude,
+
+                  movementDegrees:
+                    0,
+
+                  intensity:
+                    dignity.strength || 0.5,
+
+                  activeAspects,
+
+                  planetProfile: {
+
+                    dignity:
+                      dignity.dignityType,
+
+                    strength:
+                      dignity.strength,
+                  },
+                });
+              // console.log('Computed state for', planetData.planet, computedState.vectorState);
+              // return
+              // ===============================================
+              // FINAL SYNTHESIS
+              // ===============================================
+
+              const finalState =
+                computeFinalState({
+
+                  planetVector:
+                    computedState.vectorState,
+
+                  signTransform:
+                    signOntology?.latentVector ?? {},
+
+                  houseProjection:
+                    houseOntology?.latentVector ?? {},
+
+                  aspectDistortion:
+                    computeAspectDistortion(
+                      activeAspects
+                    ) ?? {},
+
+                  nakshatraModulation:
+                    computeNakshatraModulation(
+                      planetData.longitude
+                    ) ?? {},
+
+                  observerFrame: {
+
+                    coherence: 0.12,
+
+                    stability: 0.08,
+
+                    individuality: 0.14,
+
+                    present_orientation: 0.11,
+                  },
+
+                  transitEvolution:
+                    computeTransitEvolution({
+
+                      planet:
+                        planetData.planet,
+
+                      jd,
+                    }) ?? {},
+                });
+
+              // ===============================================
+              // FINAL DB OBJECT
+              // ===============================================
+
               return {
 
-                nativityChartId: nativityChart.id,
-                planet: planetData.planet,
-                longitude: planetData.longitude,
+                nativityChartId:
+                  nativityChart.id,
 
-                direction: planetData.direction,
+                planet:
+                  planetData.planet,
+
+                longitude:
+                  planetData.longitude,
+
+                latitude:
+                  planetData.latitude,
+
+                speed:
+                  planetData.speed,
+
+                acceleration:
+                  planetData.acceleration,
+
+                direction:
+                  planetData.direction,
 
                 houseCusp:
                   planetData.houseCusp,
@@ -835,51 +942,103 @@ export const nativityRouter = createTRPCRouter({
 
                 houseSign:
                   planetData.houseSign,
+
+                dignity:
+                  dignity.dignityType,
+
+                strength:
+                  dignity.strength,
+
+                // ===========================================
+                // CORE SCALAR AXES
+                // ===========================================
+
+                // agency:
+                //   computedState.vectorState.agency,
+
+                // stability:
+                //   computedState.vectorState.stability,
+
+                // abstraction:
+                //   computedState.vectorState.abstraction,
+
+                // emotionality:
+                //   computedState.vectorState.emotionality,
+
+                // novelty:
+                //   computedState.vectorState.novelty,
+
+                // coherence:
+                //   computedState.vectorState.coherence,
+
+                // sociality:
+                //   computedState.vectorState.sociality,
+
+                // futureOrientation:
+                //   computedState.vectorState.future_orientation,
+
+                // ===========================================
+                // SYMBOLIC METRICS
+                // ===========================================
+
+                // symbolicPressure:
+                //   computedState.vectorState.symbolicPressure,
+
+                // tensionLevel:
+                //   computedState.vectorState.tensionLevel,
+
+                // integrationDifficulty:
+                //   computedState.vectorState.integrationDifficulty,
+
+                // manifestationStrength:
+                //   computedState.vectorState.manifestationStrength,
+
+                // ===========================================
+                // LATENT REPRESENTATION
+                // ===========================================
+
+                latentVector:
+                  computedState.vectorState?.latentVector,
+
+                finalState,
+
+                // ===========================================
+                // STATES
+                // ===========================================
+
+                // astroState:
+                //   computedState.astroState,
+
+                // narrativeState:
+                //   computedState.narrativeState,
+
+                // ===========================================
+                // RAW ONTOLOGY SNAPSHOTS
+                // ===========================================
+
+                planetOntology,
+
+                signOntology,
+
+                houseOntology,
               };
-            }
+            })
           );
+
+        // ===================================================
+        // PERSIST PROFILES
+        // ===================================================
 
         const planetaryProfiles =
           await Promise.all(
 
-            planetaryProfilesData.map(
-              (data) =>
-                db.planetaryProfile.create({
-                  data
-                })
+            planetaryProfilesData.map((data) =>
+
+              db.planetaryProfile.create({
+                data,
+              })
             )
           );
-
-        planetaryProfiles.forEach(
-          (p) => {
-
-            console.log(
-
-              chalk.green(
-                p.planet.padEnd(10)
-              ),
-
-              chalk.white(
-                `${p.houseSign}`
-              ),
-
-              chalk.cyan(
-                `H${p.houseCusp}`
-              )
-            );
-          }
-        );
-
-        logSuccess(
-          "Stored planetary profiles"
-        );
-
-        logDivider();
-
-
-        // ===================================================
-        // PROFILE MAP
-        // ===================================================
 
         const ptProfileMap =
           new Map<string, { id: string }>();
@@ -892,156 +1051,98 @@ export const nativityRouter = createTRPCRouter({
           );
         }
 
-
         // ===================================================
-        // CREATE ASPECTS
+        // ASPECT STORAGE
         // ===================================================
-
-        logSection(
-          "Persisting Aspect Graph"
-        );
 
         await db.nativityAspect.createMany({
 
           data:
-            detectedAspects.map(
-              (asp) => {
+            detectedAspects.map((asp) => ({
 
-                const p1ProfileId =
-                  ptProfileMap.get(
-                    asp.planet1
-                  )?.id;
+              nativityChartId:
+                nativityChart.id,
 
-                const p2ProfileId =
-                  ptProfileMap.get(
-                    asp.planet2
-                  )?.id;
+              geometryIndexId:
+                geometryIndex.id,
 
-                return {
+              planet1:
+                asp.planet1,
 
-                  nativityChartId:
-                    nativityChart.id,
+              planet2:
+                asp.planet2,
 
-                  geometryIndexId:
-                    geometryIndex.id,
+              aspectType:
+                asp.aspectType,
 
-                  planet1:
-                    asp.planet1,
+              orbDistance:
+                asp.orbDistance,
 
-                  planet2:
-                    asp.planet2,
+              isApplying:
+                asp.isApplying,
 
-                  aspectType:
-                    asp.aspectType,
+              exactnessScore:
+                asp.exactnessScore,
 
-                  orbDistance:
-                    asp.orbDistance,
+              orbStrength:
+                asp.orbStrength,
 
-                  isApplying:
-                    asp.isApplying,
+              speedWeighting:
+                asp.speedWeighting,
 
-                  exactnessScore:
-                    asp.exactnessScore,
+              planet1ProfileId:
+                ptProfileMap.get(
+                  asp.planet1
+                )?.id || null,
 
-                  orbStrength:
-                    asp.orbStrength,
-
-                  speedWeighting:
-                    asp.speedWeighting,
-
-                  planet1ProfileId:
-                    p1ProfileId || null,
-
-                  planet2ProfileId:
-                    p2ProfileId || null,
-                };
-              }
-            ),
+              planet2ProfileId:
+                ptProfileMap.get(
+                  asp.planet2
+                )?.id || null,
+            })),
         });
 
-        logSuccess(
-          "Stored aspect graph"
-        );
-
-        logDivider();
-
-
         // ===================================================
-        // FINAL RELATIONAL GRAPH
+        // FINAL CHART LINKING
         // ===================================================
-
-        logSection(
-          "Final Relational Graph Assembly"
-        );
 
         const finalChart =
           await db.nativityChart.update({
 
             where: {
-              id: nativityChart.id
+              id: nativityChart.id,
             },
 
             data: {
 
               ephemerisData: {
                 connect: {
-                  id: ephemerisData.id
+                  id: ephemerisData.id,
                 },
               },
 
               geometryIndex: {
                 connect: {
-                  id: geometryIndex.id
+                  id: geometryIndex.id,
                 },
               },
 
               planetaryProfiles: {
+
                 connect:
-                  planetaryProfiles.map(
-                    (p) => ({
-                      id: p.id
-                    })
-                  ),
+                  planetaryProfiles.map((p) => ({
+                    id: p.id,
+                  })),
               },
             },
           });
 
-        logSuccess(
-          "Nativity chart fully assembled"
-        );
-
-        logData(
-          "Final Chart ID",
-          finalChart.id
-        );
-
-        logDivider();
-
-        logSection(
-          "Symbolic Geometry Initialized"
-        );
-
-        console.log(
-          chalk.greenBright.bold(
-            "\n Consciousness observer frame stabilized.\n"
-          )
-        );
-        return
         return finalChart;
 
       } catch (error) {
 
-        logSection("ERROR");
-
-        logError(
-          error instanceof Error
-            ? error.message
-            : "Unknown error"
-        );
-
-        console.error(error);
-
         throw new Error(
+
           `Failed to create nativity chart: ${error instanceof Error
             ? error.message
             : "Unknown error"
@@ -1049,6 +1150,8 @@ export const nativityRouter = createTRPCRouter({
         );
       }
     }),
+
+
 
   /**
    * Update chart metadata
@@ -1250,6 +1353,189 @@ export const nativityRouter = createTRPCRouter({
     }),
 
   /**
+   * Get raw planetary profile vectors for a given nativity chart
+   */
+  getPlanetaryProfiles: protectedProcedure
+    .input(z.object({ nativityChartId: z.string() }))
+    .query(async ({ ctx, input }) => {
+      const chart = await db.nativityChart.findUnique({
+        where: { id: input.nativityChartId },
+        include: {
+          planetaryProfiles: {
+            select: {
+              id: true,
+              planet: true,
+              houseCusp: true,
+              houseSign: true,
+              direction: true,
+              speed: true,
+              finalState: true,
+              latentVector: true,
+            },
+          },
+        },
+      });
+
+      if (!chart) {
+        throw new Error("Chart not found");
+      }
+
+      if (chart.userId !== ctx.session.user.id) {
+        throw new Error("Unauthorized");
+      }
+
+      return {
+        chartId: chart.id,
+        chartName: chart.name,
+        planetaryProfiles: chart.planetaryProfiles,
+      };
+    }),
+
+  /**
+   * Compute daily planetary state vectors for a date range using computePlanetaryState
+   */
+  getDailyPlanetaryStates: protectedProcedure
+    .input(
+      z.object({
+        nativityChartId: z.string(),
+        startDate: z.string(),
+        endDate: z.string(),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      const chart = await db.nativityChart.findUnique({
+        where: { id: input.nativityChartId },
+        include: {
+          planetaryProfiles: true,
+        },
+      });
+
+      if (!chart) throw new Error('Chart not found');
+      if (chart.userId !== ctx.session.user.id) throw new Error('Unauthorized');
+
+      const start = new Date(input.startDate);
+      const end = new Date(input.endDate);
+      if (isNaN(start.getTime()) || isNaN(end.getTime())) throw new Error('Invalid dates');
+
+      const days: Date[] = [];
+      const maxDays = 366;
+      for (let dt = new Date(start); dt <= end && days.length < maxDays; dt.setDate(dt.getDate() + 1)) {
+        days.push(new Date(dt));
+      }
+
+      const transitCalc = new TransitCalculator();
+      const aspectOrbs = {
+        conjunction: 8,
+        sextile: 6,
+        square: 8,
+        trine: 8,
+        opposition: 8,
+        quincunx: 6,
+      };
+
+      const calculateLongitudeDifference = (long1: number, long2: number) => {
+        let diff = long2 - long1;
+        while (diff > 180) diff -= 360;
+        while (diff < -180) diff += 360;
+        return diff;
+      };
+
+      const findActiveAspects = (
+        natalLong: number,
+        transitLong: number,
+      ) => {
+        const diff = calculateLongitudeDifference(natalLong, transitLong);
+        const aspects: Array<{ aspectType: string; orb: number }> = [];
+
+        const definitions = [
+          { angle: 0, name: 'CONJUNCTION' },
+          { angle: 60, name: 'SEXTILE' },
+          { angle: 90, name: 'SQUARE' },
+          { angle: 120, name: 'TRINE' },
+          { angle: 180, name: 'OPPOSITION' },
+          { angle: 150, name: 'QUINCUNX' },
+        ];
+
+        for (const def of definitions) {
+          const orb = Math.min(Math.abs(diff - def.angle), 360 - Math.abs(diff - def.angle));
+          const allowedOrb = aspectOrbs[def.name.toLowerCase() as keyof typeof aspectOrbs] ?? 8;
+          if (orb <= allowedOrb) {
+            aspects.push({ aspectType: def.name, orb });
+          }
+        }
+
+        return aspects;
+      };
+
+      const dailyStates: Array<{
+        id: string;
+        date: string;
+        planet: string;
+        sign: string;
+        house: number;
+        movementDegrees: number;
+        intensity: number;
+        aspectCount: number;
+        currentLongitude: number;
+        speed: number;
+        latentVector: number[];
+        vectorState: Record<string, number>;
+      }> = [];
+
+      for (const date of days) {
+        const snapshot = await transitCalc.getTransitSnapshot(date, chart.latitude ?? 0, chart.longitude ?? 0);
+
+        for (const transitPlanet of snapshot.planets) {
+          const profile = chart.planetaryProfiles.find((p) => p.planet === transitPlanet.planet);
+          if (!profile) continue;
+
+          const movementDegrees = calculateLongitudeDifference(profile.longitude, transitPlanet.longitude);
+          const aspectsActive = findActiveAspects(profile.longitude, transitPlanet.longitude);
+          const intensity = Math.min(
+            100,
+            aspectsActive.reduce((sum, aspect) => sum + Math.max(0, 8 - aspect.orb) * 10, 0),
+          );
+
+          const computedState = await computePlanetaryState({
+            planet: transitPlanet.planet,
+            sign: profile.houseSign ?? 'ARIES',
+            house: profile.houseCusp ?? 1,
+            natalLongitude: profile.longitude,
+            currentLongitude: transitPlanet.longitude,
+            movementDegrees,
+            intensity,
+            activeAspects: aspectsActive.map((aspect) => ({ aspectType: aspect.aspectType })),
+          });
+
+          const latentVector = Array.isArray(computedState.vectorState.latentVector)
+            ? computedState.vectorState.latentVector
+            : Object.values(computedState.vectorState).filter((value): value is number => typeof value === 'number');
+
+          dailyStates.push({
+            id: `${date.toISOString().slice(0, 10)}-${transitPlanet.planet}`,
+            date: date.toISOString(),
+            planet: transitPlanet.planet,
+            sign: profile.houseSign ?? 'ARIES',
+            house: profile.houseCusp ?? 1,
+            movementDegrees,
+            intensity,
+            aspectCount: aspectsActive.length,
+            currentLongitude: transitPlanet.longitude,
+            speed: transitPlanet.speed,
+            latentVector,
+            vectorState: computedState.vectorState,
+          });
+        }
+      }
+
+      return {
+        chartId: chart.id,
+        chartName: chart.name,
+        dailyStates,
+      };
+    }),
+
+  /**
    * Generate a planet avatar/summary for a single planet using the LLM
    */
   generatePlanetAvatar: protectedProcedure
@@ -1333,7 +1619,7 @@ export const nativityRouter = createTRPCRouter({
           planetaryProfiles: true,
           aspects: true,
           ephemerisData: {
-            include: { planets: true },
+            // include: { planets: true },
           },
         },
       });
@@ -1471,7 +1757,9 @@ export const nativityRouter = createTRPCRouter({
             include: {
               planetaryProfiles: true,
               aspects: true,
-              ephemerisData: { include: { planets: true } }
+              ephemerisData: {
+                // include: { planets: true }
+              }
             }
           },
           scenes: true,
@@ -1489,7 +1777,7 @@ export const nativityRouter = createTRPCRouter({
         theme: s.theme,
         aspectsActive: s.activeAspects.map((a) => safeJSONParse(a, a)),
       }));
-
+      console.log('--------------scenes -----------------', scenes)
       const scenarioOutline = currentStory.themes[0] || '';
 
       const mainNarrative = await generateSceneScriptFromScenarios(scenarioOutline, scenes, chart);
@@ -1693,7 +1981,7 @@ export const nativityRouter = createTRPCRouter({
           ][Math.floor(((natalPlanet.longitude % 360) + 360) % 360 / 30)];
           const house = natalPlanet.houseCusp || 1;
 
-          const attributes = await synthesizeSceneAttributes({
+          const attributes = await computePlanetaryState({
             planet: scene.planet,
             sign,
             house,
@@ -1788,7 +2076,9 @@ export const nativityRouter = createTRPCRouter({
           nativityChart: {
             include: {
               planetaryProfiles: true,
-              ephemerisData: { include: { planets: true } },
+              ephemerisData: {
+                //  include: { planets: true }
+              },
               aspects: true,
             },
           },
@@ -1867,7 +2157,7 @@ export const nativityRouter = createTRPCRouter({
       const house = natalPlanet.houseCusp || 1;
 
       console.log(chalk.cyan('\n[STEP 4] Synthesizing planet scene attributes from astro-data'));
-      const sceneAttributes = await synthesizeSceneAttributes({
+      const sceneAttributes = await computePlanetaryState({
         planet: sceneToUpdate.planet,
         sign,
         house,
@@ -2103,7 +2393,7 @@ User said: "${input.userMessage}"
           aspects: true,
           ephemerisData: {
             include: {
-              planets: true,
+              // planets: true,
             },
           },
         },

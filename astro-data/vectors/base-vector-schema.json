@@ -1,18 +1,84 @@
-    {
-        "self_vs_other": 0,
-        "resource_vs_loss": 0,
-        "local_vs_expansive": 0,
-        "private_vs_public": 0,
-        "creation_vs_collective": 0,
-        "order_vs_dissolution": 0
-    }
-    {
-        "arousal": 0, // calm ↔ activated
-        "agency": 0, // passive ↔ assertive
-        "coherence": 0, // fragmented ↔ integrated
-        "stability": 0, // volatile ↔ stable
-        "orientation": 0, // inward ↔ outward
-        "novelty": 0, // familiar ↔ exploratory
-        "abstraction": 0, // concrete ↔ symbolic
-        "valence": 0 // difficult ↔ pleasant
-    }  
+
+   UNIVERSAL_AXES : [
+        // =========================================
+        // CORE AFFECTIVE GEOMETRY
+        // =========================================
+        "valence",
+        "arousal",
+        "agency",
+        "dominance",
+        "coherence",
+        "stability",
+        "novelty",
+        "volatility",
+        // =========================================
+        // COGNITIVE STYLE
+        // =========================================
+        "abstraction",
+        "symbolic_density",
+        "pattern_recognition",
+        "analyticity",
+        "intuition",
+        "mental_speed",
+        "focus",
+        "diffusion",
+        // =========================================
+        // TEMPORAL ORIENTATION
+        // =========================================
+        "past_orientation",
+        "present_orientation",
+        "future_orientation",
+        "cyclicality",
+        "urgency",
+        "patience",
+        // =========================================
+        // MOTIVATIONAL FORCES
+        // =========================================
+        "desire_intensity",
+        "attachment",
+        "avoidance",
+        "expansion",
+        "contraction",
+        "ambition",
+        "survival_drive",
+        // =========================================
+        // SOCIAL GEOMETRY
+        // =========================================
+        "sociality",
+        "individuality",
+        "collectivism",
+        "relational_depth",
+        "boundary_strength",
+        "empathy",
+        "dominance_social",
+        // =========================================
+        // MATERIAL ↔ SYMBOLIC
+        // =========================================
+        "materiality",
+        "spirituality",
+        "sensory_density",
+        "idealism",
+        "pragmatism",
+        // =========================================
+        // ORDER / CHAOS DYNAMICS
+        // =========================================
+        "integration",
+        "fragmentation",
+        "entropy",
+        "adaptability",
+        "rigidity",
+        // =========================================
+        // EXPRESSION DYNAMICS
+        // =========================================
+        "expressiveness",
+        "repression",
+        "reactivity",
+        "responsiveness",
+        // =========================================
+        // EXISTENTIAL AXES
+        // =========================================
+        "meaning_orientation",
+        "identity_coherence",
+        "transcendence",
+        "ego_density",
+    ];

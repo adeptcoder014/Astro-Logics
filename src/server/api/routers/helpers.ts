@@ -35,7 +35,7 @@ export function calculatePlanetaryDignity(
         MOON: ["CANCER"],
         MERCURY: ["GEMINI", "VIRGO"],
         VENUS: ["TAURUS", "LIBRA"],
-        MARS: ["ARIES", "SCORPIO"], 
+        MARS: ["ARIES", "SCORPIO"],
         JUPITER: ["SAGITTARIUS", "PISCES"],
         SATURN: ["CAPRICORN", "AQUARIUS"],
         URANUS: ["AQUARIUS"],
@@ -440,9 +440,10 @@ export async function generateSceneScriptFromScenarios(
     const summaryNatalPlanets = buildNatalSummary(chart);
     const summaryTransitScenes = buildTransitSummary(scenes);
     const nativityContext: NativityContext = buildNativityContext(chart, scenes);
+    console.log(chalk.yellow('\nscenarioOutline============================'))
+    console.log(scenarioOutline)
 
-
-const prompt = `
+    const prompt = `
 [NARRATIVE STATE]
 ${scenarioOutline}
 
@@ -505,18 +506,6 @@ Only output this format.
 
     return response.text.trim();
 }
-
-export async function generateMainNarrative(
-    scenes: any[],
-    theatreScenes: any[],
-    chart: any,
-): Promise<{ scenarioOutline: string; mainNarrative: string }> {
-    const scenarioOutline = await generateScenarioOutline(scenes, chart);
-    const mainNarrative = await generateSceneScriptFromScenarios(scenarioOutline, scenes, chart);
-    return { scenarioOutline, mainNarrative };
-}
-
-
 
 
 
